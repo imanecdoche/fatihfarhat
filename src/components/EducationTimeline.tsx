@@ -143,17 +143,17 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
               </p>
 
               {/* Interactive Timeline Track (Desktop) */}
-              <div className="hidden md:flex flex-col relative mt-8 space-y-7">
-                {/* Base vertical track line */}
-                <div className="absolute left-[11px] top-3 bottom-3 w-[2px] bg-[#2c2e2a]/15 z-0" />
+              <div className="hidden md:flex flex-col relative mt-9 space-y-8">
+                {/* Base vertical track line (+2pt thicker: 4px width) */}
+                <div className="absolute left-[7px] top-2 bottom-2 w-[4px] bg-[#2c2e2a]/20 rounded-full z-0" />
 
-                {/* Dynamic animated progress fill */}
+                {/* Dynamic animated progress fill (same 4px width) */}
                 <div
                   style={{ height: `${scrollPct * 100}%` }}
-                  className="absolute left-[11px] top-3 max-h-[calc(100%-24px)] w-[2px] bg-[#2c2e2a] z-0 origin-top transition-all duration-150"
+                  className="absolute left-[7px] top-2 max-h-[calc(100%-16px)] w-[4px] bg-[#2c2e2a] rounded-full z-0 origin-top transition-all duration-150"
                 />
 
-                {/* Step Points */}
+                {/* Step Points (Single Solid Dot with matching line color) */}
                 {educationData.map((item, idx) => {
                   const isActive = activeIndex === idx;
                   const isPassed = activeIndex >= idx;
@@ -163,32 +163,26 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
                       key={item.id}
                       type="button"
                       onClick={() => handleStepClick(idx)}
-                      className="relative z-10 flex items-center gap-3.5 group text-left cursor-pointer transition-all duration-300"
+                      className="relative z-10 flex items-center gap-4 group text-left cursor-pointer transition-all duration-300 select-none"
                     >
-                      {/* Circle Node Point */}
+                      {/* Single Solid Dot (No inner concentric ring, same color as line) */}
                       <div
-                        className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${
+                        className={`w-[18px] h-[18px] rounded-full transition-all duration-300 shrink-0 ${
                           isActive
-                            ? 'bg-[#2c2e2a] text-[#ffffff] scale-110'
+                            ? 'bg-[#2c2e2a] scale-125'
                             : isPassed
-                            ? 'bg-[#2c2e2a]/70 text-[#ffffff]'
-                            : 'bg-[#f5f1e4] border-2 border-[#2c2e2a]/20 text-[#2c2e2a]/40 group-hover:border-[#2c2e2a]/60'
+                            ? 'bg-[#2c2e2a]'
+                            : 'bg-[#2c2e2a]/20 group-hover:bg-[#2c2e2a]/50'
                         }`}
-                      >
-                        <div
-                          className={`w-2 h-2 rounded-full ${
-                            isActive ? 'bg-[#8ed462]' : isPassed ? 'bg-[#ffffff]' : 'bg-transparent'
-                          }`}
-                        />
-                      </div>
+                      />
 
-                      {/* Step Name */}
+                      {/* Step Name (+5px larger: text-[17px]) */}
                       <span
-                        className={`text-[12px] font-black tracking-[0.12em] uppercase transition-colors duration-200 ${
+                        className={`text-[17px] font-black tracking-[0.14em] uppercase transition-colors duration-200 ${
                           isActive
                             ? 'text-[#2c2e2a]'
                             : isPassed
-                            ? 'text-[#2c2e2a]/60'
+                            ? 'text-[#2c2e2a]/70'
                             : 'text-[#2c2e2a]/30 group-hover:text-[#2c2e2a]/60'
                         }`}
                       >

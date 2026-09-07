@@ -93,3 +93,6 @@ Acuan utama dan mutlak selalu benar.
     - Header baru dapat muncul kembali secara normal saat pengguna telah selesai/keluar dari sticky timeline dan berada di area biografi atau bagian atas halaman.
 55. **Hapus Counter Step (0X / 04) pada Sidebar Education:**
     - Menghilangkan badge indikator nomor langkah/counter step (`01 / 04`, `02 / 04`, dst.) pada sidebar panel timeline edukasi agar tampilan lebih bersih dan rapi.
+56. **Styling Garis & Titik Timeline Desktop:**
+    - Pada tampilan desktop, garis timeline vertikal dibuat lebih tebal (+2pt menjadi `w-[4px]`) dan ukuran elemen diperbesar (+5px).
+    - Titik timeline disederhanakan menjadi single solid dot murni dengan warna yang sama persis seperti garis (`#2c2e2a` untuk aktif/passed dan `#2c2e2a]/20` untuk inaktif, tanpa concentric inner ring atau warna hijau).
