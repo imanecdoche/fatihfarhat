@@ -144,8 +144,8 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
 
               {/* Interactive Timeline Track (Desktop) */}
               <div className="hidden md:flex flex-col relative mt-9 space-y-8">
-                {/* Base vertical track line (+2pt thicker: 4px width) */}
-                <div className="absolute left-[7px] top-2 bottom-2 w-[4px] bg-[#2c2e2a]/20 rounded-full z-0" />
+                {/* Base vertical track line (+2pt thicker: 4px width, 100% solid opaque, no alpha) */}
+                <div className="absolute left-[7px] top-2 bottom-2 w-[4px] bg-[#d5d5d4] rounded-full z-0" />
 
                 {/* Dynamic animated progress fill (same 4px width) */}
                 <div
@@ -153,7 +153,7 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
                   className="absolute left-[7px] top-2 max-h-[calc(100%-16px)] w-[4px] bg-[#2c2e2a] rounded-full z-0 origin-top transition-all duration-150"
                 />
 
-                {/* Step Points (Single Solid Dot with matching line color) */}
+                {/* Step Points (Single Solid Dot with matching 100% solid color, no alpha/blend) */}
                 {educationData.map((item, idx) => {
                   const isActive = activeIndex === idx;
                   const isPassed = activeIndex >= idx;
@@ -165,25 +165,25 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
                       onClick={() => handleStepClick(idx)}
                       className="relative z-10 flex items-center gap-4 group text-left cursor-pointer transition-all duration-300 select-none"
                     >
-                      {/* Single Solid Dot (No inner concentric ring, same color as line) */}
+                      {/* Single Solid Dot (100% solid opacity, perfectly covers track behind it) */}
                       <div
                         className={`w-[18px] h-[18px] rounded-full transition-all duration-300 shrink-0 ${
                           isActive
                             ? 'bg-[#2c2e2a] scale-125'
                             : isPassed
                             ? 'bg-[#2c2e2a]'
-                            : 'bg-[#2c2e2a]/20 group-hover:bg-[#2c2e2a]/50'
+                            : 'bg-[#d5d5d4] group-hover:bg-[#b8b5ab]'
                         }`}
                       />
 
-                      {/* Step Name (+5px larger: text-[17px]) */}
+                      {/* Step Name (+5px larger: text-[17px], 100% solid color) */}
                       <span
                         className={`text-[17px] font-black tracking-[0.14em] uppercase transition-colors duration-200 ${
                           isActive
                             ? 'text-[#2c2e2a]'
                             : isPassed
-                            ? 'text-[#2c2e2a]/70'
-                            : 'text-[#2c2e2a]/30 group-hover:text-[#2c2e2a]/60'
+                            ? 'text-[#6b6963]'
+                            : 'text-[#9c9991] group-hover:text-[#6b6963]'
                         }`}
                       >
                         {item.step}. {item.id.toUpperCase()}
@@ -193,7 +193,7 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
                 })}
               </div>
 
-              {/* Mobile Step Indicators (Horizontal Pills) */}
+              {/* Mobile Step Indicators (Horizontal Pills, 100% solid) */}
               <div className="flex md:hidden items-center gap-2 mt-3">
                 {educationData.map((item, idx) => (
                   <button
@@ -203,7 +203,7 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
                     className={`h-2 rounded-full transition-all duration-300 ${
                       activeIndex === idx
                         ? 'w-8 bg-[#2c2e2a]'
-                        : 'w-2.5 bg-[#2c2e2a]/20 hover:bg-[#2c2e2a]/40'
+                        : 'w-2.5 bg-[#d5d5d4] hover:bg-[#b8b5ab]'
                     }`}
                     aria-label={`Go to step ${idx + 1}`}
                   />

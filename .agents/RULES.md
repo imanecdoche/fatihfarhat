@@ -96,3 +96,6 @@ Acuan utama dan mutlak selalu benar.
 56. **Styling Garis & Titik Timeline Desktop:**
     - Pada tampilan desktop, garis timeline vertikal dibuat lebih tebal (+2pt menjadi `w-[4px]`) dan ukuran elemen diperbesar (+5px).
     - Titik timeline disederhanakan menjadi single solid dot murni dengan warna yang sama persis seperti garis (`#2c2e2a` untuk aktif/passed dan `#2c2e2a]/20` untuk inaktif, tanpa concentric inner ring atau warna hijau).
+57. **Warna Solid Tanpa Transparansi/Alpha pada Garis & Titik Inaktif Timeline:**
+    - Seluruh elemen inaktif pada timeline edukasi (garis track dasar dan titik single dot inaktif) dilarang menggunakan transparansi atau alpha channel (seperti `/20` atau `opacity < 100%`) agar tidak menimbulkan efek tumpang-tindih (blend/stripe see-through) antara garis dan titik.
+    - Sebagai gantinya, gunakan 100% opasitas solid dengan warna cerah/terang yang harmonis di atas background cream (misalnya `#d5d5d4` / `#e0dbce` untuk garis & titik, serta teks solid abu-abu `#9c9991` untuk label inaktif).
