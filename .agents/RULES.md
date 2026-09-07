@@ -73,3 +73,8 @@ Acuan utama dan mutlak selalu benar.
     - **Muncul Satu per Satu (Step-by-Step Transition):** Ketika di-scroll, konten perjalanan edukasi (SD, SMP, SMA/SMK, S1) tampil bergantian satu per satu secara halus dan dinamis, bukan sekaligus semua dalam bentuk list panjang.
     - **Tanpa Kontainer Putih:** Menghapus kontainer kartu putih (`bg-[#ffffff]`) dan border box; konten menyatu langsung secara flat di atas background cream (`#f5f1e4`).
     - **Tanpa Badge "AKADEMIK":** Menghilangkan badge kapsul "AKADEMIK" di atas label judul "EDUCATION".
+50. **True Screen-Pinned Sticky Timeline Lock:**
+    - Panel timeline terkunci statis di layar (`sticky top-0 h-screen flex items-center`) saat di-scroll ke bawah; posisi tampilan sama sekali tidak bergeser atau bergeser turun naik.
+    - Selama proses scroll terkunci ini, hanya konten kartu edukasi yang berganti secara bertahap (SD → SMP → SMA/SMK → S1).
+    - Halaman baru dapat melanjutkan scroll ke bawah setelah melewati jenjang terakhir (mentok S1).
+    - Saat di-scroll kembali ke atas, kartu bergerak mundur secara berurutan (S1 → SMA/SMK → SMP → SD) sebelum unpin kembali ke biografi atas.
