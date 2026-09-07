@@ -67,7 +67,6 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [scrollPct, setScrollPct] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,7 +77,6 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
 
       const scrolledPastTop = -rect.top;
       const progress = Math.max(0, Math.min(1, scrolledPastTop / totalScrollable));
-      setScrollPct(progress);
 
       const isSticky = scrolledPastTop > 0 && scrolledPastTop < totalScrollable;
       if (onStickyChange) {
@@ -144,13 +142,15 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
 
               {/* Interactive Timeline Track (Desktop) */}
               <div className="hidden md:flex flex-col relative mt-9 space-y-8">
-                {/* Base vertical track line (+2pt thicker: 4px width, 100% solid opaque, no alpha) */}
-                <div className="absolute left-[7px] top-2 bottom-2 w-[4px] bg-[#d5d5d4] rounded-full z-0" />
+                {/* Base vertical track line (+2pt thicker: 4px width, 100% solid, spans from center of 1st dot to center of last dot) */}
+                <div className="absolute left-[7px] top-[9px] bottom-[9px] w-[4px] bg-[#d5d5d4] rounded-full z-0" />
 
-                {/* Dynamic animated progress fill (same 4px width) */}
+                {/* Dynamic animated progress fill (fills exactly along the active segment without gap) */}
                 <div
-                  style={{ height: `${scrollPct * 100}%` }}
-                  className="absolute left-[7px] top-2 max-h-[calc(100%-16px)] w-[4px] bg-[#2c2e2a] rounded-full z-0 origin-top transition-all duration-150"
+                  style={{
+                    height: `${(activeIndex / (educationData.length - 1)) * 100}%`,
+                  }}
+                  className="absolute left-[7px] top-[9px] max-h-[calc(100%-18px)] w-[4px] bg-[#2c2e2a] rounded-full z-0 origin-top transition-all duration-300 ease-out"
                 />
 
                 {/* Step Points (Single Solid Dot with matching 100% solid color, no alpha/blend) */}
