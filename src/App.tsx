@@ -13,12 +13,20 @@ import { portfolioLogos } from './components/PortfolioLogos';
 
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'portfolio'>('home');
+  const [isMobile, setIsMobile] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   });
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Handle URL hash changes
   useEffect(() => {
@@ -114,8 +122,8 @@ export const App: React.FC = () => {
                   logos={techLogos}
                   speed={70}
                   direction="left"
-                  logoHeight={28}
-                  gap={40}
+                  logoHeight={isMobile ? 28 : 42}
+                  gap={isMobile ? 40 : 56}
                   hoverSpeed={15}
                   scaleOnHover={false}
                   fadeOut
