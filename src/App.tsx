@@ -77,7 +77,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f5f1e4] text-[#2c2e2a] overflow-x-hidden">
+    <div className="min-h-screen bg-[#f5f1e4] text-[#2c2e2a] overflow-x-clip">
       {/* Custom Scroll Progress Bar at the Top - Pure Flat Color without shadow */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[3.5px] bg-[#8ed462] origin-left z-60 pointer-events-none"
@@ -90,10 +90,10 @@ export const App: React.FC = () => {
           {currentPage === 'home' && (
             <motion.div
               key="home-page"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
               <Hero />
               <section className="w-full pb-10 sm:pb-20 -translate-y-[200px] sm:-translate-y-[25px] opacity-75">
@@ -115,10 +115,10 @@ export const App: React.FC = () => {
           {currentPage === 'about' && (
             <motion.div
               key="about-page"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
               <AboutHero onNavigateHome={() => handleNavigate('home')} />
               <section className="w-full pb-10 sm:pb-20 -translate-y-[135px] sm:translate-y-[25px] opacity-75 text-[#2c2e2a]">
@@ -143,10 +143,10 @@ export const App: React.FC = () => {
           {currentPage === 'portfolio' && (
             <motion.div
               key="portfolio-page"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
               <PortfolioHero onNavigateHome={() => handleNavigate('home')} />
               <section className="w-full pb-10 sm:pb-20 -translate-y-[135px] sm:translate-y-[25px] opacity-75 text-[#2c2e2a]">
@@ -169,10 +169,10 @@ export const App: React.FC = () => {
           {currentPage === 'services' && (
             <motion.div
               key="services-page"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
               <ServicesHero onNavigateHome={() => handleNavigate('home')} />
               <section className="w-full pb-10 sm:pb-20 -translate-y-[135px] sm:translate-y-[25px] opacity-75 text-[#2c2e2a]">

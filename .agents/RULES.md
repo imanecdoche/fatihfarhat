@@ -78,3 +78,7 @@ Acuan utama dan mutlak selalu benar.
     - Selama proses scroll terkunci ini, hanya konten kartu edukasi yang berganti secara bertahap (SD → SMP → SMA/SMK → S1).
     - Halaman baru dapat melanjutkan scroll ke bawah setelah melewati jenjang terakhir (mentok S1).
     - Saat di-scroll kembali ke atas, kartu bergerak mundur secara berurutan (S1 → SMA/SMK → SMP → SD) sebelum unpin kembali ke biografi atas.
+51. **Solusi Perbaikan CSS Sticky Context:**
+    - Mengganti `overflow-x: hidden` menjadi `overflow-x: clip` pada `html, body` dan wrapper utama untuk mencegah pemutusan konteks scroll sticky oleh browser.
+    - Menghilangkan `transform` (misal `y: 15` pada animasi transisi halaman) dari parent wrapper halaman (`motion.div`) agar tidak merusak stacking context `position: sticky`.
+    - Menjamin panel timeline edukasi 100% menempel statis di viewport tanpa terbawa scroll ke atas.

@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useMotionValueEvent, useTransform, AnimatePresence } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface EducationItem {
   id: string;
@@ -63,23 +63,35 @@ export const EducationTimeline: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [scrollPct, setScrollPct] = useState(0);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const totalScrollable = containerRef.current.offsetHeight - window.innerHeight;
+      if (totalScrollable <= 0) return;
 
-  const progressHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+      const scrolledPastTop = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolledPastTop / totalScrollable));
+      setScrollPct(progress);
 
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    const totalSteps = educationData.length;
-    // Map scroll progress cleanly to step 0, 1, 2, 3
-    const step = Math.min(Math.floor(latest * totalSteps), totalSteps - 1);
-    if (step >= 0 && step < totalSteps && step !== activeIndex) {
-      setDirection(step > activeIndex ? 1 : -1);
-      setActiveIndex(step);
-    }
-  });
+      const totalSteps = educationData.length;
+      const step = Math.min(Math.floor(progress * totalSteps), totalSteps - 1);
+
+      setActiveIndex((prev) => {
+        if (step !== prev) {
+          setDirection(step > prev ? 1 : -1);
+          return step;
+        }
+        return prev;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const currentItem = educationData[activeIndex];
 
@@ -129,9 +141,9 @@ export const EducationTimeline: React.FC = () => {
                 <div className="absolute left-[11px] top-3 bottom-3 w-[2px] bg-[#2c2e2a]/15 z-0" />
 
                 {/* Dynamic animated progress fill */}
-                <motion.div
-                  style={{ height: progressHeight }}
-                  className="absolute left-[11px] top-3 max-h-[calc(100%-24px)] w-[2px] bg-[#2c2e2a] z-0 origin-top"
+                <div
+                  style={{ height: `${scrollPct * 100}%` }}
+                  className="absolute left-[11px] top-3 max-h-[calc(100%-24px)] w-[2px] bg-[#2c2e2a] z-0 origin-top transition-all duration-150"
                 />
 
                 {/* Step Points */}

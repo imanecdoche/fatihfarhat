@@ -58,7 +58,7 @@ html, body {
   background-color: #f5f1e4;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   /* Hide scrollbar for Chrome, Safari, Opera, Edge, and Firefox */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
