@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutHero } from './components/AboutHero';
 import { AboutBio } from './components/AboutBio';
+import { EducationTimeline } from './components/EducationTimeline';
 import { PortfolioHero } from './components/PortfolioHero';
 import { ServicesHero } from './components/ServicesHero';
 import ScrollVelocity from './components/ScrollVelocity';
@@ -135,6 +136,7 @@ export const App: React.FC = () => {
                 />
               </section>
               <AboutBio />
+              <EducationTimeline />
             </motion.div>
           )}
 
