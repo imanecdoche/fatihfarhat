@@ -142,13 +142,6 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
                 Perjalanan Edukasi
               </p>
 
-              {/* Step Counter Indicator */}
-              <div className="mt-3 sm:mt-4 inline-flex items-center gap-2 font-mono text-[13px] font-black text-[#2c2e2a] bg-[#2c2e2a]/10 px-3.5 py-1 rounded-full">
-                <span>0{activeIndex + 1}</span>
-                <span className="text-[#2c2e2a]/40">/</span>
-                <span className="text-[#2c2e2a]/60">0{educationData.length}</span>
-              </div>
-
               {/* Interactive Timeline Track (Desktop) */}
               <div className="hidden md:flex flex-col relative mt-8 space-y-7">
                 {/* Base vertical track line */}

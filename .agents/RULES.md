@@ -91,3 +91,5 @@ Acuan utama dan mutlak selalu benar.
 54. **Sembunyikan Header Saat Timeline Edukasi Sticky:**
     - Ketika panel education timeline berada dalam status terkunci (*sticky on the screen*), header tetap tersembunyi (*hidden*) meskipun pengguna melakukan scroll ke atas untuk memundurkan kartu timeline edukasi.
     - Header baru dapat muncul kembali secara normal saat pengguna telah selesai/keluar dari sticky timeline dan berada di area biografi atau bagian atas halaman.
+55. **Hapus Counter Step (0X / 04) pada Sidebar Education:**
+    - Menghilangkan badge indikator nomor langkah/counter step (`01 / 04`, `02 / 04`, dst.) pada sidebar panel timeline edukasi agar tampilan lebih bersih dan rapi.
