@@ -50,3 +50,4 @@ Acuan utama dan mutlak selalu benar.
     - Teks brand "FATIH FARHAT" di header selalu berada di atas cover (*z-index* lebih tinggi dari cover background menu navigasi fullscreen).
     - Ketika menu titik tiga dibuka, warna teks "FATIH FARHAT" bertransisi menjadi warna background utama (`#f5f1e4`), sedangkan kapsul putih dan menu inline memudar transparan.
     - Teks "FATIH FARHAT" di dalam top-bar overlay menu navigasi fullscreen dihilangkan sepenuhnya (mencegah duplikasi).
+38. **Posisi LogoLoop di Halaman Tentang Saya:** Menurunkan posisi komponen `LogoLoop` pada halaman "Tentang Saya" ke bawah sebesar 50pt / ~50-66px (`translate-y-[50px]` / `-translate-y-[150px] sm:translate-y-[25px]`) agar jarak visual dengan section hero dan biografi menjadi lebih lapang dan harmonis.

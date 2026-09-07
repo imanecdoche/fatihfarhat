@@ -103,7 +103,7 @@ export const App: React.FC = () => {
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
               <AboutHero onNavigateHome={() => handleNavigate('home')} />
-              <section className="w-full pb-10 sm:pb-20 -translate-y-[200px] sm:-translate-y-[25px] opacity-75 text-[#2c2e2a]">
+              <section className="w-full pb-10 sm:pb-20 -translate-y-[135px] sm:translate-y-[25px] opacity-75 text-[#2c2e2a]">
                 <LogoLoop
                   logos={techLogos}
                   speed={70}

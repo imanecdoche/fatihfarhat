@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const AboutBio: React.FC = () => {
   return (
-    <section className="relative w-full max-w-4xl mx-auto px-6 sm:px-10 pb-28 sm:pb-36 flex flex-col items-center text-center -translate-y-[150px] sm:-translate-y-0">
+    <section className="relative w-full max-w-4xl mx-auto px-6 sm:px-10 pt-6 sm:pt-12 pb-28 sm:pb-36 flex flex-col items-center text-center -translate-y-[80px] sm:translate-y-0">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
