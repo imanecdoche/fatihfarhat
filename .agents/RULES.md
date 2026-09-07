@@ -51,3 +51,5 @@ Acuan utama dan mutlak selalu benar.
     - Ketika menu titik tiga dibuka, warna teks "FATIH FARHAT" bertransisi menjadi warna background utama (`#f5f1e4`), sedangkan kapsul putih dan menu inline memudar transparan.
     - Teks "FATIH FARHAT" di dalam top-bar overlay menu navigasi fullscreen dihilangkan sepenuhnya (mencegah duplikasi).
 38. **Posisi LogoLoop di Halaman Tentang Saya:** Menurunkan posisi komponen `LogoLoop` pada halaman "Tentang Saya" ke bawah sebesar 50pt / ~50-66px (`translate-y-[50px]` / `-translate-y-[150px] sm:translate-y-[25px]`) agar jarak visual dengan section hero dan biografi menjadi lebih lapang dan harmonis.
+39. **Animasi Pergeseran Teks Header Desktop Saat Menu Dibuka:**
+    - Pada tampilan **desktop** (`>= 640px`): Saat menu navigasi fullscreen dibuka, teks brand "FATIH FARHAT" di header bergeser ke arah kiri dengan transisi animasi halus (`ease: [0.16, 1, 0.3, 1]`, durasi ~0.6s) hingga sejajar vertikal dengan list item menu navigasi fullscreen (`max-w-5xl`), dan meluncur kembali ke posisi tengah header saat menu ditutup.

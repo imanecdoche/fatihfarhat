@@ -10,6 +10,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [desktopShift, setDesktopShift] = useState(0);
   const [origin, setOrigin] = useState<{ x: number; y: number; maxScale: number }>({
     x: 0,
     y: 0,
@@ -18,6 +19,21 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
   const desktopButtonRef = useRef<HTMLButtonElement>(null);
   const mobileButtonRef = useRef<HTMLButtonElement>(null);
   const { scrollY } = useScroll();
+
+  // Calculate the horizontal shift needed for brand text to align with max-w-5xl menu list on desktop
+  const computeDesktopShift = useCallback(() => {
+    if (typeof window === 'undefined' || window.innerWidth < 640) return 0;
+    const w = window.innerWidth;
+    const pad = w >= 768 ? 64 : 48; // md:p-16 (64px), sm:p-12 (48px)
+    const menuContainerWidth = Math.min(w - 2 * pad, 1024);
+    const targetLeft = (w - menuContainerWidth) / 2;
+
+    const capsuleWidth = w >= 768 ? Math.min(w * 0.92, 600) : 520;
+    const capsuleLeft = (w - capsuleWidth) / 2;
+    const brandLeft = capsuleLeft + 28; // pl-7 (28px)
+
+    return targetLeft - brandLeft;
+  }, []);
 
   // Scroll detection: slide header up on scroll down, reveal on scroll up or at top
   useMotionValueEvent(scrollY, 'change', (latest) => {
@@ -58,16 +74,17 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
     return { x: defaultX, y: defaultY, maxScale: Math.ceil((maxDistance / 30) * 1.25) };
   }, []);
 
-  const updateOrigin = useCallback((isMobileCall = false) => {
+  const updateOriginAndShift = useCallback((isMobileCall = false) => {
     setOrigin(getOriginAndScale(isMobileCall));
-  }, [getOriginAndScale]);
+    setDesktopShift(computeDesktopShift());
+  }, [getOriginAndScale, computeDesktopShift]);
 
   useEffect(() => {
-    updateOrigin();
-    const handleResize = () => updateOrigin();
+    updateOriginAndShift();
+    const handleResize = () => updateOriginAndShift();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [updateOrigin]);
+  }, [updateOriginAndShift]);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -77,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
     if (isMenuOpen) {
       closeMenu();
     } else {
-      updateOrigin(isMobile);
+      updateOriginAndShift(isMobile);
       setIsMenuOpen(true);
     }
   };
@@ -109,9 +126,16 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
             isMenuOpen ? 'bg-transparent' : 'bg-[#ffffff]'
           }`}
         >
-          {/* Left: Brand Text - Transforms to background color #f5f1e4 when menu is open */}
-          <div
-            className="flex items-center cursor-pointer"
+          {/* Left: Brand Text - Smoothly shifts to left to align with menu list on desktop */}
+          <motion.div
+            animate={{
+              x: isMenuOpen ? desktopShift : 0,
+            }}
+            transition={{
+              duration: 0.65,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="flex items-center cursor-pointer will-change-transform"
             onClick={() => {
               if (isMenuOpen) closeMenu();
               if (onNavigate) onNavigate('home');
@@ -124,7 +148,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
             >
               FATIH FARHAT
             </span>
-          </div>
+          </motion.div>
 
           {/* Desktop Navigation Menu (Fades out when menu open, hidden on Mobile) */}
           <motion.nav
