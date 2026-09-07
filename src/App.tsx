@@ -4,6 +4,7 @@ import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutHero } from './components/AboutHero';
+import { AboutBio } from './components/AboutBio';
 import ScrollVelocity from './components/ScrollVelocity';
 import LogoLoop from './components/LogoLoop';
 import { techLogos } from './components/TechLogos';
@@ -116,6 +117,7 @@ export const App: React.FC = () => {
                   ariaLabel="Tech stack and creative tools"
                 />
               </section>
+              <AboutBio />
             </motion.div>
           )}
         </AnimatePresence>
