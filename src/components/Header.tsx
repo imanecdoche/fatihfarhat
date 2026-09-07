@@ -5,9 +5,10 @@ import { MoreHorizontal, X } from 'lucide-react';
 interface HeaderProps {
   currentPage?: 'home' | 'about' | 'portfolio' | 'services';
   onNavigate?: (page: 'home' | 'about' | 'portfolio' | 'services') => void;
+  isTimelineSticky?: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate }) => {
+export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate, isTimelineSticky = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [desktopShift, setDesktopShift] = useState(0);
@@ -35,8 +36,19 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
     return targetLeft - brandLeft;
   }, []);
 
+  // Suppress header when timeline is actively sticky
+  useEffect(() => {
+    if (isTimelineSticky) {
+      setIsVisible(false);
+    }
+  }, [isTimelineSticky]);
+
   // Scroll detection: slide header up on scroll down, reveal on scroll up or at top
   useMotionValueEvent(scrollY, 'change', (latest) => {
+    if (isTimelineSticky) {
+      setIsVisible(false);
+      return;
+    }
     const previous = scrollY.getPrevious() ?? 0;
     const diff = latest - previous;
     if (latest < 40) {

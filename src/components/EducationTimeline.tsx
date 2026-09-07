@@ -59,7 +59,11 @@ const educationData: EducationItem[] = [
   },
 ];
 
-export const EducationTimeline: React.FC = () => {
+interface EducationTimelineProps {
+  onStickyChange?: (isSticky: boolean) => void;
+}
+
+export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyChange }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -76,6 +80,11 @@ export const EducationTimeline: React.FC = () => {
       const progress = Math.max(0, Math.min(1, scrolledPastTop / totalScrollable));
       setScrollPct(progress);
 
+      const isSticky = scrolledPastTop > 0 && scrolledPastTop < totalScrollable;
+      if (onStickyChange) {
+        onStickyChange(isSticky);
+      }
+
       const totalSteps = educationData.length;
       const step = Math.min(Math.floor(progress * totalSteps), totalSteps - 1);
 
@@ -90,8 +99,13 @@ export const EducationTimeline: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (onStickyChange) {
+        onStickyChange(false);
+      }
+    };
+  }, [onStickyChange]);
 
   const currentItem = educationData[activeIndex];
 

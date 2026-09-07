@@ -88,3 +88,6 @@ Acuan utama dan mutlak selalu benar.
     - **Jarak Atas Lebih Pendek di Mobile:** Pada tampilan mobile (`< 640px`), jarak antara batas atas layar dan konten sticky panel timeline edukasi diperpendek (`pt-20 sm:pt-0 items-start sm:items-center`) agar konten pas dan lapang di viewport mobile.
     - **Hapus Tag/Badge Bawah Deskripsi:** Menghilangkan seluruh badge/tag keahlian di bawah paragraf deskripsi setiap kartu pendidikan.
     - **Hapus Teks Meta di Atas Judul Sekolah:** Menghilangkan teks nomor step/level dan tahun/periode di atas judul nama jenjang pendidikan.
+54. **Sembunyikan Header Saat Timeline Edukasi Sticky:**
+    - Ketika panel education timeline berada dalam status terkunci (*sticky on the screen*), header tetap tersembunyi (*hidden*) meskipun pengguna melakukan scroll ke atas untuk memundurkan kartu timeline edukasi.
+    - Header baru dapat muncul kembali secara normal saat pengguna telah selesai/keluar dari sticky timeline dan berada di area biografi atau bagian atas halaman.

@@ -15,6 +15,7 @@ import { portfolioLogos } from './components/PortfolioLogos';
 
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'portfolio' | 'services'>('home');
+  const [isTimelineSticky, setIsTimelineSticky] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -51,6 +52,7 @@ export const App: React.FC = () => {
   }, []);
 
   const handleNavigate = (page: 'home' | 'about' | 'portfolio' | 'services') => {
+    setIsTimelineSticky(false);
     setCurrentPage(page);
     window.location.hash = page === 'home' ? '#home' : `#${page}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -84,7 +86,11 @@ export const App: React.FC = () => {
         style={{ scaleX }}
       />
 
-      <Header currentPage={currentPage} onNavigate={handleNavigate} />
+      <Header
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
+        isTimelineSticky={isTimelineSticky}
+      />
       <main>
         <AnimatePresence mode="wait">
           {currentPage === 'home' && (
@@ -136,7 +142,7 @@ export const App: React.FC = () => {
                 />
               </section>
               <AboutBio />
-              <EducationTimeline />
+              <EducationTimeline onStickyChange={setIsTimelineSticky} />
             </motion.div>
           )}
 
