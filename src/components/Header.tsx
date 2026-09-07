@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { MoreHorizontal, X } from 'lucide-react';
 
 interface HeaderProps {
@@ -8,30 +8,40 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [origin, setOrigin] = useState<{ x: number; y: number; maxScale: number }>({
     x: 0,
     y: 0,
     maxScale: 60,
   });
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const desktopButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileButtonRef = useRef<HTMLButtonElement>(null);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  // Scroll detection: slide header up on scroll down, reveal on scroll up or at top
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    const diff = latest - previous;
+    if (latest < 40) {
+      setIsVisible(true);
+    } else if (diff > 4) {
+      // scrolling down -> slide up to hide
+      setIsVisible(false);
+    } else if (diff < -4) {
+      // scrolling up -> slide down to show
+      setIsVisible(true);
+    }
+  });
 
-  // Compute live center coordinates and maximum scale multiplier
-  const getOriginAndScale = () => {
-    if (buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect();
+  // Compute live center coordinates and maximum scale multiplier from the active button
+  const getOriginAndScale = useCallback((isMobileCall = false) => {
+    const activeRef = (isMobileCall || (typeof window !== 'undefined' && window.innerWidth < 640))
+      ? mobileButtonRef.current || desktopButtonRef.current
+      : desktopButtonRef.current || mobileButtonRef.current;
+
+    if (activeRef) {
+      const rect = activeRef.getBoundingClientRect();
       const x = rect.left + rect.width / 2;
       const y = rect.top + rect.height / 2;
       const maxDistance = Math.hypot(
@@ -42,73 +52,32 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
       const maxScale = Math.ceil((maxDistance / 30) * 1.25);
       return { x, y, maxScale };
     }
-    const defaultX = typeof window !== 'undefined' ? window.innerWidth - 60 : 300;
-    const defaultY = 50;
+    const defaultX = typeof window !== 'undefined' ? window.innerWidth - 40 : 300;
+    const defaultY = 40;
     const maxDistance = typeof window !== 'undefined' ? Math.hypot(defaultX, window.innerHeight) : 2000;
     return { x: defaultX, y: defaultY, maxScale: Math.ceil((maxDistance / 30) * 1.25) };
-  };
+  }, []);
 
-  const handleMouseEnter = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-    setIsHovered(true);
-  };
+  const updateOrigin = useCallback((isMobileCall = false) => {
+    setOrigin(getOriginAndScale(isMobileCall));
+  }, [getOriginAndScale]);
 
-  const handleMouseLeave = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    timeoutRef.current = setTimeout(() => {
-      if (!isMenuOpen) {
-        setIsHovered(false);
-      }
-    }, 1000);
-  };
-
-  const handleToggleClick = () => {
-    if (isMobile && !isMenuOpen) {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      setIsHovered((prev) => {
-        const next = !prev;
-        if (next) {
-          timeoutRef.current = setTimeout(() => {
-            if (!isMenuOpen) {
-              setIsHovered(false);
-            }
-          }, 3000);
-        }
-        return next;
-      });
-    }
-  };
+  useEffect(() => {
+    updateOrigin();
+    const handleResize = () => updateOrigin();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [updateOrigin]);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-    // Keep 3-dots button visible while the menu background circle shrinks (~0.8s)
-    setIsHovered(true);
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    // After menu completely closes + breathing delay, slide the button back behind capsule
-    timeoutRef.current = setTimeout(() => {
-      setIsHovered(false);
-    }, 1400);
   };
 
-  const toggleMenu = () => {
+  const toggleMenu = (isMobile = false) => {
     if (isMenuOpen) {
       closeMenu();
     } else {
-      const coords = getOriginAndScale();
-      setOrigin(coords);
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      setIsHovered(true);
+      updateOrigin(isMobile);
       setIsMenuOpen(true);
     }
   };
@@ -124,191 +93,122 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isMenuOpen]);
 
-  const showButton = isHovered || isMenuOpen;
-
   return (
     <>
-      <header className="w-full fixed top-0 left-0 right-0 z-75 pt-5 px-4 sm:px-6 md:px-8 flex items-center justify-center pointer-events-none">
-        {/* SVG Gooey / Metaball Filter Definition */}
-        <svg
-          style={{ position: 'absolute', width: 0, height: 0, pointerEvents: 'none' }}
-          aria-hidden="true"
+      {/* Floating Center Header Capsule */}
+      <header className="w-full fixed top-0 left-0 right-0 z-50 pt-4 sm:pt-5 px-3 sm:px-6 md:px-8 flex items-center justify-center pointer-events-none">
+        <motion.div
+          initial={{ y: -60, opacity: 0 }}
+          animate={{
+            y: !isVisible && !isMenuOpen ? -100 : 0,
+            opacity: isMenuOpen ? 0 : (!isVisible ? 0 : 1),
+            pointerEvents: isMenuOpen || !isVisible ? 'none' : 'auto',
+          }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-[92vw] sm:w-[520px] md:w-[600px] max-w-[700px] h-[54px] sm:h-[60px] md:h-[64px] bg-[#ffffff] rounded-[50px] pl-5 sm:pl-7 pr-2 sm:pr-2.5 py-1.5 sm:py-2.5 flex items-center justify-between transition-colors duration-300 pointer-events-auto"
         >
-          <defs>
-            <filter id="metaball-gooey" colorInterpolationFilters="sRGB">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
-              <feColorMatrix
-                in="blur"
-                mode="matrix"
-                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -10"
-                result="gooey"
-              />
-            </filter>
-          </defs>
-        </svg>
-
-        {/* Interactive Header Wrapper with Hover and Touch Detection */}
-        <div
-          className="pointer-events-auto relative flex items-center justify-center"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onClick={handleToggleClick}
-        >
-          {/* Gooey / Metaball Background Layer (Only visible when menu is closed) */}
+          {/* Left: Black Extended Brand Text */}
           <div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-300"
-            style={{
-              filter: 'url(#metaball-gooey)',
-              opacity: isMenuOpen ? 0 : 1,
-            }}
+            className="flex items-center cursor-pointer"
+            onClick={() => onNavigate && onNavigate('home')}
           >
-            <div className="relative flex items-center">
-              {/* Main Capsule Shape */}
-              <motion.div
-                initial={{ y: -30, opacity: 0 }}
-                animate={{ y: 0, opacity: isMenuOpen ? 0 : 1 }}
-                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-                className="w-[88vw] sm:w-[540px] md:w-[620px] max-w-[720px] h-[60px] sm:h-[64px] bg-[#ffffff] rounded-[50px] relative z-20"
-              />
-
-              {/* Circle Shape (Mobile: drops down below right side; Desktop: slides out to the right) */}
-              <motion.div
-                initial={false}
-                animate={{
-                  x: isMobile ? 0 : (showButton ? 68 : -64),
-                  y: isMobile ? (showButton ? 66 : 0) : 0,
-                }}
-                transition={{
-                  duration: 0.85,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className={`shrink-0 w-[60px] sm:w-[64px] h-[60px] sm:h-[64px] rounded-full bg-[#ffffff] ${
-                  isMobile
-                    ? 'absolute right-2 top-0 z-10'
-                    : 'relative z-10 -ml-14'
-                }`}
-              />
-            </div>
+            <span className="font-black tracking-[0.14em] sm:tracking-[0.2em] text-[15px] sm:text-[18px] md:text-[19px] uppercase text-[#2c2e2a] select-none font-sans">
+              FATIH FARHAT
+            </span>
           </div>
 
-          {/* Sharp Foreground Content Layer */}
-          <div className="relative flex items-center justify-center">
-            {/* Main Capsule Content - Smoothly fades when menu is open */}
-            <motion.div
-              initial={{ y: -30, opacity: 0 }}
-              animate={{
-                y: 0,
-                opacity: isMenuOpen ? 0 : 1,
-                pointerEvents: isMenuOpen ? 'none' : 'auto',
+          {/* Desktop Navigation Menu (Hidden on Mobile) */}
+          <nav className="hidden sm:flex items-center h-full gap-1">
+            <a
+              href="#home"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault();
+                  onNavigate('home');
+                }
               }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-30 w-[88vw] sm:w-[540px] md:w-[620px] max-w-[720px] h-[60px] sm:h-[64px] bg-[#ffffff] rounded-[50px] pl-6 sm:pl-7 pr-2 sm:pr-2.5 py-2 sm:py-2.5 flex items-center justify-between transition-all duration-300 pointer-events-auto"
-            >
-              {/* Left: Black Extended Brand Text */}
-              <div
-                className="flex items-center cursor-pointer"
-                onClick={() => onNavigate && onNavigate('home')}
-              >
-                <span className="font-black tracking-[0.16em] sm:tracking-[0.2em] text-[16px] sm:text-[19px] uppercase text-[#2c2e2a] select-none font-sans">
-                  FATIH FARHAT
-                </span>
-              </div>
-
-              {/* Navigation Menu */}
-              <nav className="flex items-center h-full gap-1">
-                <a
-                  href="#home"
-                  onClick={(e) => {
-                    if (onNavigate) {
-                      e.preventDefault();
-                      onNavigate('home');
-                    }
-                  }}
-                  className={`h-full px-3.5 sm:px-5 rounded-[50px] text-[13px] sm:text-[14px] font-bold transition-colors duration-200 flex items-center justify-center ${
-                    currentPage === 'home'
-                      ? 'bg-[#2c2e2a] text-[#ffffff]'
-                      : 'text-[#2c2e2a] hover:bg-[#f5f1e4]'
-                  }`}
-                >
-                  HOME
-                </a>
-                <a
-                  href="#about"
-                  onClick={(e) => {
-                    if (onNavigate) {
-                      e.preventDefault();
-                      onNavigate('about');
-                    }
-                  }}
-                  className={`h-full px-3.5 sm:px-5 rounded-[50px] text-[13px] sm:text-[14px] font-bold transition-colors duration-200 flex items-center justify-center ${
-                    currentPage === 'about'
-                      ? 'bg-[#2c2e2a] text-[#ffffff]'
-                      : 'text-[#2c2e2a] hover:bg-[#f5f1e4]'
-                  }`}
-                >
-                  TENTANG
-                </a>
-              </nav>
-            </motion.div>
-
-            {/* Circle Button Content (Stays always at top z-80 when menu open or hovered) */}
-            <motion.div
-              initial={false}
-              animate={{
-                x: isMobile ? 0 : (showButton ? 68 : -64),
-                y: isMobile ? (showButton ? 66 : 0) : 0,
-                pointerEvents: showButton ? 'auto' : 'none',
-                opacity: isMobile ? (showButton ? 1 : 0) : 1,
-              }}
-              transition={{
-                duration: 0.85,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className={`shrink-0 z-40 ${
-                isMobile
-                  ? 'absolute right-2 top-0'
-                  : 'relative -ml-14'
+              className={`h-full px-3 sm:px-5 rounded-[50px] text-[13px] sm:text-[14px] font-bold transition-colors duration-200 flex items-center justify-center ${
+                currentPage === 'home'
+                  ? 'bg-[#2c2e2a] text-[#ffffff]'
+                  : 'text-[#2c2e2a] hover:bg-[#f5f1e4]'
               }`}
             >
-              <button
-                ref={buttonRef}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleMenu();
-                }}
-                aria-label={isMenuOpen ? 'Tutup Menu' : 'Buka Menu'}
-                className="w-[60px] sm:w-[64px] h-[60px] sm:h-[64px] rounded-full flex items-center justify-center bg-[#ffffff] text-[#2c2e2a] hover:bg-[#f5f1e4] active:scale-95 transition-all duration-200 cursor-pointer pointer-events-auto"
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  {isMenuOpen ? (
-                    <motion.div
-                      key="close-icon"
-                      initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
-                      animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                      exit={{ rotate: 90, opacity: 0, scale: 0.7 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <X size={24} className="text-[#2c2e2a]" strokeWidth={2.5} />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="dots-icon"
-                      initial={{ rotate: 90, opacity: 0, scale: 0.7 }}
-                      animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                      exit={{ rotate: -90, opacity: 0, scale: 0.7 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <MoreHorizontal size={24} className="text-[#2c2e2a]" strokeWidth={2.5} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </button>
-            </motion.div>
-          </div>
-        </div>
+              HOME
+            </a>
+            <a
+              href="#about"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault();
+                  onNavigate('about');
+                }
+              }}
+              className={`h-full px-3 sm:px-5 rounded-[50px] text-[13px] sm:text-[14px] font-bold transition-colors duration-200 flex items-center justify-center ${
+                currentPage === 'about'
+                  ? 'bg-[#2c2e2a] text-[#ffffff]'
+                  : 'text-[#2c2e2a] hover:bg-[#f5f1e4]'
+              }`}
+            >
+              TENTANG
+            </a>
+          </nav>
+
+          {/* Mobile Inside Three-Dots Button (Hidden on Desktop >= sm) */}
+          <button
+            ref={mobileButtonRef}
+            onClick={() => toggleMenu(true)}
+            aria-label="Buka Menu"
+            className="sm:hidden w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#f5f1e4] text-[#2c2e2a] hover:bg-[#2c2e2a] hover:text-[#ffffff] active:scale-95 transition-colors duration-200 cursor-pointer select-none shrink-0"
+          >
+            <MoreHorizontal size={20} strokeWidth={2.5} />
+          </button>
+        </motion.div>
       </header>
 
-      {/* Expanding Circle Background - Locked 100% to Button Exact Center */}
+      {/* Desktop Floating Three-Dots / Close Button at Top Right Corner (Hidden on Mobile) */}
+      <motion.div
+        initial={{ y: -60, opacity: 0 }}
+        animate={{
+          y: !isVisible && !isMenuOpen ? -100 : 0,
+          opacity: !isVisible && !isMenuOpen ? 0 : 1,
+          pointerEvents: !isVisible && !isMenuOpen ? 'none' : 'auto',
+        }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="hidden sm:flex fixed top-4 sm:top-5 right-4 sm:right-6 md:right-8 z-80 pointer-events-auto"
+      >
+        <button
+          ref={desktopButtonRef}
+          onClick={() => toggleMenu(false)}
+          aria-label={isMenuOpen ? 'Tutup Menu' : 'Buka Menu'}
+          className="w-[54px] sm:w-[60px] md:w-[64px] h-[54px] sm:h-[60px] md:h-[64px] rounded-full flex items-center justify-center bg-[#ffffff] text-[#2c2e2a] hover:bg-[#2c2e2a] hover:text-[#ffffff] active:scale-95 transition-all duration-200 cursor-pointer select-none"
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {isMenuOpen ? (
+              <motion.div
+                key="close-icon"
+                initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                exit={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                transition={{ duration: 0.2 }}
+              >
+                <X size={24} strokeWidth={2.5} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="dots-icon"
+                initial={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                exit={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                transition={{ duration: 0.2 }}
+              >
+                <MoreHorizontal size={24} strokeWidth={2.5} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </button>
+      </motion.div>
+
+      {/* Expanding Circle Background - Locked to Center of Trigger Button */}
       <motion.div
         initial={false}
         animate={{
@@ -320,8 +220,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
         }}
         style={{
           position: 'fixed',
-          left: origin.x || (typeof window !== 'undefined' ? window.innerWidth - 60 : 300),
-          top: origin.y || 50,
+          left: origin.x || (typeof window !== 'undefined' ? window.innerWidth - 40 : 300),
+          top: origin.y || 40,
           width: '60px',
           height: '60px',
           marginLeft: '-30px',
@@ -348,7 +248,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
         }}
         className="fixed inset-0 z-65 flex flex-col justify-between p-6 sm:p-12 md:p-16 text-[#f5f1e4]"
       >
-        {/* Top bar inside menu: Logo / Brand in #f5f1e4 (without NAVIGASI label) */}
+        {/* Top bar inside menu: Logo / Brand in #f5f1e4 + Close Button for Mobile */}
         <div className="flex items-center justify-between w-full max-w-5xl mx-auto pt-4 sm:pt-2">
           <span
             onClick={() => {
@@ -359,6 +259,15 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
           >
             FATIH FARHAT
           </span>
+
+          {/* Close button inside top-bar for mobile screens */}
+          <button
+            onClick={closeMenu}
+            aria-label="Tutup Menu"
+            className="sm:hidden w-[42px] h-[42px] rounded-full flex items-center justify-center bg-[#f5f1e4] text-[#2c2e2a] active:scale-90 transition-transform cursor-pointer"
+          >
+            <X size={20} strokeWidth={2.5} />
+          </button>
         </div>
 
         {/* Center: Large Navigation Links in #f5f1e4 with hover to #ffffff */}
@@ -419,3 +328,5 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
     </>
   );
 };
+
+export default Header;
