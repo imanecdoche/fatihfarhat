@@ -99,6 +99,6 @@ Acuan utama dan mutlak selalu benar.
 57. **Warna Solid Tanpa Transparansi/Alpha pada Garis & Titik Inaktif Timeline:**
     - Seluruh elemen inaktif pada timeline edukasi (garis track dasar dan titik single dot inaktif) dilarang menggunakan transparansi atau alpha channel (seperti `/20` atau `opacity < 100%`) agar tidak menimbulkan efek tumpang-tindih (blend/stripe see-through) antara garis dan titik.
     - Sebagai gantinya, gunakan 100% opasitas solid dengan warna cerah/terang yang harmonis di atas background cream (misalnya `#d5d5d4` / `#e0dbce` untuk garis & titik, serta teks solid abu-abu `#9c9991` untuk label inaktif).
-58. **Garis Timeline Vertikal Menyambung Penuh (Unbroken Continuous Track):**
-    - Garis timeline vertikal (baik track dasar maupun progress fill) harus ditarik menyambung utuh dari titik pertama (SD) hingga titik terakhir (S1) tanpa terputus di tengah jalan (`top-[9px] bottom-[9px]`, atau `top-[9px] height: (activeIndex / 3) * 100%`).
-    - Titik-titik milestone (`z-10`) menempel langsung di atas garis lurus yang kontinu tanpa celah putus.
+58. **Garis Timeline Vertikal Menyambung Penuh (Segment-Based Continuous Track):**
+    - Garis timeline vertikal menggunakan arsitektur garis segmen penghubung (connector line) antar titik atau track yang terpasang presisi dari pusat dot atas ke dot bawah (`top-[9px] bottom-[9px]`, `w-[4px]`, `left-[7px]`), tanpa terpotong oleh `max-height` atau `padding`.
+    - Garis aktif terisi penuh menyambungkan dari dot atas ke dot bawah pada setiap step yang aktif/terlewati secara solid dan kontinu.

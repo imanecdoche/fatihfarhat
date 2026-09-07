@@ -141,54 +141,60 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
               </p>
 
               {/* Interactive Timeline Track (Desktop) */}
-              <div className="hidden md:flex flex-col relative mt-9 space-y-8">
-                {/* Base vertical track line (+2pt thicker: 4px width, 100% solid, spans from center of 1st dot to center of last dot) */}
-                <div className="absolute left-[7px] top-[9px] bottom-[9px] w-[4px] bg-[#d5d5d4] rounded-full z-0" />
-
-                {/* Dynamic animated progress fill (fills exactly along the active segment without gap) */}
-                <div
-                  style={{
-                    height: `${(activeIndex / (educationData.length - 1)) * 100}%`,
-                  }}
-                  className="absolute left-[7px] top-[9px] max-h-[calc(100%-18px)] w-[4px] bg-[#2c2e2a] rounded-full z-0 origin-top transition-all duration-300 ease-out"
-                />
-
-                {/* Step Points (Single Solid Dot with matching 100% solid color, no alpha/blend) */}
+              <div className="hidden md:flex flex-col relative mt-9">
                 {educationData.map((item, idx) => {
                   const isActive = activeIndex === idx;
                   const isPassed = activeIndex >= idx;
+                  const isLast = idx === educationData.length - 1;
+                  const isSegmentActive = activeIndex > idx;
 
                   return (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => handleStepClick(idx)}
-                      className="relative z-10 flex items-center gap-4 group text-left cursor-pointer transition-all duration-300 select-none"
-                    >
-                      {/* Single Solid Dot (100% solid opacity, perfectly covers track behind it) */}
-                      <div
-                        className={`w-[18px] h-[18px] rounded-full transition-all duration-300 shrink-0 ${
-                          isActive
-                            ? 'bg-[#2c2e2a] scale-125'
-                            : isPassed
-                            ? 'bg-[#2c2e2a]'
-                            : 'bg-[#d5d5d4] group-hover:bg-[#b8b5ab]'
-                        }`}
-                      />
-
-                      {/* Step Name (+5px larger: text-[17px], 100% solid color) */}
-                      <span
-                        className={`text-[17px] font-black tracking-[0.14em] uppercase transition-colors duration-200 ${
-                          isActive
-                            ? 'text-[#2c2e2a]'
-                            : isPassed
-                            ? 'text-[#6b6963]'
-                            : 'text-[#9c9991] group-hover:text-[#6b6963]'
-                        }`}
+                    <div key={item.id} className="relative flex flex-col">
+                      {/* Milestone Row */}
+                      <button
+                        type="button"
+                        onClick={() => handleStepClick(idx)}
+                        className="relative z-10 flex items-center gap-4 group text-left cursor-pointer transition-all duration-300 select-none py-1.5"
                       >
-                        {item.step}. {item.id.toUpperCase()}
-                      </span>
-                    </button>
+                        {/* Single Solid Dot (18px) */}
+                        <div
+                          className={`w-[18px] h-[18px] rounded-full transition-all duration-300 shrink-0 ${
+                            isActive
+                              ? 'bg-[#2c2e2a] scale-125'
+                              : isPassed
+                              ? 'bg-[#2c2e2a]'
+                              : 'bg-[#d5d5d4] group-hover:bg-[#b8b5ab]'
+                          }`}
+                        />
+
+                        {/* Step Name (+5px larger: text-[17px], 100% solid color) */}
+                        <span
+                          className={`text-[17px] font-black tracking-[0.14em] uppercase transition-colors duration-200 ${
+                            isActive
+                              ? 'text-[#2c2e2a]'
+                              : isPassed
+                              ? 'text-[#6b6963]'
+                              : 'text-[#9c9991] group-hover:text-[#6b6963]'
+                          }`}
+                        >
+                          {item.step}. {item.id.toUpperCase()}
+                        </span>
+                      </button>
+
+                      {/* Continuous Connector Line to Next Dot (zero gap between dots) */}
+                      {!isLast && (
+                        <div className="relative ml-[7px] w-[4px] h-7 my-[-2px] z-0">
+                          {/* Base Track */}
+                          <div className="absolute inset-0 w-full bg-[#d5d5d4]" />
+                          {/* Active Filled Segment */}
+                          <div
+                            className={`absolute inset-0 w-full bg-[#2c2e2a] transition-all duration-300 ease-out ${
+                              isSegmentActive ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'
+                            } origin-top`}
+                          />
+                        </div>
+                      )}
+                    </div>
                   );
                 })}
               </div>
