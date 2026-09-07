@@ -50,9 +50,32 @@ export const AboutBio: React.FC<AboutBioProps> = ({ onStickyChange }) => {
   // Current number of typed characters based on scrollProgress (0 to 1)
   const currentTypedCount = Math.round(scrollProgress * totalChars);
 
-  // Splitted character arrays
-  const charsP1 = useMemo(() => paragraph1Text.split(''), []);
-  const charsP2 = useMemo(() => paragraph2Text.split(''), []);
+  // Split paragraphs into words to maintain fixed word-wrapping boundaries
+  const wordsP1 = useMemo(() => {
+    let runningIndex = 0;
+    return paragraph1Text.split(' ').map((word) => {
+      const chars = word.split('').map((char) => ({
+        char,
+        index: runningIndex++,
+      }));
+      // account for the space character
+      runningIndex++;
+      return chars;
+    });
+  }, []);
+
+  const wordsP2 = useMemo(() => {
+    let runningIndex = totalChars1;
+    return paragraph2Text.split(' ').map((word) => {
+      const chars = word.split('').map((char) => ({
+        char,
+        index: runningIndex++,
+      }));
+      // account for the space character
+      runningIndex++;
+      return chars;
+    });
+  }, [totalChars1]);
 
   return (
     <section ref={containerRef} className="relative w-full h-[260vh]">
@@ -77,63 +100,74 @@ export const AboutBio: React.FC<AboutBioProps> = ({ onStickyChange }) => {
             Vibe Coder & Fullstack Creative Developer
           </p>
 
-          {/* Paragraf Biografi dengan Animasi Typing Scroll-Driven per Huruf */}
+          {/* Paragraf Biografi dengan Fixed Word Boundaries & Zero-Shift Typing */}
           <div className="mt-5 sm:mt-7 space-y-3.5 sm:space-y-4 max-w-2xl text-center">
             {/* Paragraph 1 */}
             <p className="text-[15px] sm:text-[17px] md:text-[19px] leading-[1.65] sm:leading-[1.7] font-medium min-h-[4.8em]">
-              {charsP1.map((char, index) => {
-                const isRevealed = index < currentTypedCount;
-                const isCursor =
-                  currentTypedCount < totalChars1
-                    ? index === currentTypedCount
-                    : currentTypedCount === totalChars1 && index === totalChars1 - 1;
+              {wordsP1.map((wordChars, wIdx) => (
+                <span key={wIdx} className="inline-block whitespace-nowrap">
+                  {wordChars.map(({ char, index }) => {
+                    const isRevealed = index < currentTypedCount;
+                    const isCursor =
+                      currentTypedCount < totalChars1
+                        ? index === currentTypedCount - 1
+                        : currentTypedCount === totalChars1 && index === totalChars1 - 1;
 
-                return (
-                  <span key={index} className="relative inline">
-                    <span
-                      className={
-                        isRevealed
-                          ? 'text-[#2c2e2a] opacity-100 transition-opacity duration-75'
-                          : 'opacity-0 select-none pointer-events-none'
-                      }
-                    >
-                      {char}
-                    </span>
-                    {isCursor && (
-                      <span className="inline-block w-[2.5px] h-[1.15em] bg-[#2c2e2a] align-middle ml-[1px] animate-typing-cursor" />
-                    )}
-                  </span>
-                );
-              })}
+                    return (
+                      <span key={index} className="relative inline">
+                        <span
+                          className={
+                            isRevealed
+                              ? 'text-[#2c2e2a] opacity-100 transition-opacity duration-75'
+                              : 'opacity-0 select-none pointer-events-none'
+                          }
+                        >
+                          {char}
+                        </span>
+                        {isCursor && (
+                          <span className="absolute left-full top-[10%] bottom-[10%] w-[2.5px] bg-[#2c2e2a] animate-typing-cursor z-10 pointer-events-none" />
+                        )}
+                      </span>
+                    );
+                  })}
+                  {/* Fixed trailing space */}
+                  <span className="inline opacity-100">&nbsp;</span>
+                </span>
+              ))}
             </p>
 
             {/* Paragraph 2 */}
             <p className="text-[14px] sm:text-[16px] md:text-[18px] leading-[1.65] sm:leading-[1.7] font-normal min-h-[4.8em]">
-              {charsP2.map((char, index) => {
-                const globalIndex = totalChars1 + index;
-                const isRevealed = globalIndex < currentTypedCount;
-                const isCursor =
-                  currentTypedCount >= totalChars1 &&
-                  (globalIndex === currentTypedCount ||
-                    (currentTypedCount === totalChars && globalIndex === totalChars - 1));
+              {wordsP2.map((wordChars, wIdx) => (
+                <span key={wIdx} className="inline-block whitespace-nowrap">
+                  {wordChars.map(({ char, index }) => {
+                    const isRevealed = index < currentTypedCount;
+                    const isCursor =
+                      currentTypedCount >= totalChars1 &&
+                      (index === currentTypedCount - 1 ||
+                        (currentTypedCount === totalChars && index === totalChars - 1));
 
-                return (
-                  <span key={index} className="relative inline">
-                    <span
-                      className={
-                        isRevealed
-                          ? 'text-[#2c2e2a]/80 opacity-100 transition-opacity duration-75'
-                          : 'opacity-0 select-none pointer-events-none'
-                      }
-                    >
-                      {char}
-                    </span>
-                    {isCursor && (
-                      <span className="inline-block w-[2.5px] h-[1.15em] bg-[#2c2e2a] align-middle ml-[1px] animate-typing-cursor" />
-                    )}
-                  </span>
-                );
-              })}
+                    return (
+                      <span key={index} className="relative inline">
+                        <span
+                          className={
+                            isRevealed
+                              ? 'text-[#2c2e2a]/80 opacity-100 transition-opacity duration-75'
+                              : 'opacity-0 select-none pointer-events-none'
+                          }
+                        >
+                          {char}
+                        </span>
+                        {isCursor && (
+                          <span className="absolute left-full top-[10%] bottom-[10%] w-[2.5px] bg-[#2c2e2a] animate-typing-cursor z-10 pointer-events-none" />
+                        )}
+                      </span>
+                    );
+                  })}
+                  {/* Fixed trailing space */}
+                  <span className="inline opacity-100">&nbsp;</span>
+                </span>
+              ))}
             </p>
           </div>
         </div>

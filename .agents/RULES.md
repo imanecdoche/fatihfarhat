@@ -109,3 +109,6 @@ Acuan utama dan mutlak selalu benar.
 60. **Teks Unrevealed Tersembunyi Penuh (100% Transparan) & Kursor Garis Berkedip (Blinking Cursor):**
     - Teks biografi yang belum terketik (*untyped*) disembunyikan secara penuh (transparansi 100% / `opacity-0` / `invisible` atau `text-transparent`) sehingga tidak terlihat sama sekali sebelum giliran hurufnya terketik.
     - Kursor ketik menggunakan animasi garis vertikal yang berkedip tegas (*sharp blinking keyframe animation*, misal `@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }` dengan durasi ~0.8s) di ujung huruf yang sedang aktif.
+61. **Layout Kata Tetap (Fixed Word Position / Pre-allocated Word Layout):**
+    - Teks biografi typing harus menjaga struktur layout kata tetap stabil (*fixed position*) sejak awal sehingga tidak ada kata yang tiba-tiba melompat atau berpindah baris (*line wrap jump*) saat hurufnya mulai terketik.
+    - Kursor kedip harus diposisikan secara mutlak (*absolute / zero-width relative layout*) pada akhir huruf aktif tanpa menyisipkan lebar spasi inline fisik baru yang menggeser kata berikutnya ke baris bawah.
