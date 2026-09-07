@@ -83,20 +83,24 @@ export const AboutBio: React.FC<AboutBioProps> = ({ onStickyChange }) => {
             <p className="text-[15px] sm:text-[17px] md:text-[19px] leading-[1.65] sm:leading-[1.7] font-medium min-h-[4.8em]">
               {charsP1.map((char, index) => {
                 const isRevealed = index < currentTypedCount;
-                const isCursor = index === currentTypedCount && currentTypedCount < totalChars;
+                const isCursor =
+                  currentTypedCount < totalChars1
+                    ? index === currentTypedCount
+                    : currentTypedCount === totalChars1 && index === totalChars1 - 1;
 
                 return (
-                  <span
-                    key={index}
-                    className={`transition-colors duration-75 ${
-                      isRevealed
-                        ? 'text-[#2c2e2a]'
-                        : 'text-[#2c2e2a]/15'
-                    }`}
-                  >
-                    {char}
+                  <span key={index} className="relative inline">
+                    <span
+                      className={
+                        isRevealed
+                          ? 'text-[#2c2e2a] opacity-100 transition-opacity duration-75'
+                          : 'opacity-0 select-none pointer-events-none'
+                      }
+                    >
+                      {char}
+                    </span>
                     {isCursor && (
-                      <span className="inline-block w-[2.5px] h-[1.1em] bg-[#2c2e2a] align-middle ml-[1px] animate-pulse font-bold" />
+                      <span className="inline-block w-[2.5px] h-[1.15em] bg-[#2c2e2a] align-middle ml-[1px] animate-typing-cursor" />
                     )}
                   </span>
                 );
@@ -109,20 +113,23 @@ export const AboutBio: React.FC<AboutBioProps> = ({ onStickyChange }) => {
                 const globalIndex = totalChars1 + index;
                 const isRevealed = globalIndex < currentTypedCount;
                 const isCursor =
-                  globalIndex === currentTypedCount && currentTypedCount < totalChars;
+                  currentTypedCount >= totalChars1 &&
+                  (globalIndex === currentTypedCount ||
+                    (currentTypedCount === totalChars && globalIndex === totalChars - 1));
 
                 return (
-                  <span
-                    key={index}
-                    className={`transition-colors duration-75 ${
-                      isRevealed
-                        ? 'text-[#2c2e2a]/80'
-                        : 'text-[#2c2e2a]/15'
-                    }`}
-                  >
-                    {char}
+                  <span key={index} className="relative inline">
+                    <span
+                      className={
+                        isRevealed
+                          ? 'text-[#2c2e2a]/80 opacity-100 transition-opacity duration-75'
+                          : 'opacity-0 select-none pointer-events-none'
+                      }
+                    >
+                      {char}
+                    </span>
                     {isCursor && (
-                      <span className="inline-block w-[2.5px] h-[1.1em] bg-[#2c2e2a] align-middle ml-[1px] animate-pulse font-bold" />
+                      <span className="inline-block w-[2.5px] h-[1.15em] bg-[#2c2e2a] align-middle ml-[1px] animate-typing-cursor" />
                     )}
                   </span>
                 );

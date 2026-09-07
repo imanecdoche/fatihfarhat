@@ -106,3 +106,6 @@ Acuan utama dan mutlak selalu benar.
     - Panel biografi pada halaman Tentang Saya dikunci/sticky on screen saat di-scroll (`h-[250vh]` atau `h-[300vh]`, `sticky top-0 h-screen flex items-center justify-center`).
     - Selama terkunci di layar, teks deskripsi biografi memunculkan animasi typing/revealing per huruf (*character-by-character reveal*) atau per kata mengikuti persentase arah scroll pengguna secara interaktif (scroll ke bawah mengetik maju, scroll ke atas menghapus/mundur).
     - Setelah seluruh teks selesai terketik 100%, scroll akan unpin/lepas dan berlanjut ke panel timeline edukasi di bawahnya.
+60. **Teks Unrevealed Tersembunyi Penuh (100% Transparan) & Kursor Garis Berkedip (Blinking Cursor):**
+    - Teks biografi yang belum terketik (*untyped*) disembunyikan secara penuh (transparansi 100% / `opacity-0` / `invisible` atau `text-transparent`) sehingga tidak terlihat sama sekali sebelum giliran hurufnya terketik.
+    - Kursor ketik menggunakan animasi garis vertikal yang berkedip tegas (*sharp blinking keyframe animation*, misal `@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }` dengan durasi ~0.8s) di ujung huruf yang sedang aktif.

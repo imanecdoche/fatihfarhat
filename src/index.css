@@ -97,3 +97,17 @@ body::-webkit-scrollbar,
   font-optical-sizing: auto;
   font-weight: 900;
 }
+
+/* Sharp Blinking Cursor Animation */
+@keyframes typing-cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-typing-cursor {
+  animation: typing-cursor-blink 0.75s step-end infinite;
+}
