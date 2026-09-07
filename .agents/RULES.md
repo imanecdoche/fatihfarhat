@@ -46,3 +46,7 @@ Acuan utama dan mutlak selalu benar.
 36. **Header & Tombol Menu Khusus Mobile:**
     - Pada tampilan **mobile** (`< 640px`): Tombol menu titik tiga ditempatkan **di dalam header capsule** pada pojok kanan, dan menu navigasi teks inline ("HOME" & "TENTANG") dihilangkan dari header capsule sehingga hanya menyisakan brand "FATIH FARHAT" dan tombol titik tiga. Tombol floating luar disembunyikan di mobile.
     - Pada tampilan **desktop** (`>= 640px`): Header capsule tetap menampilkan brand dan menu navigasi ("HOME" & "TENTANG"), sedangkan tombol titik tiga berada di pojok kanan atas layar secara floating.
+37. **Teks Brand FATIH FARHAT Saat Menu Terbuka:**
+    - Teks brand "FATIH FARHAT" di header selalu berada di atas cover (*z-index* lebih tinggi dari cover background menu navigasi fullscreen).
+    - Ketika menu titik tiga dibuka, warna teks "FATIH FARHAT" bertransisi menjadi warna background utama (`#f5f1e4`), sedangkan kapsul putih dan menu inline memudar transparan.
+    - Teks "FATIH FARHAT" di dalam top-bar overlay menu navigasi fullscreen dihilangkan sepenuhnya (mencegah duplikasi).

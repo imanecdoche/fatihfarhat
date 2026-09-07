@@ -95,30 +95,43 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
 
   return (
     <>
-      {/* Floating Center Header Capsule */}
-      <header className="w-full fixed top-0 left-0 right-0 z-50 pt-4 sm:pt-5 px-3 sm:px-6 md:px-8 flex items-center justify-center pointer-events-none">
+      {/* Floating Center Header Capsule (z-70: Always above fullscreen menu cover) */}
+      <header className="w-full fixed top-0 left-0 right-0 z-70 pt-4 sm:pt-5 px-3 sm:px-6 md:px-8 flex items-center justify-center pointer-events-none">
         <motion.div
           initial={{ y: -60, opacity: 0 }}
           animate={{
             y: !isVisible && !isMenuOpen ? -100 : 0,
-            opacity: isMenuOpen ? 0 : (!isVisible ? 0 : 1),
-            pointerEvents: isMenuOpen || !isVisible ? 'none' : 'auto',
+            opacity: !isVisible && !isMenuOpen ? 0 : 1,
+            pointerEvents: !isVisible && !isMenuOpen ? 'none' : 'auto',
           }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-[92vw] sm:w-[520px] md:w-[600px] max-w-[700px] h-[54px] sm:h-[60px] md:h-[64px] bg-[#ffffff] rounded-[50px] pl-5 sm:pl-7 pr-2 sm:pr-2.5 py-1.5 sm:py-2.5 flex items-center justify-between transition-colors duration-300 pointer-events-auto"
+          className={`relative w-[92vw] sm:w-[520px] md:w-[600px] max-w-[700px] h-[54px] sm:h-[60px] md:h-[64px] rounded-[50px] pl-5 sm:pl-7 pr-2 sm:pr-2.5 py-1.5 sm:py-2.5 flex items-center justify-between transition-colors duration-300 pointer-events-auto ${
+            isMenuOpen ? 'bg-transparent' : 'bg-[#ffffff]'
+          }`}
         >
-          {/* Left: Black Extended Brand Text */}
+          {/* Left: Brand Text - Transforms to background color #f5f1e4 when menu is open */}
           <div
             className="flex items-center cursor-pointer"
-            onClick={() => onNavigate && onNavigate('home')}
+            onClick={() => {
+              if (isMenuOpen) closeMenu();
+              if (onNavigate) onNavigate('home');
+            }}
           >
-            <span className="font-black tracking-[0.14em] sm:tracking-[0.2em] text-[15px] sm:text-[18px] md:text-[19px] uppercase text-[#2c2e2a] select-none font-sans">
+            <span
+              className={`font-black tracking-[0.14em] sm:tracking-[0.2em] text-[15px] sm:text-[18px] md:text-[19px] uppercase select-none font-sans transition-colors duration-300 ${
+                isMenuOpen ? 'text-[#f5f1e4]' : 'text-[#2c2e2a]'
+              }`}
+            >
               FATIH FARHAT
             </span>
           </div>
 
-          {/* Desktop Navigation Menu (Hidden on Mobile) */}
-          <nav className="hidden sm:flex items-center h-full gap-1">
+          {/* Desktop Navigation Menu (Fades out when menu open, hidden on Mobile) */}
+          <motion.nav
+            animate={{ opacity: isMenuOpen ? 0 : 1, pointerEvents: isMenuOpen ? 'none' : 'auto' }}
+            transition={{ duration: 0.25 }}
+            className="hidden sm:flex items-center h-full gap-1"
+          >
             <a
               href="#home"
               onClick={(e) => {
@@ -151,16 +164,42 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
             >
               TENTANG
             </a>
-          </nav>
+          </motion.nav>
 
-          {/* Mobile Inside Three-Dots Button (Hidden on Desktop >= sm) */}
+          {/* Mobile Inside Button: Switches between MoreHorizontal and X icon */}
           <button
             ref={mobileButtonRef}
             onClick={() => toggleMenu(true)}
-            aria-label="Buka Menu"
-            className="sm:hidden w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#f5f1e4] text-[#2c2e2a] hover:bg-[#2c2e2a] hover:text-[#ffffff] active:scale-95 transition-colors duration-200 cursor-pointer select-none shrink-0"
+            aria-label={isMenuOpen ? 'Tutup Menu' : 'Buka Menu'}
+            className={`sm:hidden w-[40px] h-[40px] rounded-full flex items-center justify-center active:scale-95 transition-all duration-200 cursor-pointer select-none shrink-0 ${
+              isMenuOpen
+                ? 'bg-transparent text-[#f5f1e4] hover:bg-white/10'
+                : 'bg-[#f5f1e4] text-[#2c2e2a] hover:bg-[#2c2e2a] hover:text-[#ffffff]'
+            }`}
           >
-            <MoreHorizontal size={20} strokeWidth={2.5} />
+            <AnimatePresence mode="wait" initial={false}>
+              {isMenuOpen ? (
+                <motion.div
+                  key="mobile-close"
+                  initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X size={22} strokeWidth={2.5} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="mobile-dots"
+                  initial={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <MoreHorizontal size={20} strokeWidth={2.5} />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </motion.div>
       </header>
@@ -208,7 +247,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
         </button>
       </motion.div>
 
-      {/* Expanding Circle Background - Locked to Center of Trigger Button */}
+      {/* Expanding Circle Background Cover (z-60) */}
       <motion.div
         initial={false}
         animate={{
@@ -235,7 +274,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
         }}
       />
 
-      {/* Fullscreen Navigation Menu Content Overlay */}
+      {/* Fullscreen Navigation Menu Content Overlay (z-65) */}
       <motion.div
         initial={false}
         animate={{
@@ -248,27 +287,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
         }}
         className="fixed inset-0 z-65 flex flex-col justify-between p-6 sm:p-12 md:p-16 text-[#f5f1e4]"
       >
-        {/* Top bar inside menu: Logo / Brand in #f5f1e4 + Close Button for Mobile */}
-        <div className="flex items-center justify-between w-full max-w-5xl mx-auto pt-4 sm:pt-2">
-          <span
-            onClick={() => {
-              closeMenu();
-              if (onNavigate) onNavigate('home');
-            }}
-            className="font-black tracking-[0.2em] text-[18px] sm:text-[22px] uppercase text-[#f5f1e4] select-none cursor-pointer"
-          >
-            FATIH FARHAT
-          </span>
-
-          {/* Close button inside top-bar for mobile screens */}
-          <button
-            onClick={closeMenu}
-            aria-label="Tutup Menu"
-            className="sm:hidden w-[42px] h-[42px] rounded-full flex items-center justify-center bg-[#f5f1e4] text-[#2c2e2a] active:scale-90 transition-transform cursor-pointer"
-          >
-            <X size={20} strokeWidth={2.5} />
-          </button>
-        </div>
+        {/* Top spacer (brand text is rendered above in Header at z-70) */}
+        <div className="w-full max-w-5xl mx-auto h-[60px]" />
 
         {/* Center: Large Navigation Links in #f5f1e4 with hover to #ffffff */}
         <nav className="w-full max-w-5xl mx-auto my-auto py-6 sm:py-10">
