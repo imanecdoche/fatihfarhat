@@ -3,8 +3,8 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-
 import { MoreHorizontal, X } from 'lucide-react';
 
 interface HeaderProps {
-  currentPage?: 'home' | 'about' | 'portfolio';
-  onNavigate?: (page: 'home' | 'about' | 'portfolio') => void;
+  currentPage?: 'home' | 'about' | 'portfolio' | 'services';
+  onNavigate?: (page: 'home' | 'about' | 'portfolio' | 'services') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate }) => {
@@ -204,6 +204,22 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
             >
               PORTOFOLIO
             </a>
+            <a
+              href="#services"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault();
+                  onNavigate('services');
+                }
+              }}
+              className={`h-full px-3 sm:px-5 rounded-[50px] text-[13px] sm:text-[14px] font-bold transition-colors duration-200 flex items-center justify-center ${
+                currentPage === 'services'
+                  ? 'bg-[#2c2e2a] text-[#ffffff]'
+                  : 'text-[#2c2e2a] hover:bg-[#f5f1e4]'
+              }`}
+            >
+              KEAHLIAN
+            </a>
           </motion.nav>
 
           {/* Mobile Inside Button: Switches between MoreHorizontal and X icon */}
@@ -337,7 +353,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
               { num: '01', title: 'HOME', page: 'home' as const, href: '#home' },
               { num: '02', title: 'TENTANG SAYA', page: 'about' as const, href: '#about' },
               { num: '03', title: 'PORTOFOLIO', page: 'portfolio' as const, href: '#portfolio' },
-              { num: '04', title: 'KEAHLIAN & JASA', page: 'home' as const, href: '#services' },
+              { num: '04', title: 'KEAHLIAN & JASA', page: 'services' as const, href: '#services' },
               { num: '05', title: 'KONTAK', page: 'home' as const, href: '#contact' },
             ].map((item, idx) => (
               <motion.li
