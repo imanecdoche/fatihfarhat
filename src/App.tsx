@@ -141,7 +141,7 @@ export const App: React.FC = () => {
                   ariaLabel="Tech stack and creative tools"
                 />
               </section>
-              <AboutBio />
+              <AboutBio onStickyChange={setIsTimelineSticky} />
               <EducationTimeline onStickyChange={setIsTimelineSticky} />
             </motion.div>
           )}

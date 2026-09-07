@@ -102,3 +102,7 @@ Acuan utama dan mutlak selalu benar.
 58. **Garis Timeline Vertikal Menyambung Penuh (Segment-Based Continuous Track):**
     - Garis timeline vertikal menggunakan arsitektur garis segmen penghubung (connector line) antar titik atau track yang terpasang presisi dari pusat dot atas ke dot bawah (`top-[9px] bottom-[9px]`, `w-[4px]`, `left-[7px]`), tanpa terpotong oleh `max-height` atau `padding`.
     - Garis aktif terisi penuh menyambungkan dari dot atas ke dot bawah pada setiap step yang aktif/terlewati secara solid dan kontinu.
+59. **Sticky Scroll Typing Text Animation pada Panel Biografi (AboutBio):**
+    - Panel biografi pada halaman Tentang Saya dikunci/sticky on screen saat di-scroll (`h-[250vh]` atau `h-[300vh]`, `sticky top-0 h-screen flex items-center justify-center`).
+    - Selama terkunci di layar, teks deskripsi biografi memunculkan animasi typing/revealing per huruf (*character-by-character reveal*) atau per kata mengikuti persentase arah scroll pengguna secara interaktif (scroll ke bawah mengetik maju, scroll ke atas menghapus/mundur).
+    - Setelah seluruh teks selesai terketik 100%, scroll akan unpin/lepas dan berlanjut ke panel timeline edukasi di bawahnya.
