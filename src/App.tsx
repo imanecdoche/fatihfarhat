@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+
+gsap.registerPlugin(ScrollTrigger);
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutHero } from './components/AboutHero';
@@ -59,21 +63,25 @@ export const App: React.FC = () => {
   };
 
   useEffect(() => {
-    // Initialize smooth scrolling with Lenis
+    // Initialize smooth scrolling with Lenis synchronized to GSAP ticker
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    // Synchronize scroll updates to ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
 
-    requestAnimationFrame(raf);
+    // Bind render tick to GSAP's RAF ticker to avoid race conditions
+    const updateTicker = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+    gsap.ticker.add(updateTicker);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
+      gsap.ticker.remove(updateTicker);
       lenis.destroy();
     };
   }, []);

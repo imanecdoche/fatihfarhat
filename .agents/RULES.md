@@ -112,3 +112,6 @@ Acuan utama dan mutlak selalu benar.
 61. **Layout Kata Tetap (Fixed Word Position / Pre-allocated Word Layout):**
     - Teks biografi typing harus menjaga struktur layout kata tetap stabil (*fixed position*) sejak awal sehingga tidak ada kata yang tiba-tiba melompat atau berpindah baris (*line wrap jump*) saat hurufnya mulai terketik.
     - Kursor kedip harus diposisikan secara mutlak (*absolute / zero-width relative layout*) pada akhir huruf aktif tanpa menyisipkan lebar spasi inline fisik baru yang menggeser kata berikutnya ke baris bawah.
+62. **Optimasi Antialiasing Desktop & Sinkronisasi Render Loop Lenis + GSAP:**
+    - Mengaktifkan antialiasing global (`-webkit-font-smoothing: antialiased`, `-moz-osx-font-smoothing: grayscale`, `text-rendering: optimizeLegibility`) dan anti-shaking hardware acceleration (`backface-visibility: hidden`, `transform: translateZ(0)`, `outline: 1px solid transparent`) pada elemen animasi dan canvas di CSS global.
+    - Mengawinkan render tick loop `Lenis` langsung ke dalam `gsap.ticker` (`gsap.ticker.add((time) => lenis.raf(time * 1000))` dan `gsap.ticker.lagSmoothing(0)`) untuk mencegah persaingan RAF (race condition) dan stuttering/frame drop di desktop.

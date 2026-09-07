@@ -59,9 +59,20 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   /* Hide scrollbar for Chrome, Safari, Opera, Edge, and Firefox */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hilangkan tepi bergerigi/shaking pada elemen animasi transform 3D di desktop */
+.animated-element, [data-framer-motion], canvas, .will-change-transform {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  outline: 1px solid transparent;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
