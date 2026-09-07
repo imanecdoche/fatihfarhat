@@ -108,8 +108,8 @@ export const App: React.FC = () => {
                   logos={techLogos}
                   speed={70}
                   direction="left"
-                  logoHeight={42}
-                  gap={56}
+                  logoHeight={28}
+                  gap={40}
                   hoverSpeed={15}
                   scaleOnHover={false}
                   fadeOut

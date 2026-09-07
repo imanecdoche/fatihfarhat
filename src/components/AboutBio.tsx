@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import profilePic from '../assets/me.jpeg';
 
 export const AboutBio: React.FC = () => {
   return (
@@ -11,29 +12,14 @@ export const AboutBio: React.FC = () => {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="w-full flex flex-col items-center"
       >
-        {/* Placeholder Lingkaran Besar (Avatar / Foto Profil) - Zero Shadow, Flat Modern */}
+        {/* Lingkaran Foto Profil Asli (me.jpeg) - Zero Shadow, Flat Modern */}
         <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full bg-[#ffffff] border-4 border-[#2c2e2a] flex items-center justify-center overflow-hidden select-none group transition-transform duration-300 hover:scale-[1.02]">
-          {/* Subtle grid pattern background inside circle */}
-          <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#2c2e2a_1px,transparent_1px)] [background-size:12px_12px]" />
-          
-          {/* Default Placeholder Silhouette & Initials */}
-          <div className="relative flex flex-col items-center justify-center text-[#2c2e2a]">
-            <svg
-              className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 text-[#2c2e2a]/40 group-hover:text-[#2c2e2a]/60 transition-colors duration-300"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2ZM9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7ZM4 21C4 16.5817 7.58172 13 12 13C16.4183 13 20 16.5817 20 21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21ZM12 15C8.68629 15 6 17.6863 6 20H18C18 17.6863 15.3137 15 12 15Z"
-              />
-            </svg>
-            <span className="text-[11px] sm:text-[13px] font-black uppercase tracking-[0.14em] text-[#2c2e2a]/60 mt-1">
-              Foto Profil
-            </span>
-          </div>
+          <img
+            src={profilePic}
+            alt="Fatih Farhat"
+            className="w-full h-full object-cover select-none pointer-events-none"
+            loading="lazy"
+          />
         </div>
 
         {/* Heading & Subtitle */}
