@@ -115,9 +115,9 @@ export const EducationTimeline: React.FC = () => {
       className="relative w-full h-[400vh]"
     >
       {/* Pinned Sticky Viewport: Locks in place for the full 400vh scroll duration */}
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        <div className="w-full max-w-5xl mx-auto px-5 sm:px-10 md:px-12 py-6 sm:py-10 select-none">
-          <div className="flex flex-col md:flex-row items-start gap-8 md:gap-14 lg:gap-20">
+      <div className="sticky top-0 h-screen w-full flex items-start sm:items-center justify-center pt-20 sm:pt-0 overflow-hidden">
+        <div className="w-full max-w-5xl mx-auto px-5 sm:px-10 md:px-12 py-3 sm:py-6 md:py-10 select-none">
+          <div className="flex flex-col md:flex-row items-start gap-5 sm:gap-8 md:gap-14 lg:gap-20">
             {/* Left Column: Fixed Sticky Label & Interactive Vertical Timeline */}
             <div className="w-full md:w-64 lg:w-72 shrink-0">
               {/* Main Label */}
@@ -129,7 +129,7 @@ export const EducationTimeline: React.FC = () => {
               </p>
 
               {/* Step Counter Indicator */}
-              <div className="mt-4 inline-flex items-center gap-2 font-mono text-[13px] font-black text-[#2c2e2a] bg-[#2c2e2a]/10 px-3.5 py-1 rounded-full">
+              <div className="mt-3 sm:mt-4 inline-flex items-center gap-2 font-mono text-[13px] font-black text-[#2c2e2a] bg-[#2c2e2a]/10 px-3.5 py-1 rounded-full">
                 <span>0{activeIndex + 1}</span>
                 <span className="text-[#2c2e2a]/40">/</span>
                 <span className="text-[#2c2e2a]/60">0{educationData.length}</span>
@@ -193,7 +193,7 @@ export const EducationTimeline: React.FC = () => {
               </div>
 
               {/* Mobile Step Indicators (Horizontal Pills) */}
-              <div className="flex md:hidden items-center gap-2 mt-4">
+              <div className="flex md:hidden items-center gap-2 mt-3">
                 {educationData.map((item, idx) => (
                   <button
                     key={item.id}
@@ -211,7 +211,7 @@ export const EducationTimeline: React.FC = () => {
             </div>
 
             {/* Right Column: Single Active Milestone Display (Seamless Flat, No White Container) */}
-            <div className="w-full flex-1 min-h-[300px] sm:min-h-[360px] flex flex-col justify-center">
+            <div className="w-full flex-1 min-h-[220px] sm:min-h-[300px] flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentItem.id}
@@ -224,40 +224,18 @@ export const EducationTimeline: React.FC = () => {
                   }}
                   className="w-full"
                 >
-                  {/* Meta Header */}
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="text-[12px] sm:text-[13px] font-black tracking-[0.18em] text-[#2c2e2a]/60 uppercase">
-                      {currentItem.step} — {currentItem.level}
-                    </span>
-                    <span className="text-[12px] sm:text-[13px] font-mono font-bold text-[#2c2e2a] bg-[#2c2e2a]/10 px-3 py-0.5 rounded-full">
-                      {currentItem.period}
-                    </span>
-                  </div>
-
-                  {/* Degree & Institution */}
-                  <h4 className="mt-3.5 text-[28px] sm:text-[36px] md:text-[42px] font-black text-[#2c2e2a] tracking-tight leading-tight">
+                  {/* Degree & Institution (Direct title without upper meta headers) */}
+                  <h4 className="text-[26px] sm:text-[36px] md:text-[42px] font-black text-[#2c2e2a] tracking-tight leading-tight">
                     {currentItem.degree}
                   </h4>
-                  <p className="mt-1 text-[16px] sm:text-[19px] font-bold text-[#2c2e2a]/75">
+                  <p className="mt-1 sm:mt-1.5 text-[15px] sm:text-[19px] font-bold text-[#2c2e2a]/75">
                     {currentItem.institution}
                   </p>
 
                   {/* Description */}
-                  <p className="mt-4 sm:mt-5 text-[15px] sm:text-[17px] leading-[1.7] text-[#2c2e2a]/85 max-w-2xl font-normal">
+                  <p className="mt-3.5 sm:mt-5 text-[14px] sm:text-[17px] leading-[1.65] sm:leading-[1.7] text-[#2c2e2a]/85 max-w-2xl font-normal">
                     {currentItem.description}
                   </p>
-
-                  {/* Highlight Tags */}
-                  <div className="mt-6 sm:mt-7 flex flex-wrap gap-2 sm:gap-2.5">
-                    {currentItem.highlights.map((highlight) => (
-                      <span
-                        key={highlight}
-                        className="text-[11px] sm:text-[12px] font-bold tracking-wide px-3.5 py-1.5 rounded-full bg-[#2c2e2a] text-[#ffffff] select-none"
-                      >
-                        {highlight}
-                      </span>
-                    ))}
-                  </div>
                 </motion.div>
               </AnimatePresence>
             </div>

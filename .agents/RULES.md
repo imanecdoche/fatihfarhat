@@ -84,3 +84,7 @@ Acuan utama dan mutlak selalu benar.
     - Menjamin panel timeline edukasi 100% menempel statis di viewport tanpa terbawa scroll ke atas.
 52. **Single Active Page Indicator di Header Desktop:**
     - Pada tampilan desktop (`>= 640px`), deretan tombol navigasi di dalam header capsule dihilangkan, digantikan hanya dengan satu indikator/pill aktif yang menampilkan nama halaman yang sedang dibuka saat ini (misal: "HOME", "TENTANG SAYA", "PORTOFOLIO", "KEAHLIAN & JASA").
+53. **Penyederhanaan Tampilan Panel Education:**
+    - **Jarak Atas Lebih Pendek di Mobile:** Pada tampilan mobile (`< 640px`), jarak antara batas atas layar dan konten sticky panel timeline edukasi diperpendek (`pt-20 sm:pt-0 items-start sm:items-center`) agar konten pas dan lapang di viewport mobile.
+    - **Hapus Tag/Badge Bawah Deskripsi:** Menghilangkan seluruh badge/tag keahlian di bawah paragraf deskripsi setiap kartu pendidikan.
+    - **Hapus Teks Meta di Atas Judul Sekolah:** Menghilangkan teks nomor step/level dan tahun/periode di atas judul nama jenjang pendidikan.
