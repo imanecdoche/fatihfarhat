@@ -28,7 +28,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
     const menuContainerWidth = Math.min(w - 2 * pad, 1024);
     const targetLeft = (w - menuContainerWidth) / 2;
 
-    const capsuleWidth = w >= 768 ? Math.min(w * 0.92, 600) : 520;
+    const capsuleWidth = w >= 768 ? Math.min(w * 0.92, 540) : 480;
     const capsuleLeft = (w - capsuleWidth) / 2;
     const brandLeft = capsuleLeft + 28; // pl-7 (28px)
 
@@ -122,7 +122,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
             pointerEvents: !isVisible && !isMenuOpen ? 'none' : 'auto',
           }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className={`relative w-[92vw] sm:w-[520px] md:w-[600px] max-w-[700px] h-[54px] sm:h-[60px] md:h-[64px] rounded-[50px] pl-5 sm:pl-7 pr-2 sm:pr-2.5 py-1.5 sm:py-2.5 flex items-center justify-between transition-colors duration-300 pointer-events-auto ${
+          className={`relative w-[92vw] sm:w-[480px] md:w-[540px] max-w-[580px] h-[54px] sm:h-[60px] md:h-[64px] rounded-[50px] pl-5 sm:pl-7 pr-2 sm:pr-2.5 py-1.5 sm:py-2.5 flex items-center justify-between transition-colors duration-300 pointer-events-auto ${
             isMenuOpen ? 'bg-transparent' : 'bg-[#ffffff]'
           }`}
         >
@@ -150,77 +150,22 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
             </span>
           </motion.div>
 
-          {/* Desktop Navigation Menu (Fades out when menu open, hidden on Mobile) */}
-          <motion.nav
+          {/* Desktop Single Active Page Indicator (Fades out when menu open, hidden on Mobile) */}
+          <motion.div
             animate={{ opacity: isMenuOpen ? 0 : 1, pointerEvents: isMenuOpen ? 'none' : 'auto' }}
             transition={{ duration: 0.25 }}
-            className="hidden sm:flex items-center h-full gap-1"
+            className="hidden sm:flex items-center h-full"
           >
-            <a
-              href="#home"
-              onClick={(e) => {
-                if (onNavigate) {
-                  e.preventDefault();
-                  onNavigate('home');
-                }
-              }}
-              className={`h-full px-3 sm:px-5 rounded-[50px] text-[13px] sm:text-[14px] font-bold transition-colors duration-200 flex items-center justify-center ${
-                currentPage === 'home'
-                  ? 'bg-[#2c2e2a] text-[#ffffff]'
-                  : 'text-[#2c2e2a] hover:bg-[#f5f1e4]'
-              }`}
-            >
-              HOME
-            </a>
-            <a
-              href="#about"
-              onClick={(e) => {
-                if (onNavigate) {
-                  e.preventDefault();
-                  onNavigate('about');
-                }
-              }}
-              className={`h-full px-3 sm:px-5 rounded-[50px] text-[13px] sm:text-[14px] font-bold transition-colors duration-200 flex items-center justify-center ${
-                currentPage === 'about'
-                  ? 'bg-[#2c2e2a] text-[#ffffff]'
-                  : 'text-[#2c2e2a] hover:bg-[#f5f1e4]'
-              }`}
-            >
-              TENTANG
-            </a>
-            <a
-              href="#portfolio"
-              onClick={(e) => {
-                if (onNavigate) {
-                  e.preventDefault();
-                  onNavigate('portfolio');
-                }
-              }}
-              className={`h-full px-3 sm:px-5 rounded-[50px] text-[13px] sm:text-[14px] font-bold transition-colors duration-200 flex items-center justify-center ${
-                currentPage === 'portfolio'
-                  ? 'bg-[#2c2e2a] text-[#ffffff]'
-                  : 'text-[#2c2e2a] hover:bg-[#f5f1e4]'
-              }`}
-            >
-              PORTOFOLIO
-            </a>
-            <a
-              href="#services"
-              onClick={(e) => {
-                if (onNavigate) {
-                  e.preventDefault();
-                  onNavigate('services');
-                }
-              }}
-              className={`h-full px-3 sm:px-5 rounded-[50px] text-[13px] sm:text-[14px] font-bold transition-colors duration-200 flex items-center justify-center ${
-                currentPage === 'services'
-                  ? 'bg-[#2c2e2a] text-[#ffffff]'
-                  : 'text-[#2c2e2a] hover:bg-[#f5f1e4]'
-              }`}
-            >
-              KEAHLIAN
-            </a>
-          </motion.nav>
+            <div className="h-full px-4 sm:px-5 rounded-[50px] text-[12px] sm:text-[13px] md:text-[14px] font-black tracking-[0.08em] bg-[#2c2e2a] text-[#ffffff] flex items-center justify-center select-none uppercase">
+              {currentPage === 'about'
+                ? 'TENTANG SAYA'
+                : currentPage === 'portfolio'
+                ? 'PORTOFOLIO'
+                : currentPage === 'services'
+                ? 'KEAHLIAN & JASA'
+                : 'HOME'}
+            </div>
+          </motion.div>
 
           {/* Mobile Inside Button: Switches between MoreHorizontal and X icon */}
           <button

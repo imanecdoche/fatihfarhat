@@ -80,5 +80,7 @@ Acuan utama dan mutlak selalu benar.
     - Saat di-scroll kembali ke atas, kartu bergerak mundur secara berurutan (S1 → SMA/SMK → SMP → SD) sebelum unpin kembali ke biografi atas.
 51. **Solusi Perbaikan CSS Sticky Context:**
     - Mengganti `overflow-x: hidden` menjadi `overflow-x: clip` pada `html, body` dan wrapper utama untuk mencegah pemutusan konteks scroll sticky oleh browser.
-    - Menghilangkan `transform` (misal `y: 15` pada animasi transisi halaman) dari parent wrapper halaman (`motion.div`) agar tidak merusak stacking context `position: sticky`.
+    - Menilangkan `transform` (misal `y: 15` pada animasi transisi halaman) dari parent wrapper halaman (`motion.div`) agar tidak merusak stacking context `position: sticky`.
     - Menjamin panel timeline edukasi 100% menempel statis di viewport tanpa terbawa scroll ke atas.
+52. **Single Active Page Indicator di Header Desktop:**
+    - Pada tampilan desktop (`>= 640px`), deretan tombol navigasi di dalam header capsule dihilangkan, digantikan hanya dengan satu indikator/pill aktif yang menampilkan nama halaman yang sedang dibuka saat ini (misal: "HOME", "TENTANG SAYA", "PORTOFOLIO", "KEAHLIAN & JASA").
