@@ -5,17 +5,19 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutHero } from './components/AboutHero';
 import { AboutBio } from './components/AboutBio';
+import { PortfolioHero } from './components/PortfolioHero';
 import ScrollVelocity from './components/ScrollVelocity';
 import LogoLoop from './components/LogoLoop';
 import { techLogos } from './components/TechLogos';
+import { portfolioLogos } from './components/PortfolioLogos';
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'portfolio'>('home');
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   // Handle URL hash changes
@@ -24,6 +26,8 @@ export const App: React.FC = () => {
       const hash = window.location.hash;
       if (hash === '#about') {
         setCurrentPage('about');
+      } else if (hash === '#portfolio') {
+        setCurrentPage('portfolio');
       } else {
         setCurrentPage('home');
       }
@@ -34,9 +38,9 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const handleNavigate = (page: 'home' | 'about') => {
+  const handleNavigate = (page: 'home' | 'about' | 'portfolio') => {
     setCurrentPage(page);
-    window.location.hash = page === 'about' ? '#about' : '#home';
+    window.location.hash = page === 'home' ? '#home' : `#${page}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -71,7 +75,7 @@ export const App: React.FC = () => {
       <Header currentPage={currentPage} onNavigate={handleNavigate} />
       <main>
         <AnimatePresence mode="wait">
-          {currentPage === 'home' ? (
+          {currentPage === 'home' && (
             <motion.div
               key="home-page"
               initial={{ opacity: 0, y: 15 }}
@@ -84,7 +88,7 @@ export const App: React.FC = () => {
                 <ScrollVelocity
                   texts={[
                     'Vibe Coder - Web Developer - Graphic Designer - Illustrator - Digital Marketer - Copywriter -',
-                    'Vibe Coder - Web Developer - Graphic Designer - Illustrator - Digital Marketer - Copywriter -'
+                    'Vibe Coder - Web Developer - Graphic Designer - Illustrator - Digital Marketer - Copywriter -',
                   ]}
                   velocity={60}
                   className="custom-scroll-text text-[#2c2e2a] font-bold tracking-tight"
@@ -94,7 +98,9 @@ export const App: React.FC = () => {
                 />
               </section>
             </motion.div>
-          ) : (
+          )}
+
+          {currentPage === 'about' && (
             <motion.div
               key="about-page"
               initial={{ opacity: 0, y: 15 }}
@@ -118,6 +124,32 @@ export const App: React.FC = () => {
                 />
               </section>
               <AboutBio />
+            </motion.div>
+          )}
+
+          {currentPage === 'portfolio' && (
+            <motion.div
+              key="portfolio-page"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <PortfolioHero onNavigateHome={() => handleNavigate('home')} />
+              <section className="w-full pb-10 sm:pb-20 -translate-y-[135px] sm:translate-y-[25px] opacity-75 text-[#2c2e2a]">
+                <LogoLoop
+                  logos={portfolioLogos}
+                  speed={70}
+                  direction="left"
+                  logoHeight={28}
+                  gap={40}
+                  hoverSpeed={15}
+                  scaleOnHover={false}
+                  fadeOut
+                  fadeOutColor="#f5f1e4"
+                  ariaLabel="Clients and partner brands"
+                />
+              </section>
             </motion.div>
           )}
         </AnimatePresence>
