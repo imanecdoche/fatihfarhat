@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { GraduationCap } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 
 interface EducationItem {
+  id: string;
   level: string;
+  step: string;
   degree: string;
   institution: string;
   period: string;
@@ -13,7 +14,9 @@ interface EducationItem {
 
 const educationData: EducationItem[] = [
   {
-    level: '01. SEKOLAH DASAR (SD)',
+    id: 'sd',
+    level: 'SEKOLAH DASAR',
+    step: '01',
     degree: 'Pendidikan Dasar',
     institution: 'SD Negeri 01',
     period: '2008 — 2014',
@@ -22,7 +25,9 @@ const educationData: EducationItem[] = [
     highlights: ['Dasar Logika & Matematika', 'Seni Rupa & Gambar', 'Pengenalan Komputer Awal'],
   },
   {
-    level: '02. SEKOLAH MENENGAH PERTAMA (SMP)',
+    id: 'smp',
+    level: 'SEKOLAH MENENGAH PERTAMA',
+    step: '02',
     degree: 'Pendidikan Menengah Pertama',
     institution: 'SMP Negeri 01',
     period: '2014 — 2017',
@@ -31,8 +36,10 @@ const educationData: EducationItem[] = [
     highlights: ['Eksplorasi Desain Digital', 'Dasar Pemrograman Web', 'Klub Sains & Komputer'],
   },
   {
-    level: '03. SEKOLAH MENENGAH ATAS (SMA / SMK)',
-    degree: 'Pendidikan Menengah Atas / Kejuruan',
+    id: 'sma',
+    level: 'SEKOLAH MENENGAH ATAS',
+    step: '03',
+    degree: 'Pendidikan Menengah Atas / Rekayasa',
     institution: 'SMA Negeri 01 (Peminatan IPA / Rekayasa)',
     period: '2017 — 2020',
     description:
@@ -40,118 +47,196 @@ const educationData: EducationItem[] = [
     highlights: ['Algoritma & Pemecahan Masalah', 'Desain Visual & Multimedia', 'Proyek Web Sederhana'],
   },
   {
-    level: '04. PERGURUAN TINGGI (S1)',
-    degree: 'Sarjana Komputer / Teknik Informatika (S1)',
+    id: 's1',
+    level: 'PERGURUAN TINGGI (S1)',
+    step: '04',
+    degree: 'Sarjana Komputer / Teknik Informatika',
     institution: 'Universitas / Institut Teknologi',
     period: '2020 — 2024',
     description:
-      'Fokus mendalam pada Software Engineering, Human-Computer Interaction (HCI), Frontend Frameworks (React, TypeScript), serta animasi dan sistem desain interaktif.',
+      'Fokus mendalam pada Software Engineering, Human-Computer Interaction (HCI), Frontend Frameworks (React, TypeScript), serta animasi dan sistem desain interaktif modern.',
     highlights: ['Frontend Architecture & HCI', 'Sistem Desain & Web Modern', 'Creative Fullstack Development'],
   },
 ];
 
 export const EducationTimeline: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start 80%', 'end 30%'],
+    offset: ['start start', 'end end'],
   });
 
-  const progressHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    const totalSteps = educationData.length;
+    const step = Math.min(Math.floor(latest * totalSteps), totalSteps - 1);
+    if (step >= 0 && step < totalSteps && step !== activeIndex) {
+      setActiveIndex(step);
+    }
+  });
+
+  const currentItem = educationData[activeIndex];
+
+  const handleStepClick = (index: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const startY = rect.top + scrollTop;
+    const totalHeight = containerRef.current.offsetHeight - window.innerHeight;
+    const targetScroll = startY + (index / (educationData.length - 1)) * totalHeight;
+
+    window.scrollTo({
+      top: targetScroll,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full max-w-5xl mx-auto px-5 sm:px-10 md:px-12 pt-10 pb-28 sm:pb-36"
+      className="relative w-full h-[280vh] sm:h-[320vh]"
     >
-      <div className="flex flex-col md:flex-row items-start gap-8 md:gap-14 lg:gap-18 relative">
-        {/* Sticky Left Sidebar: EDUCATION Label, Line & Node */}
-        <div className="md:sticky md:top-28 lg:top-32 w-full md:w-64 lg:w-72 shrink-0 flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start">
-          <div>
-            {/* Header Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#2c2e2a] text-[#ffffff] text-[11px] sm:text-[12px] font-black tracking-[0.16em] uppercase select-none">
-              <GraduationCap size={14} strokeWidth={2.5} />
-              <span>AKADEMIK</span>
-            </div>
-
-            {/* Main Sticky Label */}
-            <h3 className="mt-3 text-[28px] sm:text-[36px] lg:text-[44px] font-black tracking-[-0.02em] text-[#2c2e2a] uppercase leading-none select-none font-sans">
+      {/* Sticky Viewport Panel */}
+      <div className="sticky top-20 sm:top-24 md:top-28 w-full max-w-5xl mx-auto px-5 sm:px-10 md:px-12 py-8 sm:py-12 select-none">
+        <div className="flex flex-col md:flex-row items-start gap-8 md:gap-14 lg:gap-18">
+          {/* Left Column: Sticky EDUCATION Label & Interactive Vertical Timeline */}
+          <div className="w-full md:w-64 lg:w-72 shrink-0">
+            {/* Main Label without AKADEMIK badge */}
+            <h3 className="text-[32px] sm:text-[42px] lg:text-[50px] font-black tracking-[-0.03em] text-[#2c2e2a] uppercase leading-none font-sans">
               EDUCATION
             </h3>
-            <p className="mt-1.5 text-[13px] sm:text-[14px] font-bold text-[#2c2e2a]/60 uppercase tracking-[0.14em]">
+            <p className="mt-2 text-[13px] sm:text-[14px] font-bold text-[#2c2e2a]/60 uppercase tracking-[0.14em]">
               Perjalanan Edukasi
             </p>
-          </div>
 
-          {/* Vertical Timeline Track in Sticky Sidebar (Desktop) */}
-          <div className="hidden md:flex flex-col items-center relative mt-10 ml-4 h-64 lg:h-80">
-            {/* Base Background Track Line */}
-            <div className="w-[3px] h-full bg-[#2c2e2a]/15 rounded-full absolute top-0 left-1/2 -translate-x-1/2" />
+            {/* Step Counter Indicator */}
+            <div className="mt-4 inline-flex items-center gap-2 font-mono text-[13px] font-black text-[#2c2e2a] bg-[#2c2e2a]/10 px-3 py-1 rounded-full">
+              <span>0{activeIndex + 1}</span>
+              <span className="text-[#2c2e2a]/40">/</span>
+              <span className="text-[#2c2e2a]/60">0{educationData.length}</span>
+            </div>
 
-            {/* Dynamic Progress Fill Line */}
-            <motion.div
-              style={{ height: progressHeight }}
-              className="w-[3px] bg-[#2c2e2a] rounded-full absolute top-0 left-1/2 -translate-x-1/2 origin-top"
-            />
+            {/* Interactive Timeline Track (Desktop) */}
+            <div className="hidden md:flex flex-col relative mt-8 space-y-6">
+              {/* Continuous vertical line track */}
+              <div className="absolute left-[11px] top-3 bottom-3 w-[2px] bg-[#2c2e2a]/15 z-0" />
 
-            {/* Sticky Indicator Dot (Circle Point) */}
-            <div className="relative z-20 w-6 h-6 rounded-full bg-[#ffffff] border-4 border-[#2c2e2a] flex items-center justify-center select-none top-0">
-              <div className="w-2 h-2 rounded-full bg-[#2c2e2a]" />
+              {/* Step Points */}
+              {educationData.map((item, idx) => {
+                const isActive = activeIndex === idx;
+                const isPassed = activeIndex >= idx;
+
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleStepClick(idx)}
+                    className="relative z-10 flex items-center gap-3.5 group text-left cursor-pointer transition-all duration-300"
+                  >
+                    {/* Circle Node Point */}
+                    <div
+                      className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${
+                        isActive
+                          ? 'bg-[#2c2e2a] text-[#ffffff] scale-110'
+                          : isPassed
+                          ? 'bg-[#2c2e2a]/70 text-[#ffffff]'
+                          : 'bg-[#f5f1e4] border-2 border-[#2c2e2a]/20 text-[#2c2e2a]/40 group-hover:border-[#2c2e2a]/60'
+                      }`}
+                    >
+                      <div
+                        className={`w-2 h-2 rounded-full ${
+                          isActive ? 'bg-[#8ed462]' : isPassed ? 'bg-[#ffffff]' : 'bg-transparent'
+                        }`}
+                      />
+                    </div>
+
+                    {/* Step Name */}
+                    <span
+                      className={`text-[12px] font-black tracking-[0.12em] uppercase transition-colors duration-200 ${
+                        isActive
+                          ? 'text-[#2c2e2a]'
+                          : isPassed
+                          ? 'text-[#2c2e2a]/60'
+                          : 'text-[#2c2e2a]/30 group-hover:text-[#2c2e2a]/60'
+                      }`}
+                    >
+                      {item.step}. {item.id.toUpperCase()}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Mobile Step Indicators (Horizontal Pills) */}
+            <div className="flex md:hidden items-center gap-2 mt-4">
+              {educationData.map((item, idx) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => handleStepClick(idx)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    activeIndex === idx
+                      ? 'w-8 bg-[#2c2e2a]'
+                      : 'w-2.5 bg-[#2c2e2a]/20 hover:bg-[#2c2e2a]/40'
+                  }`}
+                  aria-label={`Go to step ${idx + 1}`}
+                />
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Right Content: Milestone Cards (SD to S1) */}
-        <div className="w-full flex-1 space-y-6 sm:space-y-8 md:space-y-10">
-          {educationData.map((item, index) => (
-            <motion.div
-              key={item.level}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{
-                duration: 0.65,
-                delay: index * 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="relative w-full bg-[#ffffff] rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-10 border-2 border-[#2c2e2a]/10 hover:border-[#2c2e2a] transition-colors duration-300 select-none group"
-            >
-              {/* Top Meta: Level & Period */}
-              <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[#2c2e2a]/10">
-                <span className="text-[12px] sm:text-[13px] font-black tracking-[0.14em] text-[#2c2e2a] uppercase">
-                  {item.level}
-                </span>
-                <span className="text-[12px] sm:text-[13px] font-mono font-bold text-[#2c2e2a]/60 bg-[#f5f1e4] px-3 py-1 rounded-full">
-                  {item.period}
-                </span>
-              </div>
-
-              {/* Institution & Degree */}
-              <h4 className="mt-4 text-[20px] sm:text-[24px] md:text-[26px] font-black text-[#2c2e2a] tracking-tight leading-snug">
-                {item.degree}
-              </h4>
-              <p className="mt-1 text-[14px] sm:text-[16px] font-bold text-[#2c2e2a]/70">
-                {item.institution}
-              </p>
-
-              {/* Description */}
-              <p className="mt-3.5 text-[14px] sm:text-[16px] leading-[1.65] text-[#2c2e2a]/80 font-normal">
-                {item.description}
-              </p>
-
-              {/* Highlights Chips */}
-              <div className="mt-5 flex flex-wrap gap-2">
-                {item.highlights.map((highlight) => (
-                  <span
-                    key={highlight}
-                    className="text-[11px] sm:text-[12px] font-bold tracking-wide px-3 py-1 rounded-full bg-[#f5f1e4] text-[#2c2e2a] border border-[#2c2e2a]/10 group-hover:border-[#2c2e2a]/30 transition-colors"
-                  >
-                    {highlight}
+          {/* Right Column: Single Active Milestone Display (Seamless Flat, No White Container) */}
+          <div className="w-full flex-1 min-h-[300px] sm:min-h-[360px] flex flex-col justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentItem.id}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -24 }}
+                transition={{
+                  duration: 0.45,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="w-full"
+              >
+                {/* Meta Header */}
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="text-[12px] sm:text-[13px] font-black tracking-[0.18em] text-[#2c2e2a]/60 uppercase">
+                    {currentItem.step} — {currentItem.level}
                   </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                  <span className="text-[12px] sm:text-[13px] font-mono font-bold text-[#2c2e2a] bg-[#2c2e2a]/10 px-3 py-0.5 rounded-full">
+                    {currentItem.period}
+                  </span>
+                </div>
+
+                {/* Degree & Institution */}
+                <h4 className="mt-3 text-[26px] sm:text-[34px] md:text-[40px] font-black text-[#2c2e2a] tracking-tight leading-tight">
+                  {currentItem.degree}
+                </h4>
+                <p className="mt-1 text-[15px] sm:text-[18px] font-bold text-[#2c2e2a]/75">
+                  {currentItem.institution}
+                </p>
+
+                {/* Description */}
+                <p className="mt-4 sm:mt-5 text-[15px] sm:text-[17px] leading-[1.7] text-[#2c2e2a]/85 max-w-2xl font-normal">
+                  {currentItem.description}
+                </p>
+
+                {/* Highlight Tags */}
+                <div className="mt-6 sm:mt-7 flex flex-wrap gap-2 sm:gap-2.5">
+                  {currentItem.highlights.map((highlight) => (
+                    <span
+                      key={highlight}
+                      className="text-[11px] sm:text-[12px] font-bold tracking-wide px-3.5 py-1.5 rounded-full bg-[#2c2e2a] text-[#ffffff] select-none"
+                    >
+                      {highlight}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

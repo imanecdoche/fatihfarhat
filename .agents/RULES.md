@@ -68,3 +68,8 @@ Acuan utama dan mutlak selalu benar.
     - Menempatkan `LogoLoop` pada halaman Keahlian & Jasa dengan konfigurasi yang sama persis seperti halaman Tentang Saya (`techLogos`, `logoHeight={isMobile ? 28 : 42}`, `gap={isMobile ? 40 : 56}`, `-translate-y-[135px] sm:translate-y-[25px]`).
     - Mengintegrasikan navigasi `#services` pada header dan fullscreen navigation menu overlay.
 48. **Panel Sticky Timeline Edukasi di Halaman Tentang Saya:** Menambahkan panel timeline riwayat pendidikan di bawah biografi halaman "Tentang Saya" dengan label sticky `"EDUCATION"`, garis timeline vertikal dan indikator lingkaran di sebelah kiri yang statis/sticky saat scroll, serta deretan informasi pendidikan (SD, SMP, SMA, S1) di sisi kanan dengan animasi dan penyorotan dinamis.
+49. **Penyempurnaan Sticky Scroll Timeline Edukasi:**
+    - **Sticky on the Top:** Panel timeline menempel di bagian atas viewport (`sticky top-24 sm:top-28 md:top-32`) selama proses scroll.
+    - **Muncul Satu per Satu (Step-by-Step Transition):** Ketika di-scroll, konten perjalanan edukasi (SD, SMP, SMA/SMK, S1) tampil bergantian satu per satu secara halus dan dinamis, bukan sekaligus semua dalam bentuk list panjang.
+    - **Tanpa Kontainer Putih:** Menghapus kontainer kartu putih (`bg-[#ffffff]`) dan border box; konten menyatu langsung secara flat di atas background cream (`#f5f1e4`).
+    - **Tanpa Badge "AKADEMIK":** Menghilangkan badge kapsul "AKADEMIK" di atas label judul "EDUCATION".
