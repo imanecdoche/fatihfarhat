@@ -59,3 +59,4 @@ Acuan utama dan mutlak selalu benar.
     - Membuat halaman Portofolio (`#portfolio`) dengan hero section (`PortfolioHero.tsx`), headline 2 baris `"MY"` (baris 1) dan `"WORKS"` (baris 2) dengan gaya flat modern, tipografi Nunito Black, dan animasi selection kursor.
     - Menempatkan `LogoLoop` pada halaman Portofolio dengan posisi dan skala yang sama dengan halaman Tentang Saya (`logoHeight={28}`, `gap={40}`, `-translate-y-[135px] sm:translate-y-[25px]`).
     - Daftar logo portofolio: Adobe, Tokopedia, Steam, Marvel Studios, GoTo, TikTok, MICO, Moonton, Valve, ForceOrg dengan style flat vector monokrom (`#2c2e2a`).
+43. **Aset Logo Asli/High-Res Halaman Portofolio:** Memperbarui seluruh 10 logo brand di halaman Portofolio menggunakan file vektor SVG resmi / PNG resolusi tinggi dari sumber terpercaya (Adobe, Tokopedia, Steam, Marvel Studios, GoTo, TikTok, MICO Live, Moonton, Valve, ForceOrg) dengan styling monokrom solid `#2c2e2a` yang presisi.
