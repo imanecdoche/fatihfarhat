@@ -478,3 +478,15 @@ Acuan utama dan mutlak selalu benar.
     - **Instruksi Pengguna**: 'tombol ini pake icon resmi Suno https://cdn-o.suno.com/favicon-512x512.png' disertai tangkapan layar tombol Suno Profile.
     - **Penerapan Aset**: Mengunduh ikon resmi Suno beresolusi tinggi (`/icons/suno.png`) dan memasangnya sebagai ikon pada tombol 'Suno Profile' di `MusicPortfolio.tsx` dengan proporsi ukuran rapi (`w-5 h-5 rounded-full object-contain shrink-0`).
     - **Kepatuhan Desain**: Format kapsul (`rounded-[50px]`/`rounded-full`), warna kontras solid aksen gelap `#2c2e2a` teks putih, flat tanpa bayangan (`DESIGN.md`), font sans-serif (`font-sans` sesuai Aturan 108), dan bebas elemen terlarang (`ai-anti-patterns.md`).
+115. **Section Karya Musik dari Platform Suno & Pemisahan Tombol Platform per Section (`MusicPortfolio.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'di kategori prtofolio musik tambahin section karya dari platform suno https://suno.com/s/0HHjXPxKmud4oDAj No Translation; Acoustic, Folk; https://suno.com/s/g8GN2a7csYV6Y1jW Braving Winter; Acoustic, Folk; https://suno.com/s/2xKF9LZk4R2kZnAL Hujan Tahun Lalu; Acoustic, Pop. tombol buka spotify dan buka suno di masing masing section ya'.
+    - **Section Platform Suno**: Menambahkan section khusus 'Karya dari Platform Suno' dengan header kapsul aksen gelap `#2c2e2a` teks putih `text-white` berlogo resmi Suno (`/icons/suno.png`), deskripsi kurasi karya, dan grid 3 kartu lagu autentik dengan sampul gambar orisinal:
+      1. *No Translation* (Acoustic, Folk) — `https://suno.com/s/0HHjXPxKmud4oDAj` (Cover: `/music/no_translation.png`).
+      2. *Braving Winter* (Acoustic, Folk) — `https://suno.com/s/g8GN2a7csYV6Y1jW` (Cover: `/music/braving_winter.png`).
+      3. *Hujan Tahun Lalu* (Acoustic, Pop) — `https://suno.com/s/2xKF9LZk4R2kZnAL` (Cover: `/music/hujan_tahun_lalu.png`).
+    - **Pemisahan Tombol Aksi per Section**:
+      - Section Spotify (Karya Musik Orisinal): Menampilkan tombol aksi kapsul 'Buka Profil Artis' menuju profil Spotify ZeroTwenty.
+      - Section Suno (Karya dari Platform Suno): Menampilkan tombol aksi kapsul 'Suno Profile' menuju profil Suno ZeroTwenty dengan logo resmi Suno.
+    - **Kepatuhan Desain**: Format kapsul (`rounded-[50px]`/`rounded-full`), warna kontras solid aksen gelap `#2c2e2a` teks putih, flat tanpa bayangan (`DESIGN.md`), font sans-serif (`font-sans` sesuai Aturan 108), dan bebas badge/pill terlarang (`ai-anti-patterns.md`).
+
+
