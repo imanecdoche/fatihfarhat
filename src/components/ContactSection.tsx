@@ -123,7 +123,7 @@ export const ContactSection: React.FC = () => {
     e.preventDefault();
     const subject = `Pesan Portofolio dari ${formName || 'Pengunjung'}`;
     const body = `Nama: ${formName}\nKontak: ${formContact}\n\nPesan:\n${formMessage}`;
-    const mailto = `mailto:kazokuhairy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    const mailto = `mailto:kazokuhairy@gmail.com,kaviocreativestudio@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
       body
     )}`;
     window.location.href = mailto;
@@ -331,26 +331,45 @@ export const ContactSection: React.FC = () => {
               <div className="p-4 rounded-2xl bg-[#f5f1e4]/70 border border-[#2c2e2a]/10 flex items-center justify-between">
                 <div>
                   <div className="text-[11px] font-bold uppercase tracking-wider text-[#2c2e2a]/50">
-                    Alamat Email
+                    Email Personal
                   </div>
-                  <div className="text-sm sm:text-base font-black text-[#2c2e2a]">
+                  <div className="text-sm sm:text-base font-black text-[#2c2e2a] break-all">
                     kazokuhairy@gmail.com
                   </div>
                 </div>
                 <button
                   type="button"
-                  onClick={() => copyToClipboard('kazokuhairy@gmail.com', 'email')}
-                  className="p-2 rounded-xl bg-white hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white transition-colors cursor-pointer"
-                  title="Salin Alamat Email"
+                  onClick={() => copyToClipboard('kazokuhairy@gmail.com', 'email-personal')}
+                  className="p-2 rounded-xl bg-white hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white transition-colors cursor-pointer shrink-0 ml-3"
+                  title="Salin Email Personal"
                 >
-                  {copiedType === 'email' ? <Check size={18} /> : <Copy size={18} />}
+                  {copiedType === 'email-personal' ? <Check size={18} /> : <Copy size={18} />}
+                </button>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#f5f1e4]/70 border border-[#2c2e2a]/10 flex items-center justify-between">
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#2c2e2a]/50">
+                    Email Studio / Bisnis
+                  </div>
+                  <div className="text-sm sm:text-base font-black text-[#2c2e2a] break-all">
+                    kaviocreativestudio@gmail.com
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard('kaviocreativestudio@gmail.com', 'email-studio')}
+                  className="p-2 rounded-xl bg-white hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white transition-colors cursor-pointer shrink-0 ml-3"
+                  title="Salin Email Studio"
+                >
+                  {copiedType === 'email-studio' ? <Check size={18} /> : <Copy size={18} />}
                 </button>
               </div>
             </div>
           </div>
 
           <a
-            href="mailto:kazokuhairy@gmail.com?subject=Inquiry%20from%20Portfolio"
+            href="mailto:kazokuhairy@gmail.com,kaviocreativestudio@gmail.com?subject=Inquiry%20from%20Portfolio"
             className="w-full py-4 px-6 rounded-[50px] bg-[#2c2e2a] hover:bg-[#8ed462] text-white hover:text-[#2c2e2a] font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.98]"
           >
             <span>Kirim Email Langsung</span>

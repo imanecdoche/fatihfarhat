@@ -684,4 +684,18 @@ Acuan utama dan mutlak selalu benar.
       - Desain flat murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
       - Tipografi antarmuka murni sans-serif (`font-sans`, `Aturan 108`).
       - Bebas badge/tag/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
+131. **Penambahan Surat Elektronik Baru `kaviocreativestudio@gmail.com` (`ContactSection.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'tambahin surat elektronik baru kaviocreativestudio@gmail.com'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Dua Alamat Email Resmi**:
+        1. **Email Personal / Utama**: `kazokuhairy@gmail.com` dengan tombol salin mandiri (`email-personal`).
+        2. **Email Studio / Bisnis**: `kaviocreativestudio@gmail.com` dengan tombol salin mandiri (`email-studio`).
+      - **Dukungan Responsif & Anti-Overflow**: Ditambahkan class `break-all` agar alamat email panjang tetap tampil rapi di perangkat bergerak tanpa meluap dari kontainer.
+      - **Aksi Kirim Email Terintegrasi**: Tombol kapsul utama **'Kirim Email Langsung'** dan formulir pesan singkat otomatis mengarahkan ke kedua alamat email (`mailto:kazokuhairy@gmail.com,kaviocreativestudio@gmail.com`).
+    - **Kepatuhan Desain Mutlak**:
+      - Bebas stroke outline pada kontainer berlatar putih (`Aturan 117`).
+      - Flat design murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
+      - Tipografi antarmuka sans-serif (`font-sans`, `Aturan 108`).
+      - Dilarang membuat badge/pill/tag tanpa instruksi eksplisit (`ai-anti-patterns.md`).
+
 
