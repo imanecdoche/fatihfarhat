@@ -534,3 +534,10 @@ Acuan utama dan mutlak selalu benar.
     - **Rincian Aktivitas Bulanan (September 2026)**:
       - Menambahkan log '3 Pull Requests ke repositori eksternal (hari ini)' pada timeline aktivitas September 2026 lengkap dengan nomor PR, judul, tanggal, dan tautan langsung ke GitHub.
     - **Kepatuhan Desain Mutlak**: Bebas outline border pada seluruh kartu berlatar putih (`Aturan 117`), flat tanpa shadow (`DESIGN.md`), font `font-sans` tanpa monospace (`Aturan 108`), dan tanpa badge/pill terlarang (`ai-anti-patterns.md`).
+121. **Penambahan Role 'Sound Designer', 'Songwriter', dan 'Author' pada Marquee ScrollVelocity Halaman HOME (`App.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'di halaman HOME di komponen ini tambahin role Sound Designer, Song Wrtiter, Author'.
+    - **Implementasi Marquee Hero (`ScrollVelocity`)**:
+      - Memperbarui array teks berjalan komponen `ScrollVelocity` di bawah Hero section halaman HOME:
+        `Software Developer - Frontend Engineer - Creative Technologist - UI/UX Specialist - Web Architect - Sound Designer - Songwriter - Author -`
+    - **Kepatuhan Desain**: Menjaga estetika flat tanpa bayangan (`DESIGN.md`), proporsi tipografi Nunito/Inter bold, pemisah tanda hubung konsisten (`" -"`), dan tanpa elemen terlarang (`ai-anti-patterns.md`).
+

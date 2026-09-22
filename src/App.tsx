@@ -138,8 +138,8 @@ export const App: React.FC = () => {
               <section className="w-full pb-10 sm:pb-20 -translate-y-[200px] sm:-translate-y-[25px] opacity-75">
                 <ScrollVelocity
                   texts={[
-                    'Software Developer - Frontend Engineer - Creative Technologist - UI/UX Specialist - Web Architect -',
-                    'Software Developer - Frontend Engineer - Creative Technologist - UI/UX Specialist - Web Architect -',
+                    'Software Developer - Frontend Engineer - Creative Technologist - UI/UX Specialist - Web Architect - Sound Designer - Songwriter - Author -',
+                    'Software Developer - Frontend Engineer - Creative Technologist - UI/UX Specialist - Web Architect - Sound Designer - Songwriter - Author -',
                   ]}
                   velocity={60}
                   className="custom-scroll-text text-[#2c2e2a] font-bold tracking-tight"
