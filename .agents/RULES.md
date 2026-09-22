@@ -370,3 +370,16 @@ Acuan utama dan mutlak selalu benar.
     - **Instruksi Pengguna**: Menghapus nomor dan label NIK pada bagian kartu identitas di halaman Tentang Saya untuk menjaga privasi data pribadi.
     - **Penyelarasan Layout**: Bagian top bar sisi depan kartu identitas disesuaikan dengan menghilangkan tampilan NIK, menyisakan indikator aksi balik kartu yang rapi dan selaras.
     - **Deploy GitHub**: Melakukan build check, staging, commit dengan Conventional Commits, dan langsung push ke repositori GitHub origin/main.
+96. **Navigasi Kategori Portofolio Mandiri (Portfolio Category Hub) (`App.tsx`, `PortfolioCategories.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: Halaman portofolio tidak langsung menampilkan semua karya secara bertumpuk, melainkan menampilkan halaman navigasi kategori terlebih dahulu.
+    - **4 Kategori Pilihan Utama**:
+      1. **Software Engineering**: Proyek rekayasa perangkat lunak, sistem, utilitas Linux, mobile apps, dan GitHub overview.
+      2. **Karya Tulis**: Kumpulan novel sejarah peradaban, buku komprehensif, dan karya sastra.
+      3. **Desain (Graphic & UI/UX Design)**: Portofolio perancangan UI/UX, visual branding, dan desain grafis.
+      4. **Konten Kreator**: Portofolio produksi video, audiovisual, media digital, dan konten kreatif.
+    - **Alur Interaksi Navigasi**: Pengunjung memilih kategori di halaman utama portofolio, lalu diarahkan ke tampilan detail kategori yang dipilih dengan tombol navigasi kembali ('← Kembali ke Kategori Portofolio') untuk memudahkan eksplorasi.
+    - **Kepatuhan Desain**: Menjaga estetika flat tanpa bayangan (`DESIGN.md`), tipografi `font-sans` (Nunito), dan kepatuhan mutlak `ai-anti-patterns.md` tanpa badge/pill yang dilarang.
+97. **Penghapusan Nomor Pokok Wajib Pajak (NPWP) pada Kartu Identitas (`IdentityCard.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: Menghapus baris data NPWP pada kartu identitas di halaman Tentang Saya untuk menyempurnakan privasi data pribadi.
+    - **Penyelarasan Layout**: Baris NPWP dihapus sehingga baris data diri diakhiri dengan data Golongan Darah secara bersih dan rapi.
+    - **Deploy GitHub**: Melakukan build test, staging, commit dengan Conventional Commits, dan langsung push ke repositori GitHub origin/main.

@@ -258,17 +258,6 @@ export const IdentityCard: React.FC = () => {
                   -
                 </span>
               </div>
-
-              {/* NPWP */}
-              <div className="flex items-baseline">
-                <span className="w-[105px] sm:w-[130px] md:w-[145px] shrink-0 text-[#2c2e2a]/65 font-medium">
-                  NPWP
-                </span>
-                <span className="w-4 shrink-0 text-center font-bold text-[#2c2e2a]">:</span>
-                <span className="flex-1 font-bold text-[#2c2e2a]">
-                  3601262008050001
-                </span>
-              </div>
             </div>
           </div>
 

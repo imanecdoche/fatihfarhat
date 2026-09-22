@@ -12,10 +12,14 @@ import { AboutBio } from './components/AboutBio';
 import { IdentityCard } from './components/IdentityCard';
 import { EducationTimeline } from './components/EducationTimeline';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
+import { ArrowLeft } from 'lucide-react';
 import { PortfolioHero } from './components/PortfolioHero';
+import { PortfolioCategories, PortfolioCategoryType } from './components/PortfolioCategories';
 import { PortfolioGrid } from './components/PortfolioGrid';
 import { GithubOverview } from './components/GithubOverview';
 import { LiteraryWorks } from './components/LiteraryWorks';
+import { DesignPortfolio } from './components/DesignPortfolio';
+import { ContentPortfolio } from './components/ContentPortfolio';
 import { ServicesHero } from './components/ServicesHero';
 import { SkillsCharts } from './components/SkillsCharts';
 import { ContactHero } from './components/ContactHero';
@@ -28,6 +32,7 @@ import { portfolioLogos } from './components/PortfolioLogos';
 
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'portfolio' | 'services' | 'contact'>('home');
+  const [portfolioCategory, setPortfolioCategory] = useState<PortfolioCategoryType>('all');
   const [isBioSticky, setIsBioSticky] = useState(false);
   const [isEducationSticky, setIsEducationSticky] = useState(false);
   const [isExperienceSticky, setIsExperienceSticky] = useState(false);
@@ -73,6 +78,9 @@ export const App: React.FC = () => {
     setIsBioSticky(false);
     setIsEducationSticky(false);
     setIsExperienceSticky(false);
+    if (page === 'portfolio') {
+      setPortfolioCategory('all');
+    }
     setCurrentPage(page);
     window.location.hash = page === 'home' ? '#home' : `#${page}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -197,9 +205,91 @@ export const App: React.FC = () => {
                   ariaLabel="Clients and partner brands"
                 />
               </section>
-              <PortfolioGrid />
-              <GithubOverview />
-              <LiteraryWorks />
+
+              {/* Category Navigation Hub (Default View) */}
+              {portfolioCategory === 'all' && (
+                <PortfolioCategories
+                  onSelectCategory={(cat) => {
+                    setPortfolioCategory(cat);
+                    window.scrollTo({ top: 380, behavior: 'smooth' });
+                  }}
+                />
+              )}
+
+              {/* Specific Category View with Sub-Navigation */}
+              {portfolioCategory !== 'all' && (
+                <div className="w-full">
+                  {/* Category Switcher & Back Navigation Bar */}
+                  <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-2 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <button
+                      onClick={() => {
+                        setPortfolioCategory('all');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#ffffff] border border-[#2c2e2a]/15 text-[#2c2e2a] font-bold text-xs sm:text-sm hover:bg-[#2c2e2a] hover:text-[#ffffff] transition-colors cursor-pointer w-fit group"
+                    >
+                      <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
+                      <span>Semua Kategori Portofolio</span>
+                    </button>
+
+                    {/* Quick Switch Tabs */}
+                    <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
+                      {[
+                        { id: 'software' as PortfolioCategoryType, label: 'Software' },
+                        { id: 'writing' as PortfolioCategoryType, label: 'Karya Tulis' },
+                        { id: 'design' as PortfolioCategoryType, label: 'Desain' },
+                        { id: 'content' as PortfolioCategoryType, label: 'Konten Kreator' },
+                      ].map((tab) => {
+                        const isActive = portfolioCategory === tab.id;
+                        return (
+                          <button
+                            key={tab.id}
+                            onClick={() => {
+                              setPortfolioCategory(tab.id);
+                              window.scrollTo({ top: 380, behavior: 'smooth' });
+                            }}
+                            className={`px-4 py-2 rounded-full font-bold text-xs sm:text-sm transition-colors cursor-pointer shrink-0 border ${
+                              isActive
+                                ? 'bg-[#2c2e2a] text-[#ffffff] border-[#2c2e2a]'
+                                : 'bg-[#ffffff] text-[#2c2e2a]/70 border-[#2c2e2a]/15 hover:text-[#2c2e2a] hover:border-[#2c2e2a]/30'
+                            }`}
+                          >
+                            {tab.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Render the Selected Category Content */}
+                  {portfolioCategory === 'software' && (
+                    <>
+                      <PortfolioGrid />
+                      <GithubOverview />
+                    </>
+                  )}
+
+                  {portfolioCategory === 'writing' && <LiteraryWorks />}
+
+                  {portfolioCategory === 'design' && <DesignPortfolio />}
+
+                  {portfolioCategory === 'content' && <ContentPortfolio />}
+
+                  {/* Bottom Navigation Back Button */}
+                  <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 py-16 text-center">
+                    <button
+                      onClick={() => {
+                        setPortfolioCategory('all');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#ffffff] border border-[#2c2e2a]/15 text-[#2c2e2a] font-bold text-sm hover:bg-[#2c2e2a] hover:text-[#ffffff] transition-all cursor-pointer group active:scale-95"
+                    >
+                      <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
+                      <span>Kembali ke Pilihan Kategori Portofolio</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </motion.div>
           )}
 
