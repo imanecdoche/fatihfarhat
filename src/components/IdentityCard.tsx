@@ -126,7 +126,7 @@ export const IdentityCard: React.FC = () => {
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
             }}
-            className="w-full rounded-[20px] sm:rounded-[26px] p-5 sm:p-7 md:p-8 bg-[#ffffff] border border-[#2c2e2a]/15 shadow-[0_12px_28px_rgba(44,46,42,0.12)] font-sans relative overflow-hidden"
+            className="w-full rounded-[20px] sm:rounded-[26px] p-5 sm:p-7 md:p-8 bg-[#ffffff] shadow-[0_12px_28px_rgba(44,46,42,0.12)] font-sans relative overflow-hidden"
           >
             {/* Top Bar: Flip Hint */}
             <div className="flex items-center justify-end mb-4 sm:mb-5 pb-3 border-b border-[#2c2e2a]/10">
@@ -271,7 +271,7 @@ export const IdentityCard: React.FC = () => {
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
             }}
-            className="absolute inset-0 w-full h-full rounded-[20px] sm:rounded-[26px] p-6 sm:p-8 bg-[#ffffff] border border-[#2c2e2a]/15 shadow-[0_12px_28px_rgba(44,46,42,0.12)] font-sans flex items-center justify-center text-center select-none"
+            className="absolute inset-0 w-full h-full rounded-[20px] sm:rounded-[26px] p-6 sm:p-8 bg-[#ffffff] shadow-[0_12px_28px_rgba(44,46,42,0.12)] font-sans flex items-center justify-center text-center select-none"
           >
             <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-[#2c2e2a]">
               Click Me to Reveal!

@@ -300,6 +300,15 @@ const skillCategories: SkillCategory[] = [
         description: 'Wireframing interaktif, responsive resize, & alur transisi antarmuka.',
         color: '#9b5de5',
       },
+      {
+        id: 'des-coreldraw',
+        name: 'Corel Draw',
+        level: 'Tingkat Lanjut',
+        percentage: 75,
+        icon: '/icons/coreldraw.svg',
+        description: 'Desain ilustrasi vektor presisi, tata letak grafis, separasi warna, & persiapan cetak.',
+        color: '#00aa4f',
+      },
     ],
   },
   {
@@ -488,6 +497,50 @@ const skillCategories: SkillCategory[] = [
       },
     ],
   },
+  {
+    id: 'music-sound',
+    categoryNumber: '10',
+    title: 'Composing & Sound Design',
+    subtitle: 'Produksi musik digital, komposisi instrumen, penyuntingan audio multi-track, dan sound design berbasis AI.',
+    skills: [
+      {
+        id: 'sound-suno',
+        name: 'Suno',
+        level: 'Generative Audio & Sound Design',
+        percentage: 89,
+        icon: '/icons/suno.png',
+        description: 'Eksplorasi komposisi musik AI, crafting prompt musik, aransemen melodi vokal, & sound generation.',
+        color: '#8ed462',
+      },
+      {
+        id: 'sound-audition',
+        name: 'Adobe Audition',
+        level: 'Post-Production & Mixing',
+        percentage: 87,
+        icon: '/icons/audition.svg',
+        description: 'Restorasi audio profesional, mastering frekuensi spektral, multitrack mixing, & noise reduction.',
+        color: '#00e4bb',
+      },
+      {
+        id: 'sound-audacity',
+        name: 'Audacity',
+        level: 'Multi-Track Audio Editing',
+        percentage: 78,
+        icon: '/icons/audacity.svg',
+        description: 'Penyuntingan waveform audio, normalisasi desibel, pemotongan vokal, & konversi format lossless.',
+        color: '#1f538d',
+      },
+      {
+        id: 'sound-flstudio',
+        name: 'FL Studio',
+        level: 'DAW & Beat Sequencing',
+        percentage: 65,
+        icon: '/icons/fl_studio.png',
+        description: 'Komposisi musik berbasis sequencer, aransemen MIDI instrumen, layering synth, & beat arrangement.',
+        color: '#ff8400',
+      },
+    ],
+  },
 ];
 
 const getRadialBarOptions = (color: string): ApexOptions => ({
@@ -593,7 +646,7 @@ export const SkillsCharts: React.FC = () => {
                       duration: 0.45,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="flex flex-col justify-between p-3.5 sm:p-5 md:p-6 rounded-[22px] sm:rounded-[28px] md:rounded-[32px] bg-[#ffffff] border border-[#2c2e2a]/10 hover:border-[#2c2e2a]/30 transition-all duration-300 hover:-translate-y-1 select-none overflow-hidden relative"
+                    className="flex flex-col justify-between p-3.5 sm:p-5 md:p-6 rounded-[22px] sm:rounded-[28px] md:rounded-[32px] bg-[#ffffff] transition-all duration-300 hover:-translate-y-1 select-none overflow-hidden relative"
                   >
                     {/* Top Row: Icon / Bendera 3D di Kiri + ApexCharts Radial Gauge di Kanan (Jika hasChart !== false) */}
                     <div className="flex items-center justify-between gap-1.5 sm:gap-3 mb-3 sm:mb-4">

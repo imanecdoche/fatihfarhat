@@ -147,7 +147,7 @@ export const PortfolioGrid: React.FC = () => {
                 ease: [0.16, 1, 0.3, 1],
               }}
               whileHover={{ y: -6 }}
-              className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] border border-[#2c2e2a]/10 transition-all duration-300 hover:border-[#2c2e2a]/30"
+              className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] transition-all duration-300"
             >
               <div>
                 {/* Header Row: Category */}

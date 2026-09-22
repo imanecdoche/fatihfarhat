@@ -6,9 +6,25 @@ import {
   SiDribbble,
   SiBehance,
   SiTiktok,
+  SiSpotify,
+  SiSuno,
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 import { LogoItem } from './LogoLoop';
+
+// Logo Resmi FL Studio (Image-Line)
+export const FLStudioLogo: React.FC<{ size?: number; className?: string }> = ({
+  size = 28,
+  className = '',
+}) => (
+  <img
+    src="/icons/fl_studio.png"
+    alt="FL Studio Logo"
+    width={size}
+    height={size}
+    className={`object-contain grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all ${className}`}
+  />
+);
 
 // SVG Resmi Google Antigravity
 export const GoogleAntigravityLogo: React.FC<{ size?: number; className?: string }> = ({
@@ -162,6 +178,26 @@ export const portfolioLogos: LogoItem[] = [
     title: 'TikTok',
     alt: 'TikTok',
     href: 'https://www.tiktok.com/@fatihfarhat',
+  },
+
+  // --- Kategori 5: Musik, Instrumental & Sound Design ---
+  {
+    node: <SiSpotify size={28} />,
+    title: 'Spotify',
+    alt: 'Spotify',
+    href: 'https://open.spotify.com/artist/61lnv533fb8bQVV5cQ7h5y?si=ozZTj4q5TKSrBAPdhzIlHg',
+  },
+  {
+    node: <SiSuno size={28} />,
+    title: 'Suno',
+    alt: 'Suno',
+    href: 'https://suno.com/@zerotwentymusic',
+  },
+  {
+    node: <FLStudioLogo size={28} />,
+    title: 'FL Studio',
+    alt: 'FL Studio',
+    href: 'https://www.image-line.com/fl-studio',
   },
 ];
 

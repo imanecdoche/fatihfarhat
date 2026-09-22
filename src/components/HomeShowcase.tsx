@@ -78,7 +78,7 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
       {/* 1. QUICK INTRO / MINI BIO TEASER                        */}
       {/* ======================================================== */}
       <section className="w-full">
-        <div className="bg-[#ffffff] rounded-[24px] sm:rounded-[32px] border border-[#2c2e2a]/15 p-6 sm:p-10 md:p-12 flex flex-col md:flex-row md:items-center justify-between gap-8 sm:gap-10">
+        <div className="bg-[#ffffff] rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 md:p-12 flex flex-col md:flex-row md:items-center justify-between gap-8 sm:gap-10">
           <div className="max-w-2xl space-y-3 sm:space-y-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#2c2e2a] tracking-tight leading-tight">
               Membangun Solusi Digital dengan Harmoni Kode & Estetika
@@ -130,7 +130,7 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
             return (
               <div
                 key={project.id}
-                className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] border border-[#2c2e2a]/15 p-6 sm:p-7 flex flex-col justify-between transition-colors hover:border-[#2c2e2a]/30 group"
+                className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] p-6 sm:p-7 flex flex-col justify-between transition-colors group"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-3">
@@ -194,7 +194,7 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
           {/* Pillar 1 */}
-          <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] border border-[#2c2e2a]/15 p-6 sm:p-7 flex flex-col justify-between">
+          <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] p-6 sm:p-7 flex flex-col justify-between">
             <div>
               <h3 className="text-lg sm:text-xl font-black text-[#2c2e2a] mb-2 tracking-tight">
                 Web & Frontend Engineering
@@ -209,7 +209,7 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
           </div>
 
           {/* Pillar 2 */}
-          <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] border border-[#2c2e2a]/15 p-6 sm:p-7 flex flex-col justify-between">
+          <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] p-6 sm:p-7 flex flex-col justify-between">
             <div>
               <h3 className="text-lg sm:text-xl font-black text-[#2c2e2a] mb-2 tracking-tight">
                 UI/UX & Product Design
@@ -224,7 +224,7 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
           </div>
 
           {/* Pillar 3 */}
-          <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] border border-[#2c2e2a]/15 p-6 sm:p-7 flex flex-col justify-between">
+          <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] p-6 sm:p-7 flex flex-col justify-between">
             <div>
               <h3 className="text-lg sm:text-xl font-black text-[#2c2e2a] mb-2 tracking-tight">
                 Systems & Creative Technology
@@ -256,7 +256,7 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
       <section className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
           {/* Status Ketersediaan */}
-          <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] border border-[#2c2e2a]/15 p-6 sm:p-7 flex items-center gap-4">
+          <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] p-6 sm:p-7 flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-[#8ed462]/20 flex items-center justify-center shrink-0">
               <CheckCircle2 size={24} className="text-[#8ed462]" />
             </div>
@@ -277,7 +277,7 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
           </div>
 
           {/* Zona Waktu Lokal */}
-          <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] border border-[#2c2e2a]/15 p-6 sm:p-7 flex items-center gap-4">
+          <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] p-6 sm:p-7 flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-[#f5f1e4] flex items-center justify-center shrink-0 text-[#2c2e2a]">
               <Clock size={24} />
             </div>

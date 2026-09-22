@@ -492,3 +492,31 @@ Acuan utama dan mutlak selalu benar.
     - **Instruksi Pengguna**: 'kartu lagu jangan ada deskripsinya'.
     - **Implementasi**: Menghapus seluruh elemen dan teks paragraf deskripsi dari kartu lagu baik di section rilisan Spotify (ZeroTwenty) maupun di section rilisan platform Suno. Kartu lagu kini disederhanakan secara visual dan elegan, hanya menampilkan sampul karya asli, tag meta/genre, judul lagu, info artis/rilis, dan link aksi putar langsung.
     - **Kepatuhan Desain**: Layout bersih, flat tanpa bayangan (`DESIGN.md`), tipografi bebas monospace (`font-sans`), proporsi kartu padat dan proporsional, serta bebas badge/pill terlarang (`ai-anti-patterns.md`).
+117. **Larangan Mutlak Outline/Stroke/Border pada Seluruh Komponen Berwarna Putih (23 September 2026):**
+    - **Instruksi Pengguna**: 'semua box, tombol, kapsul, dan komponen apapun yang berwarna putih, jangan dikasih outline stroke'.
+    - **Implementasi**: Menghapus seluruh border, stroke, ring, dan outline pada setiap box, kartu, tombol, kapsul, container, dan komponen apapun yang berlatar belakang putih (`bg-white`, `bg-[#ffffff]`, `bg-[#fff]`) di seluruh proyek (`MusicPortfolio.tsx`, `HomeShowcase.tsx`, `PortfolioCategories.tsx`, `ContentPortfolio.tsx`, `DesignPortfolio.tsx`, `PortfolioGrid.tsx`, `LiteraryWorks.tsx`, `GithubOverview.tsx`, `IdentityCard.tsx`, `ContactSection.tsx`, `SkillsCharts.tsx`, `App.tsx`, dan seluruh komponen Hero).
+    - **Kepatuhan Desain Mutlak**: Komponen putih tampil murni flat tanpa garis pembatas tepi (`border-0`), menyatu kontras secara halus di atas latar belakang krem lembut `#f5f1e4` sesuai prinsip `DESIGN.md`, dan bebas dari artefak visual yang tidak diinginkan.
+118. **Penambahan Logo Musik Resmi (Suno, Spotify, FL Studio) pada Deretan Logo (`PortfolioLogos.tsx`) & Preview Audio Song Karya Suno (`MusicPortfolio.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna 1**: 'bisa ga kalo tambahin preview song buat karya suno itu, ambil dari file kita di /media/fatihfarhat/New Volume1/FATIH DATA/Suno/v6 cari sesuai judul yang RAW'.
+    - **Instruksi Pengguna 2**: 'berarti di deretan logo ini tambahin logo baru yang resmi: Suno, Spotify, FL Studio' disertai tangkapan layar deretan logo berjalan (`LogoLoop`).
+    - **Implementasi Deretan Logo (`PortfolioLogos.tsx`)**:
+      - Menambahkan 3 brand resmi kategori musik & audio:
+        1. **Spotify** (`SiSpotify`): mengarah ke profil artis Spotify ZeroTwenty.
+        2. **Suno** (`SiSuno`): mengarah ke profil resmi Suno ZeroTwenty.
+        3. **FL Studio** (`FLStudioLogo` dari Image-Line): logo resmi buah/pepper FL Studio monokromatik proporsional (`public/icons/fl_studio.png`).
+    - **Implementasi Audio Preview Song Suno (`MusicPortfolio.tsx`)**:
+      - Mengambil file audio RAW v6 autentik dari `/media/fatihfarhat/New Volume1/FATIH DATA/Suno/v6/` dan menyimpannya di `public/music/`:
+        1. *No Translation*: `No Translation v6 raw.mp3` &rarr; `/music/no_translation.mp3`
+        2. *Braving Winter*: `Braving Winter v6 raw.mp3` &rarr; `/music/braving_winter.mp3`
+        3. *Hujan Tahun Lalu*: `Hujan Tahun Lalu Pop v6 raw.mp3` &rarr; `/music/hujan_tahun_lalu.mp3`
+      - Mengintegrasikan audio preview controller interaktif pada setiap kartu lagu Suno dengan tombol Play/Pause elegan, pemutaran satu audio eksklusif, dan penanganan status play/pause secara mulus.
+    - **Kepatuhan Desain**: Tanpa border pada kartu putih (`Aturan 117`), flat tanpa shadow (`DESIGN.md`), font sans-serif (`font-sans` sesuai Aturan 108), dan bebas dari elemen terlarang (`ai-anti-patterns.md`).
+119. **Penambahan Kategori 'Composing & Sound Design' dan Skill 'Corel Draw' pada Halaman MY SKILLS (`SkillsCharts.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'di halaman MY SKILLS > Penguasaan & Keahlian tambahin kategori baru: Composing & Sound Design: FL Studio 65%, Suno 89%, Adobe Audition 87%, Audacity 78%. Software Desain & Vektor Grafis tambahin Corel Draw 75%'.
+    - **Penambahan Skill Desain**: Menambahkan *Corel Draw* (75%) dengan ikon resmi SVG (`/icons/coreldraw.svg`) pada kategori 'Software Desain & Vektor Grafis' (05).
+    - **Kategori Baru 'Composing & Sound Design' (10)**:
+      1. *Suno* (89%) — Ikon resmi Suno (`/icons/suno.png`), level: Generative Audio & Sound Design.
+      2. *Adobe Audition* (87%) — Ikon resmi SVG (`/icons/audition.svg`), level: Post-Production & Mixing.
+      3. *Audacity* (78%) — Ikon resmi SVG (`/icons/audacity.svg`), level: Multi-Track Audio Editing.
+      4. *FL Studio* (65%) — Ikon resmi Image-Line (`/icons/fl_studio.png`), level: DAW & Beat Sequencing.
+    - **Kepatuhan Desain**: Kartu skill putih tanpa border (`Aturan 117`), rendering ApexCharts Radial Gauge presisi, flat tanpa bayangan (`DESIGN.md`), tipografi bebas monospace (`font-sans`), dan bebas badge/pill terlarang (`ai-anti-patterns.md`).

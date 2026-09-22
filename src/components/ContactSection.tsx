@@ -92,7 +92,7 @@ export const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] border border-[#2c2e2a]/10 hover:border-[#2c2e2a]/30 transition-all duration-300"
+          className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] transition-all duration-300"
         >
           <div>
             <div className="flex items-center justify-between gap-4 mb-5">
@@ -171,7 +171,7 @@ export const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] border border-[#2c2e2a]/10 hover:border-[#2c2e2a]/30 transition-all duration-300"
+          className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] transition-all duration-300"
         >
           <div>
             <div className="flex items-center justify-between gap-4 mb-5">
@@ -248,7 +248,7 @@ export const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] border border-[#2c2e2a]/10 hover:border-[#2c2e2a]/30 transition-all duration-300"
+          className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] transition-all duration-300"
         >
           <div>
             <div className="flex items-center justify-between gap-4 mb-5">
@@ -304,7 +304,7 @@ export const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] border border-[#2c2e2a]/10 hover:border-[#2c2e2a]/30 transition-all duration-300"
+          className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] transition-all duration-300"
         >
           <div>
             <div className="flex items-center justify-between gap-4 mb-5">
@@ -378,7 +378,7 @@ export const ContactSection: React.FC = () => {
               href="https://fatihfarhat.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 py-4 px-5 rounded-[50px] bg-white hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white border-2 border-[#2c2e2a] font-black text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.98]"
+              className="flex-1 py-4 px-5 rounded-[50px] bg-white hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white font-black text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.98]"
             >
               <span>Portofolio Web</span>
               <ArrowUpRight size={16} />
@@ -393,7 +393,7 @@ export const ContactSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="p-6 sm:p-10 md:p-12 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] border border-[#2c2e2a]/10"
+        className="p-6 sm:p-10 md:p-12 rounded-[32px] sm:rounded-[40px] bg-[#ffffff]"
       >
         <div className="max-w-2xl">
           <p className="text-xs sm:text-sm font-bold tracking-[0.16em] uppercase text-[#8ed462] mb-2">
@@ -410,46 +410,58 @@ export const ContactSection: React.FC = () => {
         <form className="space-y-5 max-w-3xl">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/70 mb-2">
+              <label
+                htmlFor="senderName"
+                className="block text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/70 mb-2"
+              >
                 Nama Lengkap
               </label>
               <input
+                id="senderName"
                 type="text"
                 value={formName}
                 onChange={(e) => setFormName(e.target.value)}
                 placeholder="Contoh: Rahmat Hidayat"
-                className="w-full px-4 py-3.5 rounded-2xl bg-[#f5f1e4]/50 border border-[#2c2e2a]/15 text-[#2c2e2a] placeholder-[#2c2e2a]/40 text-sm font-medium focus:outline-none focus:border-[#2c2e2a] transition-colors"
+                className="w-full px-5 py-4 rounded-2xl bg-[#f5f1e4]/70 border border-[#2c2e2a]/15 text-[#2c2e2a] placeholder-[#2c2e2a]/40 text-sm focus:outline-none focus:border-[#2c2e2a] transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/70 mb-2">
+              <label
+                htmlFor="senderContact"
+                className="block text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/70 mb-2"
+              >
                 Kontak Anda (Nomor WA / Email)
               </label>
               <input
+                id="senderContact"
                 type="text"
                 value={formContact}
                 onChange={(e) => setFormContact(e.target.value)}
                 placeholder="Contoh: 0812xxxx atau email@domain.com"
-                className="w-full px-4 py-3.5 rounded-2xl bg-[#f5f1e4]/50 border border-[#2c2e2a]/15 text-[#2c2e2a] placeholder-[#2c2e2a]/40 text-sm font-medium focus:outline-none focus:border-[#2c2e2a] transition-colors"
+                className="w-full px-5 py-4 rounded-2xl bg-[#f5f1e4]/70 border border-[#2c2e2a]/15 text-[#2c2e2a] placeholder-[#2c2e2a]/40 text-sm focus:outline-none focus:border-[#2c2e2a] transition-colors"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/70 mb-2">
+            <label
+              htmlFor="bodyMessage"
+              className="block text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/70 mb-2"
+            >
               Pesan / Rencana Kolaborasi
             </label>
             <textarea
+              id="bodyMessage"
               rows={4}
               value={formMessage}
               onChange={(e) => setFormMessage(e.target.value)}
               placeholder="Tuliskan ide proyek, penawaran kerja sama, atau pertanyaan Anda..."
-              className="w-full px-4 py-3.5 rounded-2xl bg-[#f5f1e4]/50 border border-[#2c2e2a]/15 text-[#2c2e2a] placeholder-[#2c2e2a]/40 text-sm font-medium focus:outline-none focus:border-[#2c2e2a] transition-colors resize-none"
+              className="w-full px-5 py-4 rounded-2xl bg-[#f5f1e4]/70 border border-[#2c2e2a]/15 text-[#2c2e2a] placeholder-[#2c2e2a]/40 text-sm focus:outline-none focus:border-[#2c2e2a] transition-colors resize-none"
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 pt-3">
+          <div className="flex flex-col sm:flex-row items-center gap-3 pt-3">
             <button
               type="button"
               onClick={handleSendWhatsApp}
@@ -462,7 +474,7 @@ export const ContactSection: React.FC = () => {
             <button
               type="button"
               onClick={handleSendEmail}
-              className="w-full sm:w-auto px-8 py-4 rounded-[50px] bg-[#ffffff] hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white border-2 border-[#2c2e2a] font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.98] cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 rounded-[50px] bg-[#ffffff] hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.98] cursor-pointer"
             >
               <Send size={18} />
               <span>Kirimkan via Email</span>

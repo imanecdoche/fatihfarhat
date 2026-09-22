@@ -1,10 +1,40 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import {
   ArrowUpRight,
+  Play,
+  Pause,
 } from 'lucide-react';
 import { SiSpotify } from 'react-icons/si';
 
 export const MusicPortfolio: React.FC = () => {
+  // State untuk Audio Preview Player Karya Suno
+  const [activeAudioTrack, setActiveAudioTrack] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const audioPlayerRef = useRef<HTMLAudioElement | null>(null);
+
+  const handleTogglePreview = (trackId: string, audioUrl: string) => {
+    if (!audioPlayerRef.current) return;
+
+    if (activeAudioTrack === trackId) {
+      if (isPlaying) {
+        audioPlayerRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioPlayerRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+      }
+    } else {
+      audioPlayerRef.current.src = audioUrl;
+      audioPlayerRef.current.load();
+      audioPlayerRef.current
+        .play()
+        .then(() => {
+          setActiveAudioTrack(trackId);
+          setIsPlaying(true);
+        })
+        .catch(() => {});
+    }
+  };
+
   // Daftar Rilisan Lagu Orisinal Spotify oleh ZeroTwenty
   const spotifyTracks = [
     {
@@ -33,7 +63,7 @@ export const MusicPortfolio: React.FC = () => {
     },
   ];
 
-  // Daftar Karya Musik dari Platform Suno
+  // Daftar Karya Musik dari Platform Suno (dengan Audio Preview RAW v6)
   const sunoTracks = [
     {
       id: 'no-translation',
@@ -41,6 +71,7 @@ export const MusicPortfolio: React.FC = () => {
       genre: 'Acoustic, Folk',
       coverImage: '/music/no_translation.png',
       sunoUrl: 'https://suno.com/s/0HHjXPxKmud4oDAj',
+      audioUrl: '/music/no_translation.mp3',
     },
     {
       id: 'braving-winter',
@@ -48,6 +79,7 @@ export const MusicPortfolio: React.FC = () => {
       genre: 'Acoustic, Folk',
       coverImage: '/music/braving_winter.png',
       sunoUrl: 'https://suno.com/s/g8GN2a7csYV6Y1jW',
+      audioUrl: '/music/braving_winter.mp3',
     },
     {
       id: 'hujan-tahun-lalu',
@@ -55,11 +87,23 @@ export const MusicPortfolio: React.FC = () => {
       genre: 'Acoustic, Pop',
       coverImage: '/music/hujan_tahun_lalu.png',
       sunoUrl: 'https://suno.com/s/2xKF9LZk4R2kZnAL',
+      audioUrl: '/music/hujan_tahun_lalu.mp3',
     },
   ];
 
   return (
     <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 py-10 sm:py-16 font-sans">
+      {/* Hidden Global Audio Element for Preview */}
+      <audio
+        ref={audioPlayerRef}
+        onEnded={() => {
+          setIsPlaying(false);
+          setActiveAudioTrack(null);
+        }}
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+      />
+
       {/* SECTION 1: Karya Musik Orisinal (Spotify - ZeroTwenty) */}
       <section className="mb-20 sm:mb-24">
         <div className="mb-10 sm:mb-12">
@@ -81,7 +125,7 @@ export const MusicPortfolio: React.FC = () => {
         </div>
 
         {/* Featured Spotify Track Embed (Lagu Populer) */}
-        <div className="mb-10 sm:mb-12 overflow-hidden rounded-2xl border border-[#2c2e2a]/15 bg-[#ffffff] p-2.5 sm:p-3">
+        <div className="mb-10 sm:mb-12 overflow-hidden rounded-2xl bg-[#ffffff] p-2.5 sm:p-3">
           <iframe
             data-testid="embed-iframe"
             style={{ borderRadius: '12px' }}
@@ -101,7 +145,7 @@ export const MusicPortfolio: React.FC = () => {
           {spotifyTracks.map((track) => (
             <div
               key={track.id}
-              className="bg-[#ffffff] rounded-[24px] sm:rounded-[28px] border border-[#2c2e2a]/15 p-5 sm:p-6 flex flex-col justify-between hover:border-[#2c2e2a]/40 transition-all duration-300 group select-none"
+              className="bg-[#ffffff] rounded-[24px] sm:rounded-[28px] p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 group select-none"
             >
               <div>
                 {/* Track Cover Image */}
@@ -182,12 +226,12 @@ export const MusicPortfolio: React.FC = () => {
           </p>
         </div>
 
-        {/* Grid of Suno Track Cards */}
+        {/* Grid of Suno Track Cards with Audio Preview Player */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12">
           {sunoTracks.map((track) => (
             <div
               key={track.id}
-              className="bg-[#ffffff] rounded-[24px] sm:rounded-[28px] border border-[#2c2e2a]/15 p-5 sm:p-6 flex flex-col justify-between hover:border-[#2c2e2a]/40 transition-all duration-300 group select-none"
+              className="bg-[#ffffff] rounded-[24px] sm:rounded-[28px] p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 group select-none"
             >
               <div>
                 {/* Track Cover Image */}
@@ -207,9 +251,40 @@ export const MusicPortfolio: React.FC = () => {
                 <h3 className="text-xl sm:text-2xl font-black text-[#2c2e2a] tracking-tight leading-snug mb-1">
                   {track.title}
                 </h3>
-                <p className="text-xs sm:text-[13px] font-bold text-[#8ed462] mb-5">
+                <p className="text-xs sm:text-[13px] font-bold text-[#8ed462] mb-4">
                   Suno Release
                 </p>
+
+                {/* Audio Preview Action Button */}
+                <div className="mb-4">
+                  <button
+                    type="button"
+                    onClick={() => handleTogglePreview(track.id, track.audioUrl)}
+                    className={`w-full py-2.5 px-4 rounded-full flex items-center justify-between transition-all duration-200 cursor-pointer ${
+                      activeAudioTrack === track.id && isPlaying
+                        ? 'bg-[#2c2e2a] text-[#8ed462]'
+                        : 'bg-[#f5f1e4] text-[#2c2e2a] hover:bg-[#2c2e2a] hover:text-[#ffffff]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      {activeAudioTrack === track.id && isPlaying ? (
+                        <Pause size={15} className="shrink-0" />
+                      ) : (
+                        <Play size={15} className="shrink-0 fill-current" />
+                      )}
+                      <span className="font-sans font-bold text-xs">
+                        {activeAudioTrack === track.id && isPlaying
+                          ? 'Jeda Preview'
+                          : 'Putar Preview'}
+                      </span>
+                    </div>
+                    <span className="font-sans text-[11px] font-semibold opacity-70">
+                      {activeAudioTrack === track.id && isPlaying
+                        ? 'Memutar RAW v6...'
+                        : 'Audio RAW'}
+                    </span>
+                  </button>
+                </div>
               </div>
 
               {/* Bottom Play Action Link */}

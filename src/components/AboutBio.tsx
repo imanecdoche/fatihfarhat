@@ -83,7 +83,7 @@ export const AboutBio: React.FC<AboutBioProps> = ({ onStickyChange }) => {
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
         <div className="w-full max-w-4xl mx-auto px-6 sm:px-10 py-6 sm:py-10 flex flex-col items-center text-center select-none">
           {/* Lingkaran Foto Profil Asli (me.jpeg) - Zero Shadow, Flat Modern */}
-          <div className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full bg-[#ffffff] border-4 border-[#2c2e2a] flex items-center justify-center overflow-hidden select-none group transition-transform duration-300 hover:scale-[1.02] shrink-0">
+          <div className="relative w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full bg-[#ffffff] flex items-center justify-center overflow-hidden select-none group transition-transform duration-300 hover:scale-[1.02] shrink-0">
             <img
               src={profilePic}
               alt="Fatih Farhat"

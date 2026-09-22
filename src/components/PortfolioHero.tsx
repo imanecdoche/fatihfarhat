@@ -43,10 +43,10 @@ export const PortfolioHero: React.FC<PortfolioHeroProps> = ({ onNavigateHome }) 
               className="absolute top-0 left-0 pointer-events-none border-2 border-dashed border-[#2c2e2a]/70 rounded-none bg-transparent"
             >
               {/* Flat Sharp Corner Handles */}
-              <span className="absolute -top-1.5 -left-1.5 w-3 h-3 bg-[#ffffff] border-2 border-[#2c2e2a] rounded-none" />
-              <span className="absolute -top-1.5 -right-1.5 w-3 h-3 bg-[#ffffff] border-2 border-[#2c2e2a] rounded-none" />
-              <span className="absolute -bottom-1.5 -left-1.5 w-3 h-3 bg-[#ffffff] border-2 border-[#2c2e2a] rounded-none" />
-              <span className="absolute -bottom-1.5 -right-1.5 w-3 h-3 bg-[#ffffff] border-2 border-[#2c2e2a] rounded-none z-10" />
+              <span className="absolute -top-1.5 -left-1.5 w-3 h-3 bg-[#2c2e2a] rounded-none" />
+              <span className="absolute -top-1.5 -right-1.5 w-3 h-3 bg-[#2c2e2a] rounded-none" />
+              <span className="absolute -bottom-1.5 -left-1.5 w-3 h-3 bg-[#2c2e2a] rounded-none" />
+              <span className="absolute -bottom-1.5 -right-1.5 w-3 h-3 bg-[#2c2e2a] rounded-none z-10" />
 
               {/* Cursor attached directly to bottom-right of expanding box */}
               <motion.div

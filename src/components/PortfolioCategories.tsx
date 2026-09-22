@@ -100,7 +100,7 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
             <div
               key={cat.id}
               onClick={() => onSelectCategory(cat.id)}
-              className="bg-[#ffffff] rounded-[24px] sm:rounded-[30px] border border-[#2c2e2a]/15 p-7 sm:p-9 flex flex-col justify-between transition-all hover:border-[#2c2e2a]/40 cursor-pointer group select-none"
+              className="bg-[#ffffff] rounded-[24px] sm:rounded-[30px] p-7 sm:p-9 flex flex-col justify-between transition-all cursor-pointer group select-none"
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {

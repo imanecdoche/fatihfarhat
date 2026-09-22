@@ -228,7 +228,7 @@ export const App: React.FC = () => {
                         setPortfolioCategory('all');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#ffffff] border border-[#2c2e2a]/15 text-[#2c2e2a] font-bold text-xs sm:text-sm hover:bg-[#2c2e2a] hover:text-[#ffffff] transition-colors cursor-pointer w-fit group"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#ffffff] text-[#2c2e2a] font-bold text-xs sm:text-sm hover:bg-[#2c2e2a] hover:text-[#ffffff] transition-colors cursor-pointer w-fit group"
                     >
                       <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
                       <span>Semua Kategori Portofolio</span>
@@ -251,10 +251,10 @@ export const App: React.FC = () => {
                               setPortfolioCategory(tab.id);
                               window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
-                            className={`px-4 py-2 rounded-full font-bold text-xs sm:text-sm transition-colors cursor-pointer shrink-0 border ${
+                            className={`px-4 py-2 rounded-full font-bold text-xs sm:text-sm transition-colors cursor-pointer shrink-0 ${
                               isActive
-                                ? 'bg-[#2c2e2a] text-[#ffffff] border-[#2c2e2a]'
-                                : 'bg-[#ffffff] text-[#2c2e2a]/70 border-[#2c2e2a]/15 hover:text-[#2c2e2a] hover:border-[#2c2e2a]/30'
+                                ? 'bg-[#2c2e2a] text-[#ffffff]'
+                                : 'bg-[#ffffff] text-[#2c2e2a]/70 hover:text-[#2c2e2a]'
                             }`}
                           >
                             {tab.label}
@@ -287,7 +287,7 @@ export const App: React.FC = () => {
                         setPortfolioCategory('all');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#ffffff] border border-[#2c2e2a]/15 text-[#2c2e2a] font-bold text-sm hover:bg-[#2c2e2a] hover:text-[#ffffff] transition-all cursor-pointer group active:scale-95"
+                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#ffffff] text-[#2c2e2a] font-bold text-sm hover:bg-[#2c2e2a] hover:text-[#ffffff] transition-all cursor-pointer group active:scale-95"
                     >
                       <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
                       <span>Kembali ke Pilihan Kategori Portofolio</span>

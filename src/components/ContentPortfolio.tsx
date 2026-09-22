@@ -87,7 +87,7 @@ export const ContentPortfolio: React.FC = () => {
           return (
             <div
               key={project.id}
-              className="bg-[#ffffff] rounded-[24px] sm:rounded-[30px] border border-[#2c2e2a]/15 p-7 sm:p-9 flex flex-col justify-between"
+              className="bg-[#ffffff] rounded-[24px] sm:rounded-[30px] p-7 sm:p-9 flex flex-col justify-between"
             >
               <div>
                 {/* Category Header */}

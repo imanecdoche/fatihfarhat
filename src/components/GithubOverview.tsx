@@ -257,7 +257,7 @@ export const GithubOverview: React.FC = () => {
 
       {/* GitHub Key Stats Summary Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12">
-        <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff] border border-[#2c2e2a]/10">
+        <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff]">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
               Total Kontribusi
@@ -270,7 +270,7 @@ export const GithubOverview: React.FC = () => {
           <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1">di tahun 2026</p>
         </div>
 
-        <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff] border border-[#2c2e2a]/10">
+        <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff]">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
               Repositori Publik
@@ -283,7 +283,7 @@ export const GithubOverview: React.FC = () => {
           <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1">proyek aktif</p>
         </div>
 
-        <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff] border border-[#2c2e2a]/10">
+        <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff]">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
               Total Bintang
@@ -296,7 +296,7 @@ export const GithubOverview: React.FC = () => {
           <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1">stars diraih</p>
         </div>
 
-        <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff] border border-[#2c2e2a]/10">
+        <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff]">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
               Tipe Aktivitas
@@ -316,7 +316,7 @@ export const GithubOverview: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] border border-[#2c2e2a]/10 mb-12 sm:mb-16"
+        className="p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] mb-12 sm:mb-16"
       >
         {/* Heatmap Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#2c2e2a]/10">
@@ -497,7 +497,7 @@ export const GithubOverview: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="group flex flex-col justify-between p-6 rounded-[28px] bg-[#ffffff] border border-[#2c2e2a]/10 hover:border-[#2c2e2a]/30 transition-all duration-300 hover:-translate-y-1 select-none"
+              className="group flex flex-col justify-between p-6 rounded-[28px] bg-[#ffffff] transition-all duration-300 hover:-translate-y-1 select-none"
             >
               <div>
                 {/* Top Row: Repo Title + Star */}
@@ -545,7 +545,7 @@ export const GithubOverview: React.FC = () => {
       </div>
 
       {/* Detailed Monthly Activity Timeline */}
-      <div className="p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] border border-[#2c2e2a]/10">
+      <div className="p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff]">
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#2c2e2a]/10">
           <div>
             <p className="text-xs sm:text-sm font-bold tracking-[0.16em] uppercase text-[#8ed462] mb-1">
@@ -616,7 +616,7 @@ export const GithubOverview: React.FC = () => {
                           href={cr.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#2c2e2a]/15 text-xs font-bold text-[#2c2e2a] hover:border-[#2c2e2a] transition-colors"
+                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white text-xs font-bold text-[#2c2e2a] transition-colors"
                         >
                           <BookOpen size={13} className="text-[#2c2e2a]/50" />
                           <span>{cr.name}</span>

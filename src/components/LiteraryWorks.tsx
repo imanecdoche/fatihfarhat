@@ -212,7 +212,7 @@ export const LiteraryWorks: React.FC = () => {
         </p>
 
         {/* Aggregate Metrics Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8 p-4 sm:p-6 rounded-[24px] bg-[#ffffff] border border-[#2c2e2a]/10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8 p-4 sm:p-6 rounded-[24px] bg-[#ffffff]">
           <div className="p-3 sm:p-4">
             <span className="block text-2xl sm:text-3xl font-black text-[#2c2e2a]">6 Novel</span>
             <span className="text-xs sm:text-sm text-[#2c2e2a]/65 font-medium">Naskah Sastra Utuh</span>
@@ -245,7 +245,7 @@ export const LiteraryWorks: React.FC = () => {
               delay: idx * 0.08,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="flex flex-col justify-between p-5 sm:p-7 rounded-[28px] sm:rounded-[32px] bg-[#ffffff] border border-[#2c2e2a]/10 hover:border-[#2c2e2a]/30 transition-all duration-300 hover:-translate-y-1 group"
+            className="flex flex-col justify-between p-5 sm:p-7 rounded-[28px] sm:rounded-[32px] bg-[#ffffff] transition-all duration-300 hover:-translate-y-1 group"
           >
             <div>
               {/* Book Cover Frame */}
@@ -309,7 +309,7 @@ export const LiteraryWorks: React.FC = () => {
           </p>
 
           {/* Wattpad Cumulative Stats Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8 p-4 sm:p-6 rounded-[24px] bg-[#ffffff] border border-[#2c2e2a]/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8 p-4 sm:p-6 rounded-[24px] bg-[#ffffff]">
             <div className="p-3 sm:p-4">
               <span className="block text-2xl sm:text-3xl font-black text-[#2c2e2a]">4 Karya</span>
               <span className="text-xs sm:text-sm text-[#2c2e2a]/65 font-medium">Serial Fiksi Wattpad</span>
@@ -342,7 +342,7 @@ export const LiteraryWorks: React.FC = () => {
                 delay: sIdx * 0.08,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex flex-col justify-between p-6 sm:p-8 rounded-[28px] sm:rounded-[32px] bg-[#ffffff] border border-[#2c2e2a]/10 hover:border-[#2c2e2a]/30 transition-all duration-300 group"
+              className="flex flex-col justify-between p-6 sm:p-8 rounded-[28px] sm:rounded-[32px] bg-[#ffffff] transition-all duration-300 group"
             >
               <div>
                 {/* Horizontal Top: Cover + Core Info */}
