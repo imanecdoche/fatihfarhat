@@ -559,7 +559,7 @@ export const SkillsCharts: React.FC = () => {
             {/* Category Title Header */}
             <div className="mb-6 sm:mb-8 pb-4 border-b border-[#2c2e2a]/12">
               <div className="flex items-center gap-3 mb-1.5">
-                <span className="font-mono text-sm sm:text-base font-bold text-[#8ed462]">
+                <span className="font-sans text-sm sm:text-base font-bold text-[#8ed462]">
                   {cat.categoryNumber}.
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-black text-[#2c2e2a] tracking-tight">

@@ -620,7 +620,7 @@ export const GithubOverview: React.FC = () => {
                         >
                           <BookOpen size={13} className="text-[#2c2e2a]/50" />
                           <span>{cr.name}</span>
-                          <span className="text-[10px] font-mono text-[#2c2e2a]/50">
+                          <span className="text-[10px] font-sans text-[#2c2e2a]/50">
                             ({cr.language} • {cr.date})
                           </span>
                         </a>

@@ -195,11 +195,13 @@ export const LiteraryWorks: React.FC = () => {
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
       {/* Section Header */}
       <div className="mb-12 sm:mb-16">
-        <div className="flex items-center gap-3 mb-3">
-          <BookOpen className="text-[#8ed462] shrink-0" size={24} />
-          <span className="font-mono text-sm sm:text-base font-bold text-[#8ed462]">
-            Karya Sastra, Fiksi & Penulisan Naratif
-          </span>
+        <div className="mb-4">
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#2c2e2a] text-white">
+            <BookOpen className="text-[#8ed462] shrink-0" size={18} />
+            <span className="font-sans text-xs sm:text-sm font-bold text-white tracking-wide">
+              Karya Sastra, Fiksi & Penulisan Naratif
+            </span>
+          </div>
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight mb-4">
           Pustaka Novel & Karya Sastra Orisinal
@@ -262,7 +264,7 @@ export const LiteraryWorks: React.FC = () => {
               </h3>
 
               {/* Release Year */}
-              <p className="text-xs font-mono font-bold text-[#2c2e2a]/60 mb-4 pb-3 border-b border-[#2c2e2a]/10">
+              <p className="text-xs font-sans font-bold text-[#2c2e2a]/60 mb-4 pb-3 border-b border-[#2c2e2a]/10">
                 Tahun Rilis: {novel.year}
               </p>
 
@@ -278,7 +280,7 @@ export const LiteraryWorks: React.FC = () => {
             </div>
 
             {/* Bottom Spec Details */}
-            <div className="pt-3.5 border-t border-[#2c2e2a]/10 flex items-center justify-between text-xs font-mono text-[#2c2e2a]/65">
+            <div className="pt-3.5 border-t border-[#2c2e2a]/10 flex items-center justify-between text-xs font-sans text-[#2c2e2a]/65">
               <span>{novel.chapters}</span>
               <span className="font-bold text-[#2c2e2a]">Naskah Lengkap</span>
             </div>
@@ -291,11 +293,13 @@ export const LiteraryWorks: React.FC = () => {
       {/* ======================================================== */}
       <div className="mt-20 sm:mt-28 pt-16 sm:pt-20 border-t border-[#2c2e2a]/10">
         <div className="mb-10 sm:mb-14">
-          <div className="flex items-center gap-2 mb-3">
-            <SiWattpad className="text-[#ff6122] shrink-0" size={24} />
-            <span className="font-mono text-sm sm:text-base font-bold text-[#ff6122]">
-              Serial Fiksi Digital • Wattpad
-            </span>
+          <div className="mb-4">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#2c2e2a] text-white">
+              <SiWattpad className="text-[#ff6122] shrink-0" size={18} />
+              <span className="font-sans text-xs sm:text-sm font-bold text-white tracking-wide">
+                Serial Fiksi Digital • Wattpad
+              </span>
+            </div>
           </div>
           <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight mb-4">
             Karya & Serial Fiksi di Wattpad
@@ -365,7 +369,7 @@ export const LiteraryWorks: React.FC = () => {
                     </div>
 
                     {/* Stats Row with Views and Votes */}
-                    <div className="flex flex-wrap items-center gap-3 text-xs font-mono font-bold text-[#2c2e2a]/75 pb-2 border-b border-[#2c2e2a]/10">
+                    <div className="flex flex-wrap items-center gap-3 text-xs font-sans font-bold text-[#2c2e2a]/75 pb-2 border-b border-[#2c2e2a]/10">
                       <span className="flex items-center gap-1.5 text-[#2c2e2a]">
                         <Eye size={14} className="text-[#2c2e2a]/60" />
                         <span>{story.views} Views</span>
@@ -396,7 +400,7 @@ export const LiteraryWorks: React.FC = () => {
 
               {/* Bottom Card Action */}
               <div className="pt-4 border-t border-[#2c2e2a]/10 flex items-center justify-between text-xs">
-                <span className="font-mono font-bold text-[#2c2e2a]/55">
+                <span className="font-sans font-bold text-[#2c2e2a]/55">
                   Status: {story.status}
                 </span>
                 <a

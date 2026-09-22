@@ -336,7 +336,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
                   }}
                   className="group inline-flex items-baseline gap-3 sm:gap-6 transition-transform duration-300 hover:translate-x-3 cursor-pointer"
                 >
-                  <span className="text-sm sm:text-lg font-mono font-bold text-[#f5f1e4]/60 group-hover:text-[#ffffff] transition-colors duration-200">
+                  <span className="text-sm sm:text-lg font-sans font-bold text-[#f5f1e4]/60 group-hover:text-[#ffffff] transition-colors duration-200">
                     {item.num}
                   </span>
                   <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase text-[#f5f1e4] group-hover:text-[#ffffff] transition-colors duration-200">
@@ -355,7 +355,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
             <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">LinkedIn</a>
             <a href="https://instagram.com/ih.fernandez" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">Instagram</a>
           </div>
-          <span className="font-mono text-xs sm:text-sm text-[#f5f1e4]/50">
+          <span className="font-sans text-xs sm:text-sm text-[#f5f1e4]/50">
             © {new Date().getFullYear()} FATIH FARHAT. All Rights Reserved.
           </span>
         </div>

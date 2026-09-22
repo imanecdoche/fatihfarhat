@@ -432,3 +432,11 @@ Acuan utama dan mutlak selalu benar.
       - 'Tentang Dia': menggunakan cover orisinal (`/books/wattpad_tentang_dia.png`).
       - 'Secangkir Kopi Sebelum Mati': menggunakan cover orisinal (`/books/wattpad_secangkir_kopi_sebelum_mati.png`).
     - **Kepatuhan Desain**: Format gambar buku proporsional (`aspect-[2/3]`), sudut melengkung `rounded-xl`, border 1px solid, flat tanpa efek bayangan (`DESIGN.md`), dan mematuhi aturan mutlak `ai-anti-patterns.md`.
+108. **Larangan Mutlak Font Monospace dan Kapsul Aksen Gelap Section Header (`LiteraryWorks.tsx` & Global) (23 September 2026):**
+    - **Instruksi Pengguna**: 'section ini, jangan gunakan font Monospace, RULES, TIDAK BOLEH MENGGUNAKAN FONT MONOSPACE dimanapun, section ini dibungkus kapsul warna aksen gelap dari design sistem dan teks nya warna putih' disertai tangkapan layar label section 'Karya Sastra, Fiksi & Penulisan Naratif' dan 'Serial Fiksi Digital • Wattpad'.
+    - **Aturan Mutlak (RULES)**: DILARANG MENGGUNAKAN FONT MONOSPACE (`font-mono`) DI SELURUH BAGIAN WEBSITE MANAPUN. Seluruh tipografi wajib menggunakan font standar sans-serif (`font-sans` / Nunito / Inter).
+    - **Kapsul Section Label**:
+      - Dibungkus dengan kapsul elegan (`inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#2c2e2a] text-white`).
+      - Teks label wajib berwarna putih (`text-white`) dengan font sans-serif berbobot tegas (`font-sans font-bold text-xs sm:text-sm tracking-wide`).
+      - Ikon di dalam kapsul mempertahankan aksen khasnya (`#8ed462` untuk Buku, `#ff6122` untuk Wattpad) dengan ukuran proporsional.
+    - **Pembersihan Monospace Global**: Menghapus seluruh kelas `font-mono` dari seluruh komponen website (`LiteraryWorks.tsx`, `GithubOverview.tsx`, `PortfolioGrid.tsx`, `Header.tsx`, `SkillsCharts.tsx`).

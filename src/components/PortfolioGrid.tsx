@@ -177,7 +177,7 @@ export const PortfolioGrid: React.FC = () => {
                       />
                     ))}
                   </div>
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-mono">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-sans">
                     {project.languages.map((lang, lIdx) => (
                       <div key={lIdx} className="flex items-center gap-1.5 text-[#2c2e2a]/80">
                         <span
@@ -226,7 +226,7 @@ export const PortfolioGrid: React.FC = () => {
 
               {/* Bottom Action Footer */}
               <div className="pt-5 border-t border-[#2c2e2a]/10 flex flex-col gap-3.5">
-                <div className="flex items-center justify-between text-xs font-mono font-bold text-[#2c2e2a]/60">
+                <div className="flex items-center justify-between text-xs font-sans font-bold text-[#2c2e2a]/60">
                   <span className="flex items-center gap-1.5">
                     <SiGithub size={14} />
                     <span>{project.repoName}</span>
