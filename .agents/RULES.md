@@ -416,3 +416,19 @@ Acuan utama dan mutlak selalu benar.
     - **Instruksi Pengguna**: 'di kategori portofolio karya tulis tambahkan section Karya Wattpad seklaian tambahin stats views sama votes nya juga' disertai 4 tangkapan layar karya Wattpad: Nada di Lantai 27, The Beastkeeper's Secret: Bayangan Azkaban, Tentang Dia, dan Secangkir Kopi Sebelum Mati.
     - **Implementasi**: Menambahkan section khusus 'Karya Wattpad' pada `LiteraryWorks.tsx` dengan kartu-kartu karya, sampul buku orisinal, sinopsis, statistik pembaca (*Views* dengan ikon mata), suara apresiasi (*Votes* dengan ikon bintang), jumlah bab, dan peringkat kategori.
     - **Kepatuhan Desain & Anti-Patterns**: Mengikuti estetika flat tanpa bayangan (`DESIGN.md`), hierarki tipografi murni tanpa badge/pill yang dilarang (`ai-anti-patterns.md`), tombol kapsul aksi terhubung langsung ke profil/bacaan Wattpad, dan integrasi ikon resmi `SiWattpad`.
+106. **Pembaruan Logo Carousel Portofolio dengan 11 Brand Resmi Berdasarkan Kategori (`PortfolioLogos.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'logo logo di komponin ini, diganti sama logo logo resmi dari: tiktok, capcut, adobe creative cloud, google antigravity, codex, dribbble, wattpad, behance, microsoft visual studio code, github, vercel, diurutkan berdasarkan kategori'.
+    - **Pengelompokan & Urutan Kategori**: Mengurutkan 11 brand secara tematis berdasarkan 4 pilar portofolio pengguna:
+      1. **Software Engineering & Web Architecture**: GitHub (`SiGithub`), Microsoft Visual Studio Code (SVG resmi VS Code), Vercel (`SiVercel`), Google Antigravity (SVG resmi Google Antigravity IDE), Codex (SVG resmi OpenAI Codex).
+      2. **Karya Tulis & Literatur**: Wattpad (`SiWattpad` / profil `https://www.wattpad.com/user/imanecdoche`).
+      3. **Desain Grafis & UI/UX**: Dribbble (`SiDribbble` / profil `https://dribbble.com/fatihfarhat`), Behance (`SiBehance`), Adobe Creative Cloud (SVG resmi Adobe Creative Cloud).
+      4. **Konten Kreator & Multimedia**: CapCut (SVG resmi CapCut), TikTok (`SiTiktok`).
+    - **Kepatuhan Desain**: Menggunakan SVG vector resmi berkualitas tinggi dengan rendering tajam, link eksternal yang aman (`target="_blank"`, `rel="noopener noreferrer"`), proporsi tinggi seragam, flat tanpa efek bayangan (`DESIGN.md`), serta mematuhi aturan mutlak `ai-anti-patterns.md`.
+107. **Integrasi Sampul Buku Orisinal Karya Wattpad (`LiteraryWorks.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'ini cover untuk di karya wattpad, bayangan azkaban tetap yang sekarang' disertai unggahan gambar sampul buku orisinal.
+    - **Penerapan Gambar Sampul**:
+      - 'Nada di Lantai 27': menggunakan cover orisinal (`/books/wattpad_nada_di_lantai_27.png`).
+      - 'The Beastkeeper\'s Secret: Bayangan Azkaban': tetap menggunakan cover yang sudah ada (`/books/beastkeeper.png`).
+      - 'Tentang Dia': menggunakan cover orisinal (`/books/wattpad_tentang_dia.png`).
+      - 'Secangkir Kopi Sebelum Mati': menggunakan cover orisinal (`/books/wattpad_secangkir_kopi_sebelum_mati.png`).
+    - **Kepatuhan Desain**: Format gambar buku proporsional (`aspect-[2/3]`), sudut melengkung `rounded-xl`, border 1px solid, flat tanpa efek bayangan (`DESIGN.md`), dan mematuhi aturan mutlak `ai-anti-patterns.md`.
