@@ -1,7 +1,9 @@
 import React from 'react';
 import {
   CheckCircle2,
+  ArrowUpRight,
 } from 'lucide-react';
+import { SiTiktok, SiYoutube } from 'react-icons/si';
 
 export const ContentPortfolio: React.FC = () => {
   const contentProjects = [
@@ -136,6 +138,33 @@ export const ContentPortfolio: React.FC = () => {
             </div>
           );
         })}
+      </div>
+
+      {/* Video / Creative Action Buttons */}
+      <div className="pt-8 sm:pt-12 text-center flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        {/* TikTok Profile */}
+        <a
+          href="https://www.tiktok.com/@setphenhawkin"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-4 rounded-[50px] bg-[#2c2e2a] text-[#ffffff] hover:bg-[#000000] hover:text-[#25f4ee] font-sans font-bold text-sm sm:text-base tracking-wide transition-all duration-300 active:scale-95 cursor-pointer select-none group border border-transparent hover:border-[#fe2c55]/40"
+        >
+          <SiTiktok size={20} className="shrink-0 text-[#ffffff] group-hover:text-[#25f4ee] transition-colors" />
+          <span>Profile TikTok</span>
+          <ArrowUpRight size={17} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+        </a>
+
+        {/* YouTube Channel */}
+        <a
+          href="https://www.youtube.com/@gimanajadinyaid"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-4 rounded-[50px] bg-[#2c2e2a] text-[#ffffff] hover:bg-[#ff0000] hover:text-[#ffffff] font-sans font-bold text-sm sm:text-base tracking-wide transition-all duration-300 active:scale-95 cursor-pointer select-none group border border-transparent hover:border-[#ff0000]/40"
+        >
+          <SiYoutube size={22} className="shrink-0 text-[#ff0000] group-hover:text-[#ffffff] transition-colors" />
+          <span>Buka YouTube</span>
+          <ArrowUpRight size={17} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+        </a>
       </div>
     </div>
   );

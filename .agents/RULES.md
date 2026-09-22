@@ -440,3 +440,11 @@ Acuan utama dan mutlak selalu benar.
       - Teks label wajib berwarna putih (`text-white`) dengan font sans-serif berbobot tegas (`font-sans font-bold text-xs sm:text-sm tracking-wide`).
       - Ikon di dalam kapsul mempertahankan aksen khasnya (`#8ed462` untuk Buku, `#ff6122` untuk Wattpad) dengan ukuran proporsional.
     - **Pembersihan Monospace Global**: Menghapus seluruh kelas `font-mono` dari seluruh komponen website (`LiteraryWorks.tsx`, `GithubOverview.tsx`, `PortfolioGrid.tsx`, `Header.tsx`, `SkillsCharts.tsx`).
+109. **Penambahan Tombol Profil TikTok pada Halaman Portofolio Konten Kreator & Multimedia (`ContentPortfolio.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'di halaman kategori portofolio konten kreator & multi media tambahkan di bawah tombol untuk membuka tiktik. Profile TikTok dg logo resmi tiktok https://www.tiktok.com/@setphenhawkin'.
+    - **Implementasi**: Menambahkan tombol aksi kapsul elegan di bagian bawah grid proyek konten dengan label 'Profile TikTok', logo resmi TikTok (`SiTiktok`), tautan `https://www.tiktok.com/@setphenhawkin`, serta atribut keamanan `target="_blank"` dan `rel="noopener noreferrer"`.
+    - **Kepatuhan Desain**: Format kapsul (`rounded-[50px]`/`rounded-full`), warna kontras solid aksen gelap `#2c2e2a` teks putih, flat tanpa bayangan (`DESIGN.md`), font sans-serif (`font-sans` sesuai Aturan 108), dan bebas badge/pill terlarang (`ai-anti-patterns.md`).
+110. **Penambahan Tombol Channel YouTube pada Halaman Portofolio Konten Kreator & Multimedia (`ContentPortfolio.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'di halaman ini juga tambahkan tombol lagi untuk membuka youtube https://www.youtube.com/@gimanajadinyaid'.
+    - **Implementasi**: Menambahkan tombol aksi kapsul YouTube berdampingan rapi dengan tombol TikTok di bagian bawah grid proyek konten dengan label 'Channel YouTube', logo resmi YouTube (`SiYoutube`), tautan `https://www.youtube.com/@gimanajadinyaid`, serta atribut keamanan `target="_blank"` dan `rel="noopener noreferrer"`.
+    - **Kepatuhan Desain**: Format kapsul (`rounded-[50px]`/`rounded-full`), warna kontras solid aksen gelap `#2c2e2a` teks putih dengan aksen hover warna resmi YouTube (`#ff0000`), flat tanpa bayangan (`DESIGN.md`), font sans-serif (`font-sans` sesuai Aturan 108), dan bebas badge/pill terlarang (`ai-anti-patterns.md`).
