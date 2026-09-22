@@ -5,7 +5,9 @@ import {
   Layers,
   BookOpen,
   CheckCircle2,
+  ArrowUpRight,
 } from 'lucide-react';
+import { SiDribbble } from 'react-icons/si';
 
 export const DesignPortfolio: React.FC = () => {
   const designProjects = [
@@ -148,6 +150,20 @@ export const DesignPortfolio: React.FC = () => {
             </div>
           );
         })}
+      </div>
+
+      {/* Dribbble Portfolio Action Button */}
+      <div className="pt-6 sm:pt-8 text-center flex flex-col items-center justify-center">
+        <a
+          href="https://dribbble.com/fatihfarhat"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-4 rounded-[50px] bg-[#2c2e2a] text-[#ffffff] hover:bg-[#ea4c89] hover:text-[#ffffff] font-bold text-sm sm:text-base tracking-wide transition-all duration-300 active:scale-95 cursor-pointer select-none group"
+        >
+          <SiDribbble size={20} className="shrink-0 text-[#ea4c89] group-hover:text-[#ffffff] transition-colors" />
+          <span>Buka Dribbble</span>
+          <ArrowUpRight size={17} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+        </a>
       </div>
     </div>
   );

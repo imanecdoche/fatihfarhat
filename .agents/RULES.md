@@ -383,3 +383,7 @@ Acuan utama dan mutlak selalu benar.
     - **Instruksi Pengguna**: Menghapus baris data NPWP pada kartu identitas di halaman Tentang Saya untuk menyempurnakan privasi data pribadi.
     - **Penyelarasan Layout**: Baris NPWP dihapus sehingga baris data diri diakhiri dengan data Golongan Darah secara bersih dan rapi.
     - **Deploy GitHub**: Melakukan build test, staging, commit dengan Conventional Commits, dan langsung push ke repositori GitHub origin/main.
+98. **Penambahan Tombol Profil Dribbble pada Portofolio Desain (`DesignPortfolio.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: Pada bagian Portofolio > Portofolio Desain Grafis & UI/UX, tambahkan tombol di bawah untuk menuju ke Dribbble dengan ikon Dribbble (`SiDribbble`), tautan `https://dribbble.com/fatihfarhat`, dan label 'Buka Dribbble'.
+    - **Desain & Aksesibilitas**: Tombol menggunakan format kapsul elegan tanpa bayangan (`DESIGN.md`), transisi hover halus, `target="_blank"`, dan `rel="noopener noreferrer"`.
+    - **Kepatuhan ai-anti-patterns**: Tidak menambahkan elemen badge/pill yang dilarang.
