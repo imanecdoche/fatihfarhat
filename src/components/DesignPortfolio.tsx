@@ -29,6 +29,7 @@ interface DeliverableItem {
 interface ClientInfo {
   name: string;
   role: string;
+  region: string;
   projectRole: string;
   workType: string;
   tools: string;
@@ -56,6 +57,7 @@ const projectsData: ProjectData[] = [
     client: {
       name: 'Syailendra Adi Sapta',
       role: 'Founder of Indonesia Contra Terror',
+      region: 'Indonesia',
       projectRole: 'UI/UX Designer',
       workType: 'Interactive Web Prototype',
       tools: 'Figma • Web Architecture',
@@ -158,6 +160,7 @@ const projectsData: ProjectData[] = [
     client: {
       name: 'Taufik Indra Kusuma',
       role: 'Theraphist',
+      region: 'Indonesia',
       projectRole: 'UI/UX Designer',
       workType: 'Interactive Web Prototype',
       tools: 'Figma • Holistic UI System',
@@ -250,6 +253,212 @@ const projectsData: ProjectData[] = [
       },
     ],
   },
+  {
+    id: 'afroturk-expo',
+    badge: 'INTERNATIONAL B2B EXPO & BRAND IDENTITY',
+    title: 'AfroTurk Expo 2026 — Türkiye-Africa Business Gateway',
+    tagline: 'Strategic Dialogue for Economic Cooperation between Turkey and East Africa',
+    description:
+      'Perancangan identitas brand dan materi publikasi resmi berskala internasional untuk AFROTURK EXPO 2026 di Nairobi, Kenya. Menghubungkan manufaktur, eksportir, dan investor Turki dengan pasar potensial Afrika Timur melalui brosur lipat tiga (trifold) 6-panel komprehensif, sampul buku panduan strategis bilateral, infografis agenda B2B matchmaking 4 hari, serta analisis makroekonomi gerbang logistik Kenya.',
+    client: {
+      name: 'Yussuf Ahmeed',
+      role: 'President of AFROTURK & Trade Convener',
+      region: 'Turkey',
+      projectRole: 'Graphic & Brand Identity Designer',
+      workType: 'Comprehensive Expo Brochure & Strategic Booklet',
+      tools: 'Figma • Illustrator • Print Editorial System',
+    },
+    screens: [
+      {
+        id: 'main-brochure',
+        name: 'Brosur Utama Trifold Expo',
+        badgeTitle: 'COMPREHENSIVE 6-PANEL TRIFOLD BROCHURE',
+        headline: 'AfroTurk Expo Nairobi 2026 — Türkiye-Africa Business Gateway',
+        subtitle: 'Materi Promosi Resmi, Nilai Strategis Kenya & Alur Partisipasi B2B',
+        image: '/portfolio/afroturk/main_brochure.png',
+        overview:
+          'Brosur lipat tiga (trifold) 6-panel komprehensif yang dirancang untuk menarik eksportir, manufaktur Turki, dan investor internasional. Menyajikan analisis "Why Kenya & Why AfroTurk Expo", proposisi nilai "What You Gain", diferensiasi kategori partisipasi (Sponsors, Exhibitors, Investors), serta kontak kantor resmi di Istanbul dan Nairobi.',
+        keyModules: [
+          'Arsitektur Nilai Strategis: Modul Why Kenya? dan Why AfroTurk Expo? dengan infografis konektivitas logistik.',
+          'Kategori Partisipasi Terstruktur: Alur khusus bagi Sponsors (visibilitas brand), Exhibitors (showcase produk), dan Investors (market reach).',
+          'Manfaat Partisipasi B2B: Direct access ke manufaktur, verified business connections, dan distribusi franchise.',
+          'Informasi Kontak Multinasional: Alamat kantor Istanbul (Pendik) dan Nairobi (Trance Towers) dengan QR Code verifikasi.',
+        ],
+        technicalDetails: [
+          'Palet Visual Korporat: Kombinasi hijau botol berwibawa, merah Turki, dan aksen emas elegan untuk citra kredibel.',
+          'Tipografi Hirarkis: Tipografi sans-serif modern dipadukan dengan aksen display bold untuk keterbacaan optimal saat dicetak.',
+          'Optimalisasi Format Cetak: Dirancang dengan bleed presisi, pembagian lipatan 3-kolom simetris, dan densitas grafis tinggi.',
+        ],
+      },
+      {
+        id: 'booklet-cover',
+        name: 'Sampul Booklet Strategis',
+        badgeTitle: 'OFFICIAL STRATEGIC DIALOGUE BOOKLET',
+        headline: 'AfroTurk Expo 2026 Strategic Dialogue Booklet Cover',
+        subtitle: 'Sampul Publikasi Resmi Kerjasama Ekonomi Bilateral Turki - Afrika Timur',
+        image: '/portfolio/afroturk/booklet_cover.png',
+        overview:
+          'Perancangan sampul buku panduan resmi (booklet) bilateral AfroTurk Expo 2026. Menampilkan cityscape megah Nairobi berlatar langit senja keemasan dengan perpaduan logo simbolik jabat tangan bendera Turki dan benua Afrika, merepresentasikan kemitraan ekonomi masa depan yang kokoh.',
+        keyModules: [
+          'Identitas Visual Simbolik: Logo AfroTurk Expo dengan elemen jabat tangan persaudaraan benua Afrika dan bulan sabit Turki.',
+          'Fotografi Lanskap Kota: Siluet gedung pencakar langit Nairobi sebagai pusat inovasi dan keuangan Afrika Timur.',
+          'Tipografi Sampul Berwibawa: Judul AfroTurk Expo dalam display bold kontras tinggi di atas pita warna marun korporat.',
+          'Atribusi Acara Resmi: Subjudul Strategic Dialogue for Economic Cooperation between Turkey and East Africa.',
+        ],
+        technicalDetails: [
+          'Komposisi Simetris: Pembagian vertikal seimbang antara fotografi arsitektur kota, zona judul, dan metadata institusional.',
+          'Gradasi Warna Hangat: Transisi keemasan lembut yang menyatu elegan dengan bidang warna marun dan krem ivory.',
+          'Standar Editorial Internasional: Tata letak ramah cetak untuk publikasi diplomatik dan bisnis tingkat tinggi.',
+        ],
+      },
+      {
+        id: 'program-overview',
+        name: 'Agenda & Program Acara',
+        badgeTitle: '4-DAY EVENT PROGRAM & B2B MATCHMAKING',
+        headline: 'Event Program Overview — 4-Day High-Impact Schedule',
+        subtitle: 'Jadwal Pameran, Forum Investasi Bilateral & Pengalaman Safari Nairobi',
+        image: '/portfolio/afroturk/program_overview.png',
+        overview:
+          'Struktur jadwal pelaksanaan acara 4 hari penuh. Merinci fase pembukaan (Opening Ceremony), sesi B2B Matchmaking sektoral terkurasi, forum penandatanganan memorandum investasi (Investment & Partnerships), hingga program pengalaman safari di Nairobi National Park.',
+        keyModules: [
+          'Timeline 4 Hari Terstruktur: Pemetaan harian Day 1 (Opening), Day 2 (B2B Matchmaking), Day 3 (Investment), Day 4 (Safari).',
+          '3 Pilar Inti Pameran: Exhibition showcase, pre-scheduled targeted B2B meetings, dan peluang ekspansi pasar.',
+          'Highlight Safari Program: Kunjungan eksklusif Nairobi National Park dan Giraffe Centre untuk networking informal di alam.',
+          'Slogan Resmi Kampanye: Slogan #BridgeToProsperity sebagai jembatan kemitraan jangka panjang.',
+        ],
+        technicalDetails: [
+          'Sistem Grid Kartu Waktu: Penataan kotak harian dengan ikonografi fungsional dan palet warna status terarah.',
+          'Keterbacaan Informasi: Pembagian hierarki hari 1-3 (Expo/B2B) dan hari 4 (Safari) menggunakan kontras warna tegas.',
+          'Navigasi Visual Bersih: Penggunaan garis alur penanda waktu dan ruang kosong proporsional untuk kenyamanan membaca delegasi.',
+        ],
+      },
+      {
+        id: 'why-kenya',
+        name: 'Gerbang Regional Kenya',
+        badgeTitle: 'MACROECONOMIC & LOGISTICS GATEWAY INFOGRAPHIC',
+        headline: 'Why Kenya & Nairobi — The Regional Gateway & Business Capital',
+        subtitle: 'Infografis Konektivitas Logistik Pelabuhan Mombasa, Ekosistem Teknologi & Bebas Bea COMESA',
+        image: '/portfolio/afroturk/why_kenya.png',
+        overview:
+          'Halaman infografis data makroekonomi yang menjelaskan signifikansi Kenya sebagai gerbang utama Afrika Timur (akses 300 juta konsumen regional via COMESA & EAC) dan Nairobi sebagai ibukota bisnis dengan konektivitas udara internasional Jomo Kenyatta Airport.',
+        keyModules: [
+          'Kenya The Regional Gateway: Konektivitas Pelabuhan Mombasa, perdagangan bebas bea, dan bahasa resmi Inggris.',
+          'Nairobi The Business Capital: Ekosistem inovasi teknologi "Silicon Savannah", kantor pusat regional 100+ multinasional, dan hub penerbangan 50+ destinasi.',
+          'Hero Panorama Skyline: Visual lanskap kota Nairobi bersinar dalam pencahayaan matahari terbenam alami.',
+          'Data Keunggulan Pasar: Panduan ringkas bagi delegasi manufaktur Turki untuk ekspansi bisnis lintas negara.',
+        ],
+        technicalDetails: [
+          'Tata Letak Infografis Dua Kolom: Perbandingan komprehensif antara keunggulan infrastruktur negara dan fasilitas ibukota.',
+          'Ikonografi Vektor Khusus: Ikon representasi kapal kargo, jaringan global, regulasi hukum, teknologi, gedung, dan penerbangan.',
+          'Desain Editorial Ringkas: Penyusunan kutipan ringkasan berbingkai halus di bagian bawah halaman.',
+        ],
+      },
+    ],
+    deliverables: [
+      {
+        title: 'Riset Pasar Bilateral Turki-Afrika',
+        description:
+          'Pemetaan komprehensif kebutuhan manufaktur Turki dan peluang ekspansi ke pasar Afrika Timur.',
+      },
+      {
+        title: 'Desain Trifold Brosur 6-Panel',
+        description:
+          'Tata letak publikasi promosi cetak resolusi tinggi dengan arsitektur pesan persuasif B2B.',
+      },
+      {
+        title: 'Identitas & Desain Sampul Booklet',
+        description:
+          'Perancangan sampul buku panduan strategis bilateral dengan integrasi visual landmark Nairobi.',
+      },
+      {
+        title: 'Infografis Program & Agenda 4 Hari',
+        description:
+          'Visualisasi jadwal pameran, alur B2B matchmaking, dan program networking safari terstruktur.',
+      },
+    ],
+  },
+  {
+    id: 'uihm-campaign',
+    badge: 'INSTITUTIONAL CAMPAIGN & CULTURAL EDITORIAL',
+    title: 'UIHM Institutional & Cultural Festival Campaign',
+    tagline: 'Global Brotherhood, Memorial Forests in 50 Countries & Cultural Art Festival in Ankara',
+    description:
+      'Perancangan materi kampanye visual institusional untuk UİHM (Uluslararası İmam Hatip Mezunları ve Mensupları Derneği) di Turki. Mencakup poster resmi festival budaya dan seni antar-bangsa di Beştepe Millet Kongre ve Kültür Merkezi Ankara, serta brosur lipat tiga kampanye global penanaman pohon memorial "Ümmetin Ağacı" (Pohon Umat) di 50 negara dunia.',
+    client: {
+      name: 'Abdulvahab',
+      role: 'Representative of UIHM Derneği',
+      region: 'Turkey',
+      projectRole: 'Graphic & Editorial Designer',
+      workType: 'Cultural Campaign Posters & Memorial Forest Trifold Brochure',
+      tools: 'Photoshop • Illustrator • Editorial Layout System',
+    },
+    screens: [
+      {
+        id: 'festival-poster',
+        name: 'Poster Festival Budaya Ankara',
+        badgeTitle: 'OFFICIAL CULTURAL FESTIVAL POSTER (ANKARA)',
+        headline: 'UİHM Standıyla Festivaldeyiz — Kültür ve Sanat Festivali',
+        subtitle: 'Poster Publikasi Festival Budaya & Seni Uluslararası Sekolah Imam Hatip di Beştepe Ankara',
+        image: '/portfolio/uihm/festival_poster.png',
+        overview:
+          'Poster promosi acara berskala nasional yang diselenggarakan di Beştepe Millet Kongre ve Kültür Merkezi, Ankara pada 10 Juni. Menggambarkan persatuan santri dan pemuda antar-bangsa dengan latar siluet megah arsitektur masjid klasik Turki dan ilustrasi bibit tanaman persaudaraan.',
+        keyModules: [
+          'Headline Tipografis Bold: Tipografi display berkarakter tegas "UİHM Standıyla Festivaldeyiz".',
+          'Ilustrasi Karakter Pemuda: Visualisasi 5 pemuda merangkul bahu bersatu dengan latar lanskap kota Ankara.',
+          'Detail Waktu & Lokasi Terpadu: Tanggal 10 Haziran dan lokasi prestisius Beştepe Millet Kongre ve Kültür Merkezi.',
+          'Branding Institusi Resmi: Logo UİHM di bagian atas dan kanal komunikasi resmi (+90 544 159 10 93 & uihmbirlik.org.tr).',
+        ],
+        technicalDetails: [
+          'Komposisi Ilustratif Realistis: Perpaduan teknik lukisan digital bernuansa hangat dengan latar kubah masjid bersejarah.',
+          'Palet Warna Institusional: Warna biru malam pekat, merah marun Turki, dan aksen emas lembut pada ornamen pembagi.',
+          'Penataan Informasi Hierarkis: Pembagian zona header judul, visual utama persaudaraan, dan footer kontak terarah.',
+        ],
+      },
+      {
+        id: 'ummetin-agaci',
+        name: 'Brosur Lipat Tiga Ümmetin Ağacı',
+        badgeTitle: 'MEMORIAL FOREST GLOBAL CAMPAIGN BROCHURE',
+        headline: 'Ümmetin Ağacı — 50 Ülkede Aynı Niyet, Bir Fidan Bir Dua Bir Kardeşlik',
+        subtitle: 'Brosur Trifold Kampanye Hutan Peringatan & Gerakan Kepedulian Lingkungan di 50 Negara',
+        image: '/portfolio/uihm/ummetin_agaci_brochure.png',
+        overview:
+          'Brosur lipat tiga komprehensif kampanye penanaman pohon "Ümmetin Ağacı" yang digagas UİHM di 50 negara dunia pada hari Arafah. Menampilkan filosofi Hatıra Ormanları ("Kökleri Kardeşlikte, Dalları Gelecekte"), visual bola dunia bersemi bibit hijau, serta alur ajakan partisipasi donasi fidan berkelanjutan.',
+        keyModules: [
+          'Tema Sentral 50 Ülkede Aynı Niyet: Desain tipografi angka "50" bertekstur peta dunia yang menonjol.',
+          'Filosofi Hatıra Ormanları: Papan kayu artistik bertuliskan "Kökleri Kardeşlikte, Dalları Gelecekte".',
+          'Modul Tanya-Jawab "Ümmetin Ağacı Nedir?": Edukasi 5 dimensi gerakan (Bir Ülkeye, Bir Mezuna, Bir Duaya, Bir Hatıraya, Ortak Geleceğe).',
+          'Alasan Bergabung "Neden Ümmetin Ağacı?": Daftar 5 komitmen kepedulian lingkungan dan persaudaraan lintas generasi.',
+        ],
+        technicalDetails: [
+          'Visual Metaphor Menawan: Ilustrasi bibit pohon yang tumbuh subur menembus bola dunia marun mengkilap.',
+          'Desain Trifold 6-Panel Terpadu: Sinkronisasi visual antara halaman depan, lipatan tengah, dan halaman belakang.',
+          'Harmoni Warna Bumi & Spiritual: Perpaduan warna marun institusi, hijau daun alami, dan warna tanah hangat.',
+        ],
+      },
+    ],
+    deliverables: [
+      {
+        title: 'Konsep Kampanye Budaya & Lingkungan',
+        description:
+          'Perumusan strategi komunikasi visual untuk penguatan persaudaraan pemuda antar-bangsa.',
+      },
+      {
+        title: 'Poster Acara Beştepe Millet Kongresi',
+        description:
+          'Desain poster publikasi seni dan budaya resmi beresolusi tinggi dengan ilustrasi digital megah.',
+      },
+      {
+        title: 'Desain Trifold Brosur 50 Negara',
+        description:
+          'Brosur lipat tiga gerakan penanaman pohon di 50 negara dengan metafora bola dunia bersemi.',
+      },
+      {
+        title: 'Tipografi & Infografis Edukasi',
+        description:
+          'Struktur tata letak pesan edukasi Hatıra Ormanları dengan tipografi terstandarisasi.',
+      },
+    ],
+  },
 ];
 
 interface ProjectCardProps {
@@ -262,6 +471,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
 
   const currentScreen =
     project.screens.find((s) => s.id === activeScreenId) || project.screens[0];
+
+  const gridColsClass =
+    project.screens.length === 2
+      ? 'grid-cols-2'
+      : project.screens.length === 4
+      ? 'grid-cols-2 sm:grid-cols-4'
+      : 'grid-cols-3';
 
   return (
     <div className="bg-[#ffffff] rounded-[28px] sm:rounded-[36px] p-6 sm:p-10 select-none">
@@ -292,6 +508,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
             <p className="text-xs font-bold text-[#2c2e2a]/70">{project.client.role}</p>
           </div>
           <div className="mt-4 pt-3 border-t border-[#2c2e2a]/10 space-y-1 text-xs">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-[#2c2e2a]/60">Wilayah / Region:</span>
+              <span className="font-bold text-[#2c2e2a]">{project.client.region}</span>
+            </div>
             <div className="flex items-center justify-between">
               <span className="font-bold text-[#2c2e2a]/60">Peran:</span>
               <span className="font-bold text-[#2c2e2a]">{project.client.projectRole}</span>
@@ -335,7 +555,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
             </div>
 
             {/* Quick Screen Selector Thumbnails */}
-            <div className="grid grid-cols-3 gap-3">
+            <div className={`grid ${gridColsClass} gap-3`}>
               {project.screens.map((screen) => {
                 const isSelected = activeScreenId === screen.id;
                 return (
@@ -481,7 +701,7 @@ export const DesignPortfolio: React.FC = () => {
           Portofolio Desain Grafis & UI/UX
         </h2>
         <p className="mt-3 text-sm sm:text-base text-[#2c2e2a]/75 leading-relaxed">
-          Koleksi proyek perancangan prototipe web antarmuka pengguna interaktif, sistem penanganan krisis kemanusiaan komprehensif, dan arsitektur desain layanan kesehatan holistik terpadu.
+          Koleksi proyek perancangan prototipe web antarmuka pengguna interaktif, sistem penanganan krisis kemanusiaan komprehensif, arsitektur layanan kesehatan holistik, serta publikasi kampanye B2B dan institusional internasional di kawasan Turki.
         </p>
       </div>
 

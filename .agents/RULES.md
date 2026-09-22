@@ -596,4 +596,33 @@ Acuan utama dan mutlak selalu benar.
       - **Unboxed Fitur Utama & Modul Halaman**: Menghapus kontainer box, background, dan border dari section `Fitur Utama & Modul Halaman`, menyelaraskannya dengan gaya tipografi editorial bersih.
       - **Peniadaan Stroke pada Box KLIEN & ATRIBUSI**: Menghapus kelas `border border-[#2c2e2a]/10` dari kontainer boks `KLIEN & ATRIBUSI` agar tampil flat dan menyatu harmonis tanpa outline stroke.
     - **Kepatuhan Desain Mutlak**: Menjaga estetika flat design tanpa bayangan (`DESIGN.md`), font sans-serif biasa (`Aturan 108`), bebas outline/stroke pada elemen berlatar putih (`Aturan 117`), dan pembatasan komponen sesuai instruksi (`ai-anti-patterns.md`).
+125. **Penambahan Dua Proyek Desain Kawasan Turki: AfroTurk & UIHM (`DesignPortfolio.tsx` & `PortfolioCategories.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: '/media/fatihfarhat/New Volume1/FATIH DATA/Portofolios/UI UX/UIHM and AfroTurk tambahkan 2 projek ini, Region: Turkey. AfroTurk, klien: Yussuf Ahmeed. UIHM, klien: Abdulvahab'.
+    - **Proyek 1 — AfroTurk Expo Nairobi 2026 (Türkiye-Africa Business Gateway)**:
+      - **Klien & Wilayah**: Yussuf Ahmeed (President of AFROTURK & Trade Convener), Region: Turkey.
+      - **Peran**: Graphic & Brand Identity Designer.
+      - **Tipe Karya**: Comprehensive Expo Brochure & Strategic Booklet.
+      - **Perangkat**: Figma • Illustrator • Print Editorial System.
+      - **Aset & Layar Terpadu (`/portfolio/afroturk/`)**:
+        1. *Brosur Utama Trifold Expo* (`main_brochure.png`): Brosur lipat tiga 6-panel resolusi tinggi memuat analisis Why Kenya?, Why AfroTurk Expo?, What You Gain, kategori Sponsors/Exhibitors/Investors, serta kontak kantor Istanbul (Pendik) dan Nairobi (Trance Towers).
+        2. *Sampul Booklet Strategis* (`booklet_cover.png`): Sampul buku panduan resmi bilateral dengan skyline megah Nairobi berlatar langit senja keemasan dan logo persaudaraan Turki-Afrika.
+        3. *Agenda & Program Acara* (`program_overview.png`): Pemetaan timeline pameran 4 hari (Day 1-3 Expo & B2B Matchmaking, Day 4 Nairobi Safari Experience).
+        4. *Gerbang Regional Kenya* (`why_kenya.png`): Infografis makroekonomi konektivitas logistik Pelabuhan Mombasa, ekosistem teknologi Silicon Savannah, dan bebas bea COMESA.
+    - **Proyek 2 — UIHM Institutional & Cultural Festival Campaign**:
+      - **Klien & Wilayah**: Abdulvahab (Representative of UIHM Derneği), Region: Turkey.
+      - **Peran**: Graphic & Editorial Designer.
+      - **Tipe Karya**: Cultural Campaign Posters & Memorial Forest Trifold Brochure.
+      - **Perangkat**: Photoshop • Illustrator • Editorial Layout System.
+      - **Aset & Layar Terpadu (`/portfolio/uihm/`)**:
+        1. *Poster Festival Budaya Ankara* (`festival_poster.png`): Poster resmi Uluslararası Anadolu İmam Hatip Liseleri Kültür ve Sanat Festivali pada 10 Juni di Beştepe Millet Kongre ve Kültür Merkezi, Ankara, menampilkan ilustrasi persaudaraan santri dengan latar masjid bersejarah Turki.
+        2. *Brosur Lipat Tiga Ümmetin Ağacı* (`ummetin_agaci_brochure.png`): Brosur trifold kampanye penanaman pohon di 50 negara dunia pada hari Arafah, mengusung filosofi Hatıra Ormanları ('Kökleri Kardeşlikte, Dalları Gelecekte') dan metafora bola dunia bersemi bibit hijau.
+    - **Pembaruan Arsitektur & Metadata Komponen**:
+      - Penambahan field `region` pada antarmuka `ClientInfo` dan penampilan label `Wilayah / Region: Turkey` pada boks Klien & Atribusi di setiap kartu proyek.
+      - Tata letak thumbnail grid responsif dinamis (`grid-cols-2`, `sm:grid-cols-4`, atau `grid-cols-3` sesuai jumlah screenshot proyek).
+      - Pembaruan daftar karya pilihan (`featuredItems`) kategori Desain Grafis & UI/UX pada `PortfolioCategories.tsx`.
+    - **Kepatuhan Desain Mutlak**:
+      - Seluruh boks berlatar putih bebas outline/stroke (`Aturan 117`).
+      - Flat design tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
+      - Tipografi antarmuka murni sans-serif biasa (`font-sans` sesuai Aturan 108).
+      - Bebas dari badge/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
 
