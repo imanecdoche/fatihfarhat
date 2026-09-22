@@ -6,10 +6,21 @@ interface HeaderProps {
   currentPage?: 'home' | 'about' | 'portfolio' | 'services' | 'contact';
   onNavigate?: (page: 'home' | 'about' | 'portfolio' | 'services' | 'contact') => void;
   isTimelineSticky?: boolean;
+  isMenuOpen?: boolean;
+  onToggleMenu?: (open: boolean) => void;
+  externalOrigin?: { x: number; y: number } | null;
 }
 
-export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate, isTimelineSticky = false }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export const Header: React.FC<HeaderProps> = ({
+  currentPage = 'home',
+  onNavigate,
+  isTimelineSticky = false,
+  isMenuOpen: propIsMenuOpen,
+  onToggleMenu,
+  externalOrigin,
+}) => {
+  const [internalIsMenuOpen, setInternalIsMenuOpen] = useState(false);
+  const isMenuOpen = propIsMenuOpen !== undefined ? propIsMenuOpen : internalIsMenuOpen;
   const [isVisible, setIsVisible] = useState(true);
   const [desktopShift, setDesktopShift] = useState(0);
   const [origin, setOrigin] = useState<{ x: number; y: number; maxScale: number }>({
@@ -98,8 +109,29 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
     return () => window.removeEventListener('resize', handleResize);
   }, [updateOriginAndShift]);
 
+  // Synchronize when menu is opened externally (e.g., from Hero explore button)
+  useEffect(() => {
+    if (propIsMenuOpen) {
+      if (externalOrigin) {
+        const { x, y } = externalOrigin;
+        const maxDistance = Math.hypot(
+          Math.max(x, typeof window !== 'undefined' ? window.innerWidth - x : 1000),
+          Math.max(y, typeof window !== 'undefined' ? window.innerHeight - y : 1000)
+        );
+        const maxScale = Math.ceil((maxDistance / 30) * 1.25);
+        setOrigin({ x, y, maxScale });
+        setDesktopShift(computeDesktopShift());
+      } else {
+        updateOriginAndShift(typeof window !== 'undefined' && window.innerWidth < 640);
+      }
+    }
+  }, [propIsMenuOpen, externalOrigin, computeDesktopShift, updateOriginAndShift]);
+
   const closeMenu = () => {
-    setIsMenuOpen(false);
+    setInternalIsMenuOpen(false);
+    if (onToggleMenu) {
+      onToggleMenu(false);
+    }
   };
 
   const toggleMenu = (isMobile = false) => {
@@ -107,7 +139,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
       closeMenu();
     } else {
       updateOriginAndShift(isMobile);
-      setIsMenuOpen(true);
+      setInternalIsMenuOpen(true);
+      if (onToggleMenu) {
+        onToggleMenu(true);
+      }
     }
   };
 

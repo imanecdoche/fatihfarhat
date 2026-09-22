@@ -628,9 +628,17 @@ Acuan utama dan mutlak selalu benar.
       - Kolom kanan (`1fr`) rata kiri (`text-left`) dengan spasi baris `leading-snug`, memastikan teks nilai yang membungkus (wrap) tetap rapi dan teratur di jalurnya sendiri.
       - Memperlebar boks Klien & Atribusi secara proporsional dari `lg:w-[320px]` ke `w-full lg:w-[340px] shrink-0`.
       - Menyederhanakan dan merapikan string atribut metadata (menghilangkan suffix berulang dan menjaga keterbacaan).
+127. **Interaktivitas Tombol JELAJAHI Membuka Menu Navigasi Fullscreen (`Hero.tsx`, `Header.tsx`, `App.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'ketika klik tombol JELAJAH di home akan membuka menu ini' (dengan tangkapan layar menu navigasi fullscreen berlatar `#2c2e2a` memuat `01 HOME`, `02 TENTANG SAYA`, `03 PORTOFOLIO`, `04 KEAHLIAN & JASA`, `05 KONTAK`).
+    - **Implementasi Terpadu**:
+      - Mengubah elemen tombol `JELAJAHI` pada `Hero.tsx` dari tag anchor statis (`<a href="#explore">`) menjadi `<button type="button">` interaktif.
+      - Menghitung koordinat tengah tombol (`rect.left + rect.width / 2`, `rect.top + rect.height / 2`) saat diklik dan meneruskannya via `onExplore({ x, y })`.
+      - Mengangkat dan menyinkronkan state `isMenuOpen` dan `menuOrigin` di `App.tsx` ke komponen `Header.tsx`.
+      - Pada `Header.tsx`, saat dipicu secara eksternal oleh tombol `JELAJAHI`, origin ekspansi lingkaran hitam (`#2c2e2a`) dihitung secara dinamis dari titik tombol tersebut (`Math.hypot` ke batas layar dengan `maxScale`), menciptakan efek radial expanding circle yang menyebar langsung dari tombol yang diklik hingga menutupi seluruh layar.
+      - Teks brand `FATIH FARHAT` otomatis bergeser sejajar menu di desktop, dan tombol menu di pojok kanan atas bertransformasi menjadi ikon silang putih (×) untuk menutup menu.
+      - Menutup menu via tombol silang (×), tombol Escape, maupun salah satu link menu akan menyusutkan kembali lingkaran dan mengembalikan tampilan normal.
     - **Kepatuhan Desain Mutlak**:
-      - Bebas outline/stroke (`Aturan 117` & `Aturan 124`).
-      - Desain flat murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
-      - Tipografi sans-serif biasa (`font-sans` sesuai `Aturan 108`).
-      - Bebas badge/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
+      - Estetika flat modern tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
+      - Tipografi Nunito Black dan font antarmuka sans-serif (`Aturan 108`).
+      - Dilarang membuat badge/tag/pill tanpa perintah eksplisit (`ai-anti-patterns.md`).
 

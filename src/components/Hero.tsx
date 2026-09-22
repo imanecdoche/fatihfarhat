@@ -1,7 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  onExplore?: (origin?: { x: number; y: number }) => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onExplore }) => {
   return (
     <section
       id="home"
@@ -111,12 +115,21 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="mt-12 sm:mt-14 md:mt-16"
         >
-          <a
-            href="#explore"
-            className="inline-flex items-center justify-center px-9 sm:px-12 py-4 sm:py-4.5 rounded-[50px] bg-[#ffffff] text-[#2c2e2a] font-black text-[15px] sm:text-[17px] tracking-[0.12em] uppercase transition-all duration-300 hover:bg-[#2c2e2a] hover:text-[#ffffff] active:scale-95 cursor-pointer"
+          <button
+            type="button"
+            onClick={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              if (onExplore) {
+                onExplore({
+                  x: rect.left + rect.width / 2,
+                  y: rect.top + rect.height / 2,
+                });
+              }
+            }}
+            className="inline-flex items-center justify-center px-9 sm:px-12 py-4 sm:py-4.5 rounded-[50px] bg-[#ffffff] text-[#2c2e2a] font-black text-[15px] sm:text-[17px] tracking-[0.12em] uppercase transition-all duration-300 hover:bg-[#2c2e2a] hover:text-[#ffffff] active:scale-95 cursor-pointer select-none"
           >
             JELAJAHI
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>

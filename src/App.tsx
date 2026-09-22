@@ -75,7 +75,24 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOrigin, setMenuOrigin] = useState<{ x: number; y: number } | null>(null);
+
+  const handleToggleMenu = (open: boolean) => {
+    setIsMenuOpen(open);
+    if (!open) {
+      setMenuOrigin(null);
+    }
+  };
+
+  const handleExplore = (origin?: { x: number; y: number }) => {
+    setMenuOrigin(origin || null);
+    setIsMenuOpen(true);
+  };
+
   const handleNavigate = (page: 'home' | 'about' | 'portfolio' | 'services' | 'contact') => {
+    setIsMenuOpen(false);
+    setMenuOrigin(null);
     setIsBioSticky(false);
     setIsEducationSticky(false);
     setIsExperienceSticky(false);
@@ -125,6 +142,9 @@ export const App: React.FC = () => {
         currentPage={currentPage}
         onNavigate={handleNavigate}
         isTimelineSticky={isTimelineSticky}
+        isMenuOpen={isMenuOpen}
+        onToggleMenu={handleToggleMenu}
+        externalOrigin={menuOrigin}
       />
       <main>
         <AnimatePresence mode="wait">
@@ -136,7 +156,7 @@ export const App: React.FC = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Hero />
+              <Hero onExplore={handleExplore} />
               <section className="w-full pb-10 sm:pb-20 -translate-y-[200px] sm:-translate-y-[25px] opacity-75">
                 <ScrollVelocity
                   texts={[
