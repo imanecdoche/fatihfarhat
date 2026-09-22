@@ -1,9 +1,5 @@
 import React from 'react';
 import {
-  Palette,
-  Layout,
-  Layers,
-  BookOpen,
   CheckCircle2,
   ArrowUpRight,
 } from 'lucide-react';
@@ -25,7 +21,6 @@ export const DesignPortfolio: React.FC = () => {
         'Panduan interaksi mikro dan kurva easing transisi visual.',
       ],
       tools: 'Figma • Tailwind CSS • Radix UI • Design Tokens',
-      icon: Layout,
     },
     {
       id: 'editorial-typography',
@@ -41,7 +36,6 @@ export const DesignPortfolio: React.FC = () => {
         'Layout spesifikasi percetakan format A5 & B5 standar penerbitan.',
       ],
       tools: 'Adobe InDesign • Adobe Illustrator • Typography Pairing',
-      icon: BookOpen,
     },
     {
       id: 'corporate-identity',
@@ -57,7 +51,6 @@ export const DesignPortfolio: React.FC = () => {
         'Buku panduan brand (*brand guideline manual*) komprehensif.',
       ],
       tools: 'Adobe Illustrator • Adobe Photoshop • Vector System',
-      icon: Palette,
     },
     {
       id: 'product-interface-design',
@@ -73,7 +66,6 @@ export const DesignPortfolio: React.FC = () => {
         'Desain adaptif lintas perangkat: desktop, tablet, dan smartphone.',
       ],
       tools: 'Figma • Prototyping • Design Thinking • UX Research',
-      icon: Layers,
     },
   ];
 
@@ -92,18 +84,14 @@ export const DesignPortfolio: React.FC = () => {
       {/* Grid of Design Projects */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {designProjects.map((project) => {
-          const Icon = project.icon;
           return (
             <div
               key={project.id}
               className="bg-[#ffffff] rounded-[24px] sm:rounded-[30px] border border-[#2c2e2a]/15 p-7 sm:p-9 flex flex-col justify-between"
             >
               <div>
-                {/* Header Icon + Category */}
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-[#f5f1e4] flex items-center justify-center text-[#2c2e2a]">
-                    <Icon size={22} />
-                  </div>
+                {/* Category Header */}
+                <div className="mb-4">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/50">
                     {project.category}
                   </span>

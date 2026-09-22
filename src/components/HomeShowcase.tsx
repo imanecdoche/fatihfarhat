@@ -2,15 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   ArrowUpRight,
-  Code2,
-  Layout,
-  Cpu,
   Clock,
   CheckCircle2,
-  Headphones,
-  Printer,
-  Gamepad2,
-  Tv,
 } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
 
@@ -49,7 +42,6 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
         'Aplikasi audio offline monokromatis Android dengan Jetpack Media3 & Android NDK berlatensi ultra-rendah dan 0% telemetri.',
       techStack: 'Kotlin • Jetpack Compose • Android NDK • C++',
       repoUrl: 'https://github.com/imanecdoche/voxplayer',
-      icon: Headphones,
     },
     {
       id: 'epson-l1110-driver',
@@ -59,7 +51,6 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
         'Driver user-space mandiri dan utility GUI PyQt6 untuk monitoring sisa tinta CMYK dan pemeliharaan print head printer Epson di Linux.',
       techStack: 'Python • PyQt6 • LibUSB • CUPS Backend',
       repoUrl: 'https://github.com/imanecdoche/EPSON_L1110_Printer_Driver_for_Linux',
-      icon: Printer,
     },
     {
       id: 'chess-beater',
@@ -69,7 +60,6 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
         'Overlay interaktif semi-transparan dengan engine evaluasi taktis real-time dan touch dispatch pass-through non-intrusif.',
       techStack: 'C++ • Android Overlay Service • Chess Logic',
       repoUrl: 'https://github.com/imanecdoche/chess-beater',
-      icon: Gamepad2,
     },
     {
       id: 'reprompter',
@@ -79,7 +69,6 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
         'Teleprompter cerdas adaptif yang menghitung jeda berbicara alami berdasarkan ritme frasa dan tanda baca naskah presentasi.',
       techStack: 'TypeScript • React • Next.js • Tailwind CSS',
       repoUrl: 'https://github.com/imanecdoche/RePrompter',
-      icon: Tv,
     },
   ];
 
@@ -138,31 +127,27 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
         {/* 2x2 Grid of Featured Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
           {featuredProjects.map((project) => {
-            const Icon = project.icon;
             return (
               <div
                 key={project.id}
                 className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] border border-[#2c2e2a]/15 p-6 sm:p-7 flex flex-col justify-between transition-colors hover:border-[#2c2e2a]/30 group"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#f5f1e4] flex items-center justify-center text-[#2c2e2a] group-hover:bg-[#8ed462] transition-colors">
-                      <Icon size={20} />
-                    </div>
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#2c2e2a]/50">
+                      {project.category}
+                    </span>
                     <a
                       href={project.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 text-[#2c2e2a]/50 hover:text-[#2c2e2a] transition-colors"
+                      className="p-1.5 text-[#2c2e2a]/50 hover:text-[#2c2e2a] transition-colors"
                       aria-label={`Buka repositori ${project.title}`}
                     >
-                      <SiGithub size={19} />
+                      <SiGithub size={18} />
                     </a>
                   </div>
 
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#2c2e2a]/50 block mb-1">
-                    {project.category}
-                  </span>
                   <h3 className="text-lg sm:text-xl font-black text-[#2c2e2a] tracking-tight leading-snug mb-2.5">
                     {project.title}
                   </h3>
@@ -211,9 +196,6 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
           {/* Pillar 1 */}
           <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] border border-[#2c2e2a]/15 p-6 sm:p-7 flex flex-col justify-between">
             <div>
-              <div className="w-11 h-11 rounded-xl bg-[#f5f1e4] flex items-center justify-center text-[#2c2e2a] mb-5">
-                <Code2 size={22} />
-              </div>
               <h3 className="text-lg sm:text-xl font-black text-[#2c2e2a] mb-2 tracking-tight">
                 Web & Frontend Engineering
               </h3>
@@ -229,9 +211,6 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
           {/* Pillar 2 */}
           <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] border border-[#2c2e2a]/15 p-6 sm:p-7 flex flex-col justify-between">
             <div>
-              <div className="w-11 h-11 rounded-xl bg-[#f5f1e4] flex items-center justify-center text-[#2c2e2a] mb-5">
-                <Layout size={22} />
-              </div>
               <h3 className="text-lg sm:text-xl font-black text-[#2c2e2a] mb-2 tracking-tight">
                 UI/UX & Product Design
               </h3>
@@ -247,9 +226,6 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
           {/* Pillar 3 */}
           <div className="bg-[#ffffff] rounded-[20px] sm:rounded-[26px] border border-[#2c2e2a]/15 p-6 sm:p-7 flex flex-col justify-between">
             <div>
-              <div className="w-11 h-11 rounded-xl bg-[#f5f1e4] flex items-center justify-center text-[#2c2e2a] mb-5">
-                <Cpu size={22} />
-              </div>
               <h3 className="text-lg sm:text-xl font-black text-[#2c2e2a] mb-2 tracking-tight">
                 Systems & Creative Technology
               </h3>

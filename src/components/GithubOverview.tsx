@@ -10,6 +10,33 @@ import {
   ChevronDown,
   ChevronUp,
 } from 'lucide-react';
+import {
+  SiTypescript,
+  SiCplusplus,
+  SiPython,
+  SiJavascript,
+  SiKotlin,
+} from 'react-icons/si';
+
+const getLanguageIcon = (language: string) => {
+  const lang = language.toLowerCase().trim();
+  if (lang.includes('typescript')) {
+    return <SiTypescript size={14} className="text-[#3178c6] shrink-0" />;
+  }
+  if (lang.includes('c++') || lang.includes('cpp')) {
+    return <SiCplusplus size={15} className="text-[#00599c] shrink-0" />;
+  }
+  if (lang.includes('python')) {
+    return <SiPython size={14} className="text-[#3776ab] shrink-0" />;
+  }
+  if (lang.includes('javascript')) {
+    return <SiJavascript size={14} className="text-[#f7df1e] bg-[#2c2e2a] rounded-[2px] shrink-0" />;
+  }
+  if (lang.includes('kotlin')) {
+    return <SiKotlin size={14} className="text-[#7f52ff] shrink-0" />;
+  }
+  return <Code2 size={14} className="text-[#2c2e2a]/70 shrink-0" />;
+};
 
 interface PinnedRepo {
   name: string;
@@ -501,10 +528,7 @@ export const GithubOverview: React.FC = () => {
               {/* Bottom Row: Language + Stars */}
               <div className="flex items-center justify-between pt-4 border-t border-[#2c2e2a]/8 text-xs font-bold text-[#2c2e2a]/70">
                 <div className="flex items-center gap-2">
-                  <span
-                    className="w-3 h-3 rounded-full shrink-0"
-                    style={{ backgroundColor: repo.languageColor }}
-                  />
+                  {getLanguageIcon(repo.language)}
                   <span>{repo.language}</span>
                 </div>
 

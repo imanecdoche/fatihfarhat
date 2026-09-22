@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Code2,
-  BookOpen,
-  Palette,
-  Video,
-  ArrowRight,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export type PortfolioCategoryType = 'all' | 'software' | 'writing' | 'design' | 'content';
 
@@ -18,7 +12,6 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
     {
       id: 'software' as PortfolioCategoryType,
       title: 'Software Engineering',
-      icon: Code2,
       tagline: 'Rekayasa Perangkat Lunak & Sistem',
       description:
         'Aplikasi mobile Android, low-latency audio DSP, user-space driver hardware Linux, interactive game logic overlay, dan web apps.',
@@ -33,7 +26,6 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
     {
       id: 'writing' as PortfolioCategoryType,
       title: 'Karya Tulis & Literatur',
-      icon: BookOpen,
       tagline: 'Novel Sejarah & Karya Sastra',
       description:
         'Koleksi karya sastra orisinal, novel sejarah Islam berbasis riset shahih, naskah risalah peradaban, dan eksplorasi naratif mendalam.',
@@ -48,7 +40,6 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
     {
       id: 'design' as PortfolioCategoryType,
       title: 'Desain Grafis & UI/UX',
-      icon: Palette,
       tagline: 'Antarmuka Visual & Identitas Brand',
       description:
         'Perancangan sistem desain terstruktur, wireframing teliti, tata letak editorial, corporate identity mockup, dan visual branding.',
@@ -63,7 +54,6 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
     {
       id: 'content' as PortfolioCategoryType,
       title: 'Konten Kreator & Multimedia',
-      icon: Video,
       tagline: 'Produksi Audiovisual & Media Digital',
       description:
         'Produksi video storytelling berkecepatan dinamis, motion assets, copywriting persuasif, dan strategi konten digital modern.',
@@ -92,7 +82,6 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
       {/* 2x2 Categories Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {categories.map((cat) => {
-          const Icon = cat.icon;
           return (
             <div
               key={cat.id}
@@ -109,11 +98,8 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
               aria-label={`Pilih kategori portofolio ${cat.title}`}
             >
               <div>
-                {/* Header Icon + Tagline */}
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-[#f5f1e4] flex items-center justify-center text-[#2c2e2a] group-hover:bg-[#8ed462] transition-colors">
-                    <Icon size={24} />
-                  </div>
+                {/* Header Tagline */}
+                <div className="mb-4">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/55">
                     {cat.tagline}
                   </span>

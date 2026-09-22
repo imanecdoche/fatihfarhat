@@ -190,37 +190,38 @@ export const App: React.FC = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
-              <PortfolioHero onNavigateHome={() => handleNavigate('home')} />
-              <section className="w-full pb-10 sm:pb-20 -translate-y-[135px] sm:translate-y-[25px] opacity-75 text-[#2c2e2a]">
-                <LogoLoop
-                  logos={portfolioLogos}
-                  speed={70}
-                  direction="left"
-                  logoHeight={28}
-                  gap={40}
-                  hoverSpeed={15}
-                  scaleOnHover={false}
-                  fadeOut
-                  fadeOutColor="#f5f1e4"
-                  ariaLabel="Clients and partner brands"
-                />
-              </section>
-
-              {/* Category Navigation Hub (Default View) */}
+              {/* Category Navigation Hub (Default View: includes PortfolioHero & LogoLoop) */}
               {portfolioCategory === 'all' && (
-                <PortfolioCategories
-                  onSelectCategory={(cat) => {
-                    setPortfolioCategory(cat);
-                    window.scrollTo({ top: 380, behavior: 'smooth' });
-                  }}
-                />
+                <>
+                  <PortfolioHero onNavigateHome={() => handleNavigate('home')} />
+                  <section className="w-full pb-10 sm:pb-20 -translate-y-[135px] sm:translate-y-[25px] opacity-75 text-[#2c2e2a]">
+                    <LogoLoop
+                      logos={portfolioLogos}
+                      speed={70}
+                      direction="left"
+                      logoHeight={28}
+                      gap={40}
+                      hoverSpeed={15}
+                      scaleOnHover={false}
+                      fadeOut
+                      fadeOutColor="#f5f1e4"
+                      ariaLabel="Clients and partner brands"
+                    />
+                  </section>
+                  <PortfolioCategories
+                    onSelectCategory={(cat) => {
+                      setPortfolioCategory(cat);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  />
+                </>
               )}
 
-              {/* Specific Category View with Sub-Navigation */}
+              {/* Specific Category View with Sub-Navigation (Hero & Running Logo are hidden) */}
               {portfolioCategory !== 'all' && (
-                <div className="w-full">
+                <div className="w-full pt-28 sm:pt-32 md:pt-36 pb-16">
                   {/* Category Switcher & Back Navigation Bar */}
-                  <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pt-2 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <button
                       onClick={() => {
                         setPortfolioCategory('all');
@@ -246,7 +247,7 @@ export const App: React.FC = () => {
                             key={tab.id}
                             onClick={() => {
                               setPortfolioCategory(tab.id);
-                              window.scrollTo({ top: 380, behavior: 'smooth' });
+                              window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
                             className={`px-4 py-2 rounded-full font-bold text-xs sm:text-sm transition-colors cursor-pointer shrink-0 border ${
                               isActive

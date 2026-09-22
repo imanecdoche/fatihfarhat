@@ -1,9 +1,5 @@
 import React from 'react';
 import {
-  Video,
-  Clapperboard,
-  PenTool,
-  Film,
   CheckCircle2,
 } from 'lucide-react';
 
@@ -23,7 +19,6 @@ export const ContentPortfolio: React.FC = () => {
         'Integrasi kinetic typography untuk keterbacaan tanpa suara (muted playback).',
       ],
       tools: 'DaVinci Resolve • Adobe Premiere Pro • CapCut Desktop',
-      icon: Film,
     },
     {
       id: 'tech-instructional-media',
@@ -39,7 +34,6 @@ export const ContentPortfolio: React.FC = () => {
         'Penyusunan ringkasan catatan kuliah dan repositori kode sumber pendukung.',
       ],
       tools: 'OBS Studio • Premiere Pro • Markdown Documentation • Figma',
-      icon: Clapperboard,
     },
     {
       id: 'creative-copywriting',
@@ -55,7 +49,6 @@ export const ContentPortfolio: React.FC = () => {
         'Struktur copy landing page berbasis formula pemecahan masalah (Problem-Agitate-Solve).',
       ],
       tools: 'Copywriting Frameworks • Audience Psychology • Editorial Tone Guide',
-      icon: PenTool,
     },
     {
       id: 'motion-graphics-assets',
@@ -71,7 +64,6 @@ export const ContentPortfolio: React.FC = () => {
         'Format ekspor teroptimasi dengan bobot file ringan tanpa degradasi kualitas.',
       ],
       tools: 'Adobe After Effects • Illustrator • Motion Design Principles',
-      icon: Video,
     },
   ];
 
@@ -90,18 +82,14 @@ export const ContentPortfolio: React.FC = () => {
       {/* Grid of Content Projects */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {contentProjects.map((project) => {
-          const Icon = project.icon;
           return (
             <div
               key={project.id}
               className="bg-[#ffffff] rounded-[24px] sm:rounded-[30px] border border-[#2c2e2a]/15 p-7 sm:p-9 flex flex-col justify-between"
             >
               <div>
-                {/* Header Icon + Category */}
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-[#f5f1e4] flex items-center justify-center text-[#2c2e2a]">
-                    <Icon size={22} />
-                  </div>
+                {/* Category Header */}
+                <div className="mb-4">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/50">
                     {project.category}
                   </span>

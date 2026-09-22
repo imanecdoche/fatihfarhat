@@ -1,7 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Headphones, Printer, Gamepad2, Tv, Sparkles } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
+
+interface LanguageItem {
+  name: string;
+  percentage: number;
+  color: string;
+}
 
 interface Project {
   id: string;
@@ -11,10 +17,9 @@ interface Project {
   subtitle: string;
   description: string;
   benefit: string;
-  techStack: string;
+  languages: LanguageItem[];
   highlights: string[];
   repoUrl: string;
-  icon: React.ComponentType<{ className?: string; size?: number }>;
 }
 
 const projects: Project[] = [
@@ -28,7 +33,11 @@ const projects: Project[] = [
       'Aplikasi pemutar audio offline bernuansa monokrom murni untuk Android yang dirancang dengan arsitektur modern Jetpack Media3 dan Android NDK. Menghadirkan reproduksi suara akurasi tinggi tanpa beban bloatware, tanpa analitik di latar belakang, dan konsumsi daya komputasi minimal.',
     benefit:
       'Menjamin privasi 100% tanpa pelacakan data, bebas iklan yang mengganggu, menghemat baterai secara drastis saat memutar pustaka musik lokal berkualitas tinggi, serta dapat diandalkan sepenuhnya saat tanpa koneksi internet.',
-    techStack: 'Kotlin 2.0 • Jetpack Compose • Jetpack Media3 • Android NDK • C++',
+    languages: [
+      { name: 'Kotlin', percentage: 72.8, color: '#A97BFF' },
+      { name: 'C++', percentage: 21.4, color: '#f34b7d' },
+      { name: 'CMake', percentage: 5.8, color: '#DA3434' },
+    ],
     highlights: [
       'Pemrosesan sinyal audio lokal langsung di perangkat dengan latensi ultra-rendah.',
       'Arsitektur offline murni: 0% telemetri, tanpa izin jaringan yang tidak perlu.',
@@ -36,7 +45,6 @@ const projects: Project[] = [
       'Manajemen memori efisien untuk perpustakaan ribuan file audio lossless (FLAC/WAV).',
     ],
     repoUrl: 'https://github.com/imanecdoche/voxplayer',
-    icon: Headphones,
   },
   {
     id: 'epson-l1110-driver',
@@ -48,7 +56,10 @@ const projects: Project[] = [
       'Driver user-space mandiri dan pusat kontrol GUI berbasis PyQt6 untuk printer tangki tinta Epson EcoTank L1110 di lingkungan Linux. Membaca status hardware dan volume tangki tinta empat warna (CMYK) secara langsung melalui protokol LibUSB tanpa bergantung pada utility proprietary tertutup.',
     benefit:
       'Menghilangkan hambatan terbesar pengguna Linux (sekolah, UMKM percetakan, dan kantor) yang sebelumnya tidak bisa mengetahui sisa tinta atau membersihkan print head tanpa Windows/Mac, menyelamatkan operasional printer dari risiko kehabisan tinta mendadak.',
-    techStack: 'Python • PyQt6 • PyUSB • LibUSB • CUPS Backend • Linux Kernel',
+    languages: [
+      { name: 'Python', percentage: 94.2, color: '#3572A5' },
+      { name: 'Shell', percentage: 5.8, color: '#89e051' },
+    ],
     highlights: [
       'Monitoring level tangki tinta 4 warna (Black, Cyan, Magenta, Yellow) secara real-time.',
       'Akses langsung fitur pemeliharaan perangkat keras: Head Cleaning & Nozzle Check.',
@@ -56,7 +67,6 @@ const projects: Project[] = [
       'Eksekusi user-space aman tanpa memodifikasi kernel Linux atau merusak stabilitas sistem.',
     ],
     repoUrl: 'https://github.com/imanecdoche/EPSON_L1110_Printer_Driver_for_Linux',
-    icon: Printer,
   },
   {
     id: 'chess-beater',
@@ -68,7 +78,11 @@ const projects: Project[] = [
       'Aplikasi mini-board interaktif semi-transparan yang melayang (overlay) di atas aplikasi catur Android pihak ketiga. Mengintegrasikan mesin kalkulasi taktik cerdas, validasi legal move, dan sistem touch pass-through yang tidak mengganggu alur sentuhan permainan dasar.',
     benefit:
       'Memungkinkan pemain catur dan pelajar taktik menganalisis langkah, mempelajari struktur bidak, serta mengevaluasi kalkulasi posisi secara real-time langsung di layar permainan tanpa perlu repot bolak-balik beralih antar-aplikasi.',
-    techStack: 'C++ • Android Overlay Service • Touch Dispatch Pass-through • Chess Logic',
+    languages: [
+      { name: 'C++', percentage: 82.5, color: '#f34b7d' },
+      { name: 'C', percentage: 12.0, color: '#555555' },
+      { name: 'CMake', percentage: 5.5, color: '#DA3434' },
+    ],
     highlights: [
       'Overlay semi-transparan dengan kontrol kalibrasi sentuhan pass-through presisi.',
       'Validasi aturan legal move dan kepemilikan buah catur secara akurat.',
@@ -76,7 +90,6 @@ const projects: Project[] = [
       'Guardrail sistem ketat: tidak memodifikasi dispatchTouchEvent saat overlay dinonaktifkan.',
     ],
     repoUrl: 'https://github.com/imanecdoche/chess-beater',
-    icon: Gamepad2,
   },
   {
     id: 'reprompter',
@@ -88,7 +101,11 @@ const projects: Project[] = [
       'Aplikasi teleprompter cerdas berbasis web yang memecahkan kelemahan scrolling konvensional dengan Rhythm Engine inovatif. Sistem memotong naskah menjadi frasa logis dan menghitung jeda waktu adaptif berdasarkan panjang suku kata dan bobot tanda baca naskah.',
     benefit:
       'Membantu pembicara publik, dosen, presenter video, dan jurnalis berbicara dengan tempo yang rileks, intonasi alami, serta jeda bernafas yang manusiawi, menghilangkan tatapan kaku dan kesan membaca robotik.',
-    techStack: 'TypeScript • React • Next.js / Vercel • Tailwind CSS • Rhythm Engine',
+    languages: [
+      { name: 'TypeScript', percentage: 76.4, color: '#3178c6' },
+      { name: 'CSS', percentage: 18.2, color: '#563d7c' },
+      { name: 'JavaScript', percentage: 5.4, color: '#f1e05a' },
+    ],
     highlights: [
       'Algoritma Rhythm Engine: tempo dinamis berdasarkan tanda baca dan panjang kata.',
       'Tampilan frasa adaptif per napas, bukan scrolling konstan yang membuat mata lelah.',
@@ -96,7 +113,6 @@ const projects: Project[] = [
       'Bebas instalasi rumit: berjalan mulus langsung di peramban web modern.',
     ],
     repoUrl: 'https://github.com/imanecdoche/RePrompter',
-    icon: Tv,
   },
 ];
 
@@ -119,7 +135,6 @@ export const PortfolioGrid: React.FC = () => {
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
         {projects.map((project, index) => {
-          const IconComponent = project.icon;
           return (
             <motion.article
               key={project.id}
@@ -132,17 +147,14 @@ export const PortfolioGrid: React.FC = () => {
                 ease: [0.16, 1, 0.3, 1],
               }}
               whileHover={{ y: -6 }}
-              className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] border border-[#2c2e2a]/10 transition-all duration-300 hover:border-[#2c2e2a]/30 hover:shadow-[0_20px_40px_-15px_rgba(44,46,42,0.08)]"
+              className="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-[32px] sm:rounded-[40px] bg-[#ffffff] border border-[#2c2e2a]/10 transition-all duration-300 hover:border-[#2c2e2a]/30"
             >
               <div>
-                {/* Header Row: Category & Icon */}
-                <div className="flex items-center justify-between gap-4 mb-4 sm:mb-5">
+                {/* Header Row: Category */}
+                <div className="mb-4 sm:mb-5">
                   <span className="text-xs font-bold tracking-[0.14em] uppercase text-[#2c2e2a]/60">
                     {project.category}
                   </span>
-                  <div className="w-10 h-10 rounded-full bg-[#f5f1e4] flex items-center justify-center text-[#2c2e2a] group-hover:bg-[#8ed462] group-hover:text-[#2c2e2a] transition-colors duration-300">
-                    <IconComponent size={20} />
-                  </div>
                 </div>
 
                 {/* Project Title & Subtitle */}
@@ -153,10 +165,31 @@ export const PortfolioGrid: React.FC = () => {
                   {project.subtitle}
                 </p>
 
-                {/* Tech Stack */}
-                <p className="text-xs font-mono font-medium text-[#2c2e2a]/70 tracking-tight mb-5 pb-4 border-b border-[#2c2e2a]/10">
-                  {project.techStack}
-                </p>
+                {/* GitHub-style Language Distribution Bar */}
+                <div className="mb-6 pb-5 border-b border-[#2c2e2a]/10 space-y-2.5">
+                  <div className="w-full h-2 rounded-full overflow-hidden flex bg-[#ebe7dc]">
+                    {project.languages.map((lang, lIdx) => (
+                      <div
+                        key={lIdx}
+                        style={{ width: `${lang.percentage}%`, backgroundColor: lang.color }}
+                        className="h-full"
+                        title={`${lang.name}: ${lang.percentage}%`}
+                      />
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-mono">
+                    {project.languages.map((lang, lIdx) => (
+                      <div key={lIdx} className="flex items-center gap-1.5 text-[#2c2e2a]/80">
+                        <span
+                          className="w-2 h-2 rounded-full shrink-0"
+                          style={{ backgroundColor: lang.color }}
+                        />
+                        <span className="font-bold text-[#2c2e2a]">{lang.name}</span>
+                        <span className="text-[#2c2e2a]/60 text-[11px]">{lang.percentage}%</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
                 {/* Project Description (Ringkasan Proyek) */}
                 <div className="mb-5">
@@ -169,14 +202,11 @@ export const PortfolioGrid: React.FC = () => {
                 </div>
 
                 {/* Manfaat Terbesar Bagi Orang Lain */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-[#f5f1e4]/90 border border-[#2c2e2a]/8 mb-6">
-                  <div className="flex items-center gap-1.5 mb-1.5">
-                    <Sparkles size={14} className="text-[#8ed462] shrink-0" />
-                    <h4 className="text-xs font-black uppercase tracking-wider text-[#2c2e2a]">
-                      Manfaat Terbesar Bagi Orang Lain
-                    </h4>
-                  </div>
-                  <p className="text-[13.5px] sm:text-[14px] leading-relaxed text-[#2c2e2a]/90 font-medium">
+                <div className="mb-6">
+                  <h4 className="text-[11px] font-black uppercase tracking-wider text-[#2c2e2a]/55 mb-1.5">
+                    Manfaat Terbesar Bagi Orang Lain
+                  </h4>
+                  <p className="text-[14px] sm:text-[14.5px] leading-relaxed text-[#2c2e2a]/85 font-normal">
                     {project.benefit}
                   </p>
                 </div>
@@ -195,25 +225,22 @@ export const PortfolioGrid: React.FC = () => {
               </div>
 
               {/* Bottom Action Footer */}
-              <div className="pt-4 border-t border-[#2c2e2a]/10 flex items-center justify-between">
+              <div className="pt-5 border-t border-[#2c2e2a]/10 flex flex-col gap-3.5">
+                <div className="flex items-center justify-between text-xs font-mono font-bold text-[#2c2e2a]/60">
+                  <span className="flex items-center gap-1.5">
+                    <SiGithub size={14} />
+                    <span>{project.repoName}</span>
+                  </span>
+                </div>
                 <a
                   href={project.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#2c2e2a]/65 hover:text-[#2c2e2a] transition-colors"
-                  aria-label={`Open repository ${project.repoName} on GitHub`}
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[50px] bg-[#2c2e2a] text-[#ffffff] hover:bg-[#8ed462] hover:text-[#2c2e2a] font-bold text-xs sm:text-sm tracking-wide transition-all duration-300 active:scale-98 cursor-pointer select-none group/btn"
                 >
-                  <SiGithub size={15} />
-                  <span>{project.repoName}</span>
-                </a>
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-black uppercase tracking-wider text-[#2c2e2a] group-hover:text-[#8ed462] transition-colors"
-                >
+                  <SiGithub size={16} className="shrink-0" />
                   <span>Buka di GitHub</span>
-                  <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight size={16} className="shrink-0 opacity-70 group-hover/btn:opacity-100 transition-opacity" />
                 </a>
               </div>
             </motion.article>
