@@ -540,4 +540,16 @@ Acuan utama dan mutlak selalu benar.
       - Memperbarui array teks berjalan komponen `ScrollVelocity` di bawah Hero section halaman HOME:
         `Software Developer - Frontend Engineer - Creative Technologist - UI/UX Specialist - Web Architect - Sound Designer - Songwriter - Author -`
     - **Kepatuhan Desain**: Menjaga estetika flat tanpa bayangan (`DESIGN.md`), proporsi tipografi Nunito/Inter bold, pemisah tanda hubung konsisten (`" -"`), dan tanpa elemen terlarang (`ai-anti-patterns.md`).
+122. **Pembaruan Halaman Portofolio Desain Grafis & UI/UX (`DesignPortfolio.tsx` & `PortfolioCategories.tsx`) — Humansights.org Website Prototype (23 September 2026):**
+    - **Instruksi Pengguna**: 'halaman portofolio design ui ux hapus semua dummy porject dan isikan ini: Humansights.org Website Prototype, Client: Syailendra Adi Sapta, Founder of Indonesia Contra Terror'.
+    - **Penghapusan Seluruh Proyek Dummy**: Menghapus seluruh 4 proyek dummy lama (MindMarket UI Design System, Editorial Typography, Corporate Identity Program, Minimalist Tactile Web Interface) dari `DesignPortfolio.tsx` dan `PortfolioCategories.tsx`.
+    - **Penerapan Proyek Riil 'Humansights.org Website Prototype'**:
+      - **Klien & Atribusi**: Syailendra Adi Sapta, Founder of Indonesia Contra Terror.
+      - **Peran**: UI/UX Designer & Prototyping Specialist.
+      - **Integrasi Tangkapan Layar Asli**: Menyimpan dan menampilkan 3 layar resolusi tinggi asli dari klien (`/portfolio/humansights/`):
+        1. *Beranda & Pusat Operasional* (`home.png`): "Confronting Crisis. Defending Humanity", live telemetry status counter (1,492 kasus aktif, Critical Active), pusat intervensi ICT dengan pemantauan node server (NODE: JKT-01), program strategis (GOTA, Ketahanan Pangan, Edukasi), dan CTA donasi.
+        2. *Crisis Center & Sektor Intervensi* (`crisis_center.png`): Immediate Assistance 24/7 hotline darurat WhatsApp, 5 sektor intervensi terarah (Legal Aid, Psychology & Mental Health, Drug Rehab, Deradicalization, LGBT Counseling), serta Secure Communication Portal dengan formulir intake rahasia terenkripsi.
+        3. *Inisiatif Aktif & Jadwal Operasional* (`programs.png`): Kerangka program ketahanan pangan, GOTA (Gerakan Orang Tua Asuh), kerangka deradikalisasi (89% reintegration rate), unit triase psikologis, dan agenda Operational Schedule terstruktur.
+      - **Interaktivitas Prototipe**: Tab switcher responsif untuk menjelajahi ketiga layar, thumbnail quick navigation, rincian teknis UI/UX, cakupan deliverables, dan modal lightbox layar penuh (*fullscreen zoom viewer*).
+    - **Kepatuhan Desain Mutlak**: Kartu putih tanpa outline border (`Aturan 117`), flat tanpa shadow (`DESIGN.md`), tipografi bebas monospace (`font-sans` sesuai Aturan 108), dan bebas dari badge/pill sembarangan (`ai-anti-patterns.md`).
 

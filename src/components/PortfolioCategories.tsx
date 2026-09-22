@@ -42,12 +42,12 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
       title: 'Desain Grafis & UI/UX',
       tagline: 'Antarmuka Visual & Identitas Brand',
       description:
-        'Perancangan sistem desain terstruktur, wireframing teliti, tata letak editorial, corporate identity mockup, dan visual branding.',
+        'Perancangan antarmuka pengguna web prototype Humansights.org, sistem krisis kemanusiaan, dan arsitektur interaksi UI/UX taktis.',
       featuredItems: [
-        'MindMarket UI Design System',
-        'Editorial Typography & Book Layout',
-        'Corporate Identity Program & Mockups',
-        'Interactive Web Component Architecture',
+        'Humansights.org Website Prototype',
+        'Klien: Syailendra Adi Sapta (Founder Indonesia Contra Terror)',
+        'Crisis Center & Portal Komunikasi Aman (Confidential Intake)',
+        'Program Kemanusiaan Strategis & Jadwal Operasional',
       ],
       actionLabel: 'Jelajahi Portofolio Desain',
     },
