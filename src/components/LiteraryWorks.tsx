@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, ArrowUpRight } from 'lucide-react';
+import { BookOpen, ArrowUpRight, Eye, Star } from 'lucide-react';
 import { SiWattpad } from 'react-icons/si';
 
 interface Novel {
@@ -16,6 +16,20 @@ interface Novel {
   synopsis: string;
   highlight: string;
   quote: string;
+}
+
+interface WattpadStory {
+  id: string;
+  title: string;
+  author: string;
+  views: number;
+  votes: number;
+  parts: number;
+  ranking?: string;
+  status: string;
+  coverImage: string;
+  synopsis: string;
+  url: string;
 }
 
 const novels: Novel[] = [
@@ -117,6 +131,65 @@ const novels: Novel[] = [
   },
 ];
 
+const wattpadStories: WattpadStory[] = [
+  {
+    id: 'nada-di-lantai-27',
+    title: 'Nada di Lantai 27',
+    author: 'Fatih F. Asshidiq',
+    views: 57,
+    votes: 4,
+    parts: 9,
+    ranking: '#12 dalam Gen-Z',
+    status: 'Dipublikasikan',
+    coverImage: '/covers/nada_di_lantai_27.png',
+    synopsis:
+      'Di tengah rimba beton Jakarta, Angga hanyalah seorang anak muda yang bermimpi untuk memulai hidup baru. Diterima bekerja di sebuah agensi periklanan ternama adalah langkah pertamanya. Namun, sebuah insiden di suatu malam membawanya pada melodi misterius dari jendela lantai 27...',
+    url: 'https://www.wattpad.com/user/imanecdoche',
+  },
+  {
+    id: 'bayangan-azkaban-wattpad',
+    title: "The Beastkeeper's Secret: Bayangan Azkaban",
+    author: 'Fatih Farhat Asshidiq',
+    views: 30,
+    votes: 6,
+    parts: 15,
+    ranking: '#718 dalam SiriusBlack',
+    status: 'Dipublikasikan',
+    coverImage: '/covers/the_beastkeeper_buku_2.png',
+    synopsis:
+      'Tahun 1993. Bayang-bayang kelam menyelimuti Kastil Hogwarts pasca-kaburnya Sirius Black dari benteng terkutuk Azkaban. Ratusan Dementor dikerahkan menjaga gerbang sekolah, menyebarkan radiasi hawa beku nekrotik yang mengancam keseimbangan satwa purba magis.',
+    url: 'https://www.wattpad.com/user/imanecdoche',
+  },
+  {
+    id: 'tentang-dia',
+    title: 'Tentang Dia',
+    author: 'Fatih F. Asshiddiq',
+    views: 134,
+    votes: 24,
+    parts: 23,
+    ranking: '#259 dalam Teka-Teki',
+    status: 'Dipublikasikan',
+    coverImage: '/covers/tentang_dia.png',
+    synopsis:
+      'Untuk memenangkan hati seorang gadis, Kevin setuju menggunakan keahlian meretasnya untuk memberi pelajaran pada saingan sahabatnya. Apa yang dimulai sebagai lelucon balas dendam di dunia maya dengan cepat berubah menjadi teka-teki tak terduga.',
+    url: 'https://www.wattpad.com/user/imanecdoche',
+  },
+  {
+    id: 'secangkir-kopi',
+    title: 'Secangkir Kopi Sebelum Mati',
+    author: 'Fatih F.A.',
+    views: 17,
+    votes: 9,
+    parts: 16,
+    ranking: 'Keluarga • Rantau • Kehormatan',
+    status: 'Draf Penulisan Aktif',
+    coverImage: '/covers/secangkir_kopi_sebelum_mati.png',
+    synopsis:
+      'Kisah tentang luka, penyesalan, dan cinta yang tidak pernah padam, bahkan setelah kematian. Reza, seorang pemuda yang tumbuh dalam kekacauan ekonomi dan keluarga yang runtuh, menelusuri arti penerimaan di balik secangkir kopi terakhirnya.',
+    url: 'https://www.wattpad.com/user/imanecdoche',
+  },
+];
+
 export const LiteraryWorks: React.FC = () => {
   return (
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
@@ -213,18 +286,146 @@ export const LiteraryWorks: React.FC = () => {
         ))}
       </div>
 
-      {/* Wattpad Profile Action Button */}
-      <div className="pt-10 sm:pt-14 text-center flex flex-col items-center justify-center">
-        <a
-          href="https://www.wattpad.com/user/imanecdoche"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-4 rounded-[50px] bg-[#2c2e2a] text-[#ffffff] hover:bg-[#ff6122] hover:text-[#ffffff] font-bold text-sm sm:text-base tracking-wide transition-all duration-300 active:scale-95 cursor-pointer select-none group"
-        >
-          <SiWattpad size={21} className="shrink-0 text-[#ff6122] group-hover:text-[#ffffff] transition-colors" />
-          <span>Buka Wattpad</span>
-          <ArrowUpRight size={17} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
-        </a>
+      {/* ======================================================== */}
+      {/* 2. SERIAL FIKSI WATTPAD                                  */}
+      {/* ======================================================== */}
+      <div className="mt-20 sm:mt-28 pt-16 sm:pt-20 border-t border-[#2c2e2a]/10">
+        <div className="mb-10 sm:mb-14">
+          <div className="flex items-center gap-2 mb-3">
+            <SiWattpad className="text-[#ff6122] shrink-0" size={24} />
+            <span className="font-mono text-sm sm:text-base font-bold text-[#ff6122]">
+              Serial Fiksi Digital • Wattpad
+            </span>
+          </div>
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight mb-4">
+            Karya & Serial Fiksi di Wattpad
+          </h3>
+          <p className="text-base sm:text-lg text-[#2c2e2a]/75 max-w-4xl leading-relaxed">
+            Koleksi serial novel web, cerita bersambung kontemporer, dan eksperimen naratif orisinal yang dipublikasikan secara daring di platform Wattpad.
+          </p>
+
+          {/* Wattpad Cumulative Stats Bar */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8 p-4 sm:p-6 rounded-[24px] bg-[#ffffff] border border-[#2c2e2a]/10">
+            <div className="p-3 sm:p-4">
+              <span className="block text-2xl sm:text-3xl font-black text-[#2c2e2a]">4 Karya</span>
+              <span className="text-xs sm:text-sm text-[#2c2e2a]/65 font-medium">Serial Fiksi Wattpad</span>
+            </div>
+            <div className="p-3 sm:p-4 border-l border-[#2c2e2a]/10">
+              <span className="block text-2xl sm:text-3xl font-black text-[#ff6122]">238+</span>
+              <span className="text-xs sm:text-sm text-[#2c2e2a]/65 font-medium">Total Pembaca (Views)</span>
+            </div>
+            <div className="p-3 sm:p-4 border-t md:border-t-0 md:border-l border-[#2c2e2a]/10">
+              <span className="block text-2xl sm:text-3xl font-black text-[#e6a817]">43+</span>
+              <span className="text-xs sm:text-sm text-[#2c2e2a]/65 font-medium">Suara Apresiasi (Votes)</span>
+            </div>
+            <div className="p-3 sm:p-4 border-t md:border-t-0 border-l border-[#2c2e2a]/10">
+              <span className="block text-2xl sm:text-3xl font-black text-[#2c2e2a]">63 Bab</span>
+              <span className="text-xs sm:text-sm text-[#2c2e2a]/65 font-medium">Total Bab Dirilis</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Grid of Wattpad Stories */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {wattpadStories.map((story, sIdx) => (
+            <motion.article
+              key={story.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{
+                duration: 0.5,
+                delay: sIdx * 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="flex flex-col justify-between p-6 sm:p-8 rounded-[28px] sm:rounded-[32px] bg-[#ffffff] border border-[#2c2e2a]/10 hover:border-[#2c2e2a]/30 transition-all duration-300 group"
+            >
+              <div>
+                {/* Horizontal Top: Cover + Core Info */}
+                <div className="flex gap-5 sm:gap-6 mb-5">
+                  {/* Cover */}
+                  <div className="w-24 sm:w-28 aspect-[2/3] rounded-xl overflow-hidden bg-[#f5f1e4] border border-[#2c2e2a]/10 shrink-0">
+                    <img
+                      src={story.coverImage}
+                      alt={`Sampul ${story.title}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Title & Stats */}
+                  <div className="flex-1 flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-lg sm:text-xl font-black text-[#2c2e2a] tracking-tight leading-snug group-hover:text-[#ff6122] transition-colors mb-1">
+                        {story.title}
+                      </h4>
+                      <p className="text-xs font-bold text-[#2c2e2a]/55 mb-3">
+                        Karya: {story.author}
+                      </p>
+                    </div>
+
+                    {/* Stats Row with Views and Votes */}
+                    <div className="flex flex-wrap items-center gap-3 text-xs font-mono font-bold text-[#2c2e2a]/75 pb-2 border-b border-[#2c2e2a]/10">
+                      <span className="flex items-center gap-1.5 text-[#2c2e2a]">
+                        <Eye size={14} className="text-[#2c2e2a]/60" />
+                        <span>{story.views} Views</span>
+                      </span>
+                      <span className="flex items-center gap-1.5 text-[#e6a817]">
+                        <Star size={14} fill="currentColor" />
+                        <span>{story.votes} Votes</span>
+                      </span>
+                      <span className="flex items-center gap-1.5 text-[#2c2e2a]/60">
+                        <BookOpen size={14} />
+                        <span>{story.parts} Bab</span>
+                      </span>
+                    </div>
+
+                    {story.ranking && (
+                      <p className="text-[11px] font-semibold text-[#ff6122] mt-2">
+                        {story.ranking}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Synopsis */}
+                <p className="text-xs sm:text-[13.5px] leading-relaxed text-[#2c2e2a]/75 mb-6 font-normal">
+                  {story.synopsis}
+                </p>
+              </div>
+
+              {/* Bottom Card Action */}
+              <div className="pt-4 border-t border-[#2c2e2a]/10 flex items-center justify-between text-xs">
+                <span className="font-mono font-bold text-[#2c2e2a]/55">
+                  Status: {story.status}
+                </span>
+                <a
+                  href={story.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-bold text-[#ff6122] hover:text-[#e04f14] transition-colors"
+                >
+                  <span>Buka di Wattpad</span>
+                  <ArrowUpRight size={15} />
+                </a>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        {/* Master Wattpad Profile Action Button */}
+        <div className="pt-10 sm:pt-14 text-center flex flex-col items-center justify-center">
+          <a
+            href="https://www.wattpad.com/user/imanecdoche"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-4 rounded-[50px] bg-[#2c2e2a] text-[#ffffff] hover:bg-[#ff6122] hover:text-[#ffffff] font-bold text-sm sm:text-base tracking-wide transition-all duration-300 active:scale-95 cursor-pointer select-none group"
+          >
+            <SiWattpad size={21} className="shrink-0 text-[#ff6122] group-hover:text-[#ffffff] transition-colors" />
+            <span>Buka Profil Lengkap di Wattpad</span>
+            <ArrowUpRight size={17} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+          </a>
+        </div>
       </div>
     </section>
   );
