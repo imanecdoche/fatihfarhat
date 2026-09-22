@@ -366,3 +366,7 @@ Acuan utama dan mutlak selalu benar.
 94. **Penghapusan Elemen Tag/Label 'Pengantar Singkat' (`HomeShowcase.tsx`) (22 September 2026):**
     - **Instruksi Pengguna**: Menghapus elemen tag/label yang memuat ikon Sparkles dan teks 'Pengantar Singkat' (`<Sparkles /> Pengantar Singkat`) pada bagian atas box pengantar halaman Home.
     - **Kepatuhan Mutlak**: Mengikuti `ai-anti-patterns.md` untuk mengeliminasi elemen tag/badge/eyebrow yang tidak dikehendaki.
+95. **Penghapusan Nomor Induk Kependudukan (NIK) pada Kartu Identitas (`IdentityCard.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: Menghapus nomor dan label NIK pada bagian kartu identitas di halaman Tentang Saya untuk menjaga privasi data pribadi.
+    - **Penyelarasan Layout**: Bagian top bar sisi depan kartu identitas disesuaikan dengan menghilangkan tampilan NIK, menyisakan indikator aksi balik kartu yang rapi dan selaras.
+    - **Deploy GitHub**: Melakukan build check, staging, commit dengan Conventional Commits, dan langsung push ke repositori GitHub origin/main.

@@ -128,19 +128,11 @@ export const IdentityCard: React.FC = () => {
             }}
             className="w-full rounded-[20px] sm:rounded-[26px] p-5 sm:p-7 md:p-8 bg-[#ffffff] border border-[#2c2e2a]/15 shadow-[0_12px_28px_rgba(44,46,42,0.12)] font-sans relative overflow-hidden"
           >
-            {/* Top Bar: NIK + Flip Hint */}
-            <div className="flex items-center justify-between gap-3 mb-4 sm:mb-5 pb-3.5 border-b border-[#2c2e2a]/10">
-              <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                <span className="text-[11px] sm:text-xs font-bold tracking-wider text-[#2c2e2a]/55 uppercase">
-                  NIK
-                </span>
-                <span className="text-xl sm:text-2xl md:text-[26px] font-black tracking-tight text-[#2c2e2a]">
-                  3601262008050001
-                </span>
-              </div>
+            {/* Top Bar: Flip Hint */}
+            <div className="flex items-center justify-end mb-4 sm:mb-5 pb-3 border-b border-[#2c2e2a]/10">
               <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#8ed462] hover:text-[#7bc352] transition-colors shrink-0">
                 <RotateCw size={13} className="animate-spin-slow" />
-                <span className="hidden sm:inline">Balik</span>
+                <span>Balik Kartu</span>
               </div>
             </div>
 
