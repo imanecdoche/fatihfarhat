@@ -488,5 +488,7 @@ Acuan utama dan mutlak selalu benar.
       - Section Spotify (Karya Musik Orisinal): Menampilkan tombol aksi kapsul 'Buka Profil Artis' menuju profil Spotify ZeroTwenty.
       - Section Suno (Karya dari Platform Suno): Menampilkan tombol aksi kapsul 'Suno Profile' menuju profil Suno ZeroTwenty dengan logo resmi Suno.
     - **Kepatuhan Desain**: Format kapsul (`rounded-[50px]`/`rounded-full`), warna kontras solid aksen gelap `#2c2e2a` teks putih, flat tanpa bayangan (`DESIGN.md`), font sans-serif (`font-sans` sesuai Aturan 108), dan bebas badge/pill terlarang (`ai-anti-patterns.md`).
-
-
+116. **Penghapusan Deskripsi pada Kartu Lagu Portofolio Musik (`MusicPortfolio.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'kartu lagu jangan ada deskripsinya'.
+    - **Implementasi**: Menghapus seluruh elemen dan teks paragraf deskripsi dari kartu lagu baik di section rilisan Spotify (ZeroTwenty) maupun di section rilisan platform Suno. Kartu lagu kini disederhanakan secara visual dan elegan, hanya menampilkan sampul karya asli, tag meta/genre, judul lagu, info artis/rilis, dan link aksi putar langsung.
+    - **Kepatuhan Desain**: Layout bersih, flat tanpa bayangan (`DESIGN.md`), tipografi bebas monospace (`font-sans`), proporsi kartu padat dan proporsional, serta bebas badge/pill terlarang (`ai-anti-patterns.md`).

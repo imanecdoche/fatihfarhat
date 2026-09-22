@@ -14,8 +14,6 @@ export const MusicPortfolio: React.FC = () => {
       releaseType: 'Single Populer',
       coverImage: '/music/masihkah_aku_diterima.jpg',
       spotifyUrl: 'https://open.spotify.com/track/56VVewiJAypMwY8OuJHR4k?si=32b02f41d05a4fca',
-      description:
-        'Lagu populer bernuansa emosional dan reflektif dengan melodi vokal menyentuh, lirik perenungan penerimaan diri, dan lapisan piano akustik yang intim.',
     },
     {
       id: 'halfway',
@@ -24,8 +22,6 @@ export const MusicPortfolio: React.FC = () => {
       releaseType: 'Single Rilis Resmi',
       coverImage: '/music/halfway.jpg',
       spotifyUrl: 'https://open.spotify.com/track/76o2OlWrOMYSYwf7oGC9NA?si=bab0fd33e3284bf9',
-      description:
-        'Komposisi pop alternatif berdaya dorong ritmis dinamis, melodi katarsis, dan lapisan aransemen harmonik yang ekspresif.',
     },
     {
       id: 'wind-of-fall',
@@ -34,8 +30,6 @@ export const MusicPortfolio: React.FC = () => {
       releaseType: 'Single Rilis Resmi',
       coverImage: '/music/wind_of_fall.jpg',
       spotifyUrl: 'https://open.spotify.com/track/016nDtT629fN3fftTqrDJv?si=6e84cabc924b4c77',
-      description:
-        'Balada instrumental akustik bernuansa musim gugur dengan petikan dawai hangat, melodi melankolis, dan resonansi ruang alami.',
     },
   ];
 
@@ -47,8 +41,6 @@ export const MusicPortfolio: React.FC = () => {
       genre: 'Acoustic, Folk',
       coverImage: '/music/no_translation.png',
       sunoUrl: 'https://suno.com/s/0HHjXPxKmud4oDAj',
-      description:
-        'Komposisi folk akustik kontemplatif dengan alunan dawai murni, vokal ekspresif, dan perenungan mendalam melampaui batas bahasa.',
     },
     {
       id: 'braving-winter',
@@ -56,8 +48,6 @@ export const MusicPortfolio: React.FC = () => {
       genre: 'Acoustic, Folk',
       coverImage: '/music/braving_winter.png',
       sunoUrl: 'https://suno.com/s/g8GN2a7csYV6Y1jW',
-      description:
-        'Lagu folk akustik bertema keteguhan dan harapan melewati musim dingin dingin bersalju, memadukan dinamika ritmis dan melodi katarsis.',
     },
     {
       id: 'hujan-tahun-lalu',
@@ -65,8 +55,6 @@ export const MusicPortfolio: React.FC = () => {
       genre: 'Acoustic, Pop',
       coverImage: '/music/hujan_tahun_lalu.png',
       sunoUrl: 'https://suno.com/s/2xKF9LZk4R2kZnAL',
-      description:
-        'Lagu pop akustik bernuansa nostalgia dan kenangan rintik hujan masa lampau dengan petikan gitar manis serta melodi vokal yang hangat.',
     },
   ];
 
@@ -133,12 +121,8 @@ export const MusicPortfolio: React.FC = () => {
                 <h3 className="text-xl sm:text-2xl font-black text-[#2c2e2a] tracking-tight leading-snug mb-1">
                   {track.title}
                 </h3>
-                <p className="text-xs sm:text-[13px] font-bold text-[#8ed462] mb-3">
+                <p className="text-xs sm:text-[13px] font-bold text-[#8ed462] mb-5">
                   {track.artist}
-                </p>
-
-                <p className="text-xs sm:text-sm text-[#2c2e2a]/70 leading-relaxed mb-6 font-normal">
-                  {track.description}
                 </p>
               </div>
 
@@ -223,12 +207,8 @@ export const MusicPortfolio: React.FC = () => {
                 <h3 className="text-xl sm:text-2xl font-black text-[#2c2e2a] tracking-tight leading-snug mb-1">
                   {track.title}
                 </h3>
-                <p className="text-xs sm:text-[13px] font-bold text-[#8ed462] mb-3">
+                <p className="text-xs sm:text-[13px] font-bold text-[#8ed462] mb-5">
                   Suno Release
-                </p>
-
-                <p className="text-xs sm:text-sm text-[#2c2e2a]/70 leading-relaxed mb-6 font-normal">
-                  {track.description}
                 </p>
               </div>
 
