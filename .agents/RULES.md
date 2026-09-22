@@ -448,3 +448,15 @@ Acuan utama dan mutlak selalu benar.
     - **Instruksi Pengguna**: 'di halaman ini juga tambahkan tombol lagi untuk membuka youtube https://www.youtube.com/@gimanajadinyaid'.
     - **Implementasi**: Menambahkan tombol aksi kapsul YouTube berdampingan rapi dengan tombol TikTok di bagian bawah grid proyek konten dengan label 'Channel YouTube', logo resmi YouTube (`SiYoutube`), tautan `https://www.youtube.com/@gimanajadinyaid`, serta atribut keamanan `target="_blank"` dan `rel="noopener noreferrer"`.
     - **Kepatuhan Desain**: Format kapsul (`rounded-[50px]`/`rounded-full`), warna kontras solid aksen gelap `#2c2e2a` teks putih dengan aksen hover warna resmi YouTube (`#ff0000`), flat tanpa bayangan (`DESIGN.md`), font sans-serif (`font-sans` sesuai Aturan 108), dan bebas badge/pill terlarang (`ai-anti-patterns.md`).
+111. **Penambahan Kategori Portofolio Baru 'Music & Sound Design' (`PortfolioCategories.tsx`, `MusicPortfolio.tsx`, & `App.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'di halaman utama portofolio tambahkan kategori baru yakni untuk menampilkan portofolio yang berhubungan denga karya musik dan instrumental Music & Sound Design'.
+    - **Pembaruan Kategori Portofolio (`PortfolioCategories.tsx`)**:
+      - Menambahkan tipe `PortfolioCategoryType` baru: `'music'`.
+      - Menambahkan kartu kategori 'Music & Sound Design' pada grid kategori portofolio dengan tagline 'Produksi Musik, Komposisi Instrumental & Sound Design', deskripsi mendalam, serta featured items terstruktur.
+    - **Komponen Halaman Kategori (`MusicPortfolio.tsx`)**:
+      - Membangun komponen tampilan pameran karya musik dan instrumen orisinal (Cinematic Orchestral Suite, Minimalist Piano & Ambient Strings, Audio DSP Synthesis & Filters, Cinematic Foley & Ambience).
+      - Header dibungkus kapsul aksen gelap `#2c2e2a` teks putih `text-white` tanpa monospace.
+    - **Integrasi Navigasi & Routing (`App.tsx`)**:
+      - Menambahkan tab switcher 'Musik & Audio' (`music`) pada sub-navigasi switcher kategori portofolio.
+      - Me-render komponen `MusicPortfolio` ketika kategori `music` aktif.
+    - **Kepatuhan Desain**: Menjaga estetika flat tanpa bayangan (`DESIGN.md`), font standar `font-sans` tanpa monospace (Aturan 108), dan patuh mutlak pada `ai-anti-patterns.md`.

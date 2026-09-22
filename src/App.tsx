@@ -20,6 +20,7 @@ import { GithubOverview } from './components/GithubOverview';
 import { LiteraryWorks } from './components/LiteraryWorks';
 import { DesignPortfolio } from './components/DesignPortfolio';
 import { ContentPortfolio } from './components/ContentPortfolio';
+import { MusicPortfolio } from './components/MusicPortfolio';
 import { ServicesHero } from './components/ServicesHero';
 import { SkillsCharts } from './components/SkillsCharts';
 import { ContactHero } from './components/ContactHero';
@@ -240,6 +241,7 @@ export const App: React.FC = () => {
                         { id: 'writing' as PortfolioCategoryType, label: 'Karya Tulis' },
                         { id: 'design' as PortfolioCategoryType, label: 'Desain' },
                         { id: 'content' as PortfolioCategoryType, label: 'Konten Kreator' },
+                        { id: 'music' as PortfolioCategoryType, label: 'Music & Sound' },
                       ].map((tab) => {
                         const isActive = portfolioCategory === tab.id;
                         return (
@@ -275,6 +277,8 @@ export const App: React.FC = () => {
                   {portfolioCategory === 'design' && <DesignPortfolio />}
 
                   {portfolioCategory === 'content' && <ContentPortfolio />}
+
+                  {portfolioCategory === 'music' && <MusicPortfolio />}
 
                   {/* Bottom Navigation Back Button */}
                   <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 py-16 text-center">

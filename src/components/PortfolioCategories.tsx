@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
-export type PortfolioCategoryType = 'all' | 'software' | 'writing' | 'design' | 'content';
+export type PortfolioCategoryType = 'all' | 'software' | 'writing' | 'design' | 'content' | 'music';
 
 interface PortfolioCategoriesProps {
   onSelectCategory: (category: PortfolioCategoryType) => void;
@@ -64,6 +64,20 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
         'Kinetic Typography & Motion Graphics',
       ],
       actionLabel: 'Jelajahi Konten Kreator',
+    },
+    {
+      id: 'music' as PortfolioCategoryType,
+      title: 'Music & Sound Design',
+      tagline: 'Produksi Musik, Komposisi Instrumental & Audio Engineering',
+      description:
+        'Komposisi instrumental orisinal, aransemen partitur orkestra, perancangan sintesis audio DSP latency rendah, foley sinematik, dan mixing mastering audio.',
+      featuredItems: [
+        'Symphonic Dawn — Cinematic Orchestral Suite',
+        'Echoes of Solitude — Minimalist Piano & Strings',
+        'VOX Audio DSP Engine — Real-Time Wave Synthesis',
+        'Cinematic Foley & World-Building Soundscapes',
+      ],
+      actionLabel: 'Jelajahi Music & Sound Design',
     },
   ];
 
