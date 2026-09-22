@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   CheckCircle2,
@@ -442,13 +443,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
 export const DesignPortfolio: React.FC = () => {
   const [modalData, setModalData] = useState<{ src: string; title: string } | null>(null);
 
-  // Lock body scroll and prevent background scroll bleed-through when modal is open
+  // Lock document scroll and pause Lenis smooth scroll while modal is active
   useEffect(() => {
     if (modalData) {
-      const prevOverflow = document.body.style.overflow;
+      const prevHtmlOverflow = document.documentElement.style.overflow;
+      const prevBodyOverflow = document.body.style.overflow;
+      document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
+
+      // Pause Lenis smooth-scroll so window wheel events are not captured
+      if (typeof window !== 'undefined' && (window as any).__lenis) {
+        (window as any).__lenis.stop();
+      }
+
       return () => {
-        document.body.style.overflow = prevOverflow;
+        document.documentElement.style.overflow = prevHtmlOverflow;
+        document.body.style.overflow = prevBodyOverflow;
+        if (typeof window !== 'undefined' && (window as any).__lenis) {
+          (window as any).__lenis.start();
+        }
       };
     }
   }, [modalData]);
@@ -503,46 +516,57 @@ export const DesignPortfolio: React.FC = () => {
         </a>
       </div>
 
-      {/* Fullscreen Lightbox Modal for Screenshots */}
-      <AnimatePresence>
-        {modalData && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/90 p-4 sm:p-8 overflow-y-auto overscroll-contain flex justify-center items-start [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-            onClick={() => setModalData(null)}
-          >
-            {/* Fixed Close Button pinned to screen viewport corner */}
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setModalData(null);
-              }}
-              className="fixed top-5 right-5 sm:top-8 sm:right-8 p-3 rounded-full bg-[#2c2e2a] text-white hover:bg-white hover:text-[#2c2e2a] transition-colors cursor-pointer z-[110]"
-              title="Tutup Pratinjau"
-            >
-              <X size={20} />
-            </button>
+      {/* Fullscreen Lightbox Modal for Screenshots rendered via Portal directly to body */}
+      {typeof document !== 'undefined' &&
+        createPortal(
+          <AnimatePresence>
+            {modalData && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                data-lenis-prevent
+                data-lenis-prevent-wheel
+                data-lenis-prevent-touch
+                className="fixed inset-0 z-[9999] bg-black/90 p-4 sm:p-8 overflow-y-auto overscroll-contain flex justify-center items-start [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                onClick={() => setModalData(null)}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
+              >
+                {/* Fixed Close Button pinned to screen viewport corner */}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setModalData(null);
+                  }}
+                  className="fixed top-5 right-5 sm:top-8 sm:right-8 p-3 rounded-full bg-[#2c2e2a] text-white hover:bg-white hover:text-[#2c2e2a] transition-colors cursor-pointer z-[10000]"
+                  title="Tutup Pratinjau"
+                >
+                  <X size={20} />
+                </button>
 
-            {/* Modal Content - Scrollable through outer overlay with hidden scrollbar */}
-            <motion.div
-              initial={{ scale: 0.98, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.98, opacity: 0 }}
-              className="max-w-5xl w-full my-auto rounded-2xl bg-[#0d0f0d] p-2"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={modalData.src}
-                alt={modalData.title}
-                className="w-full h-auto rounded-xl block"
-              />
-            </motion.div>
-          </motion.div>
+                {/* Modal Content - Scrollable through outer overlay with hidden scrollbar */}
+                <motion.div
+                  initial={{ scale: 0.98, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.98, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="max-w-5xl w-full my-6 sm:my-10 rounded-2xl bg-[#0d0f0d] p-2"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <img
+                    src={modalData.src}
+                    alt={modalData.title}
+                    className="w-full h-auto rounded-xl block"
+                  />
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </div>
   );
 };

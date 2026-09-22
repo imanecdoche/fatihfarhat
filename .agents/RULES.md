@@ -585,7 +585,12 @@ Acuan utama dan mutlak selalu benar.
       7. 'elemen box KLIEN & ATRIBUSI jangan diberikan outline stroke'.
     - **Tindakan Penyempurnaan yang Diterapkan**:
       - **Pembersihan Ikon**: Menghapus ikon dekoratif pada badge proyek (`Layers`), header Klien & Atribusi (`UserCheck`), dan seluruh 4 boks deliverables (`Activity`, `Shield`, `SiFigma`, dll.) sehingga tampilan lebih bersih dan berfokus pada konten.
-      - **Perbaikan Scroll Modal Layar Penuh (Anti Scroll-Bleed)**: Menambahkan `useEffect` penguncian scroll `document.body.style.overflow = 'hidden'` saat modal terbuka, menyalurkan scroll event langsung ke container modal dengan `overscroll-contain` dan tombol close tetap tersemat (*fixed*) di sudut layar.
+      - **Perbaikan Scroll Modal Layar Penuh (Anti Scroll-Bleed & Lenis Pause)**:
+        - Mengidentifikasi akar masalah: pustaka smooth-scroll `Lenis` pada `App.tsx` menangkap event `wheel` global jendela browser, menyebabkan halaman belakang tetap ter-scroll saat pengguna memutar roda mouse di atas modal.
+        - Memasang `(window as any).__lenis = lenis` di `App.tsx`, dan memanggil `lenis.stop()` saat modal terbuka serta `lenis.start()` saat modal ditutup.
+        - Mengunci scroll dokumen secara menyeluruh pada `html` dan `body` (`document.documentElement.style.overflow = 'hidden'` dan `document.body.style.overflow = 'hidden'`).
+        - Me-render modal menggunakan React `createPortal(..., document.body)` agar modal berada di top-level DOM dan bebas dari efek batasan stacking/overflow komponen induk.
+        - Menambahkan atribut resmi `data-lenis-prevent`, `data-lenis-prevent-wheel`, dan `data-lenis-prevent-touch` serta `onWheel={(e) => e.stopPropagation()}` dan `onTouchMove={(e) => e.stopPropagation()}` sehingga scroll sepenuhnya diserap dan menggerakkan pratinjau gambar panjang secara alami.
       - **Sembunyikan Scrollbar**: Mengaplikasikan utilitas `[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden` pada area pratinjau modal sehingga navigasi scroll tetap berfungsi mulus tanpa menampilkan scrollbar visual.
       - **Penyederhanaan Navigasi Layar**: Menghapus header teks `EKSPLORASI HALAMAN PROTOTIPE` / `Pilih Tampilan Halaman untuk Pratinjau` beserta deretan segmented pill button; seleksi layar sepenuhnya menggunakan 3 thumbnail pratinjau visual langsung di bawah layar utama.
       - **Unboxed Fitur Utama & Modul Halaman**: Menghapus kontainer box, background, dan border dari section `Fitur Utama & Modul Halaman`, menyelaraskannya dengan gaya tipografi editorial bersih.
