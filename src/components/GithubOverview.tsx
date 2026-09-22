@@ -9,6 +9,7 @@ import {
   FolderGit2,
   ChevronDown,
   ChevronUp,
+  GitPullRequest,
 } from 'lucide-react';
 import {
   SiTypescript,
@@ -37,6 +38,70 @@ const getLanguageIcon = (language: string) => {
   }
   return <Code2 size={14} className="text-[#2c2e2a]/70 shrink-0" />;
 };
+
+interface ExternalContribution {
+  repo: string;
+  repoOwner: string;
+  repoName: string;
+  repoUrl: string;
+  stars: string;
+  language: string;
+  languageColor: string;
+  prNumber: number;
+  prTitle: string;
+  prUrl: string;
+  date: string;
+  description: string;
+  contributionType: string;
+}
+
+const externalContributions: ExternalContribution[] = [
+  {
+    repo: 'labring/FastGPT',
+    repoOwner: 'labring',
+    repoName: 'FastGPT',
+    repoUrl: 'https://github.com/labring/FastGPT',
+    stars: '29.7k',
+    language: 'TypeScript',
+    languageColor: '#3178c6',
+    prNumber: 7817,
+    prTitle: 'fix(common): improve number formatting for Chinese locales and billion units',
+    prUrl: 'https://github.com/labring/FastGPT/pull/7817',
+    date: '22 Sep 2026',
+    description: 'Perbaikan pemformatan bilangan dan lokalisasi unit miliaran (billion units) pada sistem basis pengetahuan AI FastGPT.',
+    contributionType: 'Bug Fix & Localization',
+  },
+  {
+    repo: 'langgenius/dify',
+    repoOwner: 'langgenius',
+    repoName: 'dify',
+    repoUrl: 'https://github.com/langgenius/dify',
+    stars: '156.8k',
+    language: 'TypeScript',
+    languageColor: '#3178c6',
+    prNumber: 42768,
+    prTitle: 'docs: add Indonesian translation of README (docs/id-ID/README.md)',
+    prUrl: 'https://github.com/langgenius/dify/pull/42768',
+    date: '22 Sep 2026',
+    description: 'Penyusunan dan lokalisasi dokumentasi README resmi bahasa Indonesia untuk platform orkestrasi aplikasi GenAI Dify.',
+    contributionType: 'Documentation & i18n',
+  },
+  {
+    repo: 'dragonflydb/dragonfly',
+    repoOwner: 'dragonflydb',
+    repoName: 'dragonfly',
+    repoUrl: 'https://github.com/dragonflydb/dragonfly',
+    stars: '31.6k',
+    language: 'C++',
+    languageColor: '#00599c',
+    prNumber: 8374,
+    prTitle: 'docs(readme): add Indonesian translation (README.id-ID.md)',
+    prUrl: 'https://github.com/dragonflydb/dragonfly/pull/8374',
+    date: '22 Sep 2026',
+    description: 'Penambahan translasi dokumentasi komprehensif README ke bahasa Indonesia pada database in-memory Dragonfly berkinerja tinggi.',
+    contributionType: 'Documentation & i18n',
+  },
+];
 
 interface PinnedRepo {
   name: string;
@@ -99,6 +164,7 @@ interface MonthlyActivity {
   repoCount: number;
   repos: { name: string; commits: number; url: string }[];
   createdRepos?: { name: string; language: string; date: string; url: string }[];
+  pullRequests?: { repo: string; prNumber: number; title: string; date: string; url: string }[];
 }
 
 const monthlyActivities: MonthlyActivity[] = [
@@ -118,6 +184,29 @@ const monthlyActivities: MonthlyActivity[] = [
       { name: 'EPSON_L1110_Printer_Driver_for_Linux', language: 'Python', date: '19 Sep', url: 'https://github.com/imanecdoche/EPSON_L1110_Printer_Driver_for_Linux' },
       { name: 'fatihfarhat', language: 'TypeScript', date: '7 Sep', url: 'https://github.com/imanecdoche/fatihfarhat' },
       { name: 'voxplayer', language: 'Kotlin', date: '2 Sep', url: 'https://github.com/imanecdoche/voxplayer' },
+    ],
+    pullRequests: [
+      {
+        repo: 'labring/FastGPT',
+        prNumber: 7817,
+        title: 'fix(common): improve number formatting for Chinese locales and billion units',
+        date: '22 Sep',
+        url: 'https://github.com/labring/FastGPT/pull/7817',
+      },
+      {
+        repo: 'langgenius/dify',
+        prNumber: 42768,
+        title: 'docs: add Indonesian translation of README (docs/id-ID/README.md)',
+        date: '22 Sep',
+        url: 'https://github.com/langgenius/dify/pull/42768',
+      },
+      {
+        repo: 'dragonflydb/dragonfly',
+        prNumber: 8374,
+        title: 'docs(readme): add Indonesian translation (README.id-ID.md)',
+        date: '22 Sep',
+        url: 'https://github.com/dragonflydb/dragonfly/pull/8374',
+      },
     ],
   },
   {
@@ -259,54 +348,54 @@ export const GithubOverview: React.FC = () => {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12">
         <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff]">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 font-sans">
               Total Kontribusi
             </span>
             <GitCommit size={18} className="text-[#8ed462]" />
           </div>
-          <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight">
-            380
+          <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight font-sans">
+            383
           </div>
-          <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1">di tahun 2026</p>
+          <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1 font-sans">di tahun 2026</p>
         </div>
 
         <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff]">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 font-sans">
               Repositori Publik
             </span>
             <FolderGit2 size={18} className="text-[#2c2e2a]" />
           </div>
-          <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight">
+          <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight font-sans">
             28
           </div>
-          <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1">proyek aktif</p>
+          <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1 font-sans">proyek aktif</p>
         </div>
 
         <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff]">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
-              Total Bintang
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 font-sans">
+              Upstream PR Eksternal
             </span>
-            <Star size={18} className="text-[#e6a817]" />
+            <GitPullRequest size={18} className="text-[#8ed462]" />
           </div>
-          <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight">
-            6
+          <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight font-sans">
+            +3
           </div>
-          <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1">stars diraih</p>
+          <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1 font-sans">FastGPT, Dify, Dragonfly</p>
         </div>
 
         <div className="p-5 sm:p-7 rounded-[28px] bg-[#ffffff]">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 font-sans">
               Tipe Aktivitas
             </span>
             <Code2 size={18} className="text-[#8ed462]" />
           </div>
-          <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight">
-            91%
+          <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight font-sans">
+            90%
           </div>
-          <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1">commits (+25 review, +12 PR)</p>
+          <p className="text-xs font-medium text-[#2c2e2a]/60 mt-1 font-sans">commits (+25 review, +15 PR)</p>
         </div>
       </div>
 
@@ -321,21 +410,21 @@ export const GithubOverview: React.FC = () => {
         {/* Heatmap Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#2c2e2a]/10">
           <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
+            <div className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 font-sans">
               GRAFIK KALENDER KONTRIBUSI GITHUB
             </div>
-            <h3 className="text-xl sm:text-2xl font-black text-[#2c2e2a] tracking-tight mt-1">
-              380 Kontribusi di 2026
+            <h3 className="text-xl sm:text-2xl font-black text-[#2c2e2a] tracking-tight mt-1 font-sans">
+              383 Kontribusi di 2026
             </h3>
           </div>
           <div className="flex items-center gap-2 self-start sm:self-auto">
-            <span className="px-4 py-1.5 rounded-full bg-[#2c2e2a] text-white text-xs font-black">
+            <span className="px-4 py-1.5 rounded-full bg-[#2c2e2a] text-white text-xs font-black font-sans">
               2026
             </span>
-            <span className="px-3 py-1.5 text-xs font-bold text-[#2c2e2a]/50">
+            <span className="px-3 py-1.5 text-xs font-bold text-[#2c2e2a]/50 font-sans">
               2025
             </span>
-            <span className="px-3 py-1.5 text-xs font-bold text-[#2c2e2a]/50">
+            <span className="px-3 py-1.5 text-xs font-bold text-[#2c2e2a]/50 font-sans">
               2024
             </span>
           </div>
@@ -345,7 +434,7 @@ export const GithubOverview: React.FC = () => {
         <div className="py-6 overflow-x-auto">
           <div className="min-w-[680px]">
             {/* Months Header */}
-            <div className="flex text-[11px] font-bold text-[#2c2e2a]/50 mb-2 pl-7">
+            <div className="flex text-[11px] font-bold text-[#2c2e2a]/50 mb-2 pl-7 font-sans">
               {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(
                 (m, i) => (
                   <div key={i} className="flex-1">
@@ -358,7 +447,7 @@ export const GithubOverview: React.FC = () => {
             {/* Weeks and Days Grid */}
             <div className="flex gap-1">
               {/* Day Labels */}
-              <div className="flex flex-col justify-between text-[10px] font-bold text-[#2c2e2a]/50 pr-2 py-0.5">
+              <div className="flex flex-col justify-between text-[10px] font-bold text-[#2c2e2a]/50 pr-2 py-0.5 font-sans">
                 <span>Mon</span>
                 <span>Wed</span>
                 <span>Fri</span>
@@ -385,7 +474,7 @@ export const GithubOverview: React.FC = () => {
             </div>
 
             {/* Legend Bottom */}
-            <div className="flex items-center justify-between text-xs text-[#2c2e2a]/60 pt-4 mt-2">
+            <div className="flex items-center justify-between text-xs text-[#2c2e2a]/60 pt-4 mt-2 font-sans">
               <span className="font-medium">Data diverifikasi langsung dari API & profil GitHub publik</span>
               <div className="flex items-center gap-1.5">
                 <span className="text-[11px] font-bold">Less</span>
@@ -403,10 +492,10 @@ export const GithubOverview: React.FC = () => {
         {/* Activity Overview Summary Bar */}
         <div className="pt-6 border-t border-[#2c2e2a]/10 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 block mb-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 block mb-2 font-sans">
               Repositori Paling Sering Dikontribusikan
             </span>
-            <div className="space-y-1.5 text-sm font-bold text-[#2c2e2a]">
+            <div className="space-y-1.5 text-sm font-bold text-[#2c2e2a] font-sans">
               <div className="truncate">
                 • <a href="https://github.com/imanecdoche/OstifakODP-Verdana" target="_blank" rel="noreferrer" className="hover:text-[#8ed462] transition-colors">imanecdoche/OstifakODP-Verdana</a> (76 commits)
               </div>
@@ -416,7 +505,7 @@ export const GithubOverview: React.FC = () => {
               <div className="truncate">
                 • <a href="https://github.com/imanecdoche/fatihfarhat" target="_blank" rel="noreferrer" className="hover:text-[#8ed462] transition-colors">imanecdoche/fatihfarhat</a> (27 commits)
               </div>
-              <div className="text-xs font-semibold text-[#2c2e2a]/50">
+              <div className="text-xs font-semibold text-[#2c2e2a]/50 font-sans">
                 dan 22 repositori aktif lainnya
               </div>
             </div>
@@ -424,18 +513,18 @@ export const GithubOverview: React.FC = () => {
 
           <div className="p-4 sm:p-5 rounded-2xl bg-[#f5f1e4]/70 border border-[#2c2e2a]/10">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 font-sans">
                 Distribusi Tipe Kontribusi
               </span>
-              <span className="text-xs font-black text-[#2c2e2a]">91% Commits</span>
+              <span className="text-xs font-black text-[#2c2e2a] font-sans">90% Commits</span>
             </div>
 
             {/* Segmented Progress Bar */}
             <div className="w-full bg-[#ebe7dc] h-3.5 rounded-full overflow-hidden flex gap-0.5 mb-2.5">
               <div
                 className="bg-[#8ed462] h-full transition-all duration-500 rounded-l-full"
-                style={{ width: '91.1%' }}
-                title="Commits: 380 (91.1%)"
+                style={{ width: '90.5%' }}
+                title="Commits: 380 (90.5%)"
               />
               <div
                 className="bg-[#3a86ff] h-full transition-all duration-500"
@@ -444,13 +533,13 @@ export const GithubOverview: React.FC = () => {
               />
               <div
                 className="bg-[#f4a261] h-full transition-all duration-500 rounded-r-full"
-                style={{ width: '2.9%' }}
-                title="Pull Requests: +12 (2.9%)"
+                style={{ width: '3.5%' }}
+                title="Pull Requests: +15 (3.5%)"
               />
             </div>
 
             {/* Metrics Breakdown with Colors */}
-            <div className="flex flex-wrap items-center justify-between text-[11.5px] font-bold text-[#2c2e2a]/80 gap-2">
+            <div className="flex flex-wrap items-center justify-between text-[11.5px] font-bold text-[#2c2e2a]/80 gap-2 font-sans">
               <span className="inline-flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#8ed462] shrink-0" />
                 <span>Commits: 380</span>
@@ -461,7 +550,7 @@ export const GithubOverview: React.FC = () => {
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#f4a261] shrink-0" />
-                <span>Pull Requests: +12</span>
+                <span>Pull Requests: +15</span>
               </span>
               <span className="inline-flex items-center gap-1.5 text-[#2c2e2a]/40">
                 <span className="w-2 h-2 rounded-full bg-[#2c2e2a]/20 shrink-0" />
@@ -472,16 +561,113 @@ export const GithubOverview: React.FC = () => {
         </div>
       </motion.div>
 
+      {/* Kontribusi Open Source Eksternal (Upstream Pull Requests) */}
+      <div className="mb-14 sm:mb-20">
+        <div className="mb-8">
+          <p className="text-xs sm:text-sm font-bold tracking-[0.16em] uppercase text-[#8ed462] mb-2 font-sans">
+            UPSTREAM OPEN SOURCE CONTRIBUTIONS
+          </p>
+          <h3 className="text-2xl sm:text-3xl font-black text-[#2c2e2a] tracking-tight font-sans">
+            Kontribusi Open Source Eksternal (Upstream Pull Requests)
+          </h3>
+          <p className="mt-1 text-sm sm:text-base text-[#2c2e2a]/70 font-normal font-sans">
+            Kontribusi kode nyata, optimasi core formatter, dan lokalisasi dokumentasi resmi pada repositori open-source global terkemuka hari ini.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+          {externalContributions.map((item) => (
+            <motion.div
+              key={item.repo}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col justify-between p-6 sm:p-7 rounded-[28px] bg-[#ffffff] select-none"
+            >
+              <div>
+                {/* Top Row: Repo Title + Upstream Link + Star */}
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <a
+                    href={item.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 group min-w-0"
+                  >
+                    <FolderGit2 size={18} className="text-[#2c2e2a]/70 shrink-0 group-hover:text-[#8ed462] transition-colors" />
+                    <span className="text-base sm:text-lg font-black text-[#2c2e2a] group-hover:text-[#8ed462] transition-colors truncate font-sans">
+                      {item.repo}
+                    </span>
+                    <ArrowUpRight
+                      size={15}
+                      className="text-[#2c2e2a]/40 group-hover:text-[#2c2e2a] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0"
+                    />
+                  </a>
+                  <div className="flex items-center gap-1 text-[#e6a817] shrink-0 text-xs font-bold font-sans">
+                    <Star size={14} fill="currentColor" />
+                    <span>{item.stars}</span>
+                  </div>
+                </div>
+
+                {/* PR Meta & Title */}
+                <div className="p-3.5 rounded-2xl bg-[#f5f1e4]/70 mb-4 border border-[#2c2e2a]/8">
+                  <div className="flex items-center justify-between text-xs font-bold text-[#8ed462] mb-1.5 font-sans">
+                    <span className="inline-flex items-center gap-1.5">
+                      <GitPullRequest size={14} />
+                      <span>PR #{item.prNumber}</span>
+                    </span>
+                    <span className="text-[#2c2e2a]/50 text-[11px] font-sans font-medium">
+                      {item.date}
+                    </span>
+                  </div>
+                  <a
+                    href={item.prUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm font-black text-[#2c2e2a] hover:text-[#8ed462] transition-colors leading-snug line-clamp-2 font-sans"
+                  >
+                    {item.prTitle}
+                  </a>
+                </div>
+
+                {/* Description */}
+                <p className="text-[13.5px] leading-relaxed text-[#2c2e2a]/75 mb-6 font-normal font-sans">
+                  {item.description}
+                </p>
+              </div>
+
+              {/* Bottom Row: Language + PR Action Button */}
+              <div className="flex items-center justify-between pt-4 border-t border-[#2c2e2a]/8 text-xs font-bold text-[#2c2e2a]/70">
+                <div className="flex items-center gap-2 font-sans">
+                  {getLanguageIcon(item.language)}
+                  <span>{item.language}</span>
+                </div>
+
+                <a
+                  href={item.prUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#2c2e2a] text-white hover:bg-[#8ed462] hover:text-[#2c2e2a] text-xs font-black transition-colors uppercase tracking-wider font-sans"
+                >
+                  <span>Lihat PR</span>
+                  <ArrowUpRight size={13} />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
       {/* Pinned Repositories Grid (Repo Unggulan) */}
       <div className="mb-14 sm:mb-20">
         <div className="mb-8">
-          <p className="text-xs sm:text-sm font-bold tracking-[0.16em] uppercase text-[#8ed462] mb-2">
+          <p className="text-xs sm:text-sm font-bold tracking-[0.16em] uppercase text-[#8ed462] mb-2 font-sans">
             FEATURED & PINNED WORK
           </p>
-          <h3 className="text-2xl sm:text-3xl font-black text-[#2c2e2a] tracking-tight">
+          <h3 className="text-2xl sm:text-3xl font-black text-[#2c2e2a] tracking-tight font-sans">
             Daftar Repo Unggulan (Pinned Repositories)
           </h3>
-          <p className="mt-1 text-sm sm:text-base text-[#2c2e2a]/70 font-normal">
+          <p className="mt-1 text-sm sm:text-base text-[#2c2e2a]/70 font-normal font-sans">
             Koleksi proyek kode utama yang disematkan secara resmi di profil GitHub @imanecdoche.
           </p>
         </div>
@@ -603,10 +789,49 @@ export const GithubOverview: React.FC = () => {
                   </div>
                 </div>
 
+                {/* Pull Requests in this month */}
+                {monthItem.pullRequests && monthItem.pullRequests.length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-[#2c2e2a]/8">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 flex items-center gap-1.5 mb-2 font-sans">
+                      <GitPullRequest size={13} className="text-[#8ed462]" />
+                      <span>{monthItem.pullRequests.length} Pull Requests ke repositori eksternal (hari ini):</span>
+                    </span>
+                    <div className="flex flex-col gap-2">
+                      {monthItem.pullRequests.map((pr, prIdx) => (
+                        <a
+                          key={prIdx}
+                          href={pr.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-3 rounded-xl bg-[#f5f1e4]/60 border border-[#2c2e2a]/8 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-[#f5f1e4] transition-colors group font-sans"
+                        >
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-2 mb-0.5">
+                              <span className="text-xs font-black text-[#2c2e2a] group-hover:text-[#8ed462] transition-colors truncate">
+                                {pr.repo} #{pr.prNumber}
+                              </span>
+                              <span className="text-[10px] font-bold text-[#2c2e2a]/50 shrink-0 font-sans">
+                                ({pr.date})
+                              </span>
+                            </div>
+                            <p className="text-xs text-[#2c2e2a]/75 font-normal truncate font-sans">
+                              {pr.title}
+                            </p>
+                          </div>
+                          <div className="inline-flex items-center gap-1 text-xs font-black text-[#2c2e2a] group-hover:text-[#8ed462] shrink-0 font-sans">
+                            <span>Buka PR</span>
+                            <ArrowUpRight size={13} />
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Created Repos in this month */}
                 {monthItem.createdRepos && monthItem.createdRepos.length > 0 && (
                   <div className="mt-3 pt-3 border-t border-[#2c2e2a]/8">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 font-sans">
                       Membuat {monthItem.createdRepos.length} repositori baru:
                     </span>
                     <div className="flex flex-wrap gap-2 mt-2">
@@ -616,7 +841,7 @@ export const GithubOverview: React.FC = () => {
                           href={cr.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white text-xs font-bold text-[#2c2e2a] transition-colors"
+                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white text-xs font-bold text-[#2c2e2a] transition-colors font-sans"
                         >
                           <BookOpen size={13} className="text-[#2c2e2a]/50" />
                           <span>{cr.name}</span>

@@ -520,3 +520,17 @@ Acuan utama dan mutlak selalu benar.
       3. *Audacity* (78%) — Ikon resmi SVG (`/icons/audacity.svg`), level: Multi-Track Audio Editing.
       4. *FL Studio* (65%) — Ikon resmi Image-Line (`/icons/fl_studio.png`), level: DAW & Beat Sequencing.
     - **Kepatuhan Desain**: Kartu skill putih tanpa border (`Aturan 117`), rendering ApexCharts Radial Gauge presisi, flat tanpa bayangan (`DESIGN.md`), tipografi bebas monospace (`font-sans`), dan bebas badge/pill terlarang (`ai-anti-patterns.md`).
+120. **Penambahan Kontribusi Open Source Eksternal (Upstream Pull Requests) pada Komponen Overview GitHub (`GithubOverview.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'Overview Kontribusi GitHub & Repositori — tambahin kontribusi kita yang baru kita lakukan hari ini di repo orang lain'.
+    - **Pembaruan Metrik & Statistik GitHub**:
+      - Total Kontribusi 2026 diperbarui menjadi 383 kontribusi (+3 upstream PR eksternal).
+      - Kartu statistik 'Upstream PR Eksternal (+3)' ditambahkan menampilkan kontribusi aktif ke FastGPT, Dify, dan Dragonfly.
+      - Distribusi tipe kontribusi diperbarui menjadi 90% Commits (380), Code Review +25 (6.0%), dan Pull Requests +15 (3.5%).
+    - **Section Khusus 'Kontribusi Open Source Eksternal (Upstream Pull Requests)'**:
+      - Dihadirkan sebelum Pinned Repositories dengan kartu putih tanpa outline border (`Aturan 117`), zero shadow (`DESIGN.md`), dan tipografi sans-serif (`Aturan 108`):
+        1. *labring/FastGPT* (PR #7817) — `fix(common): improve number formatting for Chinese locales and billion units` (TypeScript, 29.7k stars, link langsung ke PR).
+        2. *langgenius/dify* (PR #42768) — `docs: add Indonesian translation of README (docs/id-ID/README.md)` (TypeScript, 156.8k stars, link langsung ke PR).
+        3. *dragonflydb/dragonfly* (PR #8374) — `docs(readme): add Indonesian translation (README.id-ID.md)` (C++, 31.6k stars, link langsung ke PR).
+    - **Rincian Aktivitas Bulanan (September 2026)**:
+      - Menambahkan log '3 Pull Requests ke repositori eksternal (hari ini)' pada timeline aktivitas September 2026 lengkap dengan nomor PR, judul, tanggal, dan tautan langsung ke GitHub.
+    - **Kepatuhan Desain Mutlak**: Bebas outline border pada seluruh kartu berlatar putih (`Aturan 117`), flat tanpa shadow (`DESIGN.md`), font `font-sans` tanpa monospace (`Aturan 108`), dan tanpa badge/pill terlarang (`ai-anti-patterns.md`).
