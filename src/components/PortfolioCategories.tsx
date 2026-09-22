@@ -40,14 +40,14 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
     {
       id: 'design' as PortfolioCategoryType,
       title: 'Desain Grafis & UI/UX',
-      tagline: 'Antarmuka Visual & Identitas Brand',
+      tagline: 'Antarmuka Visual & Prototipe Web',
       description:
-        'Perancangan antarmuka pengguna web prototype Humansights.org, sistem krisis kemanusiaan, dan arsitektur interaksi UI/UX taktis.',
+        'Perancangan antarmuka pengguna web prototype Humansights.org dan Kusuma Holistic, mencakup arsitektur interaksi taktis krisis dan layanan terapi klinis.',
       featuredItems: [
-        'Humansights.org Website Prototype',
-        'Klien: Syailendra Adi Sapta (Founder Indonesia Contra Terror)',
-        'Crisis Center & Portal Komunikasi Aman (Confidential Intake)',
-        'Program Kemanusiaan Strategis & Jadwal Operasional',
+        'Humansights.org Website Prototype (Klien: Syailendra Adi Sapta)',
+        'Kusuma Holistic Website Prototype (Klien: Taufik Indra Kusuma)',
+        'Crisis Center, Confidential Intake & Triage Navigation',
+        'Holistic Therapy, Herbal Catalog & WhatsApp Booking Flow',
       ],
       actionLabel: 'Jelajahi Portofolio Desain',
     },

@@ -551,5 +551,27 @@ Acuan utama dan mutlak selalu benar.
         2. *Crisis Center & Sektor Intervensi* (`crisis_center.png`): Immediate Assistance 24/7 hotline darurat WhatsApp, 5 sektor intervensi terarah (Legal Aid, Psychology & Mental Health, Drug Rehab, Deradicalization, LGBT Counseling), serta Secure Communication Portal dengan formulir intake rahasia terenkripsi.
         3. *Inisiatif Aktif & Jadwal Operasional* (`programs.png`): Kerangka program ketahanan pangan, GOTA (Gerakan Orang Tua Asuh), kerangka deradikalisasi (89% reintegration rate), unit triase psikologis, dan agenda Operational Schedule terstruktur.
       - **Interaktivitas Prototipe**: Tab switcher responsif untuk menjelajahi ketiga layar, thumbnail quick navigation, rincian teknis UI/UX, cakupan deliverables, dan modal lightbox layar penuh (*fullscreen zoom viewer*).
-    - **Kepatuhan Desain Mutlak**: Kartu putih tanpa outline border (`Aturan 117`), flat tanpa shadow (`DESIGN.md`), tipografi bebas monospace (`font-sans` sesuai Aturan 108), dan bebas dari badge/pill sembarangan (`ai-anti-patterns.md`).
+123. **Penambahan Kartu Proyek 'Kusuma Holistic Website Prototype' pada Portofolio Desain Grafis & UI/UX (`DesignPortfolio.tsx` & `PortfolioCategories.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'tambahkan lagi kartu projek Kusuma Holistic Website Prototype, Client: Taufik Indra Kusuma, Theraphist'.
+    - **Arsitektur Multi-Project Portofolio Desain**:
+      - Menampilkan kartu proyek mandiri yang berdampingan dengan Humansights.org:
+        1. *Humansights.org Website Prototype* (Klien: Syailendra Adi Sapta, Founder of Indonesia Contra Terror)
+        2. *Kusuma Holistic Website Prototype* (Klien: Taufik Indra Kusuma, Theraphist)
+    - **Integrasi Tangkapan Layar Asli Kusuma Holistic (`/portfolio/kusumaholistic/`)**:
+      1. *Beranda & Solusi Terpadu* (`home.png`): "Sentuhan Terapi dari Hati yang Peduli", proposisi nilai terapi holistik 100% alami, badge terapis ahli bersertifikat, ringkasan 4 solusi utama (Bekam Sunnah & Terapi Manual, Refleksi, Totok Punggung, Terapi Infrared & Herbal Alami), dan navigasi reservasi.
+      2. *Layanan Holistic & Investasi Kesehatan* (`services.png`): Rincian layanan Bekam Cupping (Detox), Refleksi (Relief), Totok Wajah & Aura (Rejuvenate), 3 pilar keunggulan higienitas klinis, tabel transparansi tarif durasi sesi, dan tombol reservasi instan WhatsApp.
+      3. *Produk Herbal, Testimoni & Kontak Klinik* (`products_contact.png`): Kurasi etalase madu hutan murni & artisan herbal blend, testimoni autentik pasien (Siti Rahma & Budi Santoso), informasi alamat Jl. Raya Serang - Pandeglang Km. 14 Banten, jam operasional, dan peta lokasi interaktif.
+    - **Fitur Interaktivitas Kartu Proyek**:
+      - Tab switcher antar-layar mandiri di setiap kartu proyek.
+      - Thumbnail quick selector untuk navigasi visual cepat.
+      - Rincian modul utama dan pertimbangan desain UI/UX.
+      - 4 pilar cakupan deliverables & technical scope per proyek.
+      - Modal lightbox resolusi penuh (*fullscreen zoom viewer*) untuk semua tangkapan layar.
+    - **Pembaruan Ringkasan Kategori (`PortfolioCategories.tsx`)**:
+      - Memperbarui daftar `featuredItems` pada kategori Desain Grafis & UI/UX untuk mencantumkan kedua proyek resmi beserta klien masing-masing.
+    - **Kepatuhan Desain Mutlak**:
+      - Seluruh kartu dan tombol berlatar putih bebas outline/border (`Aturan 117`).
+      - Desain flat murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
+      - Tipografi antarmuka menggunakan font sans-serif biasa (`font-sans` sesuai Aturan 108).
+      - Bebas dari badge/pill/tag tanpa instruksi eksplisit (`ai-anti-patterns.md`).
 
