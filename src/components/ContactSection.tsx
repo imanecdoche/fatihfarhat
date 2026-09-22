@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, ArrowUpRight, Copy, Check, Send } from 'lucide-react';
+import {
+  SiWhatsapp,
+  SiTiktok,
+  SiYoutube,
+  SiSuno,
+  SiSpotify,
+  SiDribbble,
+  SiGithub,
+} from 'react-icons/si';
 
 const InstagramIcon: React.FC<{ size?: number; className?: string }> = ({ size = 22, className = '' }) => (
   <svg
@@ -20,21 +29,72 @@ const InstagramIcon: React.FC<{ size?: number; className?: string }> = ({ size =
   </svg>
 );
 
-const WhatsAppIcon: React.FC<{ size?: number; className?: string }> = ({ size = 22, className = '' }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-  </svg>
-);
+interface SocialLinkItem {
+  id: string;
+  name: string;
+  category: string;
+  handle: string;
+  url: string;
+  description: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+}
+
+const socialLinksData: SocialLinkItem[] = [
+  {
+    id: 'tiktok',
+    name: 'TikTok',
+    category: 'SHORT VIDEO & CREATIVE',
+    handle: '@fatihfarhat',
+    url: 'https://www.tiktok.com/@fatihfarhat',
+    description: 'Video pendek seputar proses coding, eksplorasi desain, dan konten visual kreatif.',
+    icon: SiTiktok,
+  },
+  {
+    id: 'youtube',
+    name: 'YouTube',
+    category: 'VIDEO & CREATIVE DISCUSSIONS',
+    handle: '@gimanajadinyaid',
+    url: 'https://www.youtube.com/@gimanajadinyaid',
+    description: 'Kanal video panjang untuk eksplorasi naratif, teknologi, dan topik-topik kreatif.',
+    icon: SiYoutube,
+  },
+  {
+    id: 'suno',
+    name: 'Suno AI',
+    category: 'AI MUSIC & COMPOSITION',
+    handle: '@zerotwentymusic',
+    url: 'https://suno.com/@zerotwentymusic',
+    description: 'Eksperimen komposisi musik generative audio AI, sound design, dan lagu orisinal.',
+    icon: SiSuno,
+  },
+  {
+    id: 'spotify',
+    name: 'Spotify',
+    category: 'OFFICIAL MUSIC ARTIST',
+    handle: 'Fatih Farhat',
+    url: 'https://open.spotify.com/artist/61lnv533fb8bQVV5cQ7h5y?si=ozZTj4q5TKSrBAPdhzIlHg',
+    description: 'Rilis musik orisinal, track instrumental, dan single yang tersedia di katalog Spotify.',
+    icon: SiSpotify,
+  },
+  {
+    id: 'dribbble',
+    name: 'Dribbble',
+    category: 'DESIGN & UI PORTFOLIO',
+    handle: 'fatihfarhat',
+    url: 'https://dribbble.com/fatihfarhat',
+    description: 'Koleksi rancangan antarmuka pengguna (UI/UX), grafis vektor, dan eksplorasi visual.',
+    icon: SiDribbble,
+  },
+  {
+    id: 'github',
+    name: 'GitHub',
+    category: 'CODE & OPEN SOURCE',
+    handle: 'imanecdoche',
+    url: 'https://github.com/imanecdoche',
+    description: 'Repositori kode sumber terbuka, kontribusi proyek perangkat lunak, dan arsip aplikasi.',
+    icon: SiGithub,
+  },
+];
 
 export const ContactSection: React.FC = () => {
   const [copiedType, setCopiedType] = useState<string | null>(null);
@@ -99,8 +159,8 @@ export const ContactSection: React.FC = () => {
               <span className="text-xs font-bold tracking-[0.14em] uppercase text-[#2c2e2a]/60">
                 WHATSAPP (RESPON CEPAT)
               </span>
-              <div className="w-11 h-11 rounded-full bg-[#f5f1e4] flex items-center justify-center text-[#2c2e2a] group-hover:bg-[#8ed462] group-hover:text-[#2c2e2a] transition-colors duration-300">
-                <WhatsAppIcon size={22} />
+              <div className="w-11 h-11 rounded-full bg-[#f5f1e4] flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-colors duration-300">
+                <SiWhatsapp size={22} />
               </div>
             </div>
 
@@ -387,6 +447,78 @@ export const ContactSection: React.FC = () => {
         </motion.div>
       </div>
 
+      {/* Social Media & Creative Networks Grid */}
+      <div className="mb-12 sm:mb-16">
+        <div className="mb-8 text-left max-w-3xl">
+          <p className="text-xs sm:text-sm font-bold tracking-[0.16em] uppercase text-[#8ed462] mb-3">
+            SOCIAL MEDIA & CREATIVE ECOSYSTEM
+          </p>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#2c2e2a] tracking-tight leading-tight">
+            Tautan Media Sosial & Jejaring Kreatif
+          </h3>
+          <p className="mt-3 text-sm sm:text-base text-[#2c2e2a]/75 leading-relaxed">
+            Terhubung di berbagai saluran media sosial resmi dan platform kreatif untuk menyimak perkembangan karya visual, musik, dan repositori kode.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {socialLinksData.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                className="group flex flex-col justify-between p-6 sm:p-7 rounded-[28px] sm:rounded-[32px] bg-[#ffffff] transition-all duration-300 select-none"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-4 mb-4">
+                    <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#2c2e2a]/60">
+                      {item.category}
+                    </span>
+                    <div className="w-11 h-11 rounded-full bg-[#f5f1e4] flex items-center justify-center text-[#2c2e2a] group-hover:bg-[#2c2e2a] group-hover:text-white transition-colors duration-300 shrink-0">
+                      <Icon size={20} />
+                    </div>
+                  </div>
+
+                  <h4 className="text-xl sm:text-2xl font-black text-[#2c2e2a] tracking-tight mb-1">
+                    {item.name}
+                  </h4>
+                  <p className="text-xs font-bold text-[#8ed462] mb-3">
+                    {item.handle}
+                  </p>
+                  <p className="text-xs sm:text-sm text-[#2c2e2a]/75 leading-relaxed mb-6">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-[#2c2e2a]/10 flex items-center justify-between gap-3">
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard(item.url, `social-${item.id}`)}
+                    className="p-2.5 rounded-xl bg-[#f5f1e4]/70 hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white transition-colors cursor-pointer"
+                    title="Salin Tautan"
+                  >
+                    {copiedType === `social-${item.id}` ? <Check size={16} /> : <Copy size={16} />}
+                  </button>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 rounded-[50px] bg-[#2c2e2a] hover:bg-[#8ed462] text-white hover:text-[#2c2e2a] font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-[0.98] cursor-pointer"
+                  >
+                    <span>Kunjungi {item.name}</span>
+                    <ArrowUpRight size={14} />
+                  </a>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Interactive Quick Direct Message Box */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -465,9 +597,9 @@ export const ContactSection: React.FC = () => {
             <button
               type="button"
               onClick={handleSendWhatsApp}
-              className="w-full sm:w-auto px-8 py-4 rounded-[50px] bg-[#2c2e2a] hover:bg-[#8ed462] text-white hover:text-[#2c2e2a] font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.98] cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 rounded-[50px] bg-[#2c2e2a] hover:bg-[#25D366] text-white font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.98] cursor-pointer"
             >
-              <WhatsAppIcon size={18} />
+              <SiWhatsapp size={18} />
               <span>Kirimkan ke WhatsApp</span>
             </button>
 

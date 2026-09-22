@@ -656,7 +656,24 @@ Acuan utama dan mutlak selalu benar.
       - **Drop Shadow Halus**: Sesuai instruksi eksplisit pengguna, setiap item gambar diberikan bayangan lembut (`shadow-[0_8px_25px_rgba(44,46,42,0.08)]` dan efek interaktif halus `hover:shadow-[0_16px_35px_rgba(44,46,42,0.14)] hover:scale-[1.02]`).
       - **Bebas Teks, Label & Ikon**: Setiap item murni hanya menampilkan karya seni visual tanpa badge, tanpa subtitle, tanpa deskripsi, dan tanpa tombol/ikon overlay.
       - **Lightbox Preview**: Mengklik gambar tetap membuka pratinjau resolusi tinggi di modal lightbox portal yang sudah terisolasi tanpa scroll-bleed.
+129. **Tautan Media Sosial & Logo Resmi WhatsApp pada Halaman Kontak (`ContactSection.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'halaman kontak > Saluran Komunikasi & Media Sosial tambahin link link media sosial (Tiktok, YouTube, Suno, Spotify, Dribble, GitHub), terus yang whatsapp pake logo resmi whatsapp'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Logo Resmi WhatsApp (`SiWhatsapp`)**:
+        - Mengganti seluruh ikon gelembung pesan generik sebelumnya dengan logo resmi vektor WhatsApp `SiWhatsapp` (`react-icons/si`), baik pada kartu kontak utama maupun pada tombol kirim formulir pesan singkat.
+        - Aksen visual diselaraskan dengan warna identitas resmi WhatsApp (`#25D366`) saat disentuh/hover.
+      - **Grid 6 Tautan Media Sosial & Portofolio Eksternal**:
+        1. **TikTok**: `https://www.tiktok.com/@fatihfarhat` (Handle: `@fatihfarhat`, Icon: `SiTiktok`).
+        2. **YouTube**: `https://www.youtube.com/@gimanajadinyaid` (Handle: `@gimanajadinyaid`, Icon: `SiYoutube`).
+        3. **Suno AI Music**: `https://suno.com/@zerotwentymusic` (Handle: `@zerotwentymusic`, Icon: `SiSuno`).
+        4. **Spotify**: `https://open.spotify.com/artist/61lnv533fb8bQVV5cQ7h5y?si=ozZTj4q5TKSrBAPdhzIlHg` (Handle: `Fatih Farhat`, Icon: `SiSpotify`).
+        5. **Dribbble**: `https://dribbble.com/fatihfarhat` (Handle: `fatihfarhat`, Icon: `SiDribbble`).
+        6. **GitHub**: `https://github.com/imanecdoche` (Handle: `imanecdoche`, Icon: `SiGithub`).
+      - **Desain Kartu Flat & Bebas Outline (`Aturan 117`)**:
+        - Menggunakan kontainer kartu putih flat `bg-[#ffffff]` bersudut membulat `rounded-[28px] sm:rounded-[32px]` tanpa garis tepi/stroke outline (`Aturan 117`).
+        - Dilengkapi tombol cepat "Salin Tautan" dan tombol navigasi langsung `target="_blank"` bertombol kapsul flat.
     - **Kepatuhan Desain Mutlak**:
       - Dilarang membuat badge/tag/pill tanpa perintah eksplisit (`ai-anti-patterns.md`).
-      - Tipografi judul section murni sans-serif tebal (`font-black`, `Aturan 108`).
+      - Desain flat murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
+      - Tipografi judul dan teks antarmuka sans-serif bersih (`font-sans`, `Aturan 108`).
 
