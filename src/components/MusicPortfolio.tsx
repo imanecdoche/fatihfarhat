@@ -1,150 +1,163 @@
 import React from 'react';
 import {
-  Headphones,
-  CheckCircle2,
+  ArrowUpRight,
 } from 'lucide-react';
+import { SiSpotify } from 'react-icons/si';
 
 export const MusicPortfolio: React.FC = () => {
-  const musicProjects = [
+  // Daftar Rilisan Lagu Orisinal Spotify oleh ZeroTwenty
+  const spotifyTracks = [
     {
-      id: 'symphonic-dawn',
-      title: 'Symphonic Dawn — Cinematic Orchestral Suite',
-      category: 'Komposisi Orkestra & Ilustrasi Sinematik',
-      subtitle: 'Komposisi Orkestral Epik & Soundscapes Atmosferik',
+      id: 'masihkah-aku-diterima',
+      title: 'Masihkah Aku Diterima',
+      artist: 'ZeroTwenty',
+      releaseType: 'Single Populer',
+      coverImage: '/music/masihkah_aku_diterima.jpg',
+      spotifyUrl: 'https://open.spotify.com/track/56VVewiJAypMwY8OuJHR4k?si=32b02f41d05a4fca',
       description:
-        'Komposisi tema orkestra lengkap yang memadukan ensemble dawai (strings), brass megah, perkusi hybrid sinematik, dan choir atmosferik untuk ilustrasi narasi film pendek dan game.',
-      highlights: [
-        'Arsitektur partitur orkestra berdimensi dinamis dari piano lembut hingga crescendo megah.',
-        'Layering perkusi hybrid sinematik dengan pukulan taiko berbobot dan sub-bass terdefinisi.',
-        'Spatial panning 3D untuk memisahkan frekuensi instrumen akustik secara alami.',
-        'Proses mastering terkalibrasi -14 LUFS untuk standar platform streaming modern.',
-      ],
-      tools: 'Logic Pro • FL Studio • Spitfire Audio Symphonic Strings • Native Instruments Kontakt',
+        'Lagu populer bernuansa emosional dan reflektif dengan melodi vokal menyentuh, lirik perenungan penerimaan diri, dan lapisan piano akustik yang intim.',
     },
     {
-      id: 'echoes-of-solitude',
-      title: 'Echoes of Solitude — Minimalist Piano & Ambient Strings',
-      category: 'Komposisi Instrumental Neo-Klasikal',
-      subtitle: 'Eksplorasi Solo Piano Intim & Tekstur Cello Emosional',
+      id: 'halfway',
+      title: 'Halfway',
+      artist: 'ZeroTwenty',
+      releaseType: 'Single Rilis Resmi',
+      coverImage: '/music/halfway.jpg',
+      spotifyUrl: 'https://open.spotify.com/track/76o2OlWrOMYSYwf7oGC9NA?si=bab0fd33e3284bf9',
       description:
-        'Rekaman instrumental solo piano neo-klasikal dengan tekstur ruang reverb alami, lapisan cello emosional, dan resonansi akustik mendalam sebagai soundtrack narasi sastra dan momen reflektif.',
-      highlights: [
-        'Kalibrasi kurva velocity tuts piano untuk menangkap dinamika sentuhan halus (pianissimo).',
-        'Desain reverb konvolusi ruang akustik nyata dengan peluruhan (decay) halus tanpa kekeruhan frekuensi.',
-        'Saturasi tape analog lembut untuk memberikan kehangatan timbre organik pada dawai cello.',
-        'Penyelarasan fase stereo mikrofon ganda untuk citra stereo yang lebar dan stabil.',
-      ],
-      tools: 'Pianoteq Pro • Keyscape • FabFilter Pro-Q 3 & Pro-C 2 • Valhalla VintageVerb',
+        'Komposisi pop alternatif berdaya dorong ritmis dinamis, melodi katarsis, dan lapisan aransemen harmonik yang ekspresif.',
     },
     {
-      id: 'vox-audio-dsp',
-      title: 'VOX Audio DSP Engine — Real-Time Wave Synthesis & DSP Filters',
-      category: 'Audio Engineering & Real-Time DSP',
-      subtitle: 'Perancangan DSP Audio Real-Time & Sintesis Audio Prosedural',
+      id: 'wind-of-fall',
+      title: 'Wind of Fall',
+      artist: 'ZeroTwenty',
+      releaseType: 'Single Rilis Resmi',
+      coverImage: '/music/wind_of_fall.jpg',
+      spotifyUrl: 'https://open.spotify.com/track/016nDtT629fN3fftTqrDJv?si=6e84cabc924b4c77',
       description:
-        'Desain synthesizer audio digital dan filter DSP interaktif berbasis komputasi latency rendah, mencakup filter resonansi band-pass, custom wavetable synthesis, dan envelope modulation.',
-      highlights: [
-        'Arsitektur pemrosesan buffer audio latency ultra-rendah (<5ms) bebas glitch dan audio tearing.',
-        'Algoritma filter anti-aliasing dengan interpolasi kurva non-linear untuk harmonik bersih.',
-        'Modulasi envelope ADSR responsif dengan kurva eksponensial matematis yang akurat.',
-        'Implementasi visual penganalisis spektrum frekuensi Fourier real-time (FFT analyzer).',
-      ],
-      tools: 'C++ Audio Architecture • JUCE Framework • Pure Data • REAPER',
-    },
-    {
-      id: 'cinematic-foley-soundscapes',
-      title: 'Cinematic Foley & World-Building Soundscapes',
-      category: 'Sound Design & Foley Recording',
-      subtitle: 'Perekaman Suara Lingkungan & Perancangan Efek Suara Sinematik',
-      description:
-        'Perekaman audio lapangan (field recording) mikrofon stereo dan manipulasi foley organik untuk efek suara langkah kaki, desau angin padang pasir, gemertak api, dan transisi audio imersif.',
-      highlights: [
-        'Perekaman stereo 96kHz / 24-bit dengan rasio sinyal terhadap derau (SNR) tinggi.',
-        'Restorasi audio spektral mendalam untuk menghilangkan derau statis mikrofon tanpa merusak transient.',
-        'Desain lapisan transisi whoosh, impact bas, dan tekstur organik untuk transisi adegan visual.',
-        'Audio cue timing yang presisi milidetik untuk sinkronisasi mutlak terhadap gerak visual.',
-      ],
-      tools: 'Zoom H-Series Recorder • iZotope RX Advanced • Soundtoys SoundShifter • Adobe Audition',
+        'Balada instrumental akustik bernuansa musim gugur dengan petikan dawai hangat, melodi melankolis, dan resonansi ruang alami.',
     },
   ];
 
   return (
     <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 py-10 sm:py-16 font-sans">
-      {/* Category Header */}
+      {/* Section Karya Musik Orisinal (ZeroTwenty) */}
       <div className="mb-12 sm:mb-16">
-        <div className="mb-4">
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#2c2e2a] text-white">
-            <Headphones className="text-[#8ed462] shrink-0" size={18} />
-            <span className="font-sans text-xs sm:text-sm font-bold text-white tracking-wide">
-              Produksi Musik, Instrumental & Sound Design
-            </span>
+        <div className="mb-10 sm:mb-12">
+          {/* Header Badge Capsule */}
+          <div className="mb-4">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#2c2e2a] text-white">
+              <SiSpotify className="text-[#1ed760] shrink-0" size={18} />
+              <span className="font-sans text-xs sm:text-sm font-bold text-white tracking-wide">
+                Karya Musik Orisinal • ZeroTwenty
+              </span>
+            </div>
           </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight mb-4">
+            Karya Musik Orisinal
+          </h2>
+          <p className="text-base sm:text-lg text-[#2c2e2a]/75 max-w-4xl leading-relaxed">
+            Karya musik orisinal dengan melodi organik, lirik puitis, dan kedalaman narasi cerita di atas perpaduan instrumentasi modern (<span className="italic">organic melody, lyric and story over generated instruments</span>). Seluruh karya musik dan rilisan audio ini digubah serta dipublikasikan di bawah nama panggung <strong className="font-bold text-[#2c2e2a]">ZeroTwenty</strong>.
+          </p>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#2c2e2a] tracking-tight mb-4">
-          Music & Sound Design Showcase
-        </h2>
-        <p className="text-base sm:text-lg text-[#2c2e2a]/75 max-w-4xl leading-relaxed">
-          Eksplorasi komposisi musik instrumental orisinal, aransemen partitur orkestra, perancangan arsitektur DSP audio latency rendah, sound design foley imersif, serta kalibrasi mixing dan mastering audio modern.
-        </p>
-      </div>
 
-      {/* Grid of Music & Sound Design Projects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-        {musicProjects.map((project) => {
-          return (
+        {/* Featured Spotify Track Embed (Lagu Populer) */}
+        <div className="mb-10 sm:mb-12 overflow-hidden rounded-2xl border border-[#2c2e2a]/15 bg-[#ffffff] p-2.5 sm:p-3">
+          <iframe
+            data-testid="embed-iframe"
+            style={{ borderRadius: '12px' }}
+            src="https://open.spotify.com/embed/track/56VVewiJAypMwY8OuJHR4k?utm_source=generator&theme=0&si=5e9892d38a85403b"
+            width="100%"
+            height="152"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            title="Spotify Embed: Masihkah Aku Diterima"
+          />
+        </div>
+
+        {/* Grid of Spotify Track Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
+          {spotifyTracks.map((track) => (
             <div
-              key={project.id}
-              className="bg-[#ffffff] rounded-[24px] sm:rounded-[30px] border border-[#2c2e2a]/15 p-7 sm:p-9 flex flex-col justify-between transition-all hover:border-[#2c2e2a]/40 group select-none"
+              key={track.id}
+              className="bg-[#ffffff] rounded-[24px] sm:rounded-[28px] border border-[#2c2e2a]/15 p-5 sm:p-6 flex flex-col justify-between hover:border-[#2c2e2a]/40 transition-all duration-300 group select-none"
             >
               <div>
-                {/* Header Category & Tagline */}
-                <div className="mb-4">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#2c2e2a]/50 block mb-1">
-                    {project.category}
-                  </span>
+                {/* Track Cover Image */}
+                <div className="w-full aspect-square rounded-2xl overflow-hidden bg-[#f5f1e4] border border-[#2c2e2a]/10 mb-5 relative group-hover:border-[#2c2e2a]/25 transition-colors">
+                  <img
+                    src={track.coverImage}
+                    alt={`Sampul lagu ${track.title} oleh ${track.artist}`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
 
-                {/* Title & Subtitle */}
-                <h3 className="text-xl sm:text-2xl font-black text-[#2c2e2a] tracking-tight leading-snug mb-2">
-                  {project.title}
+                {/* Track Meta */}
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#2c2e2a]/50 block mb-1">
+                  {track.releaseType}
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-[#2c2e2a] tracking-tight leading-snug mb-1">
+                  {track.title}
                 </h3>
                 <p className="text-xs sm:text-[13px] font-bold text-[#8ed462] mb-3">
-                  {project.subtitle}
+                  {track.artist}
                 </p>
 
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-[#2c2e2a]/70 leading-relaxed mb-6">
-                  {project.description}
+                <p className="text-xs sm:text-sm text-[#2c2e2a]/70 leading-relaxed mb-6 font-normal">
+                  {track.description}
                 </p>
-
-                {/* Highlights / Disciplines */}
-                <div className="pt-4 border-t border-[#2c2e2a]/10 space-y-2 mb-6">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#2c2e2a]/50 block">
-                    Fokus Eksekusi & Mutu Produksi:
-                  </span>
-                  <ul className="space-y-1.5 text-xs text-[#2c2e2a]/80">
-                    {project.highlights.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 size={14} className="text-[#8ed462] shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
 
-              {/* Tools & Ecosystem */}
-              <div className="pt-4 border-t border-[#2c2e2a]/10 flex items-center justify-between text-xs">
-                <span className="font-bold text-[#2c2e2a]/80">
-                  Perangkat & Ekosistem:
-                </span>
-                <span className="font-semibold text-[#2c2e2a]/60">
-                  {project.tools}
-                </span>
+              {/* Bottom Play Action Link */}
+              <div className="pt-4 border-t border-[#2c2e2a]/10 flex items-center justify-between">
+                <a
+                  href={track.spotifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#1ed760] hover:text-[#18ac4d] transition-colors"
+                >
+                  <SiSpotify size={16} />
+                  <span>Dengarkan di Spotify</span>
+                  <ArrowUpRight size={14} />
+                </a>
               </div>
             </div>
-          );
-        })}
+          ))}
+        </div>
+
+        {/* Profile Action Buttons: Buka Profil Artis Spotify & Suno Profile */}
+        <div className="text-center flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
+          {/* Tombol Buka Profil Artis Spotify */}
+          <a
+            href="https://open.spotify.com/artist/61lnv533fb8bQVV5cQ7h5y?si=ozZTj4q5TKSrBAPdhzIlHg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-4 rounded-[50px] bg-[#2c2e2a] text-[#ffffff] hover:bg-[#000000] hover:text-[#1ed760] font-sans font-bold text-sm sm:text-base tracking-wide transition-all duration-300 active:scale-95 cursor-pointer select-none group border border-transparent hover:border-[#1ed760]/40"
+          >
+            <SiSpotify size={20} className="shrink-0 text-[#1ed760] group-hover:scale-110 transition-transform" />
+            <span>Buka Profil Artis</span>
+            <ArrowUpRight size={17} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+          </a>
+
+          {/* Tombol Suno Profile */}
+          <a
+            href="https://suno.com/@zerotwentymusic"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-4 rounded-[50px] bg-[#2c2e2a] text-[#ffffff] hover:bg-[#000000] hover:text-[#8ed462] font-sans font-bold text-sm sm:text-base tracking-wide transition-all duration-300 active:scale-95 cursor-pointer select-none group border border-transparent hover:border-[#8ed462]/40"
+          >
+            <img
+              src="/icons/suno.png"
+              alt="Suno Official Logo"
+              className="w-5 h-5 rounded-full object-contain shrink-0 group-hover:scale-110 transition-transform"
+            />
+            <span>Suno Profile</span>
+            <ArrowUpRight size={17} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+          </a>
+        </div>
       </div>
     </div>
   );

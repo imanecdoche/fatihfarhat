@@ -72,10 +72,10 @@ export const PortfolioCategories: React.FC<PortfolioCategoriesProps> = ({ onSele
       description:
         'Komposisi instrumental orisinal, aransemen partitur orkestra, perancangan sintesis audio DSP latency rendah, foley sinematik, dan mixing mastering audio.',
       featuredItems: [
-        'Symphonic Dawn — Cinematic Orchestral Suite',
-        'Echoes of Solitude — Minimalist Piano & Strings',
-        'VOX Audio DSP Engine — Real-Time Wave Synthesis',
-        'Cinematic Foley & World-Building Soundscapes',
+        'Masihkah Aku Diterima (Spotify Single)',
+        'Halfway (Alternative Pop Single)',
+        'Wind of Fall (Acoustic Ballad)',
+        'ZeroTwenty Spotify & Suno Catalog',
       ],
       actionLabel: 'Jelajahi Music & Sound Design',
     },

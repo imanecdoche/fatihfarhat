@@ -460,3 +460,21 @@ Acuan utama dan mutlak selalu benar.
       - Menambahkan tab switcher 'Musik & Audio' (`music`) pada sub-navigasi switcher kategori portofolio.
       - Me-render komponen `MusicPortfolio` ketika kategori `music` aktif.
     - **Kepatuhan Desain**: Menjaga estetika flat tanpa bayangan (`DESIGN.md`), font standar `font-sans` tanpa monospace (Aturan 108), dan patuh mutlak pada `ai-anti-patterns.md`.
+112. **Section Karya Musik Orisinal (ZeroTwenty), Spotify Embed, Kartu Musik & Profil Suno (`MusicPortfolio.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'tambahkan section Karya Musik Orisinal, tambahkan kartu musik dari spotify, di paling atas tambahkan embed link track untuk lagu populer di spotify, tambahkan tombol Buka Profil Artis dan tombol Suno Profile, buat paragraf yang bilang karya musik orisinal, Organic melody, lyric and stoty over generated instruments, tambain nama panggung ZeroTwenty'.
+    - **Embed Track Populer**: Menampilkan iframe embed resmi Spotify untuk lagu populer 'Masihkah Aku Diterima' di bagian atas section musik orisinal.
+    - **Identitas & Filosofi Musik**: Menghadirkan nama panggung 'ZeroTwenty' serta narasi karya: 'Karya musik orisinal yang menggabungkan melodi organik, lirik puitis, dan kedalaman narasi di atas instrumen modern (organic melody, lyric, and story over generated instruments)'.
+    - **Kartu Musik Spotify**: Menampilkan kartu-kartu lagu Spotify resmi dengan sampul album orisinal, judul lagu, dan tautan aksi: 'Masihkah Aku Diterima', 'Halfway', dan 'Wind of Fall'.
+    - **Tombol Aksi**:
+      1. 'Buka Profil Artis' menuju profil Spotify ZeroTwenty (`https://open.spotify.com/artist/61lnv533fb8bQVV5cQ7h5y?si=ozZTj4q5TKSrBAPdhzIlHg`) dengan logo resmi Spotify (`SiSpotify`).
+      2. 'Suno Profile' menuju profil Suno (`https://suno.com/@zerotwentymusic`).
+    - **Kepatuhan Desain**: Format kapsul (`rounded-[50px]`/`rounded-full`), warna kontras solid aksen gelap `#2c2e2a` teks putih, flat tanpa bayangan (`DESIGN.md`), font sans-serif (`font-sans` sesuai Aturan 108), dan bebas badge/pill terlarang (`ai-anti-patterns.md`).
+113. **Penghapusan Kartu Portofolio Musik Dummy (`MusicPortfolio.tsx` & `PortfolioCategories.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'hapus dummy portofolio yang ini' disertai tangkapan layar 4 kartu dummy ('Symphonic Dawn', 'Echoes of Solitude', 'VOX Audio DSP Engine', dan 'Cinematic Foley & World-Building Soundscapes').
+    - **Pembersihan Konten Dummy**: Menghapus seluruh 4 kartu dummy dan section dummy tersebut dari `MusicPortfolio.tsx` sehingga halaman portofolio murni fokus pada karya musik orisinal autentik dari artis ZeroTwenty (lagu populer 'Masihkah Aku Diterima', 'Halfway', 'Wind of Fall', embed player Spotify, serta tombol aksi ke profil Spotify dan Suno).
+    - **Penyelarasan Featured Items (`PortfolioCategories.tsx`)**: Menyesuaikan daftar featuredItems pada kartu kategori 'Music & Sound Design' dengan karya riil: 'Masihkah Aku Diterima', 'Halfway', 'Wind of Fall', dan 'ZeroTwenty Spotify & Suno Catalog'.
+    - **Kepatuhan Desain**: Menjaga estetika flat tanpa bayangan (`DESIGN.md`), font sans-serif (`font-sans` sesuai Aturan 108), dan bebas elemen terlarang (`ai-anti-patterns.md`).
+114. **Penggunaan Ikon Resmi Suno pada Tombol Suno Profile (`MusicPortfolio.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'tombol ini pake icon resmi Suno https://cdn-o.suno.com/favicon-512x512.png' disertai tangkapan layar tombol Suno Profile.
+    - **Penerapan Aset**: Mengunduh ikon resmi Suno beresolusi tinggi (`/icons/suno.png`) dan memasangnya sebagai ikon pada tombol 'Suno Profile' di `MusicPortfolio.tsx` dengan proporsi ukuran rapi (`w-5 h-5 rounded-full object-contain shrink-0`).
+    - **Kepatuhan Desain**: Format kapsul (`rounded-[50px]`/`rounded-full`), warna kontras solid aksen gelap `#2c2e2a` teks putih, flat tanpa bayangan (`DESIGN.md`), font sans-serif (`font-sans` sesuai Aturan 108), dan bebas elemen terlarang (`ai-anti-patterns.md`).
