@@ -479,6 +479,18 @@ const personalArtsData: PersonalArtItem[] = [
     id: 'sleeping-puma',
     image: '/portfolio/personal-arts/art_3.png',
   },
+  {
+    id: 'botanical-carrot',
+    image: '/portfolio/personal-arts/art_4.png',
+  },
+  {
+    id: 'ripe-tomato',
+    image: '/portfolio/personal-arts/art_5.png',
+  },
+  {
+    id: 'crisp-cucumber',
+    image: '/portfolio/personal-arts/art_6.png',
+  },
 ];
 
 interface ProjectCardProps {
