@@ -672,8 +672,16 @@ Acuan utama dan mutlak selalu benar.
       - **Desain Kartu Flat & Bebas Outline (`Aturan 117`)**:
         - Menggunakan kontainer kartu putih flat `bg-[#ffffff]` bersudut membulat `rounded-[28px] sm:rounded-[32px]` tanpa garis tepi/stroke outline (`Aturan 117`).
         - Dilengkapi tombol cepat "Salin Tautan" dan tombol navigasi langsung `target="_blank"` bertombol kapsul flat.
+130. **Penggantian Tautan Portofolio & GitHub dengan Tombol 'Buka Maps' pada Kartu Lokasi (`ContactSection.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'https://maps.app.goo.gl/ThYujMxAzLsf3tv27 di kartu kartu ini hilangkan link portofolio dan link github, gantinya kasih link google maps, tanpa menulis link secara langusng, berikan saja tombol Buka Maps'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Peniadaan Tautan Portofolio & GitHub**: Menghapus kotak info teks `Website Resmi` (`fatihfarhat.vercel.app`) dan `Repositori GitHub` (`github.com/imanecdoche`) beserta kedua tombol gandanya pada kartu Lokasi & Domisili.
+      - **Tanpa Penulisan URL Mentah Langsung**: URL Google Maps (`https://maps.app.goo.gl/ThYujMxAzLsf3tv27`) tidak ditulis secara langsung sebagai teks statis di UI, melainkan dijadikan tujuan tautan hyperlink tombol.
+      - **Tombol Kapsul 'Buka Maps'**: Menyediakan tombol utama berukuran penuh (`w-full`) berlabel **'Buka Maps'** dengan ikon `ArrowUpRight`, `target="_blank"`, dan efek hover invert warna `#8ed462`, selaras dan konsisten dengan tombol aksi pada kartu kontak lainnya.
+      - **Informasi Wilayah Bersih**: Menampilkan kotak informasi `Wilayah & Domisili` (Pandeglang, Banten) dengan tombol salin alamat, serta `Zona Waktu & Ketersediaan` (WIB UTC+7 • Remote & On-Site).
     - **Kepatuhan Desain Mutlak**:
-      - Dilarang membuat badge/tag/pill tanpa perintah eksplisit (`ai-anti-patterns.md`).
+      - Bebas outline/stroke pada elemen berlatar putih (`Aturan 117`).
       - Desain flat murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
-      - Tipografi judul dan teks antarmuka sans-serif bersih (`font-sans`, `Aturan 108`).
+      - Tipografi antarmuka murni sans-serif (`font-sans`, `Aturan 108`).
+      - Bebas badge/tag/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
 

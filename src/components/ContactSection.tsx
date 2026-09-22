@@ -387,63 +387,44 @@ export const ContactSection: React.FC = () => {
               <div className="p-4 rounded-2xl bg-[#f5f1e4]/70 border border-[#2c2e2a]/10 flex items-center justify-between">
                 <div>
                   <div className="text-[11px] font-bold uppercase tracking-wider text-[#2c2e2a]/50">
-                    Website Resmi
+                    Wilayah & Domisili
                   </div>
-                  <div className="text-sm sm:text-base font-black text-[#2c2e2a]">
-                    fatihfarhat.vercel.app
+                  <div className="text-base sm:text-lg font-black text-[#2c2e2a]">
+                    Pandeglang, Banten
                   </div>
                 </div>
                 <button
                   type="button"
-                  onClick={() => copyToClipboard('https://fatihfarhat.vercel.app', 'portfolio-url')}
+                  onClick={() => copyToClipboard('Pandeglang, Banten, Indonesia', 'location-name')}
                   className="p-2 rounded-xl bg-white hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white transition-colors cursor-pointer"
-                  title="Salin URL Website"
+                  title="Salin Wilayah"
                 >
-                  {copiedType === 'portfolio-url' ? <Check size={18} /> : <Copy size={18} />}
+                  {copiedType === 'location-name' ? <Check size={18} /> : <Copy size={18} />}
                 </button>
               </div>
 
               <div className="p-4 rounded-2xl bg-[#f5f1e4]/70 border border-[#2c2e2a]/10 flex items-center justify-between">
                 <div>
                   <div className="text-[11px] font-bold uppercase tracking-wider text-[#2c2e2a]/50">
-                    Repositori GitHub
+                    Zona Waktu & Ketersediaan
                   </div>
                   <div className="text-sm sm:text-base font-black text-[#2c2e2a]">
-                    github.com/imanecdoche
+                    WIB (UTC+7) • Remote & On-Site
                   </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => copyToClipboard('https://github.com/imanecdoche', 'github-url')}
-                  className="p-2 rounded-xl bg-white hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white transition-colors cursor-pointer"
-                  title="Salin URL GitHub"
-                >
-                  {copiedType === 'github-url' ? <Check size={18} /> : <Copy size={18} />}
-                </button>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href="https://github.com/imanecdoche"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 py-4 px-5 rounded-[50px] bg-[#2c2e2a] hover:bg-[#8ed462] text-white hover:text-[#2c2e2a] font-black text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.98]"
-            >
-              <span>Buka GitHub</span>
-              <ArrowUpRight size={16} />
-            </a>
-            <a
-              href="https://fatihfarhat.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 py-4 px-5 rounded-[50px] bg-white hover:bg-[#2c2e2a] text-[#2c2e2a] hover:text-white font-black text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.98]"
-            >
-              <span>Portofolio Web</span>
-              <ArrowUpRight size={16} />
-            </a>
-          </div>
+          <a
+            href="https://maps.app.goo.gl/ThYujMxAzLsf3tv27"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full py-4 px-6 rounded-[50px] bg-[#2c2e2a] hover:bg-[#8ed462] text-white hover:text-[#2c2e2a] font-black text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.98]"
+          >
+            <span>Buka Maps</span>
+            <ArrowUpRight size={18} />
+          </a>
         </motion.div>
       </div>
 
