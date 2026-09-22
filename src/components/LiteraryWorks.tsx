@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, ArrowUpRight } from 'lucide-react';
+import { SiWattpad } from 'react-icons/si';
 
 interface Novel {
   id: string;
@@ -210,6 +211,20 @@ export const LiteraryWorks: React.FC = () => {
             </div>
           </motion.article>
         ))}
+      </div>
+
+      {/* Wattpad Profile Action Button */}
+      <div className="pt-10 sm:pt-14 text-center flex flex-col items-center justify-center">
+        <a
+          href="https://www.wattpad.com/user/imanecdoche"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-4 rounded-[50px] bg-[#2c2e2a] text-[#ffffff] hover:bg-[#ff6122] hover:text-[#ffffff] font-bold text-sm sm:text-base tracking-wide transition-all duration-300 active:scale-95 cursor-pointer select-none group"
+        >
+          <SiWattpad size={21} className="shrink-0 text-[#ff6122] group-hover:text-[#ffffff] transition-colors" />
+          <span>Buka Wattpad</span>
+          <ArrowUpRight size={17} className="shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+        </a>
       </div>
     </section>
   );
