@@ -115,3 +115,254 @@ Acuan utama dan mutlak selalu benar.
 62. **Optimasi Antialiasing Desktop & Sinkronisasi Render Loop Lenis + GSAP:**
     - Mengaktifkan antialiasing global (`-webkit-font-smoothing: antialiased`, `-moz-osx-font-smoothing: grayscale`, `text-rendering: optimizeLegibility`) dan anti-shaking hardware acceleration (`backface-visibility: hidden`, `transform: translateZ(0)`, `outline: 1px solid transparent`) pada elemen animasi dan canvas di CSS global.
     - Mengawinkan render tick loop `Lenis` langsung ke dalam `gsap.ticker` (`gsap.ticker.add((time) => lenis.raf(time * 1000))` dan `gsap.ticker.lagSmoothing(0)`) untuk mencegah persaingan RAF (race condition) dan stuttering/frame drop di desktop.
+63. **Penyelarasan Konten Teknologi, Rekayasa Perangkat Lunak, dan Showcase Proyek Nyata (22 September 2026):**
+    - **Dev Server**: Server berjalan aktif pada `http://localhost:5176` (atau port Vite terkait).
+    - **Penyelarasan Profil**: Selaraskan teks hero scroll velocity, deskripsi biografi pada `AboutBio.tsx`, dan ikon teknologi pada `TechLogos.tsx` (menambahkan Python dan Git) agar merefleksikan profil *Frontend Developer & Creative Technologist*.
+    - **Showcase Proyek Nyata pada Halaman Portofolio**: Menampilkan proyek nyata (*Ostifak Interactive PDF Reader*, *Automated Data Engine*, dan *Clean Design System*) pada halaman portofolio dengan estetika MindMarket (Cream `#f5f1e4`, `#2c2e2a`, `#8ed462`, Inter font, border 1px solid, tanpa badge/tag/pill sembarangan sesuai `ai-anti-patterns.md`).
+64. **Kelengkapan Halaman Kontak & Timeline Riwayat Pekerjaan (22 September 2026):**
+    - **Halaman Kontak (`#contact`)**:
+      - Lengkapi halaman kontak dengan data autentik:
+        - Instagram: `@ih.fernandez` (`https://instagram.com/ih.fernandez`)
+        - WhatsApp: Nomor aktif `+62 8211-1500-190` (`https://wa.me/6282111500190`) dan `+62 8950-6100-075` (`https://wa.me/6289506100075`)
+        - Email: `kazokuhairy@gmail.com`
+      - Desain konsisten estetika MindMarket/Fatih Farhat (Cream `#f5f1e4`, Ink `#2c2e2a`, Accent `#8ed462`), interaktif, tanpa badge/tag/pill tanpa perintah (mutlak patuhi `ai-anti-patterns.md`).
+    - **Halaman Tentang Saya (`#about`) — Timeline Riwayat Pekerjaan (`ExperienceTimeline.tsx`)**:
+      - Tambahkan timeline riwayat pekerjaan (riwayat pengalaman kerja) dengan gaya/style yang sama persis seperti `EducationTimeline.tsx` (sticky on scroll, step-by-step transition, connector line kontinu `w-[4px]`, single solid dot tanpa ring/transparansi, tipografi Nunito/Inter).
+      - Menampilkan 4 pengalaman kerja autentik dari CV:
+        1. *Multimedia & Tech Creative Staff* – Yayasan Fajrul Karim (Juli 2023 – Oktober 2024)
+        2. *Technical Production Operator* – Megasoccer Jersey (Mei 2025 – September 2025)
+        3. *Technical & Language Instructor* – LOGOS Course Center (November 2024 – Maret 2025)
+        4. *Product & Presentation Specialist* – PT Passion Abadi Korpora (Oktober 2025 – Januari 2026)
+65. **Integrasi GitHub https://github.com/imanecdoche, Diagram Lingkaran ApexCharts Keahlian & Jasa, dan Pembaruan Data Edukasi (22 September 2026):**
+    - **Tautan GitHub**: Seluruh tautan GitHub diarahkan ke `https://github.com/imanecdoche` (di Header overlay, Contact Section, dan komponen terkait).
+    - **Halaman Keahlian & Jasa (`#services`) — Diagram Distribusi Lingkaran ApexCharts**:
+      - Wajib menggunakan library `apexcharts` dan `react-apexcharts` (`npm i apexcharts react-apexcharts` / `bun add apexcharts react-apexcharts`), dilarang menggunakan diagram bawaan tailwind.
+      - Membangun diagram-diagram distribusi berbentuk lingkaran (*donut / pie charts*) yang rapi, interaktif, selaras dengan estetika MindMarket (Cream `#f5f1e4`, Ink Black `#2c2e2a`, Accent `#8ed462`, palet harmonis), font Nunito/Inter, tanpa badge/tag/pill tanpa perintah.
+      - Diagram lingkaran yang wajib dihadirkan:
+        1. **Bahasa (Languages)**: Indonesia, Inggris, Arab, Spanyol (mengacu pada data CV).
+        2. **Skill Bahasa Program (2 Diagram Distribusi)**:
+           - Diagram Distribusi Frontend: HTML, Tailwind CSS, React, JavaScript, TypeScript, CSS dll.
+           - Diagram Distribusi Backend: Node.js, Python, Express, REST API, GraphQL, dll.
+        3. **Database**: Firebase, MySQL, Supabase, Appwrite, AWS Amplify.
+        4. **Software Design**: Illustrator, Photoshop, Figma, Adobe XD, InDesign.
+        5. **Video Editing**: After Effects, Premiere Pro, DaVinci Resolve, CapCut.
+        6. **Office**: Word, Excel, Access.
+    - **Pembaruan Data Timeline Edukasi (`EducationTimeline.tsx`)**:
+      - SD: **SDN Cipicung 02**
+      - SMP: **SMP Fajrul Karim**
+      - SMA: **SMA Fajrul Karim**
+      - Tahap terakhir: **Bukan S1** (gunakan sebutan profesional non-S1, misal: *Pendidikan Mandiri & Rekayasa Perangkat Lunak / Independent Tech Study*).
+66. **Perubahan Diagram Keahlian & Jasa Menjadi Diagram Lingkaran Per Skill Individual dengan Ikon Aplikasi Nyata (22 September 2026):**
+    - **Model Visual**: Tidak menggunakan diagram distribusi multi-kategori dalam satu lingkaran besar. Setiap skill memiliki **satu diagram lingkaran individual (*individual circular radial gauge*)** tersendiri yang menampilkan persentase penguasaan secara fokus dan presisi.
+    - **Ikon Aplikasi & Bendera Beresolusi Tinggi**: Setiap kartu skill dilengkapi dengan ikon aplikasi resmi (SVG/PNG beresolusi tinggi di `/icons/`):
+      - Bahasa: Bendera Indonesia (`flag_id.png`), Inggris (`flag_gb.png`), Arab (`flag_sa.png`), Spanyol (`flag_es.png`) mengacu pada data CV.
+      - Frontend: React.js (`react.svg`), Next.js (`nextjs.svg`), TypeScript (`typescript.svg`), JavaScript (`javascript.svg`), Tailwind CSS (`tailwind.svg`), HTML5 (`html5.svg`), CSS3 (`css3.svg`).
+      - Backend: Node.js (`nodejs.svg`), Python (`python.svg`), Express.js (`express.svg`), REST API / FastAPI (`fastapi.svg`), GraphQL (`graphql.svg`).
+      - Database: Firebase (`firebase.svg`), Supabase (`supabase.svg`), MySQL (`mysql.svg`), Appwrite (`appwrite.svg`), AWS Amplify (`awsamplify.svg`).
+      - Software Desain: Figma (`figma.svg`), Illustrator (`illustrator.svg`), Photoshop (`photoshop.svg`), InDesign (`indesign.svg`), Adobe XD (`adobexd.svg`).
+      - Video Editor: Premiere Pro (`premiere.svg`), After Effects (`aftereffects.svg`), DaVinci Resolve (`davinci.svg`), CapCut (`capcut.svg`).
+      - Office: Word (`word.svg`), Excel (`excel.svg`), Access (`access.svg`), PowerPoint (`powerpoint.svg`).
+    - **Library**: Menggunakan ApexCharts (`type: 'radialBar'`) untuk visualisasi diagram lingkaran, flat zero shadow, 8-point grid rhythm, tanpa badge/tag/pill tanpa perintah (mutlak patuhi `ai-anti-patterns.md`).
+67. **Overview Kontribusi GitHub & Pinned Repositories pada Halaman Portofolio (22 September 2026):**
+    - **Lokasi**: Di halaman Portofolio (`#portfolio`) di bawah showcase proyek nyata.
+    - **Metrik Utama GitHub**:
+      - Total 28 Repositori Publik.
+      - Total 6 Stars.
+      - Total 380 Kontribusi di tahun 2026 (100% commits).
+    - **Komponen Overview & Heatmap Kontribusi**:
+      - Visualisasi kalender kontribusi hijau (GitHub contribution heatmap) tahun 2026 yang merefleksikan 380 kontribusi nyata.
+      - Diagram spider / distribution meter (100% commits, code review, issues, pull requests).
+      - Rincian aktivitas kontribusi bulanan (September 2026: 85 commits di 6 repo, Agustus: 137 commits di 5 repo, Juli: 107 commits di 8 repo, Mei: 20 commits, dll.).
+    - **Daftar Repo Unggulan (Pinned Repositories)**:
+      1. `calc-` (Public) — kalkulator plus (TypeScript)
+      2. `kavstud` (Public) — kavio studi platform (TypeScript)
+      3. `kusumaterapiweb` (Public) — website landing page KusumaTerapi. (TypeScript)
+      4. `OstifakODP` (Public) — Platform Digital Terpadu OSTIFAK (TypeScript)
+      5. `RePrompter` (Public) — Vercel (TypeScript)
+      6. `chess-beater` (Public) — C++ Engine (C++, 1 star)
+    - **Tautan Langsung**: Masing-masing repo terhubung ke URL resminya di `https://github.com/imanecdoche/[repo-name]`.
+    - **Estetika**: MindMarket flat modern (`#f5f1e4`, `#2c2e2a`, `#8ed462`), 8-point grid, zero shadow, no badge/tag/pill tanpa perintah.
+68. **Penyelarasan Distribusi Tipe Kontribusi GitHub (Pull Requests & Code Review) (22 September 2026):**
+    - **Data Tipe Kontribusi**:
+      - Commits: 380 (91.1%)
+      - Pull Requests: +12 (2.9%)
+      - Code Review: +25 (6.0%)
+      - Issues: 0
+    - **Visualisasi**: Bar multi-segmen terdistribusi secara proporsional dengan warna harmonis MindMarket (Commits `#8ed462`, Code Review `#3a86ff`, Pull Requests `#f4a261`), teks persentase dominan (91% Commits), dan rincian label di bawahnya: `Commits: 380`, `Code Review: +25`, `Pull Requests: +12`, `Issues: 0`.
+69. **Tombol Navigasi Lanjutkan Ke Riwayat Pekerjaan pada Panel Edukasi (22 September 2026):**
+    - **Lokasi**: Di bagian bawah tengah (*bottom center*) panel Education Timeline (`EducationTimeline.tsx`).
+    - **Teks**: `"Lanjutkan Ke Riwayat Pekerjaan"`.
+    - **Interaktivitas Hover**: Saat di-hover, muncul ikon panah ke bawah (*arrow down*) dengan animasi smooth/bounce.
+    - **Aksi Klik**: Melakukan scroll halus (*smooth scroll*) langsung menuju panel Riwayat Pekerjaan (`ExperienceTimeline.tsx` / `#experience`).
+    - **Estetika**: Desain flat modern, tipografi tegas berkarakter (`#2c2e2a`), zero shadow, patuhi aturan `ai-anti-patterns.md`.
+70. **Showcase Portofolio Proyek Rekayasa GitHub Nyata (22 September 2026):**
+    - **Lokasi**: Di bagian portofolio (MyWorks) > "Karya Rekayasa Perangkat Lunak & Proyek Digital" ([PortfolioGrid.tsx](file:///media/fatihfarhat/New%20Volume1/PROJECTS/Fatih%20Farhat/src/components/PortfolioGrid.tsx)).
+    - **Daftar 4 Proyek Repositori Resmi**:
+      1. **VOX Player** (`https://github.com/imanecdoche/voxplayer`): Pemutar musik offline monokrom ultra-minimalis & pemrosesan sinyal audio Android (Kotlin, Jetpack Compose, Media3). Manfaat: Tanpa iklan, nol telemetri/privasi 100% terjaga, sangat hemat baterai, latensi audio ultra-rendah.
+      2. **Epson L1110 Linux Driver** (`https://github.com/imanecdoche/EPSON_L1110_Printer_Driver_for_Linux`): Driver user-space modern, monitor tinta real-time (CMYK), dan utility perawatan head/nozzle untuk Linux (Python, PyUSB, PyQt6). Manfaat: Membantu pengguna Linux memantau tinta & merawat printer Epson tanpa tergantung Windows/Mac, menyelamatkan operasional sekolah, UMKM & pengguna rumahan.
+      3. **ChessBeater** (`https://github.com/imanecdoche/chess-beater`): Aplikasi overlay mini-board catur semi-transparan untuk Android dengan kalkulasi langkah, validasi legal move, dan sentuhan pass-through (C++, Android Overlay). Manfaat: Membantu pemain belajar strategi dan menganalisis taktik secara langsung di atas papan permainan tanpa harus bolak-balik ganti aplikasi.
+      4. **RePrompter** (`https://github.com/imanecdoche/RePrompter`): Smart web teleprompter dengan algoritma *Rhythm Engine* yang memecah naskah menjadi frasa logis & tempo dinamis berbasis tanda baca (TypeScript, Next.js, Tailwind CSS). Manfaat: Membantu presenter & kreator konten membaca dengan intonasi alami serta jeda nafas manusiawi tanpa rasa kaku.
+    - **Tautan Eksternal**: Setiap kartu memiliki tombol tautan langsung ke repositori GitHub masing-masing yang terbuka di tab baru (`target="_blank" rel="noopener noreferrer"`).
+    - **Estetika**: Mengedepankan hierarki tipografi tegas MindMarket, card putih berbatas halus (`#2c2e2a/10`), ringkasan proyek + bagian eksplisit "Manfaat Terbesar Bagi Pengguna", zero badge tanpa izin (`ai-anti-patterns.md`).
+71. **Penggunaan Aset Bendera 3D Berkibar untuk Skill Bahasa (22 September 2026):**
+    - **Sumber Aset**: Menggunakan file gambar dari direktori `/home/fatihfarhat/Downloads/flags`:
+      - `jangan_pakai_tiang_2K_20260922163048.jpeg` -> Bahasa Indonesia (`/icons/flag_3d_id.png`)
+      - `ganti_jadi_bendera_UK_2K_20260922163051.jpeg` -> Bahasa Inggris (`/icons/flag_3d_gb.png`)
+      - `ganti_jadi_bendera_Arab_Saudi_2K_20260922163055.jpeg` -> Bahasa Arab (`/icons/flag_3d_sa.png`)
+      - `ganti_jadi_bendera_spanyol_2K_20260922163056.jpeg` -> Bahasa Spanyol (`/icons/flag_3d_es.png`)
+    - **Pengolahan Gambar**:
+      - Background putih (`#FFFFFF`) wajib dihapus secara bersih menjadi transparan (PNG transparan) menggunakan edge floodfill agar bagian putih kain bendera (Indonesia, UK, Arab Saudi) tidak terhapus.
+      - Hasil gambar dipangkas (*cropped tight*) dan disimpan ke direktori `public/icons/`.
+    - **Tata Letak & Ukuran**:
+      - Pada kartu skill bahasa di `SkillsCharts.tsx`, gambar bendera diposisikan di **sebelah kiri** kartu.
+      - **Clipping pada Box**: Seluruh kartu memiliki `overflow-hidden` sehingga gambar bendera yang bergeser ke kiri ter-clip secara presisi mengikuti kontur sudut box kartu (`rounded-[28px] sm:rounded-[32px]`).
+      - **Ukuran & Scaling**: Scaling ditambah +8% lagi (menjadi `scale-[1.35]`), dengan translasi ke kiri `-translate-x-[20px]`.
+      - Posisi bersanding harmonis dengan radial gauge persentase di sisi kanan.
+      - Patuhi kaidah MindMarket flat modern, zero badge/tag/pill tanpa instruksi, 8-point grid.
+72. **Judul Bagian Penguasaan & Keahlian (22 September 2026):**
+    - **Judul Utama Section**: Judul utama pada bagian diagram keahlian individual (`SkillsCharts.tsx`) diganti dari `"Diagram Lingkaran Penguasaan Keahlian"` menjadi `"Penguasaan & Keahlian"`.
+    - **Karakter Tipografi**: Tetap mempertahankan ketegasan font hitam MindMarket (`#2c2e2a`), tracking rapat (*tracking-tight*), responsive size (`text-3xl sm:text-4xl md:text-5xl font-black`), zero badge tanpa perintah (`ai-anti-patterns.md`).
+73. **Peningkatan Copywriting Subtitle Bagian Penguasaan & Keahlian (22 September 2026):**
+    - **Teks Deskripsi Menjual**: Mengubah kalimat teknis widget internal menjadi proposisi nilai (*value proposition*) yang kuat, kredibel, dan berdaya jual tinggi:
+      > *"Integrasi solid rekayasa perangkat lunak modern, estetika desain antarmuka presisi, dan kapabilitas multi-bahasa global—teruji secara praktis untuk mewujudkan visi produk digital Anda menjadi solusi berkinerja tinggi, terukur, dan berdampak nyata."*
+    - **Penyelarasan Nilai**: Menekankan dampak bisnis, kemampuan eksekusi teknis lintas domain (frontend, backend, database, desain, video & multi-bahasa), serta kesiapan kolaborasi kelas dunia.
+74. **Desain Icon Keahlian Mandiri Tanpa Box & Ukuran 2x Lebih Besar (22 September 2026):**
+    - **Tanpa Box Pembungkus**: Seluruh icon aplikasi/skill pada kartu `SkillsCharts.tsx` tidak boleh dibungkus kotak background (`rounded-2xl bg-[#f5f1e4] border border-[#2c2e2a]/8` dihapus total). Icon tampil mandiri dan leluasa (*frameless / unboxed*).
+    - **Ukuran 2x Lebih Besar**: Dimensi icon diperbesar 2x lipat dari ukuran sebelumnya 32px (`w-8 h-8`) menjadi 64px (`w-16 h-16`), dengan efek `hover:scale-110` yang halus dan presisi.
+    - **Kerapian & Konsistensi**: Posisi icon sejajar harmonis dengan diagram radial di sisi kanan, bersih dari elemen ornamen yang tidak diperintahkan (`ai-anti-patterns.md`).
+75. **Standardisasi Rentang Persentase Kemahiran Keahlian (22 September 2026):**
+    - **Batasan Mutlak**: Dilarang menggunakan nilai persentase di atas 80% pada seluruh meter diagram keahlian (`SkillsCharts.tsx`).
+    - **Rentang Wajib**: Seluruh tingkat kemahiran (*percentage*) wajib berada dalam rentang **69% – 78%** secara proporsional dan realistis (tanpa ada satupun angka < 69% atau > 78%).
+    - **Tujuan**: Menghadirkan kesan profesionalitas yang terukur, rendah hati, realistis, dan berorientasi pada proses pembelajaran berkelanjutan (*continuous mastery*).
+76. **Status Keahlian "Sedang Dipelajari" (Being Learnt) & Animasi Loader Melingkar (22 September 2026):**
+    - **Daftar Keahlian Sasaran**:
+      1. `RESTful API Architecture` (`tech-api`)
+      2. `GraphQL` (`tech-graphql`)
+      3. `Appwrite Cloud` (`db-appwrite`)
+      4. `AWS Amplify` (`db-amplify`)
+    - **Status Label**: Status kemahiran diubah menjadi `"Sedang Dipelajari"` (Being learnt).
+    - **Visualisasi Chart**:
+      - Tidak menampilkan diagram persentase statis ataupun angka persentase.
+      - Digantikan dengan **loader melingkar berputar (*spinning circular loader*)** yang beranimasi halus, mencerminkan proses eksplorasi dan pendalaman materi yang aktif berjalan.
+    - **Estetika**: Tetap mengacu pada MindMarket flat modern, zero badge/tag/pill tanpa izin (`ai-anti-patterns.md`), proporsional dengan dimensi kartu lainnya.
+77. **Kategori Coding Tool Tanpa Chart Keahlian (22 September 2026):**
+    - **Penambahan Kategori**: Menambahkan kategori `08. Coding Tools` pada halaman Keahlian & Jasa ([`SkillsCharts.tsx`](file:///media/fatihfarhat/New%20Volume1/PROJECTS/Fatih%20Farhat/src/components/SkillsCharts.tsx)).
+    - **Daftar 5 Alat Wajib**:
+      1. **Visual Studio Code** (`/icons/vscode.png`)
+      2. **Sublime Text** (`/icons/sublimetext.png`)
+      3. **Claude Code** (`/icons/claude.png`)
+      4. **Antigravity CLI** (`/icons/antigravity.png`)
+      5. **ChatGPT Codex** (`/icons/chatgptcodex.png`)
+    - **Ketiadaan Chart Keahlian**: Kartu pada kategori ini **TIDAK menampilkan diagram lingkaran / chart keahlian apa pun** (tanpa ApexCharts dan tanpa spinning loader). Kartu berfokus murni pada icon resmi aplikasi (`w-16 h-16` unboxed), nama alat, peran fungsional (*role tag*), dan ringkasan penggunaan teknis.
+    - **Estetika Layout**: Menggunakan kartu MindMarket flat modern (`#ffffff`, border `#2c2e2a/10`, `rounded-[28px] sm:rounded-[32px]`), zero badge/tag/pill tanpa izin (`ai-anti-patterns.md`), responsive grid yang harmonis.
+78. **Larangan Membuat SVG Sendiri & Kewajiban Mengambil Logo Resmi PNG dari Internet (22 September 2026):**
+    - **ATURAN MUTLAK**: Jika harus memasukkan suatu icon/logo resmi, **WAJIB CARI DAN AMBIL DARI INTERNET LOGO RESMI DALAM FORMAT PNG TRANSPARAN (HIGH RESOLUTION)**.
+    - **LARANGAN KERAS**: **DILARANG MENGARANG ATAU MEMBUAT KODE SVG TIRUAN SENDIRI SECARA MANUAL**.
+    - **Penerapan**: Berlaku mutlak untuk seluruh aset coding tool (Visual Studio Code, Sublime Text, Claude Code, Antigravity CLI, ChatGPT Codex) dan seluruh aset logo resmi lainnya di seluruh workspace dan percakapan.
+79. **Tata Letak Grid 2 Kolom untuk Kartu Keahlian di Tampilan Mobile (22 September 2026):**
+    - **Grid Mobile Wajib**: Khusus tampilan mobile (`< sm`), seluruh kartu keahlian pada [`SkillsCharts.tsx`](file:///media/fatihfarhat/New%20Volume1/PROJECTS/Fatih%20Farhat/src/components/SkillsCharts.tsx) wajib tersusun dalam **grid 2 kolom (`grid-cols-2`)** (bukan 1 kolom).
+    - **Proporsionalitas Komponen**:
+      - Gap grid di mobile disesuaikan menjadi `gap-3.5 sm:gap-5 md:gap-6`.
+      - Padding kartu di mobile disesuaikan menjadi `p-4 sm:p-5 md:p-6` dengan radius `rounded-[22px] sm:rounded-[28px] md:rounded-[32px]`.
+      - Dimensi icon, gauge chart, dan tipografi judul/deskripsi diskalakan secara adaptif agar tetap proporsional dan tidak saling bertabrakan di layar ponsel sempit.
+80. **Integrasi Keahlian Kepenulisan & Showcase Novel (Opsi 1) (22 September 2026):**
+    - **Pilihan Pengguna**: Opsi 1 (Sinergi 2 Titik Portofolio & Keahlian):
+      1. **Halaman Keahlian & Jasa (`SkillsCharts.tsx`)**: Menambahkan kategori `09. Kepenulisan Naratif, Sastra & Storytelling` dengan 4 sub-keahlian:
+         - Penulisan Fiksi Naratif & Novel (78%, `/icons/skill_novel.png`)
+         - Worldbuilding & Lore Architecture (76%, `/icons/skill_worldbuilding.png`)
+         - Riset Historis & Rekonstruksi Sastra (75%, `/icons/skill_history.png`)
+         - Arsitektur Plot & Karakterisasi (73%, `/icons/skill_plot.png`)
+         - Seluruh persentase wajib berada dalam rentang 69%–78% sesuai Aturan 75.
+         - Khusus tampilan mobile, kartu tersusun dalam grid 2 kolom (`grid-cols-2`) sesuai Aturan 79.
+      2. **Halaman Portofolio (`LiteraryWorks.tsx` di `App.tsx`)**:
+         - Menampilkan showcase 6 novel utuh karya Fatih Farhat Asshidiq (*Risalah Terakhir dari Padang Pasir*, *900 Musim Dingin*, *Sebelas Bintang*, *Golden Ratio*, *The Beastkeeper's Secret*, dan *Bayangan Azkaban*).
+         - Menggunakan cover buku asli dari `public/covers/`, metrik riil jumlah halaman dan kata, sinopsis singkat, dan kutipan kunci.
+         - Tampilan responsif, tipografi lugas, dan patuhi palet MindMarket flat modern tanpa badge/tag/pill sembarangan (`ai-anti-patterns.md`).
+81. **Rekonstruksi & Minimalisasi Kartu Novel Portofolio (`LiteraryWorks.tsx`) (22 September 2026):**
+    - **Hapus Teks Hijau di Atas Judul**: Hapus label genre / teks hijau di atas judul buku.
+    - **Di Bawah Judul Cukup Tahun Rilis**: Hapus baris metadata panjang (`Karya: ... • Halaman ... • Kata ...`), gantikan hanya dengan tahun rilis buku (contoh: `Tahun Rilis: 2026` / `2026`).
+    - **Hapus Box Kekuatan Narasi & Riset**: Hapus keseluruhan box *Kekuatan Narasi & Riset*.
+    - **Hapus Quotes**: Hapus kutipan naskah (*quote block*) dari kartu novel.
+    - **Komposisi Bersih**: Kartu novel mempertahankan cover buku, judul buku yang tegas, tahun rilis, sinopsis karya, serta footer jumlah bab & status naskah lengkap. Penuhi `ai-anti-patterns.md` tanpa elemen dekoratif berlebih.
+82. **Bagian Data Diri Desain ID / KTP pada Halaman Tentang Saya (`IdentityCard.tsx`) (22 September 2026):**
+    - **Lokasi Penempatan**: Tepat setelah bagian Ringkasan Profesional (`AboutBio.tsx`) dan sebelum `EducationTimeline.tsx` pada halaman Tentang Saya (`currentPage === 'about'`).
+    - **Konsep Desain**: Desain kartu identitas berestetika e-KTP / Digital ID resmi Indonesia (REPUBLIK INDONESIA, PROVINSI BANTEN, KABUPATEN PANDEGLANG, chip pintar, NIK menonjol, dan foto profil resmi).
+    - **Rincian Data Wajib**:
+      - Nama: Fatih Farhat Asshidiq
+      - Tempat Lahir: Pandeglang, Banten
+      - Tanggal Lahir: 20 Agustus 2005
+      - Usia: Dihitung otomatis secara dinamis (`X thn, Y bln, Z hr`) dari tanggal lahir (20 Agustus 2005) ke tanggal sekarang
+      - Alamat Domisili: Kp. Bojong Canar
+      - Kelurahan/Desa: Ds. Dahu
+      - Kecamatan: Cikedal
+      - Kota/Kabupaten: Kab. Pandeglang
+      - Provinsi: Prov. Banten
+      - NIK: 3601262008050001
+      - NPWP: Sama spt NIK KTP (3601262008050001)
+      - Gol Darah: -
+      - Agama: Islam
+    - **Estetika & Kepatuhan**: Responsif mobile & desktop, tipografi otentik e-KTP monospace/sans, zero shadow acak, tanpa badge/tag/pill tanpa izin eksplisit (`ai-anti-patterns.md`).
+83. **Penambahan Riwayat Pekerjaan Benua Jaya Gold (`ExperienceTimeline.tsx`) (22 September 2026):**
+    - **Posisi Milestone**: Langkah `05` setelah `04. Passion Abadi`.
+    - **Perusahaan**: Benua Jaya Gold
+    - **Short Label**: `BENUA JAYA GOLD`
+    - **Role**: `Customer Advisory & Gold Specialist`
+    - **Periode Waktu**: `Maret 2026 — April 2026` (durasi 2 bulan, dengan jeda/gap 1 bulan setelah Passion Abadi yang selesai Januari 2026).
+    - **Tugas & Tanggung Jawab**: Melayani customer secara profesional dan memberikan edukasi komprehensif seputar karakteristik, kadar kemurnian, serta pemilihan logam mulia dan perhiasan emas berkualitas.
+    - **Tinggi Container Scroll**: Disesuaikan secara proporsional menjadi `h-[480vh]` untuk 5 milestone interaktif yang mulus.
+84. **Penyelarasan & Minimalisasi Kartu Data Diri (`IdentityCard.tsx`) (22 September 2026):**
+    - **Hapus Pin Emas & Wifi**: Hapus elemen kontak chip emas di pojok kiri atas serta ikon wifi.
+    - **Hapus Header KTP**: Hapus header teks 'REPUBLIK INDONESIA', 'PROVINSI BANTEN', 'KABUPATEN PANDEGLANG', dan tag 'e-KTP'.
+    - **Hapus Footer**: Hapus footer 'KTP ELEKTRONIK • REPUBLIK INDONESIA' dan 'VALID & TERVERIFIKASI'.
+    - **Lebar Kontainer**: Perlebar kartu menjadi `max-w-4xl` / `max-w-5xl`.
+    - **Warna Latar & Design System MindMarket**: Dilarang menggunakan warna latar biru KTP; gunakan warna latar design system MindMarket (`#ffffff` / `#f5f1e4`, border `#2c2e2a]/10`, teks `#2c2e2a`, aksen `#8ed462`).
+    - **Penyelarasan Kolom Titik Dua (':')**: Seluruh tanda titik dua (`:`) pada semua baris data wajib berada pada garis vertikal yang sejajar lurus (termasuk baris sub-alamat Kel/Desa, Kecamatan, Kota, Provinsi).
+    - **Hapus Keterangan Otomatis pada Usia**: Pada baris usia, hapus teks `(dihitung otomatis)` sehingga murni hanya menampilkan hasil hitungan usia (contoh: `: 21 thn, 1 bln, 2 hr`).
+85. **Optimasi Algoritma Scroll & Aksesibilitas Milestone Benua Jaya Gold (`ExperienceTimeline.tsx`) (22 September 2026):**
+    - **Akar Masalah**: Sebagai komponen paling akhir di halaman Tentang Saya, kalkulasi linier `progress * totalSteps` membutuhkan scroll tepat di 80%–100%, yang sering terpotong oleh batas maksimal scroll browser (*scroll ceiling*) sebelum mencapai milestone ke-5.
+    - **Solusi Plateau Buffer**: Mengimplementasikan `effectiveProgress = Math.min(1, progress / 0.82)` sehingga milestone ke-5 (`05. Benua Jaya Gold`) dapat dicapai secara nyaman dan mulus pada 68%–100% scroll tanpa terhambat batas bawah halaman.
+    - **Buffer Bawah Halaman**: Menambahkan scroll runway `h-[520vh]` dan padding bawah di akhir halaman agar scroll sticky tidak mentok sebelum konten tampil utuh.
+    - **Klik Milestone**: Mengkalibrasi `handleStepClick` agar klik pada `05. Benua Jaya Gold` langsung mengarahkan scroll ke posisi target yang presisi dan stabil.
+86. **Format Nilai Angka NPWP pada Kartu Data Diri (`IdentityCard.tsx`) (22 September 2026):**
+    - **Perubahan Nilai**: Mengubah teks pada baris NPWP dari semula `sama spt NIK KTP` menjadi langsung menampilkan nomor 16 digit NPWP resmi yang terintegrasi dengan NIK KTP: `3601262008050001`.
+87. **Penyempurnaan Minimalis Kartu Data Diri (`IdentityCard.tsx`) (22 September 2026):**
+    - **Hapus Foto & Tanda Tangan**: Hapus foto potret, tanda tangan, teks 'TANDA TANGAN', dan lokasi/tanggal terbit.
+    - **Hapus Masa Berlaku**: Hapus baris 'Berlaku Hingga : SEUMUR HIDUP'.
+    - **Standarisasi Font**: Ganti seluruh penggunaan `font-mono` menjadi tipografi utama proyek (`font-sans` / Nunito), konsisten 100% dengan bagian lain website.
+    - **Penyelarasan Kolom Titik Dua**: Posisi tanda titik dua (`:`) tetap wajib 100% sejajar lurus secara vertikal.
+88. **Penskalaan Kartu Data Diri 50% Lebih Kecil & Kompak (`IdentityCard.tsx`) (22 September 2026):**
+    - **Ukuran Kontainer**: Skala lebar kartu dikurangi 50% menjadi `max-w-xl` / `max-w-2xl` (dari sebelumnya `max-w-5xl`).
+    - **Skala Padding & Sudut**: Padding disesuaikan menjadi `p-5 sm:p-7 md:p-8` dengan radius `rounded-[20px] sm:rounded-[26px]`.
+    - **Skala Tipografi**:
+      - NIK: `text-xl sm:text-2xl md:text-[26px]`.
+      - Baris Data: `text-xs sm:text-[13.5px]` dengan lebar kolom label `w-[105px] sm:w-[130px] md:w-[145px]` dan spasi antar-baris `space-y-1.5 sm:space-y-2`.
+    - **Penyelarasan**: Posisi tanda titik dua (`:`) tetap wajib 100% sejajar lurus secara vertikal.
+89. **Model Kartu 3D Interaktif dengan Efek Ketebalan Fisik & Flip Halus Cepat (`IdentityCard.tsx`) (22 September 2026):**
+    - **Model Kartu 3D**: Menggunakan `perspective: 1200px` dan `transform-style: preserve-3d` dengan efek ketebalan tepi fisik kartu (*physical bevel edge & dimensional depth*) khas kartu plastik PVC.
+    - **Interaksi Flip Depan-Belakang**: Kartu dapat ditekan/diklik untuk berbalik (`rotateY(180deg)`) antara sisi depan (Data Diri) dan sisi belakang (Pita magnetik, barcode verifikasi digital, dan sertifikasi kepemilikan).
+    - **Animasi Cepat & Halus**: Transisi flip menggunakan kurva halus berkecepatan tinggi (`duration: 0.42s`, easing `[0.16, 1, 0.3, 1]`) dengan `backface-visibility: hidden`.
+    - **Estetika & Penyelarasan**: Mempertahankan font utama (`font-sans` / Nunito), palet warna MindMarket, serta kelurusan tanda titik dua (`:`) pada data diri.
+90. **Arsitektur Objek Geometri 3D Berketebalan Nyata (True 3D Extrusion) (`IdentityCard.tsx`) (22 September 2026):**
+    - **Ketebalan Nyata Bukan Ilusi Vektor**: Kartu dibangun sebagai objek 3D fisik dengan ketebalan nyata (*true 3D volumetric extrusion*) berdimensi Z (+6px hingga -6px, total tebal 12px) menggunakan tumpukan layer Z-extrusion fisik solid di antara sisi depan (`translateZ(6px)`) dan sisi belakang (`rotateY(180deg) translateZ(6px)`).
+    - **Penampakan Sisi Saat Berputar (Edge-on View)**: Saat kartu berputar pada sudut 90 derajat (maupun sudut lainnya), ketebalan tepi fisik kartu terlihat solid, padat, dan nyata seperti kartu PVC tebal yang sesungguhnya (tidak pernah menjadi garis tipis gepeng 0px).
+    - **Interaktivitas 3D Tilt & Flip**: Dilengkapi respons kemiringan 3D halus saat kursor digerakkan (*interactive 3D parallax tilt*) sehingga ketebalan samping kartu terlihat jelas bahkan sebelum diklik, serta animasi flip 180° berkecepatan tinggi yang mulus dan taktil saat diklik.
+91. **Eliminasi Cacat Visual Artefak & Penyempurnaan Geometri 3D Extrusion Mulus (`IdentityCard.tsx`) (22 September 2026):**
+    - **Akar Masalah Cacat Visual**: Dinding samping persegi (*square side rims*) dan pergeseran Z-slice berlebihan sebelumnya mencuat keluar (*protrude*) di sudut lengkung kartu dan bagian bawah, menciptakan tonjolan patah/cacat yang merusak estetika.
+    - **Eliminasi Rims Kotak Berlebih**: Menghapus seluruh elemen dinding flat kotak yang menusuk keluar dari radius sudut.
+    - **Geometri Core Z-Stack Halus & Terpadu**: Menggunakan 15 irisan Z-slice mikro (rentang -3.5px s/d +3.5px, interval 0.5px) dengan radius sudut identik sempurna (`rounded-[20px] sm:rounded-[26px]`) dan warna hangat PVC alami (`#eae6db`), bebas garis pembatas tajam.
+    - **Hasil Visual 3D**: Permukaan dan tepi kartu menyatu 100% mulus tanpa tonjolan liar, memiliki ketebalan nyata 8px yang solid dan rapi saat berputar, serta dilengkapi bayangan lantai 3D (*ambient ground shadow*) yang dinamis.
+92. **Penyederhanaan Sisi Belakang Kartu Identitas 3D (`IdentityCard.tsx`) (22 September 2026):**
+    - **Sisi Belakang Polos**: Hapus seluruh elemen pita magnetik, strip dokumen/verifikasi, teks hukum/kepemilikan, barcode, dan ikon/tombol balik pada sisi belakang kartu.
+    - **Hanya Tulisan Tunggal**: Sisi belakang dibuat polos bersih (latar kartu putih dengan border halus konsisten) dan HANYA memuat tulisan "Click Me to Reveal!".
+    - **Estetika & Tipografi**: Teks "Click Me to Reveal!" ditempatkan di tengah (center) menggunakan font proyek (`font-sans` / Nunito) yang bersih, jelas, dan tanpa komponen atau hiasan ekstra apa pun di luar instruksi.
+93. **Struktur Konten Showroom & Teaser Halaman Home (`HomeShowcase.tsx` & `App.tsx`) (22 September 2026):**
+    - **Penerapan Konsep Opsi 1**: Mengisi halaman Home di bawah Marquee dengan konten showroom terpadu:
+      1. **Quick Intro / Mini Bio Teaser**: Ringkasan pengantar Fatih Farhat (Software Developer & Creative Technologist dari Banten) dan tombol navigasi ke halaman About.
+      2. **Featured Projects**: 4 proyek unggulan terpilih (VOX, Epson L1110 Driver, ChessBeater, RePrompter) dengan link repo dan tombol 'Lihat Semua Karya' ke halaman Portfolio.
+      3. **What I Do / 3 Pilar Keahlian**: Web Development, UI/UX & Product Design, Creative Tech & Systems.
+      4. **Current Status & Local Time**: Indikator ketersediaan kerja (*Available for freelance & full-time*) dan jam live lokal Pandeglang, Indonesia (WIB).
+      5. **Call To Action (CTA) Banner**: Ajakan kolaborasi proyek dengan tombol 'Hubungi Saya' menuju halaman Contact.
+    - **Konsistensi Desain**: Patuh 100% pada `DESIGN.md` (flat design, zero shadow, border halus `border-[#2c2e2a]/15`, background `#f5f1e4` dan `#ffffff`), font Nunito (`font-sans`), serta aturan mutlak `ai-anti-patterns.md` tanpa badge/pill tak berdasar.
+94. **Penghapusan Elemen Tag/Label 'Pengantar Singkat' (`HomeShowcase.tsx`) (22 September 2026):**
+    - **Instruksi Pengguna**: Menghapus elemen tag/label yang memuat ikon Sparkles dan teks 'Pengantar Singkat' (`<Sparkles /> Pengantar Singkat`) pada bagian atas box pengantar halaman Home.
+    - **Kepatuhan Mutlak**: Mengikuti `ai-anti-patterns.md` untuk mengeliminasi elemen tag/badge/eyebrow yang tidak dikehendaki.

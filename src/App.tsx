@@ -9,17 +9,29 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutHero } from './components/AboutHero';
 import { AboutBio } from './components/AboutBio';
+import { IdentityCard } from './components/IdentityCard';
 import { EducationTimeline } from './components/EducationTimeline';
+import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { PortfolioHero } from './components/PortfolioHero';
+import { PortfolioGrid } from './components/PortfolioGrid';
+import { GithubOverview } from './components/GithubOverview';
+import { LiteraryWorks } from './components/LiteraryWorks';
 import { ServicesHero } from './components/ServicesHero';
+import { SkillsCharts } from './components/SkillsCharts';
+import { ContactHero } from './components/ContactHero';
+import { ContactSection } from './components/ContactSection';
+import { HomeShowcase } from './components/HomeShowcase';
 import ScrollVelocity from './components/ScrollVelocity';
 import LogoLoop from './components/LogoLoop';
 import { techLogos } from './components/TechLogos';
 import { portfolioLogos } from './components/PortfolioLogos';
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'portfolio' | 'services'>('home');
-  const [isTimelineSticky, setIsTimelineSticky] = useState(false);
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'portfolio' | 'services' | 'contact'>('home');
+  const [isBioSticky, setIsBioSticky] = useState(false);
+  const [isEducationSticky, setIsEducationSticky] = useState(false);
+  const [isExperienceSticky, setIsExperienceSticky] = useState(false);
+  const isTimelineSticky = isBioSticky || isEducationSticky || isExperienceSticky;
   const [isMobile, setIsMobile] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -45,6 +57,8 @@ export const App: React.FC = () => {
         setCurrentPage('portfolio');
       } else if (hash === '#services') {
         setCurrentPage('services');
+      } else if (hash === '#contact') {
+        setCurrentPage('contact');
       } else {
         setCurrentPage('home');
       }
@@ -55,8 +69,10 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const handleNavigate = (page: 'home' | 'about' | 'portfolio' | 'services') => {
-    setIsTimelineSticky(false);
+  const handleNavigate = (page: 'home' | 'about' | 'portfolio' | 'services' | 'contact') => {
+    setIsBioSticky(false);
+    setIsEducationSticky(false);
+    setIsExperienceSticky(false);
     setCurrentPage(page);
     window.location.hash = page === 'home' ? '#home' : `#${page}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -113,8 +129,8 @@ export const App: React.FC = () => {
               <section className="w-full pb-10 sm:pb-20 -translate-y-[200px] sm:-translate-y-[25px] opacity-75">
                 <ScrollVelocity
                   texts={[
-                    'Vibe Coder - Web Developer - Graphic Designer - Illustrator - Digital Marketer - Copywriter -',
-                    'Vibe Coder - Web Developer - Graphic Designer - Illustrator - Digital Marketer - Copywriter -',
+                    'Software Developer - Frontend Engineer - Creative Technologist - UI/UX Specialist - Web Architect -',
+                    'Software Developer - Frontend Engineer - Creative Technologist - UI/UX Specialist - Web Architect -',
                   ]}
                   velocity={60}
                   className="custom-scroll-text text-[#2c2e2a] font-bold tracking-tight"
@@ -123,12 +139,14 @@ export const App: React.FC = () => {
                   stiffness={750}
                 />
               </section>
+              <HomeShowcase onNavigate={handleNavigate} />
             </motion.div>
           )}
 
           {currentPage === 'about' && (
             <motion.div
               key="about-page"
+              className="pb-32 sm:pb-48"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -149,8 +167,10 @@ export const App: React.FC = () => {
                   ariaLabel="Tech stack and creative tools"
                 />
               </section>
-              <AboutBio onStickyChange={setIsTimelineSticky} />
-              <EducationTimeline onStickyChange={setIsTimelineSticky} />
+              <AboutBio onStickyChange={setIsBioSticky} />
+              <IdentityCard />
+              <EducationTimeline onStickyChange={setIsEducationSticky} />
+              <ExperienceTimeline onStickyChange={setIsExperienceSticky} />
             </motion.div>
           )}
 
@@ -177,6 +197,9 @@ export const App: React.FC = () => {
                   ariaLabel="Clients and partner brands"
                 />
               </section>
+              <PortfolioGrid />
+              <GithubOverview />
+              <LiteraryWorks />
             </motion.div>
           )}
 
@@ -203,6 +226,20 @@ export const App: React.FC = () => {
                   ariaLabel="Tech stack and creative tools"
                 />
               </section>
+              <SkillsCharts />
+            </motion.div>
+          )}
+
+          {currentPage === 'contact' && (
+            <motion.div
+              key="contact-page"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <ContactHero onNavigateHome={() => handleNavigate('home')} />
+              <ContactSection />
             </motion.div>
           )}
         </AnimatePresence>

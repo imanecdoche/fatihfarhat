@@ -3,8 +3,8 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-
 import { MoreHorizontal, X } from 'lucide-react';
 
 interface HeaderProps {
-  currentPage?: 'home' | 'about' | 'portfolio' | 'services';
-  onNavigate?: (page: 'home' | 'about' | 'portfolio' | 'services') => void;
+  currentPage?: 'home' | 'about' | 'portfolio' | 'services' | 'contact';
+  onNavigate?: (page: 'home' | 'about' | 'portfolio' | 'services' | 'contact') => void;
   isTimelineSticky?: boolean;
 }
 
@@ -175,6 +175,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
                 ? 'PORTOFOLIO'
                 : currentPage === 'services'
                 ? 'KEAHLIAN & JASA'
+                : currentPage === 'contact'
+                ? 'KONTAK'
                 : 'HOME'}
             </div>
           </motion.div>
@@ -311,7 +313,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
               { num: '02', title: 'TENTANG SAYA', page: 'about' as const, href: '#about' },
               { num: '03', title: 'PORTOFOLIO', page: 'portfolio' as const, href: '#portfolio' },
               { num: '04', title: 'KEAHLIAN & JASA', page: 'services' as const, href: '#services' },
-              { num: '05', title: 'KONTAK', page: 'home' as const, href: '#contact' },
+              { num: '05', title: 'KONTAK', page: 'contact' as const, href: '#contact' },
             ].map((item, idx) => (
               <motion.li
                 key={item.num}
@@ -349,9 +351,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPage = 'home', onNavigate
         {/* Bottom bar: Socials / Info in #f5f1e4 */}
         <div className="w-full max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-[#f5f1e4]/20 text-sm sm:text-base text-[#f5f1e4]/70">
           <div className="flex items-center gap-6 font-semibold text-xs sm:text-sm tracking-wider uppercase">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">GitHub</a>
+            <a href="https://github.com/imanecdoche" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">GitHub</a>
             <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">LinkedIn</a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">Instagram</a>
+            <a href="https://instagram.com/ih.fernandez" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">Instagram</a>
           </div>
           <span className="font-mono text-xs sm:text-sm text-[#f5f1e4]/50">
             © {new Date().getFullYear()} FATIH FARHAT. All Rights Reserved.

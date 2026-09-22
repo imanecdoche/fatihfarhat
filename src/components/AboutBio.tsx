@@ -6,10 +6,10 @@ interface AboutBioProps {
 }
 
 const paragraph1Text =
-  'Halo! Saya adalah seorang pengembang web dan kreator digital yang berfokus merancang pengalaman web interaktif, berkinerja tinggi, dan bernyawa. Memadukan estetika visual flat modern dengan kode yang modular dan efisien.';
+  'Halo! Saya adalah seorang Frontend Developer dan Creative Technologist yang berfokus membangun antarmuka web modern, interaktif, dan berkinerja tinggi. Memadukan kepekaan estetika UI/UX dengan fondasi rekayasa perangkat lunak yang bersih, modular, dan terstruktur.';
 
 const paragraph2Text =
-  'Berasal dari perpaduan antusiasme koding, desain antarmuka, dan komunikasi visual, saya senang mengeksplorasi ide-ide baru dan mentransformasikannya menjadi produk digital yang solutif serta menyenangkan untuk digunakan.';
+  'Menguasai ekosistem web modern (React, TypeScript, Tailwind CSS, Python, Web APIs, dan Linux) serta alur kerja berbantuan AI (AI-assisted engineering), saya senang mentransformasikan konsep kompleks menjadi produk digital yang responsif, performan, dan solutif.';
 
 export const AboutBio: React.FC<AboutBioProps> = ({ onStickyChange }) => {
   const containerRef = useRef<HTMLDivElement>(null);

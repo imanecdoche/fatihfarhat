@@ -23,6 +23,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.~lock.*#
 
 # TypeScript cache
 tsconfig.tsbuildinfo

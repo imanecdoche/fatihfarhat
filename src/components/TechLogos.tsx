@@ -10,6 +10,8 @@ import {
   SiTailwindcss,
   SiClaude,
   SiBlender,
+  SiPython,
+  SiGit,
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 
@@ -83,7 +85,9 @@ export const techLogos = [
   { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
   { node: <SiJavascript />, title: "JavaScript", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
   { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+  { node: <SiPython />, title: "Python", href: "https://www.python.org" },
   { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+  { node: <SiGit />, title: "Git", href: "https://git-scm.com" },
   { node: <SiClaude />, title: "Claude", href: "https://claude.ai" },
   { node: <PhotoshopIcon size={38} />, title: "Adobe Photoshop", href: "https://www.adobe.com/products/photoshop.html" },
   { node: <IllustratorIcon size={38} />, title: "Adobe Illustrator", href: "https://www.adobe.com/products/illustrator.html" },

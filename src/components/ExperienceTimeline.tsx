@@ -1,70 +1,74 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
 
-interface EducationItem {
+interface ExperienceItem {
   id: string;
-  level: string;
   step: string;
-  degree: string;
-  institution: string;
+  shortLabel: string;
+  role: string;
+  organization: string;
   period: string;
   description: string;
-  highlights: string[];
 }
 
-const educationData: EducationItem[] = [
+const experienceData: ExperienceItem[] = [
   {
-    id: 'sd',
-    level: 'SEKOLAH DASAR',
+    id: 'fajrul-karim',
     step: '01',
-    degree: 'Pendidikan Dasar',
-    institution: 'SDN Cipicung 02',
-    period: '2008 — 2014',
+    shortLabel: 'FAJRUL KARIM',
+    role: 'Multimedia & Tech Creative Staff',
+    organization: 'Yayasan Fajrul Karim',
+    period: 'Juli 2023 — Oktober 2024',
     description:
-      'Membangun pondasi rasa ingin tahu yang kuat terhadap sains, kreativitas seni visual, dan pengenalan awal terhadap teknologi komputer serta internet.',
-    highlights: ['Dasar Logika & Matematika', 'Seni Rupa & Gambar', 'Pengenalan Komputer Awal'],
+      'Mengelola infrastruktur multimedia, pemeliharaan aset digital web, otomatisasi alur publikasi informasi lembaga, dan standardisasi dokumentasi teknis institusi pendidikan.',
   },
   {
-    id: 'smp',
-    level: 'SEKOLAH MENENGAH PERTAMA',
+    id: 'logos',
     step: '02',
-    degree: 'Pendidikan Menengah Pertama',
-    institution: 'SMP Fajrul Karim',
-    period: '2014 — 2017',
+    shortLabel: 'LOGOS CENTER',
+    role: 'Technical & Language Instructor',
+    organization: 'LOGOS Course Center',
+    period: 'November 2024 — Maret 2025',
     description:
-      'Mulai aktif mengeksplorasi software grafis digital, desain antarmuka dasar, dan menulis kode HTML/CSS pertama untuk kustomisasi template web.',
-    highlights: ['Eksplorasi Desain Digital', 'Dasar Pemrograman Web', 'Klub Sains & Komputer'],
+      'Merancang kurikulum pelatihan teknis dan materi instruksional interaktif, memandu pemecahan masalah logika digital, serta membimbing siswa dalam komunikasi teknologi.',
   },
   {
-    id: 'sma',
-    level: 'SEKOLAH MENENGAH ATAS',
+    id: 'megasoccer',
     step: '03',
-    degree: 'Pendidikan Menengah Atas (MIPA)',
-    institution: 'SMA Fajrul Karim',
-    period: '2020 — 2023',
+    shortLabel: 'MEGASOCCER',
+    role: 'Technical Production Operator',
+    organization: 'Megasoccer Jersey',
+    period: 'Mei 2025 — September 2025',
     description:
-      'Fokus pada sains analitik, dasar logika algoritma, serta pembelajaran mandiri dalam rekayasa web dan komunikasi visual digital.',
-    highlights: ['Sains & Pemecahan Masalah', 'Eksplorasi Web & Desain', 'Karya Multimedia Mandiri'],
+      'Mengoperasikan mesin cetak industri dan alur pre-press digital berakurasi tinggi dengan software RIP, memastikan efisiensi teknis, kalibrasi sistem warna, dan keandalan operasional.',
   },
   {
-    id: 'mandiri',
-    level: 'REKAYASA WEB & STUDI MANDIRI',
+    id: 'passion',
     step: '04',
-    degree: 'Frontend Engineering & Rekayasa Perangkat Lunak',
-    institution: 'Studi Mandiri & Implementasi Proyek Terapan',
-    period: '2023 — Sekarang',
+    shortLabel: 'PASSION ABADI',
+    role: 'Product & Presentation Specialist',
+    organization: 'PT Passion Abadi Korpora',
+    period: 'Oktober 2025 — Januari 2026',
     description:
-      'Mendalami arsitektur frontend modern (React, TypeScript, Tailwind CSS, Web Audio API, Framer Motion), alur kerja AI-assisted engineering, dan perancangan antarmuka perangkat lunak tingkat produksi.',
-    highlights: ['Arsitektur Frontend & UI/UX', 'Web APIs & 3D Interactive Web', 'AI-Driven Development'],
+      'Mengembangkan materi presentasi visual korporat tingkat tinggi, visualisasi interaktif produk digital, dan optimalisasi alur komunikasi pemasaran berbasis teknologi.',
+  },
+  {
+    id: 'benua-jaya-gold',
+    step: '05',
+    shortLabel: 'BENUA JAYA GOLD',
+    role: 'Customer Advisory & Gold Specialist',
+    organization: 'Benua Jaya Gold',
+    period: 'Maret 2026 — April 2026',
+    description:
+      'Melayani customer secara profesional dan memberikan edukasi komprehensif seputar karakteristik, kadar kemurnian, serta pemilihan logam mulia dan perhiasan emas berkualitas.',
   },
 ];
 
-interface EducationTimelineProps {
+interface ExperienceTimelineProps {
   onStickyChange?: (isSticky: boolean) => void;
 }
 
-export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyChange }) => {
+export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ onStickyChange }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -84,8 +88,10 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
         onStickyChange(isSticky);
       }
 
-      const totalSteps = educationData.length;
-      const step = Math.min(Math.floor(progress * totalSteps), totalSteps - 1);
+      const totalSteps = experienceData.length;
+      // Plateau buffer: mencapai milestone ke-5 (Benua Jaya Gold) lebih awal dan stabil sebelum batas scroll bawah
+      const effectiveProgress = Math.min(1, progress / 0.82);
+      const step = Math.min(Math.floor(effectiveProgress * totalSteps), totalSteps - 1);
 
       setActiveIndex((prev) => {
         if (step !== prev) {
@@ -106,7 +112,7 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
     };
   }, [onStickyChange]);
 
-  const currentItem = educationData[activeIndex];
+  const currentItem = experienceData[activeIndex];
 
   const handleStepClick = (index: number) => {
     if (!containerRef.current) return;
@@ -114,7 +120,8 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const startY = rect.top + scrollTop;
     const totalHeight = containerRef.current.offsetHeight - window.innerHeight;
-    const targetScroll = startY + (index / (educationData.length - 1)) * totalHeight;
+    const targetFraction = (index + 0.45) / experienceData.length;
+    const targetScroll = startY + Math.min(0.98, targetFraction * 0.82) * totalHeight;
 
     window.scrollTo({
       top: targetScroll,
@@ -122,21 +129,11 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
     });
   };
 
-  const handleScrollToExperience = () => {
-    const experienceElement = document.getElementById('experience');
-    if (experienceElement) {
-      experienceElement.scrollIntoView({ behavior: 'smooth' });
-    } else if (containerRef.current) {
-      const targetScroll = containerRef.current.offsetTop + containerRef.current.offsetHeight;
-      window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-    }
-  };
-
   return (
     <section
       ref={containerRef}
-      id="education"
-      className="relative w-full h-[400vh]"
+      id="experience"
+      className="relative w-full h-[520vh]"
     >
       {/* Pinned Sticky Viewport: Locks in place for the full 400vh scroll duration */}
       <div className="sticky top-0 h-screen w-full flex items-start sm:items-center justify-center pt-20 sm:pt-0 overflow-hidden">
@@ -146,18 +143,18 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
             <div className="w-full md:w-64 lg:w-72 shrink-0">
               {/* Main Label */}
               <h3 className="text-[34px] sm:text-[44px] lg:text-[52px] font-black tracking-[-0.03em] text-[#2c2e2a] uppercase leading-none font-sans">
-                EDUCATION
+                EXPERIENCE
               </h3>
               <p className="mt-2 text-[13px] sm:text-[14px] font-bold text-[#2c2e2a]/60 uppercase tracking-[0.14em]">
-                Perjalanan Edukasi
+                Riwayat Pekerjaan
               </p>
 
               {/* Interactive Timeline Track (Desktop) */}
               <div className="hidden md:flex flex-col relative mt-9">
-                {educationData.map((item, idx) => {
+                {experienceData.map((item, idx) => {
                   const isActive = activeIndex === idx;
                   const isPassed = activeIndex >= idx;
-                  const isLast = idx === educationData.length - 1;
+                  const isLast = idx === experienceData.length - 1;
                   const isSegmentActive = activeIndex > idx;
 
                   return (
@@ -189,7 +186,7 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
                               : 'text-[#9c9991] group-hover:text-[#6b6963]'
                           }`}
                         >
-                          {item.step}. {item.id.toUpperCase()}
+                          {item.step}. {item.shortLabel}
                         </span>
                       </button>
 
@@ -213,7 +210,7 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
 
               {/* Mobile Step Indicators (Horizontal Pills, 100% solid) */}
               <div className="flex md:hidden items-center gap-2 mt-3">
-                {educationData.map((item, idx) => (
+                {experienceData.map((item, idx) => (
                   <button
                     key={item.id}
                     type="button"
@@ -243,12 +240,13 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
                   }}
                   className="w-full"
                 >
-                  {/* Degree & Institution (Direct title without upper meta headers) */}
+                  {/* Role Title & Organization (Direct title without upper meta headers) */}
                   <h4 className="text-[26px] sm:text-[36px] md:text-[42px] font-black text-[#2c2e2a] tracking-tight leading-tight">
-                    {currentItem.degree}
+                    {currentItem.role}
                   </h4>
                   <p className="mt-1 sm:mt-1.5 text-[15px] sm:text-[19px] font-bold text-[#2c2e2a]/75">
-                    {currentItem.institution}
+                    {currentItem.organization}{' '}
+                    <span className="font-medium text-[#2c2e2a]/50">({currentItem.period})</span>
                   </p>
 
                   {/* Description */}
@@ -260,30 +258,9 @@ export const EducationTimeline: React.FC<EducationTimelineProps> = ({ onStickyCh
             </div>
           </div>
         </div>
-
-        {/* Bottom Center: Lanjutkan Ke Riwayat Pekerjaan */}
-        <div className="absolute bottom-4 sm:bottom-7 left-1/2 -translate-x-1/2 z-20 pointer-events-auto">
-          <button
-            type="button"
-            onClick={handleScrollToExperience}
-            className="group flex flex-col items-center gap-1 cursor-pointer select-none text-[#2c2e2a]/70 hover:text-[#2c2e2a] transition-colors duration-200"
-            aria-label="Lanjutkan Ke Riwayat Pekerjaan"
-          >
-            <span className="text-xs sm:text-[13px] font-black tracking-[0.1em] uppercase">
-              Lanjutkan Ke Riwayat Pekerjaan
-            </span>
-            <div className="h-4 sm:h-5 flex items-center justify-center overflow-visible">
-              <ArrowDown
-                size={18}
-                strokeWidth={2.5}
-                className="opacity-0 -translate-y-1.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:animate-bounce transition-all duration-300 ease-out text-[#2c2e2a]"
-              />
-            </div>
-          </button>
-        </div>
       </div>
     </section>
   );
 };
 
-export default EducationTimeline;
+export default ExperienceTimeline;
