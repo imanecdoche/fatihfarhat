@@ -31,6 +31,7 @@ import LogoLoop from './components/LogoLoop';
 import { techLogos } from './components/TechLogos';
 import { portfolioLogos } from './components/PortfolioLogos';
 import { ScrollToTop } from './components/ScrollToTop';
+import { HeroNavButtons } from './components/HeroNavButtons';
 
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'portfolio' | 'services' | 'contact'>('home');
@@ -103,6 +104,10 @@ export const App: React.FC = () => {
     setCurrentPage(page);
     window.location.hash = page === 'home' ? '#home' : `#${page}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    const lenis = (window as any).__lenis;
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
   };
 
   useEffect(() => {
@@ -172,6 +177,16 @@ export const App: React.FC = () => {
                 />
               </section>
               <HomeShowcase onNavigate={handleNavigate} />
+              <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-10 md:px-12 pt-8 sm:pt-12 pb-24 sm:pb-32 text-center">
+                <HeroNavButtons
+                  prevPage="contact"
+                  prevLabel="KONTAK"
+                  nextPage="about"
+                  nextLabel="TENTANG SAYA"
+                  onNavigate={handleNavigate}
+                  className="mt-0"
+                />
+              </div>
             </motion.div>
           )}
 
@@ -184,7 +199,7 @@ export const App: React.FC = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
-              <AboutHero onNavigateHome={() => handleNavigate('home')} />
+              <AboutHero onNavigate={handleNavigate} />
               <section className="w-full pb-10 sm:pb-20 -translate-y-[135px] sm:translate-y-[25px] opacity-75 text-[#2c2e2a]">
                 <LogoLoop
                   logos={techLogos}
@@ -203,6 +218,16 @@ export const App: React.FC = () => {
               <IdentityCard />
               <EducationTimeline onStickyChange={setIsEducationSticky} />
               <ExperienceTimeline onStickyChange={setIsExperienceSticky} />
+              <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-10 md:px-12 pt-16 sm:pt-24 pb-8 sm:pb-12 text-center">
+                <HeroNavButtons
+                  prevPage="home"
+                  prevLabel="HOME"
+                  nextPage="portfolio"
+                  nextLabel="PORTOFOLIO"
+                  onNavigate={handleNavigate}
+                  className="mt-0"
+                />
+              </div>
             </motion.div>
           )}
 
@@ -217,7 +242,7 @@ export const App: React.FC = () => {
               {/* Category Navigation Hub (Default View: includes PortfolioHero & LogoLoop) */}
               {portfolioCategory === 'all' && (
                 <>
-                  <PortfolioHero onNavigateHome={() => handleNavigate('home')} />
+                  <PortfolioHero onNavigate={handleNavigate} />
                   <section className="w-full pb-10 sm:pb-20 -translate-y-[135px] sm:translate-y-[25px] opacity-75 text-[#2c2e2a]">
                     <LogoLoop
                       logos={portfolioLogos}
@@ -318,6 +343,16 @@ export const App: React.FC = () => {
                   </div>
                 </div>
               )}
+              <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-10 md:px-12 pt-8 sm:pt-12 pb-24 sm:pb-32 text-center">
+                <HeroNavButtons
+                  prevPage="about"
+                  prevLabel="TENTANG SAYA"
+                  nextPage="services"
+                  nextLabel="KEAHLIAN & JASA"
+                  onNavigate={handleNavigate}
+                  className="mt-0"
+                />
+              </div>
             </motion.div>
           )}
 
@@ -329,7 +364,7 @@ export const App: React.FC = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
-              <ServicesHero onNavigateHome={() => handleNavigate('home')} />
+              <ServicesHero onNavigate={handleNavigate} />
               <section className="w-full pb-10 sm:pb-20 -translate-y-[135px] sm:translate-y-[25px] opacity-75 text-[#2c2e2a]">
                 <LogoLoop
                   logos={techLogos}
@@ -345,6 +380,16 @@ export const App: React.FC = () => {
                 />
               </section>
               <SkillsCharts />
+              <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-10 md:px-12 pt-16 sm:pt-24 pb-24 sm:pb-32 text-center">
+                <HeroNavButtons
+                  prevPage="portfolio"
+                  prevLabel="PORTOFOLIO"
+                  nextPage="contact"
+                  nextLabel="KONTAK"
+                  onNavigate={handleNavigate}
+                  className="mt-0"
+                />
+              </div>
             </motion.div>
           )}
 
@@ -356,8 +401,18 @@ export const App: React.FC = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
-              <ContactHero onNavigateHome={() => handleNavigate('home')} />
+              <ContactHero onNavigate={handleNavigate} />
               <ContactSection />
+              <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-10 md:px-12 pt-8 sm:pt-12 pb-24 sm:pb-32 text-center">
+                <HeroNavButtons
+                  prevPage="services"
+                  prevLabel="KEAHLIAN & JASA"
+                  nextPage="home"
+                  nextLabel="HOME"
+                  onNavigate={handleNavigate}
+                  className="mt-0"
+                />
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

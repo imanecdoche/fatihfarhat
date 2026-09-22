@@ -716,6 +716,63 @@ Acuan utama dan mutlak selalu benar.
     - **Kepatuhan Desain Mutlak**:
       - Flat design murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
       - Murni hanya membuat komponen tombol bulat dengan ikon panah ke atas yang diminta, tanpa badge/tag/pill/komponen ekstra (`ai-anti-patterns.md`).
+133. **Penggantian Tombol 'KEMBALI KE HOME' dengan Navigasi Halaman Sebelumnya & Setelahnya di Seluruh Hero Section (`HeroNavButtons.tsx` / `AboutHero.tsx`, `PortfolioHero.tsx`, `ServicesHero.tsx`, `ContactHero.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'di semua halaman di hero section gantikan semua tombol KEMBALI KE HOME dengan tombol [< nama halaman sebelumnya] [nama halaman setelahnya >]'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Struktur Navigasi Sekuensial**:
+        1. **Halaman Tentang Saya (`AboutHero`)**:
+           - Tombol Kiri: `[< HOME]` (mengarahkan ke `#home`).
+           - Tombol Kanan: `[PORTOFOLIO >]` (mengarahkan ke `#portfolio`).
+        2. **Halaman Portofolio (`PortfolioHero`)**:
+           - Tombol Kiri: `[< TENTANG SAYA]` (mengarahkan ke `#about`).
+           - Tombol Kanan: `[KEAHLIAN & JASA >]` (mengarahkan ke `#services`).
+        3. **Halaman Keahlian & Jasa (`ServicesHero`)**:
+           - Tombol Kiri: `[< PORTOFOLIO]` (mengarahkan ke `#portfolio`).
+           - Tombol Kanan: `[KONTAK >]` (mengarahkan ke `#contact`).
+        4. **Halaman Kontak (`ContactHero`)**:
+           - Tombol Kiri: `[< KEAHLIAN & JASA]` (mengarahkan ke `#services`).
+           - Tombol Kanan: `[HOME >]` (mengarahkan ke `#home`).
+      - **Komponen Modular & Desain Tombol**:
+        - Menggunakan `HeroNavButtons` dengan ikon `<` (`ChevronLeft`) di sisi kiri teks untuk tombol halaman sebelumnya, dan `>` (`ChevronRight`) di sisi kanan teks untuk tombol halaman setelahnya.
+        - Efek micro-interaction hover: ikon bergerak halus (`-translate-x-1` untuk kiri, `translate-x-1` untuk kanan).
+        - Desain flat murni dengan latar putih (`bg-[#ffffff]`), teks arang (`text-[#2c2e2a]`), membulat halus (`rounded-[50px]`), dan transisi hover invert ke `#2c2e2a` dengan teks putih (`hover:bg-[#2c2e2a] hover:text-[#ffffff]`).
+      - **Kepatuhan Desain Mutlak**:
+        - Elemen putih dilarang memiliki outline stroke (`Aturan 117`).
+        - Flat design murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
+        - Tipografi sans-serif tegas (`font-black`, `font-sans`, `Aturan 108`).
+        - Murni hanya membuat komponen tombol navigasi yang diperintahkan (`ai-anti-patterns.md`).
+134. **Pemberian Tombol Navigasi Halaman Sebelumnya & Setelahnya di Bagian Paling Bawah Setiap Halaman (`App.tsx` / `HeroNavButtons.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'tombol [< nama halaman sebelumnya] [nama halaman setelahnya >] juga ada di paling bawah setiap halaman'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Penempatan di Seluruh 5 Halaman pada Posisi Paling Bawah Konten**:
+        1. **Halaman Home (`home`)**:
+           - Tombol Kiri: `[< KONTAK]` (mengarahkan ke `#contact`).
+           - Tombol Kanan: `[TENTANG SAYA >]` (mengarahkan ke `#about`).
+           - Ditempatkan di bagian paling bawah setelah `<HomeShowcase />`.
+        2. **Halaman Tentang Saya (`about`)**:
+           - Tombol Kiri: `[< HOME]` (mengarahkan ke `#home`).
+           - Tombol Kanan: `[PORTOFOLIO >]` (mengarahkan ke `#portfolio`).
+           - Ditempatkan di bagian paling bawah setelah `<ExperienceTimeline />`.
+        3. **Halaman Portofolio (`portfolio`)**:
+           - Tombol Kiri: `[< TENTANG SAYA]` (mengarahkan ke `#about`).
+           - Tombol Kanan: `[KEAHLIAN & JASA >]` (mengarahkan ke `#services`).
+           - Ditempatkan di bagian paling bawah galeri portofolio (baik di tampilan kategori utama maupun subkategori).
+        4. **Halaman Keahlian & Jasa (`services`)**:
+           - Tombol Kiri: `[< PORTOFOLIO]` (mengarahkan ke `#portfolio`).
+           - Tombol Kanan: `[KONTAK >]` (mengarahkan ke `#contact`).
+           - Ditempatkan di bagian paling bawah setelah `<SkillsCharts />`.
+        5. **Halaman Kontak (`contact`)**:
+           - Tombol Kiri: `[< KEAHLIAN & JASA]` (mengarahkan ke `#services`).
+           - Tombol Kanan: `[HOME >]` (mengarahkan ke `#home`).
+           - Ditempatkan di bagian paling bawah setelah `<ContactSection />`.
+      - **Kepatuhan Desain Mutlak**:
+        - Menggunakan `HeroNavButtons` dengan fleksibilitas `className` untuk margin/padding bawah yang rapi dan konsisten (`pb-24 sm:pb-32 pt-8 sm:pt-12`).
+        - Bebas stroke outline pada kontainer putih (`Aturan 117`).
+        - Flat design murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
+        - Tipografi sans-serif tegas (`font-black`, `font-sans`, `Aturan 108`).
+        - Murni hanya membuat komponen tombol navigasi yang diperintahkan (`ai-anti-patterns.md`).
+
+
 
 
 

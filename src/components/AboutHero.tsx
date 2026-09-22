@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { HeroNavButtons, PageName } from './HeroNavButtons';
 
 interface AboutHeroProps {
+  onNavigate?: (page: PageName) => void;
   onNavigateHome?: () => void;
 }
 
-export const AboutHero: React.FC<AboutHeroProps> = ({ onNavigateHome }) => {
+export const AboutHero: React.FC<AboutHeroProps> = ({ onNavigate, onNavigateHome }) => {
   return (
     <section
       id="about"
@@ -99,26 +101,14 @@ export const AboutHero: React.FC<AboutHeroProps> = ({ onNavigateHome }) => {
           Mengenal lebih dekat perjalanan, minat, dan dedikasiku.
         </motion.p>
 
-        {/* KEMBALI KE HOME Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-12 sm:mt-14 md:mt-16"
-        >
-          <a
-            href="#home"
-            onClick={(e) => {
-              if (onNavigateHome) {
-                e.preventDefault();
-                onNavigateHome();
-              }
-            }}
-            className="inline-flex items-center justify-center px-9 sm:px-12 py-4 sm:py-4.5 rounded-[50px] bg-[#ffffff] text-[#2c2e2a] font-black text-[15px] sm:text-[17px] tracking-[0.12em] uppercase transition-all duration-300 hover:bg-[#2c2e2a] hover:text-[#ffffff] active:scale-95 cursor-pointer"
-          >
-            KEMBALI KE HOME
-          </a>
-        </motion.div>
+        {/* Navigation Buttons: Previous & Next Page */}
+        <HeroNavButtons
+          prevPage="home"
+          prevLabel="HOME"
+          nextPage="portfolio"
+          nextLabel="PORTOFOLIO"
+          onNavigate={onNavigate || (onNavigateHome ? () => onNavigateHome() : undefined)}
+        />
       </div>
     </section>
   );
