@@ -262,11 +262,11 @@ const projectsData: ProjectData[] = [
       'Perancangan identitas brand dan materi publikasi resmi berskala internasional untuk AFROTURK EXPO 2026 di Nairobi, Kenya. Menghubungkan manufaktur, eksportir, dan investor Turki dengan pasar potensial Afrika Timur melalui brosur lipat tiga (trifold) 6-panel komprehensif, sampul buku panduan strategis bilateral, infografis agenda B2B matchmaking 4 hari, serta analisis makroekonomi gerbang logistik Kenya.',
     client: {
       name: 'Yussuf Ahmeed',
-      role: 'President of AFROTURK & Trade Convener',
+      role: 'President of AFROTURK',
       region: 'Turkey',
-      projectRole: 'Graphic & Brand Identity Designer',
-      workType: 'Comprehensive Expo Brochure & Strategic Booklet',
-      tools: 'Figma • Illustrator • Print Editorial System',
+      projectRole: 'Graphic & Brand Identity',
+      workType: 'Expo Brochure & Strategic Booklet',
+      tools: 'Figma • Illustrator',
     },
     screens: [
       {
@@ -386,11 +386,11 @@ const projectsData: ProjectData[] = [
       'Perancangan materi kampanye visual institusional untuk UİHM (Uluslararası İmam Hatip Mezunları ve Mensupları Derneği) di Turki. Mencakup poster resmi festival budaya dan seni antar-bangsa di Beştepe Millet Kongre ve Kültür Merkezi Ankara, serta brosur lipat tiga kampanye global penanaman pohon memorial "Ümmetin Ağacı" (Pohon Umat) di 50 negara dunia.',
     client: {
       name: 'Abdulvahab',
-      role: 'Representative of UIHM Derneği',
+      role: 'Representative of UİHM',
       region: 'Turkey',
       projectRole: 'Graphic & Editorial Designer',
-      workType: 'Cultural Campaign Posters & Memorial Forest Trifold Brochure',
-      tools: 'Photoshop • Illustrator • Editorial Layout System',
+      workType: 'Campaign Poster & Trifold Brochure',
+      tools: 'Photoshop • Illustrator',
     },
     screens: [
       {
@@ -499,7 +499,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
         </div>
 
         {/* Client & Attribution Box */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-[#f5f1e4]/70 shrink-0 lg:w-[320px]">
+        <div className="p-5 sm:p-6 rounded-2xl bg-[#f5f1e4]/70 shrink-0 w-full lg:w-[340px]">
           <div className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 mb-3">
             <span>KLIEN & ATRIBUSI</span>
           </div>
@@ -507,23 +507,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
             <p className="text-sm font-black text-[#2c2e2a]">{project.client.name}</p>
             <p className="text-xs font-bold text-[#2c2e2a]/70">{project.client.role}</p>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#2c2e2a]/10 space-y-1 text-xs">
-            <div className="flex items-center justify-between">
-              <span className="font-bold text-[#2c2e2a]/60">Wilayah / Region:</span>
-              <span className="font-bold text-[#2c2e2a]">{project.client.region}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="font-bold text-[#2c2e2a]/60">Peran:</span>
-              <span className="font-bold text-[#2c2e2a]">{project.client.projectRole}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="font-bold text-[#2c2e2a]/60">Tipe Karya:</span>
-              <span className="font-bold text-[#2c2e2a]">{project.client.workType}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="font-bold text-[#2c2e2a]/60">Perangkat:</span>
-              <span className="font-bold text-[#2c2e2a]">{project.client.tools}</span>
-            </div>
+          <div className="mt-4 pt-3 border-t border-[#2c2e2a]/10 grid grid-cols-[68px_1fr] gap-x-2.5 gap-y-2 text-xs items-baseline">
+            <span className="font-bold text-[#2c2e2a]/60">Wilayah:</span>
+            <span className="font-bold text-[#2c2e2a]">{project.client.region}</span>
+
+            <span className="font-bold text-[#2c2e2a]/60">Peran:</span>
+            <span className="font-bold text-[#2c2e2a] leading-snug">{project.client.projectRole}</span>
+
+            <span className="font-bold text-[#2c2e2a]/60">Karya:</span>
+            <span className="font-bold text-[#2c2e2a] leading-snug">{project.client.workType}</span>
+
+            <span className="font-bold text-[#2c2e2a]/60">Tools:</span>
+            <span className="font-bold text-[#2c2e2a] leading-snug">{project.client.tools}</span>
           </div>
         </div>
       </div>

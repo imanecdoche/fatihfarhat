@@ -620,9 +620,17 @@ Acuan utama dan mutlak selalu benar.
       - Penambahan field `region` pada antarmuka `ClientInfo` dan penampilan label `Wilayah / Region: Turkey` pada boks Klien & Atribusi di setiap kartu proyek.
       - Tata letak thumbnail grid responsif dinamis (`grid-cols-2`, `sm:grid-cols-4`, atau `grid-cols-3` sesuai jumlah screenshot proyek).
       - Pembaruan daftar karya pilihan (`featuredItems`) kategori Desain Grafis & UI/UX pada `PortfolioCategories.tsx`.
+126. **Standardisasi Tata Letak Grid 2-Kolom pada Boks Klien & Atribusi Portofolio (`DesignPortfolio.tsx`) (23 September 2026):**
+    - **Akar Masalah & Keluhan Pengguna**: Tampilan boks KLIEN & ATRIBUSI berantakan dan terpotong karena menggunakan `flex items-center justify-between` di dalam kontainer yang sempit, sehingga teks nilai yang panjang mendorong label kiri dan memaksa label seperti "Tipe Karya:" patah kata menjadi "Tipe" di baris 1 dan "Karya:" di baris 2.
+    - **Solusi & Standardisasi**:
+      - Mengganti layout `flex justify-between` menjadi **grid 2-kolom tetap**: `grid grid-cols-[68px_1fr] gap-x-2.5 gap-y-2 text-xs items-baseline`.
+      - Kolom kiri (`68px`) dialokasikan khusus untuk label (`Wilayah:`, `Peran:`, `Karya:`, `Tools:`) sehingga label tidak akan pernah terdesak atau terpotong per kata.
+      - Kolom kanan (`1fr`) rata kiri (`text-left`) dengan spasi baris `leading-snug`, memastikan teks nilai yang membungkus (wrap) tetap rapi dan teratur di jalurnya sendiri.
+      - Memperlebar boks Klien & Atribusi secara proporsional dari `lg:w-[320px]` ke `w-full lg:w-[340px] shrink-0`.
+      - Menyederhanakan dan merapikan string atribut metadata (menghilangkan suffix berulang dan menjaga keterbacaan).
     - **Kepatuhan Desain Mutlak**:
-      - Seluruh boks berlatar putih bebas outline/stroke (`Aturan 117`).
-      - Flat design tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
-      - Tipografi antarmuka murni sans-serif biasa (`font-sans` sesuai Aturan 108).
-      - Bebas dari badge/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
+      - Bebas outline/stroke (`Aturan 117` & `Aturan 124`).
+      - Desain flat murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
+      - Tipografi sans-serif biasa (`font-sans` sesuai `Aturan 108`).
+      - Bebas badge/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
 
