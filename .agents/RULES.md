@@ -637,8 +637,20 @@ Acuan utama dan mutlak selalu benar.
       - Pada `Header.tsx`, saat dipicu secara eksternal oleh tombol `JELAJAHI`, origin ekspansi lingkaran hitam (`#2c2e2a`) dihitung secara dinamis dari titik tombol tersebut (`Math.hypot` ke batas layar dengan `maxScale`), menciptakan efek radial expanding circle yang menyebar langsung dari tombol yang diklik hingga menutupi seluruh layar.
       - Teks brand `FATIH FARHAT` otomatis bergeser sejajar menu di desktop, dan tombol menu di pojok kanan atas bertransformasi menjadi ikon silang putih (×) untuk menutup menu.
       - Menutup menu via tombol silang (×), tombol Escape, maupun salah satu link menu akan menyusutkan kembali lingkaran dan mengembalikan tampilan normal.
+128. **Section Personal Arts pada Portofolio Desain & UI/UX (`DesignPortfolio.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'di kategori halaman portofolio design dan ui/ux di bawah tambahkan section Personal Arts. grid kotak 3 kolom tanpa box corner radius yang kecil dan drop shadow halus. tanpa teks dan label, tanpa dibungkus kontainer tanpa icon'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Aset Ilustrasi Karya Seni Pribadi (`public/portfolio/personal-arts/`)**:
+        1. `art_1.png`: Ilustrasi pemandangan desa dan perbukitan tenang dengan rumah warna-warni dan sepeda bunga (Village Landscape).
+        2. `art_2.png`: Ilustrasi karakter pemuda melompat ceria dengan hoodie hijau (Joyful Jumping Boy).
+        3. `art_3.png`: Ilustrasi seekor puma/kucing santai tidur nyenyak di atas sofa biru empuk (Sleeping Puma on Sofa).
+      - **Grid 3 Kolom Persegi**: Ditata menggunakan `grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8`, di mana tiap item berasio 1:1 (`aspect-square`).
+      - **Tanpa Boks Pembungkus**: Murni elemen gambar langsung di dalam grid tanpa dibungkus kartu/kotak kontainer latar putih (`bg-white p-10`).
+      - **Corner Radius Kecil**: Menggunakan lengkungan sudut kecil yang rapi (`rounded-2xl` / 16px).
+      - **Drop Shadow Halus**: Sesuai instruksi eksplisit pengguna, setiap item gambar diberikan bayangan lembut (`shadow-[0_8px_25px_rgba(44,46,42,0.08)]` dan efek interaktif halus `hover:shadow-[0_16px_35px_rgba(44,46,42,0.14)] hover:scale-[1.02]`).
+      - **Bebas Teks, Label & Ikon**: Setiap item murni hanya menampilkan karya seni visual tanpa badge, tanpa subtitle, tanpa deskripsi, dan tanpa tombol/ikon overlay.
+      - **Lightbox Preview**: Mengklik gambar tetap membuka pratinjau resolusi tinggi di modal lightbox portal yang sudah terisolasi tanpa scroll-bleed.
     - **Kepatuhan Desain Mutlak**:
-      - Estetika flat modern tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
-      - Tipografi Nunito Black dan font antarmuka sans-serif (`Aturan 108`).
       - Dilarang membuat badge/tag/pill tanpa perintah eksplisit (`ai-anti-patterns.md`).
+      - Tipografi judul section murni sans-serif tebal (`font-black`, `Aturan 108`).
 

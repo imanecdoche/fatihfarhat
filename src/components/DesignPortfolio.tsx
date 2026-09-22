@@ -461,6 +461,26 @@ const projectsData: ProjectData[] = [
   },
 ];
 
+interface PersonalArtItem {
+  id: string;
+  image: string;
+}
+
+const personalArtsData: PersonalArtItem[] = [
+  {
+    id: 'village-landscape',
+    image: '/portfolio/personal-arts/art_1.png',
+  },
+  {
+    id: 'jumping-boy',
+    image: '/portfolio/personal-arts/art_2.png',
+  },
+  {
+    id: 'sleeping-puma',
+    image: '/portfolio/personal-arts/art_3.png',
+  },
+];
+
 interface ProjectCardProps {
   project: ProjectData;
   onOpenModal: (imageSrc: string, title: string) => void;
@@ -709,6 +729,29 @@ export const DesignPortfolio: React.FC = () => {
             onOpenModal={handleOpenModal}
           />
         ))}
+      </div>
+
+      {/* Personal Arts Section */}
+      <div className="pt-6 sm:pt-10">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#2c2e2a] tracking-tight mb-6 sm:mb-8 text-left">
+          Personal Arts
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+          {personalArtsData.map((art) => (
+            <div
+              key={art.id}
+              onClick={() => handleOpenModal(art.image, 'Personal Art')}
+              className="aspect-square rounded-2xl overflow-hidden shadow-[0_8px_25px_rgba(44,46,42,0.08)] hover:shadow-[0_16px_35px_rgba(44,46,42,0.14)] transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+            >
+              <img
+                src={art.image}
+                alt="Personal Art"
+                className="w-full h-full object-cover block select-none"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Dribbble Portfolio Action Button */}
