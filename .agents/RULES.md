@@ -771,8 +771,49 @@ Acuan utama dan mutlak selalu benar.
         - Flat design murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
         - Tipografi sans-serif tegas (`font-black`, `font-sans`, `Aturan 108`).
         - Murni hanya membuat komponen tombol navigasi yang diperintahkan (`ai-anti-patterns.md`).
-
-
-
-
+135. **Pensejajaran Presisi Teks Nama, Subtitle, & Deskripsi Kartu Keahlian (`SkillsCharts.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'bisa ga teks teks nama di kartu kartu ini di sejajarin, ga enak diliatnya'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Penyelarasan Vertikal Presisi Antarkartu (Vertical Grid Baseline Alignment)**:
+        - Menghapus kelas `justify-between` pada kontainer kartu yang sebelumnya menyebabkan posisi judul nama naik/turun bergantung pada panjangnya teks deskripsi.
+        - **Top Row (Icon + Chart/Radial)**: Diberikan tinggi baris yang terstandardisasi (`h-10 sm:h-14 md:h-16` untuk kategori tanpa chart, dan `h-[70px] sm:h-[90px] md:h-[105px]` untuk kategori dengan chart) sehingga batas bawah area ikon identik pada seluruh kartu.
+        - **Nama Keahlian (`<h4>`)**: Diberikan tinggi minimum terstandar (`min-h-[2.5rem] sm:min-h-[2.85rem] md:min-h-[3.35rem] flex items-start`) yang mengalokasikan persis 2 baris teks, sehingga judul 1 baris maupun 2 baris menghasilkan titik mulai subtitle di koordinat Y yang identik.
+        - **Subtitle / Level Kategori**: Diberikan tinggi minimum terstandar (`min-h-[1.6rem] sm:min-h-[1.85rem] md:min-h-[2.1rem] flex items-center`) sehingga titik mulai deskripsi paragraf di bawahnya sejajar lurus secara horizontal di setiap kartu.
+        - **Optimasi Aset Vektor Ikon**: Membersihkan teks internal berlebih pada `coreldraw.svg` sehingga ikon balon tampil proporsional setara dengan ikon aplikasi lainnya.
+    - **Kepatuhan Desain Mutlak**:
+      - **Kepatuhan Desain Mutlak**:
+        - Tetap flat design murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
+        - Tidak ada stroke outline pada kontainer kartu putih (`Aturan 117`).
+        - Tipografi antarmuka murni sans-serif (`font-sans`, `Aturan 108`).
+        - Dilarang membuat badge/tag/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
+136. **Pembaruan Ikon Resmi VS Code, Penghapusan Subtitle CV Bahasa, serta Penambahan Bahasa Kotlin & Tool Android Studio (`SkillsCharts.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'visual studio code ga gini iconnya', 'hapus teks "Kecakapan komunikasi lisan dan tulisan mengacu pada data otentik CV."', 'tambahin bahasa Kotlin dan tool android studio'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Ikon Resmi Visual Studio Code (`/icons/vscode.svg`)**:
+        - Mengganti ikon lama (dokumen biru) dengan ikon resmi pita bergradien warna khas Microsoft Visual Studio Code (`#1f9cf0`, `#007acc`, `#0065a9`).
+      - **Penghapusan Subtitle CV Bahasa (`languages`)**:
+        - Menghapus teks subtitle `'Kecakapan komunikasi lisan dan tulisan mengacu pada data otentik CV.'` pada kategori 01 (Kompetensi Bahasa & Linguistik) sehingga tampilan judul kategori bersih tanpa kalimat rujukan CV.
+      - **Penambahan Bahasa Kotlin**:
+        - Ditambahkan pada kategori 03 (Bahasa Pemrograman — Backend & Mobile) dengan nama `'Kotlin'`, level `'Tingkat Lanjut'`, persentase 75% (`color: '#7f52ff'`), dan ikon vektor resmi JetBrains Kotlin (`/icons/kotlin.svg`).
+      - **Penambahan Tool Android Studio**:
+        - Ditambahkan pada kategori 08 (`coding-tools`) dengan nama `'Android Studio'`, level `'Android IDE & SDK'`, ikon vektor resmi (`/icons/androidstudio.svg`), dan deskripsi perancangan aplikasi Android, Gradle build, emulator, & profiling performa.
+    - **Kepatuhan Desain Mutlak**:
+      - Flat design murni (*zero drop shadow*, `DESIGN.md`).
+      - Tipografi antarmuka sans-serif (`font-sans`, `Aturan 108`).
+      - Bebas stroke outline pada kontainer putih (`Aturan 117`).
+      - Dilarang membuat badge/tag/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
+137. **Penambahan Media Sosial Threads (`ContactSection.tsx` & `Header.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'tambahin media sosial Thread https://www.threads.com/@ft.skaas'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Kartu Jejaring Sosial Baru (`threads`)**:
+        - Nama: `'Threads'`, Kategori: `'MICROBLOG & THOUGHTS'`, Handle: `'@ft.skaas'`, URL: `'https://www.threads.com/@ft.skaas'`, Ikon resmi: `SiThreads` (`react-icons/si`).
+        - Deskripsi: Catatan singkat, refleksi teknologi, proses kreatif harian, dan dialog interaktif.
+        - Dilengkapi tombol salin tautan mandiri dan tombol navigasi langsung `target="_blank"`.
+      - **Tautan Menu Footer (`Header.tsx`)**:
+        - Ditambahkan tautan langsung ke Threads (`@ft.skaas`) pada bilah footer menu navigasi.
+    - **Kepatuhan Desain Mutlak**:
+      - Flat design murni (*zero drop shadow*, `DESIGN.md`).
+      - Bebas outline pada kontainer kartu putih (`Aturan 117`).
+      - Tipografi antarmuka murni sans-serif (`font-sans`, `Aturan 108`).
+      - Dilarang membuat badge/tag/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
 

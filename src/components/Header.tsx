@@ -389,6 +389,7 @@ export const Header: React.FC<HeaderProps> = ({
             <a href="https://github.com/imanecdoche" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">GitHub</a>
             <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">LinkedIn</a>
             <a href="https://instagram.com/ih.fernandez" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">Instagram</a>
+            <a href="https://www.threads.com/@ft.skaas" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">Threads</a>
           </div>
           <span className="font-sans text-xs sm:text-sm text-[#f5f1e4]/50">
             © {new Date().getFullYear()} FATIH FARHAT. All Rights Reserved.

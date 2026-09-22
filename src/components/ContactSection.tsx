@@ -9,6 +9,7 @@ import {
   SiSpotify,
   SiDribbble,
   SiGithub,
+  SiThreads,
 } from 'react-icons/si';
 
 const InstagramIcon: React.FC<{ size?: number; className?: string }> = ({ size = 22, className = '' }) => (
@@ -93,6 +94,15 @@ const socialLinksData: SocialLinkItem[] = [
     url: 'https://github.com/imanecdoche',
     description: 'Repositori kode sumber terbuka, kontribusi proyek perangkat lunak, dan arsip aplikasi.',
     icon: SiGithub,
+  },
+  {
+    id: 'threads',
+    name: 'Threads',
+    category: 'MICROBLOG & THOUGHTS',
+    handle: '@ft.skaas',
+    url: 'https://www.threads.com/@ft.skaas',
+    description: 'Catatan singkat, opini teknologi, proses kreatif harian, dan dialog interaktif.',
+    icon: SiThreads,
   },
 ];
 

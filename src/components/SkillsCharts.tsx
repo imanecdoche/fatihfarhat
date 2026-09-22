@@ -28,7 +28,7 @@ const skillCategories: SkillCategory[] = [
     id: 'languages',
     categoryNumber: '01',
     title: 'Kompetensi Bahasa & Linguistik',
-    subtitle: 'Kecakapan komunikasi lisan dan tulisan mengacu pada data otentik CV.',
+    subtitle: '',
     skills: [
       {
         id: 'lang-id',
@@ -191,6 +191,15 @@ const skillCategories: SkillCategory[] = [
         description: 'Schema definition, queries, mutations, & optimasi declarative data fetching.',
         color: '#e07a5f',
         isLearning: true,
+      },
+      {
+        id: 'tech-kotlin',
+        name: 'Kotlin',
+        level: 'Tingkat Lanjut',
+        percentage: 75,
+        icon: '/icons/kotlin.svg',
+        description: 'Pemrograman Android modern, coroutines concurrency, type-safe DSL, & arsitektur modular.',
+        color: '#7f52ff',
       },
     ],
   },
@@ -411,9 +420,18 @@ const skillCategories: SkillCategory[] = [
         name: 'Visual Studio Code',
         level: 'Primary Code Editor',
         percentage: 0,
-        icon: '/icons/vscode.png',
+        icon: '/icons/vscode.svg',
         description: 'IDE utama pengembangan software, integrasi ekosistem TypeScript/React, extensions & debugging interaktif.',
         color: '#007acc',
+      },
+      {
+        id: 'tool-androidstudio',
+        name: 'Android Studio',
+        level: 'Android IDE & SDK',
+        percentage: 0,
+        icon: '/icons/androidstudio.svg',
+        description: 'IDE resmi Google untuk rekayasa Android, layout inspector, Gradle build system, emulator, & profiling performa.',
+        color: '#3ddc84',
       },
       {
         id: 'tool-sublime',
@@ -619,16 +637,18 @@ export const SkillsCharts: React.FC = () => {
                   {cat.title}
                 </h3>
               </div>
-              <p className="text-sm sm:text-base text-[#2c2e2a]/70 font-normal">
-                {cat.subtitle}
-              </p>
+              {cat.subtitle ? (
+                <p className="text-sm sm:text-base text-[#2c2e2a]/70 font-normal">
+                  {cat.subtitle}
+                </p>
+              ) : null}
             </div>
 
             {/* Individual Skill Cards Grid: 2 Kolom di Mobile, 3-4 Kolom di Tablet/Desktop */}
             <div
               className={`grid gap-3 sm:gap-5 md:gap-6 ${
                 cat.hasChart === false
-                  ? 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5'
+                  ? 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6'
                   : 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
               }`}
             >
@@ -646,10 +666,16 @@ export const SkillsCharts: React.FC = () => {
                       duration: 0.45,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="flex flex-col justify-between p-3.5 sm:p-5 md:p-6 rounded-[22px] sm:rounded-[28px] md:rounded-[32px] bg-[#ffffff] transition-all duration-300 hover:-translate-y-1 select-none overflow-hidden relative"
+                    className="flex flex-col p-3.5 sm:p-5 md:p-6 rounded-[22px] sm:rounded-[28px] md:rounded-[32px] bg-[#ffffff] transition-all duration-300 hover:-translate-y-1 select-none overflow-hidden relative"
                   >
                     {/* Top Row: Icon / Bendera 3D di Kiri + ApexCharts Radial Gauge di Kanan (Jika hasChart !== false) */}
-                    <div className="flex items-center justify-between gap-1.5 sm:gap-3 mb-3 sm:mb-4">
+                    <div
+                      className={`flex items-center justify-between gap-1.5 sm:gap-3 mb-3 sm:mb-4 ${
+                        cat.hasChart === false
+                          ? 'h-10 sm:h-14 md:h-16'
+                          : 'h-[70px] sm:h-[90px] md:h-[105px]'
+                      }`}
+                    >
                       {cat.id === 'languages' ? (
                         /* Bendera 3D Berkibar Transparan (Posisikan di Kiri, Scale +8% & Translate ke Kiri 20px, Clipped oleh Box) */
                         <div className="w-16 sm:w-24 md:w-28 h-12 sm:h-16 md:h-20 shrink-0 flex items-center justify-start">
@@ -723,11 +749,15 @@ export const SkillsCharts: React.FC = () => {
                     </div>
 
                     {/* Bottom Content: Name, Level, and Description */}
-                    <div>
-                      <h4 className="text-sm sm:text-base md:text-[19px] font-black text-[#2c2e2a] tracking-tight leading-snug">
+                    <div className="flex flex-col flex-1">
+                      <h4 className="text-sm sm:text-base md:text-[19px] font-black text-[#2c2e2a] tracking-tight leading-snug min-h-[2.5rem] sm:min-h-[2.85rem] md:min-h-[3.35rem] flex items-start">
                         {skill.name}
                       </h4>
-                      <div className={`text-[10px] sm:text-xs font-bold uppercase tracking-wider mt-1 ${skill.isLearning ? 'text-[#e76f51]' : 'text-[#8ed462]'}`}>
+                      <div
+                        className={`text-[10px] sm:text-xs font-bold uppercase tracking-wider mt-1 min-h-[1.6rem] sm:min-h-[1.85rem] md:min-h-[2.1rem] flex items-center ${
+                          skill.isLearning ? 'text-[#e76f51]' : 'text-[#8ed462]'
+                        }`}
+                      >
                         {skill.level}
                       </div>
                       <p className="text-[11px] sm:text-[12px] md:text-[13px] leading-relaxed text-[#2c2e2a]/75 mt-1.5 sm:mt-2.5 font-normal">
