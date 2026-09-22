@@ -574,4 +574,21 @@ Acuan utama dan mutlak selalu benar.
       - Desain flat murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
       - Tipografi antarmuka menggunakan font sans-serif biasa (`font-sans` sesuai Aturan 108).
       - Bebas dari badge/pill/tag tanpa instruksi eksplisit (`ai-anti-patterns.md`).
+124. **Penyempurnaan UI/UX & Interaktivitas Portofolio Desain (`DesignPortfolio.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**:
+      1. 'hapus icon icon ini' (ikon Layers di samping label badge proyek, ikon UserCheck pada header Klien & Atribusi, dan ikon pada setiap kartu cakupan perancangan).
+      2. 'saat melakukan preview tampilan layar penuh prototipe nya, scroll event masih tembus ke halaman di bawahnya, bukan di previewnya'.
+      3. 'kemudian sembunyikan scrolling bar'.
+      4. 'hapus bagian PILIH HALAMAN UNTUK PRATINJAU dan segemnted buttonnya'.
+      5. 'bagian FITUR UTAMA & MODUL HALAMAN jangan dibungkus BOX'.
+      6. 'jangan gunakan icon pada setiap box di section CAKUPAN PERANCANGAN DAN HASIL KERJA UI/UX'.
+      7. 'elemen box KLIEN & ATRIBUSI jangan diberikan outline stroke'.
+    - **Tindakan Penyempurnaan yang Diterapkan**:
+      - **Pembersihan Ikon**: Menghapus ikon dekoratif pada badge proyek (`Layers`), header Klien & Atribusi (`UserCheck`), dan seluruh 4 boks deliverables (`Activity`, `Shield`, `SiFigma`, dll.) sehingga tampilan lebih bersih dan berfokus pada konten.
+      - **Perbaikan Scroll Modal Layar Penuh (Anti Scroll-Bleed)**: Menambahkan `useEffect` penguncian scroll `document.body.style.overflow = 'hidden'` saat modal terbuka, menyalurkan scroll event langsung ke container modal dengan `overscroll-contain` dan tombol close tetap tersemat (*fixed*) di sudut layar.
+      - **Sembunyikan Scrollbar**: Mengaplikasikan utilitas `[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden` pada area pratinjau modal sehingga navigasi scroll tetap berfungsi mulus tanpa menampilkan scrollbar visual.
+      - **Penyederhanaan Navigasi Layar**: Menghapus header teks `EKSPLORASI HALAMAN PROTOTIPE` / `Pilih Tampilan Halaman untuk Pratinjau` beserta deretan segmented pill button; seleksi layar sepenuhnya menggunakan 3 thumbnail pratinjau visual langsung di bawah layar utama.
+      - **Unboxed Fitur Utama & Modul Halaman**: Menghapus kontainer box, background, dan border dari section `Fitur Utama & Modul Halaman`, menyelaraskannya dengan gaya tipografi editorial bersih.
+      - **Peniadaan Stroke pada Box KLIEN & ATRIBUSI**: Menghapus kelas `border border-[#2c2e2a]/10` dari kontainer boks `KLIEN & ATRIBUSI` agar tampil flat dan menyatu harmonis tanpa outline stroke.
+    - **Kepatuhan Desain Mutlak**: Menjaga estetika flat design tanpa bayangan (`DESIGN.md`), font sans-serif biasa (`Aturan 108`), bebas outline/stroke pada elemen berlatar putih (`Aturan 117`), dan pembatasan komponen sesuai instruksi (`ai-anti-patterns.md`).
 

@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   CheckCircle2,
   ArrowUpRight,
-  Shield,
-  Activity,
-  Layers,
   Eye,
-  UserCheck,
   X,
-  HeartPulse,
-  Sparkles,
 } from 'lucide-react';
-import { SiDribbble, SiFigma } from 'react-icons/si';
+import { SiDribbble } from 'react-icons/si';
 
 interface ScreenData {
   id: string;
@@ -29,7 +23,6 @@ interface ScreenData {
 interface DeliverableItem {
   title: string;
   description: string;
-  icon: React.ReactNode;
 }
 
 interface ClientInfo {
@@ -136,25 +129,21 @@ const projectsData: ProjectData[] = [
         title: 'Riset Alur Triase',
         description:
           'Pemetaan alur navigasi darurat dan respons cepat untuk korban atau pelapor yang membutuhkan intervensi mendesak.',
-        icon: <Activity size={16} />,
       },
       {
         title: 'Portal Asupan Rahasia',
         description:
           'Arsitektur formulir intake aman dengan prinsip kerahasiaan identitas dan opsi anonimitas penuh pelapor.',
-        icon: <Shield size={16} />,
       },
       {
         title: 'Design System Taktis',
         description:
           'Palet visual dark-theme dengan kontras tinggi, tipografi editorial serif, serta komponen interaktif terstruktur.',
-        icon: <Layers size={16} />,
       },
       {
         title: 'Prototipe Figma Terpadu',
         description:
           'Prototipe interaktif resolusi tinggi siap uji dengan transisi layar, state tombol, dan feedback mikro visual.',
-        icon: <SiFigma size={16} />,
       },
     ],
   },
@@ -242,25 +231,21 @@ const projectsData: ProjectData[] = [
         title: 'Riset Pasien & Reservasi',
         description:
           'Pemetaan kebutuhan pasien terapi holistik, penjadwalan terapis, dan kemudahan booking via WhatsApp.',
-        icon: <HeartPulse size={16} />,
       },
       {
         title: 'Standar Higienitas Klinis',
         description:
           'Penonjolan transparansi sterilisasi instrumen bekam dan protokol kebersihan profesional untuk membangun kepercayaan.',
-        icon: <Sparkles size={16} />,
       },
       {
         title: 'Design System Wellness',
         description:
           'Palet warna earth-tone menenangkan, tipografi serif elegan, dan tata letak UI higienis modern.',
-        icon: <Layers size={16} />,
       },
       {
         title: 'Prototipe Interaktif Siap Uji',
         description:
           'Alur prototipe lengkap mulai dari eksplorasi layanan, kurasi produk herbal, hingga konfirmasi jadwal reservasi.',
-        icon: <SiFigma size={16} />,
       },
     ],
   },
@@ -282,8 +267,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
       {/* Project Header Info */}
       <div className="pb-8 border-b border-[#2c2e2a]/10 flex flex-col lg:flex-row lg:items-start justify-between gap-6">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2 mb-2 text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
-            <Layers size={15} className="text-[#8ed462]" />
+          <div className="mb-2 text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60">
             <span>{project.badge}</span>
           </div>
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#2c2e2a] tracking-tight leading-tight">
@@ -298,9 +282,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
         </div>
 
         {/* Client & Attribution Box */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-[#f5f1e4]/70 border border-[#2c2e2a]/10 shrink-0 lg:w-[320px]">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 mb-3">
-            <UserCheck size={16} className="text-[#8ed462]" />
+        <div className="p-5 sm:p-6 rounded-2xl bg-[#f5f1e4]/70 shrink-0 lg:w-[320px]">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 mb-3">
             <span>KLIEN & ATRIBUSI</span>
           </div>
           <div className="space-y-1">
@@ -324,40 +307,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
         </div>
       </div>
 
-      {/* Screen Tabs Selector */}
+      {/* Screen Display Area */}
       <div className="pt-8">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-[#2c2e2a]/60 mb-1">
-              EKSPLORASI HALAMAN PROTOTIPE
-            </p>
-            <h4 className="text-lg sm:text-xl font-black text-[#2c2e2a]">
-              Pilih Tampilan Halaman untuk Pratinjau
-            </h4>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {project.screens.map((screen) => {
-              const isActive = activeScreenId === screen.id;
-              return (
-                <button
-                  key={screen.id}
-                  type="button"
-                  onClick={() => setActiveScreenId(screen.id)}
-                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs font-black tracking-wider uppercase transition-all duration-200 cursor-pointer active:scale-95 ${
-                    isActive
-                      ? 'bg-[#2c2e2a] text-white'
-                      : 'bg-[#f5f1e4] text-[#2c2e2a]/70 hover:bg-[#ebe7dc] hover:text-[#2c2e2a]'
-                  }`}
-                >
-                  {screen.name}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Active Screen Display Area */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Screenshot Preview (Left / Top) */}
           <div className="lg:col-span-7 space-y-4">
@@ -430,8 +381,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
               </p>
             </div>
 
-            {/* Key Features & Modules */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-[#f5f1e4]/70 border border-[#2c2e2a]/10 space-y-2.5">
+            {/* Key Features & Modules (Unboxed) */}
+            <div className="space-y-2.5 text-xs">
               <span className="text-[11px] font-bold uppercase tracking-wider text-[#2c2e2a]/60 block">
                 Fitur Utama & Modul Halaman:
               </span>
@@ -478,9 +429,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
               key={idx}
               className="p-5 rounded-2xl bg-[#f5f1e4]/60 border border-[#2c2e2a]/8 space-y-2"
             >
-              <div className="w-8 h-8 rounded-full bg-[#2c2e2a] text-white flex items-center justify-center">
-                {item.icon}
-              </div>
               <h6 className="text-sm font-black text-[#2c2e2a]">{item.title}</h6>
               <p className="text-xs text-[#2c2e2a]/75 leading-relaxed">{item.description}</p>
             </div>
@@ -493,6 +441,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
 
 export const DesignPortfolio: React.FC = () => {
   const [modalData, setModalData] = useState<{ src: string; title: string } | null>(null);
+
+  // Lock body scroll and prevent background scroll bleed-through when modal is open
+  useEffect(() => {
+    if (modalData) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [modalData]);
 
   const handleOpenModal = (imageSrc: string, title: string) => {
     setModalData({ src: imageSrc, title });
@@ -551,29 +510,34 @@ export const DesignPortfolio: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-100 bg-black/90 p-4 sm:p-8 flex items-center justify-center"
+            className="fixed inset-0 z-[100] bg-black/90 p-4 sm:p-8 overflow-y-auto overscroll-contain flex justify-center items-start [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             onClick={() => setModalData(null)}
           >
+            {/* Fixed Close Button pinned to screen viewport corner */}
             <button
               type="button"
-              onClick={() => setModalData(null)}
-              className="absolute top-5 right-5 sm:top-8 sm:right-8 p-3 rounded-full bg-[#2c2e2a] text-white hover:bg-white hover:text-[#2c2e2a] transition-colors cursor-pointer z-10"
+              onClick={(e) => {
+                e.stopPropagation();
+                setModalData(null);
+              }}
+              className="fixed top-5 right-5 sm:top-8 sm:right-8 p-3 rounded-full bg-[#2c2e2a] text-white hover:bg-white hover:text-[#2c2e2a] transition-colors cursor-pointer z-[110]"
               title="Tutup Pratinjau"
             >
               <X size={20} />
             </button>
 
+            {/* Modal Content - Scrollable through outer overlay with hidden scrollbar */}
             <motion.div
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.95 }}
-              className="max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[#0d0f0d] p-2"
+              initial={{ scale: 0.98, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.98, opacity: 0 }}
+              className="max-w-5xl w-full my-auto rounded-2xl bg-[#0d0f0d] p-2"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={modalData.src}
                 alt={modalData.title}
-                className="w-full h-auto rounded-xl"
+                className="w-full h-auto rounded-xl block"
               />
             </motion.div>
           </motion.div>
