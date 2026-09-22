@@ -491,6 +491,18 @@ const personalArtsData: PersonalArtItem[] = [
     id: 'crisp-cucumber',
     image: '/portfolio/personal-arts/art_6.png',
   },
+  {
+    id: 'letter-r-monogram',
+    image: '/portfolio/personal-arts/art_7.png',
+  },
+  {
+    id: 'aquila-dynamics',
+    image: '/portfolio/personal-arts/art_8.png',
+  },
+  {
+    id: 'geometric-owl',
+    image: '/portfolio/personal-arts/art_9.png',
+  },
 ];
 
 interface ProjectCardProps {

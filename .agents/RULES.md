@@ -647,7 +647,10 @@ Acuan utama dan mutlak selalu benar.
         4. `art_4.png`: Ilustrasi wortel segar bergaya botanical art dengan daun rimbun bertekstur arsir halus (Botanical Carrot).
         5. `art_5.png`: Ilustrasi buah tomat matang merah cerah berseri dengan kelopak hijau (Ripe Tomato).
         6. `art_6.png`: Ilustrasi mentimun hijau segar bertekstur bintik alami (Crisp Cucumber).
-      - **Grid 3 Kolom Persegi (2 Baris x 3 Kolom)**: Ditata menggunakan `grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8`, di mana tiap item berasio 1:1 (`aspect-square`), kini memuat 6 karya visual simetris.
+        7. `art_7.png`: Desain logo monogram huruf "R" modern minimalis kontras tinggi (Letter R Monogram).
+        8. `art_8.png`: Desain logo lambang elang perkasa "AQUILA DYNAMICS" bersayap membentang (Aquila Dynamics Eagle Logo).
+        9. `art_9.png`: Desain logo burung hantu geometris modern elegan (Geometric Owl Logo).
+      - **Grid 3 Kolom Persegi (3 Baris x 3 Kolom = 9 Karya)**: Ditata menggunakan `grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8`, di mana tiap item berasio 1:1 (`aspect-square`), membentuk galeri 9 karya simetris sempurna.
       - **Tanpa Boks Pembungkus**: Murni elemen gambar langsung di dalam grid tanpa dibungkus kartu/kotak kontainer latar putih (`bg-white p-10`).
       - **Corner Radius Kecil**: Menggunakan lengkungan sudut kecil yang rapi (`rounded-2xl` / 16px).
       - **Drop Shadow Halus**: Sesuai instruksi eksplisit pengguna, setiap item gambar diberikan bayangan lembut (`shadow-[0_8px_25px_rgba(44,46,42,0.08)]` dan efek interaktif halus `hover:shadow-[0_16px_35px_rgba(44,46,42,0.14)] hover:scale-[1.02]`).
