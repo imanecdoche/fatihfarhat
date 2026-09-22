@@ -30,6 +30,7 @@ import ScrollVelocity from './components/ScrollVelocity';
 import LogoLoop from './components/LogoLoop';
 import { techLogos } from './components/TechLogos';
 import { portfolioLogos } from './components/PortfolioLogos';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'portfolio' | 'services' | 'contact'>('home');
@@ -361,6 +362,8 @@ export const App: React.FC = () => {
           )}
         </AnimatePresence>
       </main>
+
+      <ScrollToTop isMenuOpen={isMenuOpen} />
     </div>
   );
 };

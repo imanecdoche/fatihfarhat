@@ -697,5 +697,25 @@ Acuan utama dan mutlak selalu benar.
       - Flat design murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
       - Tipografi antarmuka sans-serif (`font-sans`, `Aturan 108`).
       - Dilarang membuat badge/pill/tag tanpa instruksi eksplisit (`ai-anti-patterns.md`).
+132. **Tombol Melayang Bulat Scroll ke Atas Global (`ScrollToTop.tsx` / `App.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'di semua halaman ketika user melakukan scrolling ke atas dari bawah, muncul tombol bulat di pojok kanan bawah icon panah ke atas untuk langsung menuju ke atas'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Cakupan Global**: Diletakkan pada tingkat root (`App.tsx`) sehingga aktif di seluruh halaman (Home, About, Portfolio, Services, Contact).
+      - **Logika Deteksi Arah Scroll (Scroll-Up Detection)**:
+        - Tombol tersembunyi saat berada di dekat bagian paling atas halaman (`scrollY <= 300px`).
+        - Tombol otomatis muncul saat pengguna berada di bawah (`scrollY > 300px`) dan melakukan scrolling ke arah atas (`scrollDiff < -6px`).
+        - Tombol otomatis tersembunyi kembali saat pengguna melakukan scrolling ke arah bawah (`scrollDiff > 6px`) atau saat telah mencapai bagian atas.
+        - Otomatis tersembunyi jika menu navigasi layar penuh sedang terbuka (`isMenuOpen`).
+      - **Aksi Navigasi Menuju ke Atas**:
+        - Saat tombol diklik, halaman bergulir halus menuju posisi puncak (`lenis.scrollTo(0)` tersinkronisasi atau `window.scrollTo({ top: 0, behavior: 'smooth' })`).
+      - **Bentuk & Gaya Visual**:
+        - Bentuk bulat sempurna (`rounded-full`), ukuran proporsional (`w-12 h-12 sm:w-14 sm:h-14`), diletakkan di pojok kanan bawah (`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50`).
+        - Ikon panah ke atas (`ArrowUp` dari `lucide-react`) berketebalan tegas (`stroke-[2.5]`).
+        - Skema warna identitas: Latar `#2c2e2a` teks putih, dengan transisi hover ke `#8ed462` teks `#2c2e2a` dan efek tekan `active:scale-95`.
+        - Transisi kemunculan halus menggunakan `AnimatePresence` dan `motion.button` (Framer Motion).
+    - **Kepatuhan Desain Mutlak**:
+      - Flat design murni tanpa bayangan (*zero drop shadow*) (`DESIGN.md`).
+      - Murni hanya membuat komponen tombol bulat dengan ikon panah ke atas yang diminta, tanpa badge/tag/pill/komponen ekstra (`ai-anti-patterns.md`).
+
 
 
