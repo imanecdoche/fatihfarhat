@@ -1,18 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
-  <defs>
-    <linearGradient id="kotlinGrad1" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#C757BC"/>
-      <stop offset="25%" stop-color="#D06090"/>
-      <stop offset="50%" stop-color="#E1725C"/>
-      <stop offset="100%" stop-color="#EE8E3B"/>
-    </linearGradient>
-    <linearGradient id="kotlinGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0095D5"/>
-      <stop offset="40%" stop-color="#238AD9"/>
-      <stop offset="70%" stop-color="#556CE0"/>
-      <stop offset="100%" stop-color="#7F52FF"/>
-    </linearGradient>
-  </defs>
-  <path fill="url(#kotlinGrad1)" d="M256 256H0V0h256L128 128z"/>
-  <path fill="url(#kotlinGrad2)" d="M128 128L0 256V0h128z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><radialGradient id="kotlin_svg__a" cx="240.403" cy="-23.657" r="81.297" gradientTransform="matrix(.8455 0 0 -.8455 -145.249 -17.54)" gradientUnits="userSpaceOnUse"><stop offset=".003" stop-color="#e44857"/><stop offset=".469" stop-color="#c711e1"/><stop offset="1" stop-color="#7f52ff"/></radialGradient><path fill="url(#kotlin_svg__a)" d="M60 60H0V0h60L29.4 29.6z"/></svg>

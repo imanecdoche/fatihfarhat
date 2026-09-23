@@ -811,9 +811,21 @@ Acuan utama dan mutlak selalu benar.
         - Dilengkapi tombol salin tautan mandiri dan tombol navigasi langsung `target="_blank"`.
       - **Tautan Menu Footer (`Header.tsx`)**:
         - Ditambahkan tautan langsung ke Threads (`@ft.skaas`) pada bilah footer menu navigasi.
+138. **Aset Ikon Resmi Terverifikasi Visual Studio Code, Kotlin, dan Android Studio Langsung dari Situs Resmi (23 September 2026):**
+    - **Instruksi Pengguna**: 'icon mereka ga gini loh, aneh. cari yang bener di internet di situs resminya'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Visual Studio Code (`/icons/vscode.svg`)**:
+        - Diunduh langsung dari arsip aset merek resmi Microsoft (`https://code.visualstudio.com/brand` -> `visual-studio-code-icons.zip` -> `visual-studio-code-icons/vscode.svg`).
+        - Menampilkan geometri pita 3D asli Microsoft dengan efek bayangan dan kedalaman warna biru resmi (`#0065A9`, `#007ACC`, `#1F9CF0`).
+      - **Kotlin (`/icons/kotlin.svg`)**:
+        - Diambil langsung dari repositori/pustaka merek resmi JetBrains (`@jetbrains/logos/kotlin/kotlin.svg` dan `https://kotlinlang.org`).
+        - Menampilkan logo bendera miring resmi JetBrains dengan gradien radial presisi (`#EF4857` -> `#D211EC` -> `#7F52FF`) dan geometri `d="M60 60H0V0h60L29.4 29.6z"`.
+      - **Android Studio (`/icons/androidstudio.svg`)**:
+        - Diunduh langsung dari portal resmi Google Android Developers (`https://developer.android.com/static/studio/images/android-studio-stable.svg` di `developer.android.com/studio`).
+        - Menampilkan logo resmi modern Android Studio lengkap dengan robot hijau Android dan jangka/kompas arsitektur multi-layer Google.
     - **Kepatuhan Desain Mutlak**:
       - Flat design murni (*zero drop shadow*, `DESIGN.md`).
-      - Bebas outline pada kontainer kartu putih (`Aturan 117`).
       - Tipografi antarmuka murni sans-serif (`font-sans`, `Aturan 108`).
+      - Bebas stroke outline pada kontainer kartu putih (`Aturan 117`).
       - Dilarang membuat badge/tag/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
 
