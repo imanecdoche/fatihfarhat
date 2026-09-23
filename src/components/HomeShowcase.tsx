@@ -70,6 +70,15 @@ export const HomeShowcase: React.FC<HomeShowcaseProps> = ({ onNavigate }) => {
       techStack: 'TypeScript • React • Next.js • Tailwind CSS',
       repoUrl: 'https://github.com/imanecdoche/RePrompter',
     },
+    {
+      id: 'headless-multicloud',
+      title: 'Headless 5-Platform Integration Ecosystem',
+      category: 'Cloud Architecture & Headless APIs',
+      description:
+        'Integrasi orkestrasi headless 100% mulus menghubungkan GitHub, Vercel, Firebase, Supabase, dan Appwrite dalam satu ekosistem data terpadu.',
+      techStack: 'GitHub • Vercel • Firebase • Supabase • Appwrite',
+      repoUrl: 'https://github.com/imanecdoche',
+    },
   ];
 
   return (

@@ -270,6 +270,11 @@ html.dark .apexcharts-radial-series path[stroke="#2c2e2a"] {
   stroke: #8ed462 !important;
 }
 
+/* Invert monochrome dark icons in dark mode */
+html.dark img[src*="vercel"] {
+  filter: invert(1);
+}
+
 /* Smooth background & text color transitions on theme switch */
 body, header, section, div, button, a, span, p, h1, h2, h3, h4, h5, h6, input, textarea {
   transition-property: background-color, border-color, color;

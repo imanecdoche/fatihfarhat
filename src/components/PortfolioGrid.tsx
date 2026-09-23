@@ -114,6 +114,29 @@ const projects: Project[] = [
     ],
     repoUrl: 'https://github.com/imanecdoche/RePrompter',
   },
+  {
+    id: 'headless-multicloud',
+    category: 'Cloud Architecture & Headless APIs',
+    repoName: 'imanecdoche/headless-multi-platform',
+    title: 'Headless 5-Platform Integration Ecosystem',
+    subtitle: 'Unified API Orchestration across GitHub, Vercel, Firebase, Supabase & Appwrite',
+    description:
+      'Arsitektur headless terpadu yang menghubungkan 5 platform cloud dan developer tools modern secara 100% mulus. Mengorkestrasi pipeline CI/CD GitHub & Vercel, real-time sync Firestore Google Firebase, database relasional PostgreSQL Supabase, dan backend Appwrite dalam satu ekosistem terpadu berlatensi rendah.',
+    benefit:
+      'Menghilangkan fragmentasi data antar-vendor cloud, menyatukan otentikasi dan basis data multi-cloud, serta memungkinkan deployment otomatis dan orkestrasi konten dinamis dengan efisiensi tinggi tanpa keterikatan pada satu platform (vendor lock-in).',
+    languages: [
+      { name: 'TypeScript', percentage: 68.5, color: '#3178c6' },
+      { name: 'SQL', percentage: 18.2, color: '#e38c00' },
+      { name: 'JSON/Config', percentage: 13.3, color: '#292929' },
+    ],
+    highlights: [
+      'Orkestrasi headless 100% sempurna ke 5 ekosistem platform pihak ketiga terkemuka.',
+      'Sinkronisasi real-time ganda: document store (Firebase) & relational store (Supabase).',
+      'Automated deployment webhook & preview environment via GitHub Actions dan Vercel Edge.',
+      'Sistem manajemen pengguna & session bridge lintas-layanan menggunakan Appwrite BaaS.',
+    ],
+    repoUrl: 'https://github.com/imanecdoche',
+  },
 ];
 
 export const PortfolioGrid: React.FC = () => {
