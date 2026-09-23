@@ -841,9 +841,15 @@ Acuan utama dan mutlak selalu benar.
         - Garis Pemisah / Border: Hairline transparan halus (`rgba(245, 241, 228, 0.12)`).
         - Aksen Utama: Tetap Fresh Grass Green (`#8ed462`) yang menyala dan berkarakter kuat di kedua tema.
         - Transisi warna halus 200ms pada perubahan tema tanpa memperlambat performa animasi GSAP / Framer Motion.
+140. **Pembaruan Persentase Bahasa Indonesia Menjadi 100% (`SkillsCharts.tsx`) (23 September 2026):**
+    - **Instruksi Pengguna**: 'seharusnya ini 100%' (merujuk pada kartu keahlian Bahasa Indonesia / Native / Fasih).
+    - **Penerapan Spesifikasi Mutlak**:
+      - Pada kategori 01 (Kompetensi Bahasa & Linguistik), item `lang-id` (Bahasa Indonesia):
+        - Mengubah nilai `percentage` dari `78` menjadi `100` (`percentage: 100`), mencerminkan status bahasa ibu (*Native / Fasih*) dengan lingkaran *radial gauge* penuh (100%).
+      - Pada `src/index.css`, ditambahkan aturan penyesuaian stroke grafik ApexCharts agar pada tema gelap (*dark mode*) stroke lingkaran tetap berkilau kontras (`#8ed462`) dan tidak tenggelam pada latar kartu gelap.
     - **Kepatuhan Desain Mutlak**:
       - Flat design murni (*zero drop shadow*, `DESIGN.md`).
       - Tipografi antarmuka murni sans-serif (`font-sans`, `Aturan 108`).
-      - Bebas stroke outline pada kontainer kartu putih di light mode (`Aturan 117`).
+      - Bebas stroke outline pada kontainer kartu putih (`Aturan 117`).
       - Dilarang membuat badge/tag/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
 

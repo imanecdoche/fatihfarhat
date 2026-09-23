@@ -34,7 +34,7 @@ const skillCategories: SkillCategory[] = [
         id: 'lang-id',
         name: 'Bahasa Indonesia',
         level: 'Native / Fasih',
-        percentage: 78,
+        percentage: 100,
         icon: '/icons/flag_3d_id.png',
         description: 'Bahasa ibu, penulisan formal naskah akademik, sastra, dan publikasi digital.',
         color: '#2c2e2a',

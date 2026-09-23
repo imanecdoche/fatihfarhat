@@ -265,6 +265,10 @@ html.dark .apexcharts-datalabel-value {
 html.dark .apexcharts-radialbar-track path {
   stroke: #2b2e28 !important;
 }
+html.dark .apexcharts-series path[stroke="#2c2e2a"],
+html.dark .apexcharts-radial-series path[stroke="#2c2e2a"] {
+  stroke: #8ed462 !important;
+}
 
 /* Smooth background & text color transitions on theme switch */
 body, header, section, div, button, a, span, p, h1, h2, h3, h4, h5, h6, input, textarea {
