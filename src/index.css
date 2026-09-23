@@ -122,3 +122,154 @@ body::-webkit-scrollbar,
 .animate-typing-cursor {
   animation: typing-cursor-blink 0.75s step-end infinite;
 }
+
+/* ========================================================
+   LIGHT / DARK THEME SYSTEM & HIGH-PRECISION PALETTE MAPPING
+   ======================================================== */
+
+html.dark,
+html.dark body {
+  background-color: #151714 !important;
+  color: #f5f1e4 !important;
+}
+
+/* Background mappings */
+html.dark .bg-\[\#f5f1e4\] {
+  background-color: #191c18 !important;
+}
+
+html.dark .bg-\[\#f5f1e4\]\/70 {
+  background-color: rgba(25, 28, 24, 0.75) !important;
+}
+
+html.dark .bg-\[\#f5f1e4\]\/80,
+html.dark .bg-\[\#f5f1e4\]\/90 {
+  background-color: rgba(25, 28, 24, 0.9) !important;
+}
+
+html.dark .bg-\[\#ffffff\],
+html.dark .bg-white {
+  background-color: #20231f !important;
+}
+
+html.dark .bg-\[\#ebe7dc\],
+html.dark .bg-\[\#eae6db\] {
+  background-color: #272a25 !important;
+}
+
+/* Floating Header Capsule in Dark Mode (when menu closed) */
+html.dark header > div.bg-\[\#ffffff\] {
+  background-color: #20231f !important;
+  border: 1px solid rgba(245, 241, 228, 0.12) !important;
+}
+
+/* Floating Action Buttons in Dark Mode */
+html.dark .z-80 button.bg-\[\#ffffff\],
+html.dark button.bg-\[\#ffffff\],
+html.dark a.bg-\[\#ffffff\] {
+  background-color: #20231f !important;
+  color: #f5f1e4 !important;
+  border: 1px solid rgba(245, 241, 228, 0.12) !important;
+}
+html.dark .z-80 button.bg-\[\#ffffff\]:hover,
+html.dark button.bg-\[\#ffffff\]:hover,
+html.dark a.bg-\[\#ffffff\]:hover {
+  background-color: #8ed462 !important;
+  color: #151714 !important;
+}
+
+/* Text mappings */
+html.dark .text-\[\#2c2e2a\] {
+  color: #f5f1e4 !important;
+}
+
+html.dark .text-\[\#2c2e2a\]\/80,
+html.dark .text-\[\#2c2e2a\]\/75,
+html.dark .text-\[\#2c2e2a\]\/70 {
+  color: rgba(245, 241, 228, 0.75) !important;
+}
+
+html.dark .text-\[\#2c2e2a\]\/65,
+html.dark .text-\[\#2c2e2a\]\/60 {
+  color: rgba(245, 241, 228, 0.6) !important;
+}
+
+html.dark .text-\[\#2c2e2a\]\/50,
+html.dark .text-\[\#2c2e2a\]\/45,
+html.dark .text-\[\#2c2e2a\]\/40 {
+  color: rgba(245, 241, 228, 0.45) !important;
+}
+
+/* Border mappings */
+html.dark .border-\[\#2c2e2a\]\/10,
+html.dark .border-\[\#2c2e2a\]\/15,
+html.dark .border-\[\#2c2e2a\]\/20 {
+  border-color: rgba(245, 241, 228, 0.12) !important;
+}
+
+html.dark .border-\[\#2c2e2a\]\/30,
+html.dark .border-\[\#2c2e2a\]\/40 {
+  border-color: rgba(245, 241, 228, 0.22) !important;
+}
+
+html.dark .border-\[\#2c2e2a\] {
+  border-color: rgba(245, 241, 228, 0.25) !important;
+}
+
+html.dark .border-\[\#f5f1e4\] {
+  border-color: rgba(245, 241, 228, 0.15) !important;
+}
+
+/* Inverted Dark Buttons & Pills */
+html.dark a.bg-\[\#2c2e2a\],
+html.dark button.bg-\[\#2c2e2a\] {
+  background-color: #2b2e28 !important;
+  color: #f5f1e4 !important;
+  border: 1px solid rgba(245, 241, 228, 0.12) !important;
+}
+
+html.dark a.bg-\[\#2c2e2a\]:hover,
+html.dark button.bg-\[\#2c2e2a\]:hover {
+  background-color: #8ed462 !important;
+  color: #151714 !important;
+}
+
+/* Form inputs & textarea */
+html.dark input,
+html.dark textarea {
+  background-color: #191c18 !important;
+  color: #f5f1e4 !important;
+  border-color: rgba(245, 241, 228, 0.15) !important;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: rgba(245, 241, 228, 0.35) !important;
+}
+html.dark input:focus,
+html.dark textarea:focus {
+  border-color: #8ed462 !important;
+}
+
+/* Hero selection box corner handles */
+html.dark span.bg-\[\#2c2e2a\] {
+  background-color: #8ed462 !important;
+}
+html.dark .border-\[\#2c2e2a\]\/70 {
+  border-color: rgba(142, 212, 98, 0.7) !important;
+}
+
+/* ApexCharts radial track and text in dark mode */
+html.dark .apexcharts-datalabel-value {
+  fill: #f5f1e4 !important;
+}
+html.dark .apexcharts-radialbar-track path {
+  stroke: #2b2e28 !important;
+}
+
+/* Smooth background & text color transitions on theme switch */
+body, header, section, div, button, a, span, p, h1, h2, h3, h4, h5, h6, input, textarea {
+  transition-property: background-color, border-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+

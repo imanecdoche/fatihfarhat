@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
-import { MoreHorizontal, X } from 'lucide-react';
+import { MoreHorizontal, X, Sun, Moon } from 'lucide-react';
 
 interface HeaderProps {
   currentPage?: 'home' | 'about' | 'portfolio' | 'services' | 'contact';
@@ -9,6 +9,8 @@ interface HeaderProps {
   isMenuOpen?: boolean;
   onToggleMenu?: (open: boolean) => void;
   externalOrigin?: { x: number; y: number } | null;
+  theme?: 'light' | 'dark';
+  onToggleTheme?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -18,6 +20,8 @@ export const Header: React.FC<HeaderProps> = ({
   isMenuOpen: propIsMenuOpen,
   onToggleMenu,
   externalOrigin,
+  theme = 'light',
+  onToggleTheme,
 }) => {
   const [internalIsMenuOpen, setInternalIsMenuOpen] = useState(false);
   const isMenuOpen = propIsMenuOpen !== undefined ? propIsMenuOpen : internalIsMenuOpen;
@@ -216,45 +220,84 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </motion.div>
 
-          {/* Mobile Inside Button: Switches between MoreHorizontal and X icon */}
-          <button
-            ref={mobileButtonRef}
-            onClick={() => toggleMenu(true)}
-            aria-label={isMenuOpen ? 'Tutup Menu' : 'Buka Menu'}
-            className={`sm:hidden w-[40px] h-[40px] rounded-full flex items-center justify-center active:scale-95 transition-all duration-200 cursor-pointer select-none shrink-0 ${
-              isMenuOpen
-                ? 'bg-transparent text-[#f5f1e4] hover:bg-white/10'
-                : 'bg-[#f5f1e4] text-[#2c2e2a] hover:bg-[#2c2e2a] hover:text-[#ffffff]'
-            }`}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {isMenuOpen ? (
-                <motion.div
-                  key="mobile-close"
-                  initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
-                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                  exit={{ rotate: 90, opacity: 0, scale: 0.7 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X size={22} strokeWidth={2.5} />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="mobile-dots"
-                  initial={{ rotate: 90, opacity: 0, scale: 0.7 }}
-                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                  exit={{ rotate: -90, opacity: 0, scale: 0.7 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <MoreHorizontal size={20} strokeWidth={2.5} />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </button>
+          {/* Mobile Inside Buttons: Theme Switcher & Menu Toggle */}
+          <div className="sm:hidden flex items-center gap-1.5 shrink-0">
+            {onToggleTheme && (
+              <button
+                type="button"
+                onClick={onToggleTheme}
+                aria-label={theme === 'dark' ? 'Ganti ke Mode Terang' : 'Ganti ke Mode Gelap'}
+                className={`w-[40px] h-[40px] rounded-full flex items-center justify-center active:scale-95 transition-all duration-200 cursor-pointer select-none shrink-0 ${
+                  isMenuOpen
+                    ? 'bg-transparent text-[#f5f1e4] hover:bg-white/10'
+                    : 'bg-[#f5f1e4] text-[#2c2e2a] hover:bg-[#2c2e2a] hover:text-[#ffffff]'
+                }`}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {theme === 'dark' ? (
+                    <motion.div
+                      key="mob-sun"
+                      initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                      animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                      exit={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <Sun size={19} strokeWidth={2.2} />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="mob-moon"
+                      initial={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                      animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                      exit={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <Moon size={19} strokeWidth={2.2} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </button>
+            )}
+
+            <button
+              ref={mobileButtonRef}
+              onClick={() => toggleMenu(true)}
+              aria-label={isMenuOpen ? 'Tutup Menu' : 'Buka Menu'}
+              className={`w-[40px] h-[40px] rounded-full flex items-center justify-center active:scale-95 transition-all duration-200 cursor-pointer select-none shrink-0 ${
+                isMenuOpen
+                  ? 'bg-transparent text-[#f5f1e4] hover:bg-white/10'
+                  : 'bg-[#f5f1e4] text-[#2c2e2a] hover:bg-[#2c2e2a] hover:text-[#ffffff]'
+              }`}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {isMenuOpen ? (
+                  <motion.div
+                    key="mobile-close"
+                    initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                    animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                    exit={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X size={22} strokeWidth={2.5} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="mobile-dots"
+                    initial={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                    animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                    exit={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <MoreHorizontal size={20} strokeWidth={2.5} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
         </motion.div>
       </header>
 
-      {/* Desktop Floating Three-Dots / Close Button at Top Right Corner (Hidden on Mobile) */}
+      {/* Desktop Floating Actions: Theme Toggle & Menu Button at Top Right Corner (Hidden on Mobile) */}
       <motion.div
         initial={{ y: -60, opacity: 0 }}
         animate={{
@@ -263,8 +306,42 @@ export const Header: React.FC<HeaderProps> = ({
           pointerEvents: !isVisible && !isMenuOpen ? 'none' : 'auto',
         }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="hidden sm:flex fixed top-4 sm:top-5 right-4 sm:right-6 md:right-8 z-80 pointer-events-auto"
+        className="hidden sm:flex items-center gap-2.5 sm:gap-3 fixed top-4 sm:top-5 right-4 sm:right-6 md:right-8 z-80 pointer-events-auto"
       >
+        {onToggleTheme && (
+          <button
+            type="button"
+            onClick={onToggleTheme}
+            aria-label={theme === 'dark' ? 'Ganti ke Mode Terang' : 'Ganti ke Mode Gelap'}
+            title={theme === 'dark' ? 'Mode Terang' : 'Mode Gelap'}
+            className="w-[54px] sm:w-[60px] md:w-[64px] h-[54px] sm:h-[60px] md:h-[64px] rounded-full flex items-center justify-center bg-[#ffffff] text-[#2c2e2a] hover:bg-[#2c2e2a] hover:text-[#ffffff] active:scale-95 transition-all duration-200 cursor-pointer select-none"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {theme === 'dark' ? (
+                <motion.div
+                  key="desk-sun"
+                  initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Sun size={24} strokeWidth={2.2} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="desk-moon"
+                  initial={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Moon size={24} strokeWidth={2.2} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </button>
+        )}
+
         <button
           ref={desktopButtonRef}
           onClick={() => toggleMenu(false)}
@@ -316,7 +393,7 @@ export const Header: React.FC<HeaderProps> = ({
           marginLeft: '-30px',
           marginTop: '-30px',
           borderRadius: '9999px',
-          backgroundColor: '#2c2e2a',
+          backgroundColor: theme === 'dark' ? '#111310' : '#2c2e2a',
           pointerEvents: 'none',
           zIndex: 60,
           transformOrigin: 'center center',
@@ -383,14 +460,26 @@ export const Header: React.FC<HeaderProps> = ({
           </ul>
         </nav>
 
-        {/* Bottom bar: Socials / Info in #f5f1e4 */}
+        {/* Bottom bar: Socials / Theme Toggle / Info in #f5f1e4 */}
         <div className="w-full max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-[#f5f1e4]/20 text-sm sm:text-base text-[#f5f1e4]/70">
-          <div className="flex items-center gap-6 font-semibold text-xs sm:text-sm tracking-wider uppercase">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 font-semibold text-xs sm:text-sm tracking-wider uppercase">
             <a href="https://github.com/imanecdoche" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">GitHub</a>
             <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">LinkedIn</a>
             <a href="https://instagram.com/ih.fernandez" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">Instagram</a>
             <a href="https://www.threads.com/@ft.skaas" target="_blank" rel="noreferrer" className="hover:text-[#ffffff] transition-colors">Threads</a>
           </div>
+
+          {onToggleTheme && (
+            <button
+              type="button"
+              onClick={onToggleTheme}
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f5f1e4]/10 hover:bg-[#f5f1e4]/25 text-[#f5f1e4] font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer select-none"
+            >
+              {theme === 'dark' ? <Sun size={15} strokeWidth={2.2} /> : <Moon size={15} strokeWidth={2.2} />}
+              <span>{theme === 'dark' ? 'Tema Terang' : 'Tema Gelap'}</span>
+            </button>
+          )}
+
           <span className="font-sans text-xs sm:text-sm text-[#f5f1e4]/50">
             © {new Date().getFullYear()} FATIH FARHAT. All Rights Reserved.
           </span>

@@ -41,6 +41,29 @@ export const App: React.FC = () => {
   const [isExperienceSticky, setIsExperienceSticky] = useState(false);
   const isTimelineSticky = isBioSticky || isEducationSticky || isExperienceSticky;
   const [isMobile, setIsMobile] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+    }
+    return 'light';
+  });
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [theme]);
+
+  const handleToggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -151,6 +174,8 @@ export const App: React.FC = () => {
         isMenuOpen={isMenuOpen}
         onToggleMenu={handleToggleMenu}
         externalOrigin={menuOrigin}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
       />
       <main>
         <AnimatePresence mode="wait">
@@ -210,7 +235,7 @@ export const App: React.FC = () => {
                   hoverSpeed={15}
                   scaleOnHover={false}
                   fadeOut
-                  fadeOutColor="#f5f1e4"
+                  fadeOutColor={theme === 'dark' ? '#151714' : '#f5f1e4'}
                   ariaLabel="Tech stack and creative tools"
                 />
               </section>
@@ -253,7 +278,7 @@ export const App: React.FC = () => {
                       hoverSpeed={15}
                       scaleOnHover={false}
                       fadeOut
-                      fadeOutColor="#f5f1e4"
+                      fadeOutColor={theme === 'dark' ? '#151714' : '#f5f1e4'}
                       ariaLabel="Clients and partner brands"
                     />
                   </section>
@@ -375,7 +400,7 @@ export const App: React.FC = () => {
                   hoverSpeed={15}
                   scaleOnHover={false}
                   fadeOut
-                  fadeOutColor="#f5f1e4"
+                  fadeOutColor={theme === 'dark' ? '#151714' : '#f5f1e4'}
                   ariaLabel="Tech stack and creative tools"
                 />
               </section>

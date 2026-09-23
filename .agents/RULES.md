@@ -823,9 +823,27 @@ Acuan utama dan mutlak selalu benar.
       - **Android Studio (`/icons/androidstudio.svg`)**:
         - Diunduh langsung dari portal resmi Google Android Developers (`https://developer.android.com/static/studio/images/android-studio-stable.svg` di `developer.android.com/studio`).
         - Menampilkan logo resmi modern Android Studio lengkap dengan robot hijau Android dan jangka/kompas arsitektur multi-layer Google.
+139. **Implementasi Fitur Toggle Theme Light / Dark Terintegrasi (23 September 2026):**
+    - **Instruksi Pengguna**: 'tinggal tambahin toggle theme Light / Dark'.
+    - **Penerapan Spesifikasi Mutlak**:
+      - **Manajemen State & Persistensi Tema**:
+        - State tema `'light' | 'dark'` dikelola pada level akar (`App.tsx`) dengan persistensi `localStorage.getItem('theme')` serta deteksi preferensi sistem (`prefers-color-scheme: dark`).
+        - Sinkronisasi instan ke elemen `document.documentElement` dengan penambahan/penghapusan kelas `.dark`.
+      - **Akses & Tombol Pengganti Tema (Toggle)**:
+        - **Desktop Header**: Tombol bulat serasi diletakkan berdampingan dengan tombol menu navigasi di pojok kanan atas (`fixed top-4 sm:top-5 right-4 sm:right-6 md:right-8 z-80`) lengkap dengan animasi rotasi dan skala halus antara ikon `Sun` dan `Moon` (`lucide-react`).
+        - **Mobile Header**: Tombol bulat ringkas (`40x40px`) di dalam kapsul header di sisi kanan dekat tombol menu.
+        - **Menu Layar Penuh (Overlay)**: Tombol pengubah tema di bilah footer menu navigasi lengkap dengan teks status mode aktif.
+      - **Sistem Palet Dark Mode (`src/index.css`)**:
+        - Kanvas Dasar: Obsidian Slate hangat (`#151714`).
+        - Permukaan Kartu Elevated: Warm Charcoal (`#20231f`).
+        - Permukaan Inset & Kotak Data: Deep Slate (`#282b26`).
+        - Teks Utama: Cream Paper (`#f5f1e4`), Teks Sekunder: Ivory Mist transparan (`rgba(245, 241, 228, 0.72)`).
+        - Garis Pemisah / Border: Hairline transparan halus (`rgba(245, 241, 228, 0.12)`).
+        - Aksen Utama: Tetap Fresh Grass Green (`#8ed462`) yang menyala dan berkarakter kuat di kedua tema.
+        - Transisi warna halus 200ms pada perubahan tema tanpa memperlambat performa animasi GSAP / Framer Motion.
     - **Kepatuhan Desain Mutlak**:
       - Flat design murni (*zero drop shadow*, `DESIGN.md`).
       - Tipografi antarmuka murni sans-serif (`font-sans`, `Aturan 108`).
-      - Bebas stroke outline pada kontainer kartu putih (`Aturan 117`).
+      - Bebas stroke outline pada kontainer kartu putih di light mode (`Aturan 117`).
       - Dilarang membuat badge/tag/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
 
