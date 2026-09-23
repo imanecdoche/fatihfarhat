@@ -864,4 +864,11 @@ Acuan utama dan mutlak selalu benar.
       - Tipografi antarmuka murni sans-serif (`font-sans`, `Aturan 108`).
       - Bebas stroke outline pada kontainer kartu putih (`Aturan 117`).
       - Dilarang membuat badge/tag/pill tanpa instruksi eksplisit (`ai-anti-patterns.md`).
-
+142. **Verifikasi Keamanan Kunci Rahasia / API Key & Proteksi Kredensial (23 September 2026):**
+    - **Instruksi Pengguna**: 'tidak ada api key rahasia yang bocor kan'
+    - **Hasil Audit Keamanan**:
+      - Seluruh berkas kode sumber (`src/`) dan riwayat git bersih murni dari API key, token otentikasi rahasia, kata sandi, maupun kredensial pribadi apa pun.
+      - Proyek portofolio dan halaman keahlian hanya menampilkan nama platform, arsitektur headless, tautan repositori publik, serta persentase keahlian.
+      - Berkas `.gitignore` diperkuat dengan pola `.env`, `.env.*`, dan `*.local` guna mencegah kebocoran file environment lokal di masa mendatang.
+    - **Kepatuhan Mutlak**:
+      - Dilarang keras menaruh, meng-commit, atau membocorkan secret API key, token JWT, service account JSON, atau kredensial privat ke dalam repositori publik.
