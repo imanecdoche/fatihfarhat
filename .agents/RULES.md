@@ -872,3 +872,12 @@ Acuan utama dan mutlak selalu benar.
       - Berkas `.gitignore` diperkuat dengan pola `.env`, `.env.*`, dan `*.local` guna mencegah kebocoran file environment lokal di masa mendatang.
     - **Kepatuhan Mutlak**:
       - Dilarang keras menaruh, meng-commit, atau membocorkan secret API key, token JWT, service account JSON, atau kredensial privat ke dalam repositori publik.
+143. **Pembaruan Foto Profil Diri Pengguna (`me.jpeg`, `AboutBio.tsx`) (14 Oktober 2026):**
+    - **Instruksi Pengguna**: 'ganti fotoku jadi ini' -> 'eh pake ini aja' (mengunggah foto potret terbaru memegang kamera Fujifilm mirrorless).
+    - **Penerapan Spesifikasi Mutlak**:
+      - Memperbarui foto profil asli di tiga lokasi utama: `src/assets/me.jpeg`, `public/me.jpeg`, dan root `me.jpeg` dengan konversi JPEG kualitas tinggi (95%, optimized) dari gambar potret baru (`media_1791960705505.png`).
+      - Mempertahankan rasio aspek 1:1 potret alami dan memastikan framing lingkaran sempurna (`rounded-full`, `object-cover`) pada komponen `AboutBio.tsx` tanpa distorsi proporsi wajah.
+      - **Kepatuhan Desain & Anti-Pattern Mutlak**:
+        - Tidak menambahkan badge, tag, pill, atau dekorasi apa pun di luar instruksi pengguna (`ai-anti-patterns.md`).
+        - Mempertahankan estetika *flat design*, *zero shadow*, dan transisi hover yang bersih sesuai standar desain proyek.
+
